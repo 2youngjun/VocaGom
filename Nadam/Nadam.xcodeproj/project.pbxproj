@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3073107B62E133689B9ECDD5 /* Pods_Nadam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0128076284383D266698FFF3 /* Pods_Nadam.framework */; };
 		8B0DDEEF289A953D00F0ACC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DDEEE289A953D00F0ACC3 /* AppDelegate.swift */; };
 		8B0DDEF1289A953D00F0ACC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DDEF0289A953D00F0ACC3 /* SceneDelegate.swift */; };
 		8B0DDEF3289A953D00F0ACC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DDEF2289A953D00F0ACC3 /* ViewController.swift */; };
@@ -17,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0128076284383D266698FFF3 /* Pods_Nadam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nadam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40D2F751573CC0C552E8F732 /* Pods-Nadam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nadam.release.xcconfig"; path = "Target Support Files/Pods-Nadam/Pods-Nadam.release.xcconfig"; sourceTree = "<group>"; };
+		41BDCB37E71B201079FE9DAA /* Pods-Nadam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nadam.debug.xcconfig"; path = "Target Support Files/Pods-Nadam/Pods-Nadam.debug.xcconfig"; sourceTree = "<group>"; };
 		8B0DDEEB289A953D00F0ACC3 /* Nadam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nadam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B0DDEEE289A953D00F0ACC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B0DDEF0289A953D00F0ACC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,17 +37,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3073107B62E133689B9ECDD5 /* Pods_Nadam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14F77F06F3F86D34728BCEFC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				41BDCB37E71B201079FE9DAA /* Pods-Nadam.debug.xcconfig */,
+				40D2F751573CC0C552E8F732 /* Pods-Nadam.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		8B0DDEE2289A953D00F0ACC3 = {
 			isa = PBXGroup;
 			children = (
 				8B0DDEED289A953D00F0ACC3 /* Nadam */,
 				8B0DDEEC289A953D00F0ACC3 /* Products */,
+				14F77F06F3F86D34728BCEFC /* Pods */,
+				CD169AAD76B2196D0CB2FCBA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +87,14 @@
 			path = Nadam;
 			sourceTree = "<group>";
 		};
+		CD169AAD76B2196D0CB2FCBA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0128076284383D266698FFF3 /* Pods_Nadam.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +102,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B0DDF02289A953F00F0ACC3 /* Build configuration list for PBXNativeTarget "Nadam" */;
 			buildPhases = (
+				1322FE3A9870871BB6957F46 /* [CP] Check Pods Manifest.lock */,
 				8B0DDEE7289A953D00F0ACC3 /* Sources */,
 				8B0DDEE8289A953D00F0ACC3 /* Frameworks */,
 				8B0DDEE9289A953D00F0ACC3 /* Resources */,
+				04D3F52EA004EC46B91ECE1C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +162,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04D3F52EA004EC46B91ECE1C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nadam/Pods-Nadam-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nadam/Pods-Nadam-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Nadam/Pods-Nadam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1322FE3A9870871BB6957F46 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Nadam-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8B0DDEE7289A953D00F0ACC3 /* Sources */ = {
@@ -286,6 +355,7 @@
 		};
 		8B0DDF03289A953F00F0ACC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41BDCB37E71B201079FE9DAA /* Pods-Nadam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -314,6 +384,7 @@
 		};
 		8B0DDF04289A953F00F0ACC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40D2F751573CC0C552E8F732 /* Pods-Nadam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
