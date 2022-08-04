@@ -16,5 +16,21 @@ class AddWordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         sheetPresentationController.detents = [.medium()]
+        setLayoutStyle()
+    }
+    
+    
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    func setLayoutStyle() {
+        saveButton.titleLabel?.font = UIFont.NFont.addWordNavigationButton
+        saveButton.sizeToFit()
+        
+        cancelButton.titleLabel?.font = UIFont.NFont.addWordNavigationButton
+        cancelButton.sizeToFit()
+        
+        titleLabel.font = UIFont.NFont.addWordNavigationTitle
     }
 }

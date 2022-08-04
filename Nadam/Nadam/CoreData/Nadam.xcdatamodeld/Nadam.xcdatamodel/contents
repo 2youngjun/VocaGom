@@ -3,11 +3,13 @@
     <entity name="Word" representedClassName="Word" syncable="YES" codeGenerationType="class">
         <attribute name="cntWrong" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="createTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="example" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="meaning" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="synoym" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Word" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="Word" positionX="-63" positionY="-18" width="128" height="134"/>
     </elements>
 </model>

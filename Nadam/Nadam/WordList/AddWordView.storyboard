@@ -17,21 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDb-2l-jbO">
-                                <rect key="frame" x="25" y="63" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="0KN-R3-ppy"/>
-                                    <constraint firstAttribute="width" constant="30" id="HnE-Cw-SBc"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="63" width="30" height="32"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="취소"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wU0-NY-bxO">
-                                <rect key="frame" x="359" y="63" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="fVz-FO-2oT"/>
-                                    <constraint firstAttribute="width" constant="30" id="wap-Z0-SVf"/>
-                                </constraints>
+                                <rect key="frame" x="364" y="63" width="30" height="32"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="추가"/>
@@ -50,13 +42,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="XQa-9p-NkQ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="19" id="Hhp-0X-oST"/>
-                            <constraint firstItem="YDb-2l-jbO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="L6q-Le-2Ub"/>
+                            <constraint firstItem="YDb-2l-jbO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="L6q-Le-2Ub"/>
                             <constraint firstItem="YDb-2l-jbO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="19" id="Nv1-Wd-lkZ"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wU0-NY-bxO" secondAttribute="trailing" constant="25" id="Sgy-uy-Hug"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wU0-NY-bxO" secondAttribute="trailing" constant="20" id="Sgy-uy-Hug"/>
                             <constraint firstItem="XQa-9p-NkQ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="dxX-i2-6Yo"/>
                             <constraint firstItem="wU0-NY-bxO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="19" id="g5l-RA-a8U"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="YDb-2l-jbO" id="7Gk-IW-qDU"/>
+                        <outlet property="saveButton" destination="wU0-NY-bxO" id="E7j-lZ-Q0a"/>
+                        <outlet property="titleLabel" destination="XQa-9p-NkQ" id="cAZ-KA-17V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
