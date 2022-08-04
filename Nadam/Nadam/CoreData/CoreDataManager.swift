@@ -6,3 +6,76 @@
 //
 
 import Foundation
+import CoreData
+import UIKit
+
+class CoreDataManager {
+    //사용법
+    // CoreDataManager.함수
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Nadam")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    var context: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+    
+    func saveContext() {
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    // 단어 추가/생성/삭제 함수
+    func addWord(name: String, meaning: String, createTime: Date, cntWrong: Int) {
+        let word = Word(context: persistentContainer.viewContext)
+        word.id = UUID()
+        word.name = name
+        word.meaning = meaning
+        word.createTime = Date()
+        word.cntWrong = 0
+        
+        saveContext()
+    }
+    
+    func deleteWord(word: Word){
+        let request: NSFetchRequest<Word> = Word.fetchRequest()
+        
+        do {
+            let wordArray = try context.fetch(request)
+            for index in wordArray.indices {
+                if wordArray[index].id == word.id
+                {
+//                    showDeleteWord(word: word)
+                    self.context.delete(word)
+                    break
+                }
+            }
+        } catch {
+            print("-----deleteWord error -------")
+        }
+        
+        saveContext()
+    }
+    
+    func fetchWord() -> [Word] {
+        var wordArray: [Word] = []
+        let request: NSFetchRequest<Word> = Word.fetchRequest()
+        do {
+            wordArray = try context.fetch(request)
+            return wordArray
+        } catch {
+            print("-----fetchWord error -------")
+        }
+        return wordArray
+    }
+}
