@@ -15,6 +15,11 @@
 		8B0DDEF9289A953D00F0ACC3 /* Nadam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DDEF7289A953D00F0ACC3 /* Nadam.xcdatamodeld */; };
 		8B0DDEFB289A953F00F0ACC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B0DDEFA289A953F00F0ACC3 /* Assets.xcassets */; };
 		8B0DDEFE289A953F00F0ACC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B0DDEFC289A953F00F0ACC3 /* LaunchScreen.storyboard */; };
+		8BF3AF25289ACA8D00F049CD /* WordListView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF24289ACA8D00F049CD /* WordListView.storyboard */; };
+		8BF3AF27289ACAA700F049CD /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3AF26289ACAA700F049CD /* WordListViewController.swift */; };
+		8BF3AF2A289B5AEB00F049CD /* AddWordView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF29289B5AEB00F049CD /* AddWordView.storyboard */; };
+		8BF3AF2C289B5AF500F049CD /* AddWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3AF2B289B5AF500F049CD /* AddWordViewController.swift */; };
+		8BF3AF2F289BBFAC00F049CD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3AF2E289BBFAC00F049CD /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		8B0DDEFA289A953F00F0ACC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B0DDEFD289A953F00F0ACC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B0DDEFF289A953F00F0ACC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BF3AF24289ACA8D00F049CD /* WordListView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WordListView.storyboard; sourceTree = "<group>"; };
+		8BF3AF26289ACAA700F049CD /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
+		8BF3AF29289B5AEB00F049CD /* AddWordView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddWordView.storyboard; sourceTree = "<group>"; };
+		8BF3AF2B289B5AF500F049CD /* AddWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordViewController.swift; sourceTree = "<group>"; };
+		8BF3AF2E289BBFAC00F049CD /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +60,6 @@
 				41BDCB37E71B201079FE9DAA /* Pods-Nadam.debug.xcconfig */,
 				40D2F751573CC0C552E8F732 /* Pods-Nadam.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -79,12 +88,33 @@
 				8B0DDEF0289A953D00F0ACC3 /* SceneDelegate.swift */,
 				8B0DDEF2289A953D00F0ACC3 /* ViewController.swift */,
 				8B0DDEF4289A953D00F0ACC3 /* Main.storyboard */,
+				8BF3AF28289ACAB000F049CD /* WordList */,
 				8B0DDEFA289A953F00F0ACC3 /* Assets.xcassets */,
 				8B0DDEFC289A953F00F0ACC3 /* LaunchScreen.storyboard */,
 				8B0DDEFF289A953F00F0ACC3 /* Info.plist */,
-				8B0DDEF7289A953D00F0ACC3 /* Nadam.xcdatamodeld */,
+				8BF3AF2D289BBF9A00F049CD /* CoreData */,
 			);
 			path = Nadam;
+			sourceTree = "<group>";
+		};
+		8BF3AF28289ACAB000F049CD /* WordList */ = {
+			isa = PBXGroup;
+			children = (
+				8BF3AF24289ACA8D00F049CD /* WordListView.storyboard */,
+				8BF3AF26289ACAA700F049CD /* WordListViewController.swift */,
+				8BF3AF29289B5AEB00F049CD /* AddWordView.storyboard */,
+				8BF3AF2B289B5AF500F049CD /* AddWordViewController.swift */,
+			);
+			path = WordList;
+			sourceTree = "<group>";
+		};
+		8BF3AF2D289BBF9A00F049CD /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8B0DDEF7289A953D00F0ACC3 /* Nadam.xcdatamodeld */,
+				8BF3AF2E289BBFAC00F049CD /* CoreDataManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		CD169AAD76B2196D0CB2FCBA /* Frameworks */ = {
@@ -156,8 +186,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B0DDEFE289A953F00F0ACC3 /* LaunchScreen.storyboard in Resources */,
+				8BF3AF25289ACA8D00F049CD /* WordListView.storyboard in Resources */,
 				8B0DDEFB289A953F00F0ACC3 /* Assets.xcassets in Resources */,
 				8B0DDEF6289A953D00F0ACC3 /* Main.storyboard in Resources */,
+				8BF3AF2A289B5AEB00F049CD /* AddWordView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +244,10 @@
 			files = (
 				8B0DDEF3289A953D00F0ACC3 /* ViewController.swift in Sources */,
 				8B0DDEEF289A953D00F0ACC3 /* AppDelegate.swift in Sources */,
+				8BF3AF2C289B5AF500F049CD /* AddWordViewController.swift in Sources */,
+				8BF3AF27289ACAA700F049CD /* WordListViewController.swift in Sources */,
 				8B0DDEF1289A953D00F0ACC3 /* SceneDelegate.swift in Sources */,
+				8BF3AF2F289BBFAC00F049CD /* CoreDataManager.swift in Sources */,
 				8B0DDEF9289A953D00F0ACC3 /* Nadam.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
