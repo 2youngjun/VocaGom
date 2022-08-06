@@ -10,8 +10,8 @@ import CoreData
 import UIKit
 
 class CoreDataManager {
-    //사용법
     // CoreDataManager.함수
+    static let shared: CoreDataManager = CoreDataManager()
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Nadam")

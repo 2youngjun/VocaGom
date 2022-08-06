@@ -16,7 +16,7 @@ enum GmarketSansWeight: String {
 private let customFonts: [UIFont.TextStyle: UIFont] = [
     .largeTitle: UIFont(name: "GmarketSansTTFBold", size: 24)!,
     .title1: UIFont(name: "GmarketSansTTFBold", size: 20)!,
-    .title2: UIFont(name: "GmarketSansTTFBold", size: 18)!,
+    .title2: UIFont(name: "GmarketSansTTFMedium", size: 18)!,
     .title3: UIFont(name: "GmarketSansTTFBold", size: 17)!,
     .headline: UIFont(name: "GmarketSansTTFMedium", size: 17)!,
     .body: UIFont(name: "GmarketSansTTFMedium", size: 16)!,
@@ -40,6 +40,6 @@ extension UIFont {
     // 필요한 폰트 종류는 여기에 추가하기
     enum NFont {
         static var addWordNavigationTitle: UIFont{ UIFont.NadamFont(forTextStyle: .headline) }
-        static var addWordNavigationButton: UIFont{ UIFont.NadamFont(forTextStyle: .body) }
+        static var addWordButtonLabel: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }
     }
 }

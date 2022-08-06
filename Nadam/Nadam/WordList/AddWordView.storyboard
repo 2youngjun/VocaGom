@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,47 +11,170 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="AddWordViewController" id="Y6W-OH-hqX" customClass="AddWordViewController" customModule="Nadam" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDb-2l-jbO">
-                                <rect key="frame" x="20" y="63" width="30" height="32"/>
+                                <rect key="frame" x="20" y="25" width="30" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="acI-An-dQK"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="취소"/>
+                                <connections>
+                                    <action selector="tapCancelButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6DH-cf-lp8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wU0-NY-bxO">
-                                <rect key="frame" x="364" y="63" width="30" height="32"/>
+                                <rect key="frame" x="364" y="25" width="30" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="91y-bg-tAY"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="추가"/>
+                                <state key="normal" title="저장"/>
+                                <connections>
+                                    <action selector="tapSaveButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ujh-l7-wST"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="단어 추가하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQa-9p-NkQ">
-                                <rect key="frame" x="163.5" y="63" width="87" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VQr-bQ-FN1">
+                                <rect key="frame" x="20" y="61" width="374" height="63.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="단어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJw-Mz-sdb">
+                                        <rect key="frame" x="0.0" y="0.0" width="28" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="단어를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8lF-Fj-StY">
+                                        <rect key="frame" x="0.0" y="29.5" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="detectSaveState:" destination="Y6W-OH-hqX" eventType="editingChanged" id="aiF-qt-VYF"/>
+                                            <action selector="endEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="krA-Ex-EWd"/>
+                                            <action selector="startEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidBegin" id="jdh-DI-60f"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="EG2-s7-qZ3"/>
+                                    <constraint firstAttribute="trailing" secondItem="8lF-Fj-StY" secondAttribute="trailing" id="Zmx-CN-JtY"/>
                                 </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MeO-W6-yGU">
+                                <rect key="frame" x="20" y="144.5" width="374" height="63.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="뜻" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyW-sD-VbX">
+                                        <rect key="frame" x="0.0" y="0.0" width="14" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="뜻을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N5t-gQ-f8b">
+                                        <rect key="frame" x="0.0" y="29.5" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="detectSaveState:" destination="Y6W-OH-hqX" eventType="editingChanged" id="ajx-EM-ecw"/>
+                                            <action selector="endEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="1Bk-hw-5EE"/>
+                                            <action selector="startEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidBegin" id="tbq-bg-Iur"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="N5t-gQ-f8b" secondAttribute="trailing" id="7W5-wJ-Na8"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="단어 추가하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQa-9p-NkQ">
+                                <rect key="frame" x="163.5" y="25" width="87" height="19.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="q40-OL-5Ic">
+                                <rect key="frame" x="20" y="228" width="374" height="63.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="동의어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mml-EF-8Av">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="동의어를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X3G-H1-NvG">
+                                        <rect key="frame" x="0.0" y="29.5" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="endEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="pYe-Fp-Flm"/>
+                                            <action selector="startEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidBegin" id="WTP-Sc-ekp"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="X3G-H1-NvG" secondAttribute="trailing" id="ZOD-pa-TOg"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vPK-T8-flw">
+                                <rect key="frame" x="20" y="311.5" width="374" height="63.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="예문" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owG-lk-RY3">
+                                        <rect key="frame" x="0.0" y="0.0" width="28" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="예문을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A8M-1o-aWi">
+                                        <rect key="frame" x="0.0" y="29.5" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="endEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="C1w-2w-zin"/>
+                                            <action selector="startEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidBegin" id="XAJ-sm-71R"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="A8M-1o-aWi" secondAttribute="trailing" id="mOx-mm-eoy"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="XQa-9p-NkQ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="19" id="Hhp-0X-oST"/>
-                            <constraint firstItem="YDb-2l-jbO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="L6q-Le-2Ub"/>
-                            <constraint firstItem="YDb-2l-jbO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="19" id="Nv1-Wd-lkZ"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wU0-NY-bxO" secondAttribute="trailing" constant="20" id="Sgy-uy-Hug"/>
-                            <constraint firstItem="XQa-9p-NkQ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="dxX-i2-6Yo"/>
-                            <constraint firstItem="wU0-NY-bxO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="19" id="g5l-RA-a8U"/>
+                            <constraint firstItem="q40-OL-5Ic" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="55N-OF-m5t"/>
+                            <constraint firstAttribute="trailing" secondItem="MeO-W6-yGU" secondAttribute="trailing" constant="20" id="6MC-0m-5AS"/>
+                            <constraint firstItem="XQa-9p-NkQ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Akx-yS-WJQ"/>
+                            <constraint firstItem="q40-OL-5Ic" firstAttribute="top" secondItem="MeO-W6-yGU" secondAttribute="bottom" constant="20" id="ErF-pn-7WO"/>
+                            <constraint firstItem="XQa-9p-NkQ" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="25" id="Hhp-0X-oST"/>
+                            <constraint firstItem="YDb-2l-jbO" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="L6q-Le-2Ub"/>
+                            <constraint firstAttribute="trailing" secondItem="vPK-T8-flw" secondAttribute="trailing" constant="20" id="MsJ-KK-FMJ"/>
+                            <constraint firstItem="MeO-W6-yGU" firstAttribute="top" secondItem="VQr-bQ-FN1" secondAttribute="bottom" constant="20" id="NjP-2a-lJp"/>
+                            <constraint firstItem="YDb-2l-jbO" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="25" id="Nv1-Wd-lkZ"/>
+                            <constraint firstItem="MeO-W6-yGU" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="NvH-K8-yXH"/>
+                            <constraint firstAttribute="trailing" secondItem="wU0-NY-bxO" secondAttribute="trailing" constant="20" id="Sgy-uy-Hug"/>
+                            <constraint firstItem="VQr-bQ-FN1" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="VD8-Xo-XC4"/>
+                            <constraint firstAttribute="trailing" secondItem="q40-OL-5Ic" secondAttribute="trailing" constant="20" id="Y5P-8L-saP"/>
+                            <constraint firstItem="vPK-T8-flw" firstAttribute="top" secondItem="q40-OL-5Ic" secondAttribute="bottom" constant="20" id="aqf-qF-PeI"/>
+                            <constraint firstItem="wU0-NY-bxO" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="25" id="g5l-RA-a8U"/>
+                            <constraint firstAttribute="trailing" secondItem="VQr-bQ-FN1" secondAttribute="trailing" constant="20" id="kTd-xJ-lrz"/>
+                            <constraint firstItem="vPK-T8-flw" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="r4f-ER-P2J"/>
+                            <constraint firstItem="VQr-bQ-FN1" firstAttribute="top" secondItem="YDb-2l-jbO" secondAttribute="bottom" constant="20" id="ugC-dU-RzH"/>
                         </constraints>
                     </view>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="cancelButton" destination="YDb-2l-jbO" id="7Gk-IW-qDU"/>
+                        <outlet property="exampleTextField" destination="A8M-1o-aWi" id="Uvt-0R-mcB"/>
+                        <outlet property="meaningTextField" destination="N5t-gQ-f8b" id="N2k-zb-XLo"/>
+                        <outlet property="nameTextField" destination="8lF-Fj-StY" id="ZmY-l4-Qkn"/>
                         <outlet property="saveButton" destination="wU0-NY-bxO" id="E7j-lZ-Q0a"/>
+                        <outlet property="synoymTextField" destination="X3G-H1-NvG" id="vst-qq-jaa"/>
                         <outlet property="titleLabel" destination="XQa-9p-NkQ" id="cAZ-KA-17V"/>
+                        <outlet property="wordExample" destination="owG-lk-RY3" id="PqA-zv-xQr"/>
+                        <outlet property="wordMeaning" destination="JyW-sD-VbX" id="Ngy-Qw-SQK"/>
+                        <outlet property="wordName" destination="eJw-Mz-sdb" id="l5f-12-sqt"/>
+                        <outlet property="wordSynoym" destination="mml-EF-8Av" id="bJi-7k-7pq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

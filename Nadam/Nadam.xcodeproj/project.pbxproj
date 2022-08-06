@@ -138,19 +138,19 @@
 		8BF3AF34289C25CB00F049CD /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				8BF3AF3A289C327F00F049CD /* New Group */,
+				8BF3AF3A289C327F00F049CD /* Font */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		8BF3AF3A289C327F00F049CD /* New Group */ = {
+		8BF3AF3A289C327F00F049CD /* Font */ = {
 			isa = PBXGroup;
 			children = (
 				8BF3AF3F289C329000F049CD /* GmarketSansTTFMedium.ttf */,
 				8BF3AF41289C32B800F049CD /* GmarketSansTTFBold.ttf */,
 				8BF3AF3D289C328A00F049CD /* GmarketSansTTFLight.ttf */,
 			);
-			path = "New Group";
+			path = Font;
 			sourceTree = "<group>";
 		};
 		CD169AAD76B2196D0CB2FCBA /* Frameworks */ = {
