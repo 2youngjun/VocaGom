@@ -33,21 +33,25 @@ class AddWordViewController: UIViewController {
     // MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        sheetPresentationController.detents = [.medium()]
+        sheetPresentationController.detents = [.large()]
         wordList = CoreDataManager.shared.fetchWord()
         setLayoutStyle()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print(wordList)
     }
     
     // MARK: IBAction 함수
     @IBAction func startEditingTextField(_ sender: UITextField) {
         sender.layer.borderWidth = 1
-        sender.layer.borderColor = UIColor.blue.cgColor
+        sender.layer.borderColor = UIColor.NColor.blue.cgColor
         sender.layer.cornerRadius = 6.5
     }
     
     @IBAction func endEditingTextField(_ sender: UITextField) {
         sender.layer.borderWidth = 1
-        sender.layer.borderColor = UIColor.red.cgColor
+        sender.layer.borderColor = UIColor.NColor.background.cgColor
         sender.layer.cornerRadius = 6.5
     }
     

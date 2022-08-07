@@ -40,10 +40,10 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VQr-bQ-FN1">
-                                <rect key="frame" x="20" y="61" width="374" height="63.5"/>
+                                <rect key="frame" x="20" y="66" width="374" height="63.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="단어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJw-Mz-sdb">
-                                        <rect key="frame" x="0.0" y="0.0" width="28" height="19.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 단어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJw-Mz-sdb">
+                                        <rect key="frame" x="0.0" y="0.0" width="39" height="19.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -64,10 +64,10 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MeO-W6-yGU">
-                                <rect key="frame" x="20" y="144.5" width="374" height="63.5"/>
+                                <rect key="frame" x="20" y="159.5" width="374" height="63.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="뜻" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyW-sD-VbX">
-                                        <rect key="frame" x="0.0" y="0.0" width="14" height="19.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 뜻" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyW-sD-VbX">
+                                        <rect key="frame" x="0.0" y="0.0" width="25.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -77,7 +77,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <action selector="detectSaveState:" destination="Y6W-OH-hqX" eventType="editingChanged" id="ajx-EM-ecw"/>
+                                            <action selector="detectSaveState:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="7S0-L8-hdd"/>
                                             <action selector="endEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="1Bk-hw-5EE"/>
                                             <action selector="startEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidBegin" id="tbq-bg-Iur"/>
                                         </connections>
@@ -94,7 +94,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="q40-OL-5Ic">
-                                <rect key="frame" x="20" y="228" width="374" height="63.5"/>
+                                <rect key="frame" x="20" y="253" width="374" height="63.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="동의어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mml-EF-8Av">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="19.5"/>
@@ -117,7 +117,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vPK-T8-flw">
-                                <rect key="frame" x="20" y="311.5" width="374" height="63.5"/>
+                                <rect key="frame" x="20" y="346.5" width="374" height="63.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="예문" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owG-lk-RY3">
                                         <rect key="frame" x="0.0" y="0.0" width="28" height="19.5"/>
@@ -145,21 +145,21 @@
                             <constraint firstItem="q40-OL-5Ic" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="55N-OF-m5t"/>
                             <constraint firstAttribute="trailing" secondItem="MeO-W6-yGU" secondAttribute="trailing" constant="20" id="6MC-0m-5AS"/>
                             <constraint firstItem="XQa-9p-NkQ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Akx-yS-WJQ"/>
-                            <constraint firstItem="q40-OL-5Ic" firstAttribute="top" secondItem="MeO-W6-yGU" secondAttribute="bottom" constant="20" id="ErF-pn-7WO"/>
+                            <constraint firstItem="q40-OL-5Ic" firstAttribute="top" secondItem="MeO-W6-yGU" secondAttribute="bottom" constant="30" id="ErF-pn-7WO"/>
                             <constraint firstItem="XQa-9p-NkQ" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="25" id="Hhp-0X-oST"/>
                             <constraint firstItem="YDb-2l-jbO" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="L6q-Le-2Ub"/>
                             <constraint firstAttribute="trailing" secondItem="vPK-T8-flw" secondAttribute="trailing" constant="20" id="MsJ-KK-FMJ"/>
-                            <constraint firstItem="MeO-W6-yGU" firstAttribute="top" secondItem="VQr-bQ-FN1" secondAttribute="bottom" constant="20" id="NjP-2a-lJp"/>
+                            <constraint firstItem="MeO-W6-yGU" firstAttribute="top" secondItem="VQr-bQ-FN1" secondAttribute="bottom" constant="30" id="NjP-2a-lJp"/>
                             <constraint firstItem="YDb-2l-jbO" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="25" id="Nv1-Wd-lkZ"/>
                             <constraint firstItem="MeO-W6-yGU" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="NvH-K8-yXH"/>
                             <constraint firstAttribute="trailing" secondItem="wU0-NY-bxO" secondAttribute="trailing" constant="20" id="Sgy-uy-Hug"/>
                             <constraint firstItem="VQr-bQ-FN1" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="VD8-Xo-XC4"/>
                             <constraint firstAttribute="trailing" secondItem="q40-OL-5Ic" secondAttribute="trailing" constant="20" id="Y5P-8L-saP"/>
-                            <constraint firstItem="vPK-T8-flw" firstAttribute="top" secondItem="q40-OL-5Ic" secondAttribute="bottom" constant="20" id="aqf-qF-PeI"/>
+                            <constraint firstItem="vPK-T8-flw" firstAttribute="top" secondItem="q40-OL-5Ic" secondAttribute="bottom" constant="30" id="aqf-qF-PeI"/>
                             <constraint firstItem="wU0-NY-bxO" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="25" id="g5l-RA-a8U"/>
                             <constraint firstAttribute="trailing" secondItem="VQr-bQ-FN1" secondAttribute="trailing" constant="20" id="kTd-xJ-lrz"/>
                             <constraint firstItem="vPK-T8-flw" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="r4f-ER-P2J"/>
-                            <constraint firstItem="VQr-bQ-FN1" firstAttribute="top" secondItem="YDb-2l-jbO" secondAttribute="bottom" constant="20" id="ugC-dU-RzH"/>
+                            <constraint firstItem="VQr-bQ-FN1" firstAttribute="top" secondItem="YDb-2l-jbO" secondAttribute="bottom" constant="25" id="ugC-dU-RzH"/>
                         </constraints>
                     </view>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

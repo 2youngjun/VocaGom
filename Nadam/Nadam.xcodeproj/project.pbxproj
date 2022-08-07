@@ -15,6 +15,7 @@
 		8B0DDEF9289A953D00F0ACC3 /* Nadam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DDEF7289A953D00F0ACC3 /* Nadam.xcdatamodeld */; };
 		8B0DDEFB289A953F00F0ACC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B0DDEFA289A953F00F0ACC3 /* Assets.xcassets */; };
 		8B0DDEFE289A953F00F0ACC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B0DDEFC289A953F00F0ACC3 /* LaunchScreen.storyboard */; };
+		8B1DBD78289F5D6F007580D7 /* Nadam+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DBD77289F5D6F007580D7 /* Nadam+Color.swift */; };
 		8BF3AF25289ACA8D00F049CD /* WordListView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF24289ACA8D00F049CD /* WordListView.storyboard */; };
 		8BF3AF27289ACAA700F049CD /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3AF26289ACAA700F049CD /* WordListViewController.swift */; };
 		8BF3AF2A289B5AEB00F049CD /* AddWordView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF29289B5AEB00F049CD /* AddWordView.storyboard */; };
@@ -39,6 +40,7 @@
 		8B0DDEFA289A953F00F0ACC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B0DDEFD289A953F00F0ACC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B0DDEFF289A953F00F0ACC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B1DBD77289F5D6F007580D7 /* Nadam+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nadam+Color.swift"; sourceTree = "<group>"; };
 		8BF3AF24289ACA8D00F049CD /* WordListView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WordListView.storyboard; sourceTree = "<group>"; };
 		8BF3AF26289ACAA700F049CD /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		8BF3AF29289B5AEB00F049CD /* AddWordView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddWordView.storyboard; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				8BF3AF38289C261500F049CD /* Nadam+Font.swift */,
+				8B1DBD77289F5D6F007580D7 /* Nadam+Color.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				8B0DDEF3289A953D00F0ACC3 /* ViewController.swift in Sources */,
 				8B0DDEEF289A953D00F0ACC3 /* AppDelegate.swift in Sources */,
 				8BF3AF2C289B5AF500F049CD /* AddWordViewController.swift in Sources */,
+				8B1DBD78289F5D6F007580D7 /* Nadam+Color.swift in Sources */,
 				8BF3AF27289ACAA700F049CD /* WordListViewController.swift in Sources */,
 				8B0DDEF1289A953D00F0ACC3 /* SceneDelegate.swift in Sources */,
 				8BF3AF2F289BBFAC00F049CD /* CoreDataManager.swift in Sources */,

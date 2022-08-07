@@ -41,5 +41,6 @@ extension UIFont {
     enum NFont {
         static var addWordNavigationTitle: UIFont{ UIFont.NadamFont(forTextStyle: .headline) }
         static var addWordButtonLabel: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }
+        static var wordListTitleLabel: UIFont{ UIFont.NadamFont(forTextStyle: .title1) }
     }
 }
