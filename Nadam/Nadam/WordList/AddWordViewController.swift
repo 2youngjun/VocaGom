@@ -33,9 +33,13 @@ class AddWordViewController: UIViewController {
     // MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        sheetPresentationController.detents = [.large()]
+        sheetPresentationController.detents = [.medium()]
         wordList = CoreDataManager.shared.fetchWord()
-        setLayoutStyle()
+        
+        configureLayoutStyle()
+        
+        configureInputField()
+        self.saveButton.isEnabled = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -44,21 +48,17 @@ class AddWordViewController: UIViewController {
     
     // MARK: IBAction 함수
     @IBAction func startEditingTextField(_ sender: UITextField) {
-        sender.layer.borderWidth = 1
+        sender.layer.borderWidth = 0.5
         sender.layer.borderColor = UIColor.NColor.blue.cgColor
-        sender.layer.cornerRadius = 6.5
+        sender.layer.cornerRadius = 5.0
     }
     
     @IBAction func endEditingTextField(_ sender: UITextField) {
-        sender.layer.borderWidth = 1
-        sender.layer.borderColor = UIColor.NColor.background.cgColor
-        sender.layer.cornerRadius = 6.5
+        sender.layer.borderWidth = 0.5
+        sender.layer.borderColor = UIColor.NColor.border.cgColor
+        sender.layer.cornerRadius = 5.0
     }
     
-    
-    @IBAction func detectSaveState(_ sender: Any) {
-        saveButtonState()
-    }
     
     @IBAction func tapCancelButton(_ sender: UIButton) {
         self.presentingViewController?.dismiss(animated: true)
@@ -75,16 +75,13 @@ class AddWordViewController: UIViewController {
         self.presentingViewController?.dismiss(animated: true)
     }
     
-    func setLayoutStyle() {
+    private func configureLayoutStyle() {
         saveButton.titleLabel?.font = UIFont.NFont.addWordButtonLabel
         saveButton.sizeToFit()
-        saveButton.isEnabled = false
         
         cancelButton.titleLabel?.font = UIFont.NFont.addWordButtonLabel
-//        cancelButton.sizeToFit()
         
         titleLabel.font = UIFont.NFont.addWordNavigationTitle
-//        titleLabel.sizeToFit()
         
         wordName.font = UIFont.NFont.addWordButtonLabel
         wordMeaning.font = UIFont.NFont.addWordButtonLabel
@@ -92,23 +89,34 @@ class AddWordViewController: UIViewController {
         wordExample.font = UIFont.NFont.addWordButtonLabel
     }
     
-    func saveButtonState() {
-        if nameTextField.text != "" && meaningTextField.text != "" {
-            checkSameWord()
+    @objc private func saveButtonState() {
+        if nameTextField.text != "" && meaningTextField.text != "" && checkSameWord() {
+            saveButton.isEnabled = true
         } else { saveButton.isEnabled = false }
     }
     
-    // TODO: 동일한 단어인지 체크하는 함수 추가
-    func checkSameWord() {
+    private func checkSameWord() -> Bool {
         let wordString = nameTextField.text ?? ""
         for word in wordList {
             if word.name == wordString {
-                saveButton.isEnabled = false
-                // 동일한 단어라는 문구
+                return false
             }
         }
-        saveButton.isEnabled = true
+        return true
     }
     
+    @objc private func isSameWord() {
+        let wordString = nameTextField.text
+        for word in wordList {
+            if wordString == word.name {
+                saveButton.isEnabled = false
+            }
+        }
+    }
     
+    private func configureInputField() {
+        self.nameTextField.addTarget(self, action: #selector(saveButtonState), for: .editingChanged)
+        self.nameTextField.addTarget(self, action: #selector(isSameWord), for: .editingDidEnd)
+        self.meaningTextField.addTarget(self, action: #selector(saveButtonState), for: .editingChanged)
+    }
 }

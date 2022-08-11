@@ -53,7 +53,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <action selector="detectSaveState:" destination="Y6W-OH-hqX" eventType="editingChanged" id="aiF-qt-VYF"/>
                                             <action selector="endEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="krA-Ex-EWd"/>
                                             <action selector="startEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidBegin" id="jdh-DI-60f"/>
                                         </connections>
@@ -77,7 +76,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <action selector="detectSaveState:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="7S0-L8-hdd"/>
                                             <action selector="endEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="1Bk-hw-5EE"/>
                                             <action selector="startEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidBegin" id="tbq-bg-Iur"/>
                                         </connections>
