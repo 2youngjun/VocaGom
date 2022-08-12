@@ -15,6 +15,16 @@
 		8B0DDEF9289A953D00F0ACC3 /* Nadam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DDEF7289A953D00F0ACC3 /* Nadam.xcdatamodeld */; };
 		8B0DDEFB289A953F00F0ACC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B0DDEFA289A953F00F0ACC3 /* Assets.xcassets */; };
 		8B0DDEFE289A953F00F0ACC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B0DDEFC289A953F00F0ACC3 /* LaunchScreen.storyboard */; };
+		8B1DBD78289F5D6F007580D7 /* Nadam+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DBD77289F5D6F007580D7 /* Nadam+Color.swift */; };
+		8BF3AF25289ACA8D00F049CD /* WordListView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF24289ACA8D00F049CD /* WordListView.storyboard */; };
+		8BF3AF27289ACAA700F049CD /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3AF26289ACAA700F049CD /* WordListViewController.swift */; };
+		8BF3AF2A289B5AEB00F049CD /* AddWordView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF29289B5AEB00F049CD /* AddWordView.storyboard */; };
+		8BF3AF2C289B5AF500F049CD /* AddWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3AF2B289B5AF500F049CD /* AddWordViewController.swift */; };
+		8BF3AF2F289BBFAC00F049CD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3AF2E289BBFAC00F049CD /* CoreDataManager.swift */; };
+		8BF3AF39289C261500F049CD /* Nadam+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3AF38289C261500F049CD /* Nadam+Font.swift */; };
+		8BF3AF42289C32B800F049CD /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF41289C32B800F049CD /* GmarketSansTTFBold.ttf */; };
+		8BF3AF43289C32BE00F049CD /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF3D289C328A00F049CD /* GmarketSansTTFLight.ttf */; };
+		8BF3AF44289C32C000F049CD /* GmarketSansTTFMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF3F289C329000F049CD /* GmarketSansTTFMedium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +40,16 @@
 		8B0DDEFA289A953F00F0ACC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B0DDEFD289A953F00F0ACC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B0DDEFF289A953F00F0ACC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B1DBD77289F5D6F007580D7 /* Nadam+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nadam+Color.swift"; sourceTree = "<group>"; };
+		8BF3AF24289ACA8D00F049CD /* WordListView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WordListView.storyboard; sourceTree = "<group>"; };
+		8BF3AF26289ACAA700F049CD /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
+		8BF3AF29289B5AEB00F049CD /* AddWordView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddWordView.storyboard; sourceTree = "<group>"; };
+		8BF3AF2B289B5AF500F049CD /* AddWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordViewController.swift; sourceTree = "<group>"; };
+		8BF3AF2E289BBFAC00F049CD /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		8BF3AF38289C261500F049CD /* Nadam+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nadam+Font.swift"; sourceTree = "<group>"; };
+		8BF3AF3D289C328A00F049CD /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFLight.ttf; sourceTree = "<group>"; };
+		8BF3AF3F289C329000F049CD /* GmarketSansTTFMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFMedium.ttf; sourceTree = "<group>"; };
+		8BF3AF41289C32B800F049CD /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFBold.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,13 +70,14 @@
 				41BDCB37E71B201079FE9DAA /* Pods-Nadam.debug.xcconfig */,
 				40D2F751573CC0C552E8F732 /* Pods-Nadam.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		8B0DDEE2289A953D00F0ACC3 = {
 			isa = PBXGroup;
 			children = (
+				8BF3AF34289C25CB00F049CD /* Utility */,
+				8BF3AF32289C253900F049CD /* Extension */,
 				8B0DDEED289A953D00F0ACC3 /* Nadam */,
 				8B0DDEEC289A953D00F0ACC3 /* Products */,
 				14F77F06F3F86D34728BCEFC /* Pods */,
@@ -79,12 +100,60 @@
 				8B0DDEF0289A953D00F0ACC3 /* SceneDelegate.swift */,
 				8B0DDEF2289A953D00F0ACC3 /* ViewController.swift */,
 				8B0DDEF4289A953D00F0ACC3 /* Main.storyboard */,
+				8BF3AF28289ACAB000F049CD /* WordList */,
 				8B0DDEFA289A953F00F0ACC3 /* Assets.xcassets */,
 				8B0DDEFC289A953F00F0ACC3 /* LaunchScreen.storyboard */,
 				8B0DDEFF289A953F00F0ACC3 /* Info.plist */,
-				8B0DDEF7289A953D00F0ACC3 /* Nadam.xcdatamodeld */,
+				8BF3AF2D289BBF9A00F049CD /* CoreData */,
 			);
 			path = Nadam;
+			sourceTree = "<group>";
+		};
+		8BF3AF28289ACAB000F049CD /* WordList */ = {
+			isa = PBXGroup;
+			children = (
+				8BF3AF24289ACA8D00F049CD /* WordListView.storyboard */,
+				8BF3AF26289ACAA700F049CD /* WordListViewController.swift */,
+				8BF3AF29289B5AEB00F049CD /* AddWordView.storyboard */,
+				8BF3AF2B289B5AF500F049CD /* AddWordViewController.swift */,
+			);
+			path = WordList;
+			sourceTree = "<group>";
+		};
+		8BF3AF2D289BBF9A00F049CD /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8B0DDEF7289A953D00F0ACC3 /* Nadam.xcdatamodeld */,
+				8BF3AF2E289BBFAC00F049CD /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		8BF3AF32289C253900F049CD /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8BF3AF38289C261500F049CD /* Nadam+Font.swift */,
+				8B1DBD77289F5D6F007580D7 /* Nadam+Color.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		8BF3AF34289C25CB00F049CD /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				8BF3AF3A289C327F00F049CD /* Font */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		8BF3AF3A289C327F00F049CD /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				8BF3AF3F289C329000F049CD /* GmarketSansTTFMedium.ttf */,
+				8BF3AF41289C32B800F049CD /* GmarketSansTTFBold.ttf */,
+				8BF3AF3D289C328A00F049CD /* GmarketSansTTFLight.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		CD169AAD76B2196D0CB2FCBA /* Frameworks */ = {
@@ -156,8 +225,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B0DDEFE289A953F00F0ACC3 /* LaunchScreen.storyboard in Resources */,
+				8BF3AF43289C32BE00F049CD /* GmarketSansTTFLight.ttf in Resources */,
+				8BF3AF25289ACA8D00F049CD /* WordListView.storyboard in Resources */,
+				8BF3AF44289C32C000F049CD /* GmarketSansTTFMedium.ttf in Resources */,
 				8B0DDEFB289A953F00F0ACC3 /* Assets.xcassets in Resources */,
 				8B0DDEF6289A953D00F0ACC3 /* Main.storyboard in Resources */,
+				8BF3AF2A289B5AEB00F049CD /* AddWordView.storyboard in Resources */,
+				8BF3AF42289C32B800F049CD /* GmarketSansTTFBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +286,12 @@
 			files = (
 				8B0DDEF3289A953D00F0ACC3 /* ViewController.swift in Sources */,
 				8B0DDEEF289A953D00F0ACC3 /* AppDelegate.swift in Sources */,
+				8BF3AF2C289B5AF500F049CD /* AddWordViewController.swift in Sources */,
+				8B1DBD78289F5D6F007580D7 /* Nadam+Color.swift in Sources */,
+				8BF3AF27289ACAA700F049CD /* WordListViewController.swift in Sources */,
 				8B0DDEF1289A953D00F0ACC3 /* SceneDelegate.swift in Sources */,
+				8BF3AF2F289BBFAC00F049CD /* CoreDataManager.swift in Sources */,
+				8BF3AF39289C261500F049CD /* Nadam+Font.swift in Sources */,
 				8B0DDEF9289A953D00F0ACC3 /* Nadam.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
