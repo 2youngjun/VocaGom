@@ -43,7 +43,8 @@ class WordListViewController: UIViewController {
     }
 
     private func configureCollectionView() {
-        self.collectionView.collectionViewLayout = UICollectionViewLayout()
+        self.collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        self.collectionView.backgroundColor = UIColor.NColor.background
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self

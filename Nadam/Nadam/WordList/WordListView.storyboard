@@ -73,22 +73,36 @@
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXu-wB-8nn">
-                                                    <rect key="frame" x="27" y="30" width="41" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meaning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5Y-qI-TB1">
-                                                    <rect key="frame" x="264" y="30" width="66" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2tQ-T3-hxs" userLabel="CellBackgroundView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXu-wB-8nn">
+                                                            <rect key="frame" x="99" y="53" width="41" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meaning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5Y-qI-TB1">
+                                                            <rect key="frame" x="87" y="53" width="66" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="2tQ-T3-hxs" firstAttribute="leading" secondItem="zOy-na-lf1" secondAttribute="leading" id="C4n-2b-Gak"/>
+                                            <constraint firstAttribute="trailing" secondItem="2tQ-T3-hxs" secondAttribute="trailing" id="I7H-56-s4a"/>
+                                            <constraint firstAttribute="bottom" secondItem="2tQ-T3-hxs" secondAttribute="bottom" id="X8E-1k-t7W"/>
+                                            <constraint firstItem="2tQ-T3-hxs" firstAttribute="height" secondItem="zOy-na-lf1" secondAttribute="height" id="bKt-Kh-aPx"/>
+                                            <constraint firstItem="2tQ-T3-hxs" firstAttribute="top" secondItem="zOy-na-lf1" secondAttribute="top" id="gST-Uu-G9T"/>
+                                            <constraint firstItem="2tQ-T3-hxs" firstAttribute="width" secondItem="zOy-na-lf1" secondAttribute="width" id="oc2-ZJ-fVE"/>
+                                        </constraints>
                                         <size key="customSize" width="350" height="80"/>
                                         <connections>
                                             <outlet property="wordMeaning" destination="z5Y-qI-TB1" id="VWw-yJ-Pgd"/>
