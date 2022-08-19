@@ -62,6 +62,12 @@ extension WordListViewController: UICollectionViewDataSource {
         let word = wordList[indexPath.row]
         cell.wordName.text = word.name
         cell.wordMeaning.text = word.meaning
+        cell.layer.cornerRadius = 10.0
+        cell.backgroundColor = UIColor.NColor.white
+        cell.wordName.font = UIFont.NFont.wordListWordName
+        cell.wordName.textColor = UIColor.NColor.blue
+        cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
+        cell.wordMeaning.textColor = UIColor.NColor.black
         return cell
     }
 }
