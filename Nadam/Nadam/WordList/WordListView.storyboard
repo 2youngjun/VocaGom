@@ -6,6 +6,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,19 +57,72 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8eq-4a-6mq">
+                                <rect key="frame" x="0.0" y="129" width="414" height="733"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="euh-Up-6zJ">
+                                    <size key="itemSize" width="350" height="80"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WordCell" id="zOy-na-lf1" customClass="WordCell" customModule="Nadam" customModuleProvider="target">
+                                        <rect key="frame" x="32" y="0.0" width="350" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="sn1-4B-uVA">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Meaning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5Y-qI-TB1">
+                                                    <rect key="frame" x="261.5" y="18" width="65.5" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXu-wB-8nn">
+                                                    <rect key="frame" x="23" y="18" width="228.5" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="z5Y-qI-TB1" secondAttribute="bottom" constant="10" id="483-KH-I9b"/>
+                                                <constraint firstItem="AXu-wB-8nn" firstAttribute="leading" secondItem="sn1-4B-uVA" secondAttribute="leadingMargin" constant="15" id="AAP-8Y-c2J"/>
+                                                <constraint firstItem="z5Y-qI-TB1" firstAttribute="top" secondItem="sn1-4B-uVA" secondAttribute="topMargin" constant="10" id="Hwy-TP-TKe"/>
+                                                <constraint firstItem="z5Y-qI-TB1" firstAttribute="leading" secondItem="AXu-wB-8nn" secondAttribute="trailing" constant="10" id="b4U-Md-XEg"/>
+                                                <constraint firstItem="AXu-wB-8nn" firstAttribute="top" secondItem="sn1-4B-uVA" secondAttribute="topMargin" constant="10" id="lxS-A9-N7g"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="AXu-wB-8nn" secondAttribute="bottom" constant="10" id="tIG-SI-HAg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="z5Y-qI-TB1" secondAttribute="trailing" constant="15" id="wyK-IB-Zbj"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="350" height="80"/>
+                                        <connections>
+                                            <outlet property="wordMeaning" destination="z5Y-qI-TB1" id="VWw-yJ-Pgd"/>
+                                            <outlet property="wordName" destination="AXu-wB-8nn" id="5Qi-0T-vfe"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="8eq-4a-6mq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="2cj-Mm-xWB"/>
                             <constraint firstItem="NC4-pd-K5a" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="25" id="A42-FO-8Yv"/>
                             <constraint firstItem="0al-iB-3sZ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="25" id="BHa-3d-N43"/>
+                            <constraint firstItem="8eq-4a-6mq" firstAttribute="top" secondItem="0al-iB-3sZ" secondAttribute="top" constant="60" id="Ozh-qq-gYm"/>
                             <constraint firstItem="0al-iB-3sZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="bRQ-ni-Lc6"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="NC4-pd-K5a" secondAttribute="trailing" constant="20" id="gm0-ao-h31"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8eq-4a-6mq" secondAttribute="bottom" id="gqj-fL-6yC"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8eq-4a-6mq" secondAttribute="trailing" id="lxt-ms-rMG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="q36-N7-icd"/>
                     <connections>
                         <outlet property="addWordButton" destination="9WH-Od-oDy" id="Rwg-Gt-nTf"/>
+                        <outlet property="collectionView" destination="8eq-4a-6mq" id="Wcx-Ly-LC5"/>
                         <outlet property="titleLabel" destination="0al-iB-3sZ" id="LdI-YF-Fwx"/>
                     </connections>
                 </viewController>
@@ -104,7 +158,7 @@
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="NBlue">
-            <color red="0.38039215686274508" green="0.47450980392156861" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.37999999523162842" green="0.47499999403953552" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NOrange">
             <color red="1" green="0.53725490196078429" blue="0.35294117647058826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

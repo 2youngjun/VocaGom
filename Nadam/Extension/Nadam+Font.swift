@@ -19,8 +19,8 @@ private let customFonts: [UIFont.TextStyle: UIFont] = [
     .title2: UIFont(name: "GmarketSansTTFMedium", size: 18)!,
     .title3: UIFont(name: "GmarketSansTTFBold", size: 17)!,
     .headline: UIFont(name: "GmarketSansTTFMedium", size: 17)!,
-    .body: UIFont(name: "GmarketSansTTFMedium", size: 16)!,
-    .callout: UIFont(name: "GmarketSansTTFLight", size: 15)!,
+    .body: UIFont(name: "GmarketSansTTFBold", size: 16)!,
+    .callout: UIFont(name: "GmarketSansTTFMedium", size: 16)!,
     .subheadline: UIFont(name: "GmarketSansTTFMedium", size: 15)!,
     .footnote: UIFont(name: "GmarketSansTTFLight", size: 12)!,
     .caption1: UIFont(name: "GmarketSansTTFMedium", size: 14)!,
@@ -42,5 +42,7 @@ extension UIFont {
         static var addWordNavigationTitle: UIFont{ UIFont.NadamFont(forTextStyle: .headline) }
         static var addWordButtonLabel: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }
         static var wordListTitleLabel: UIFont{ UIFont.NadamFont(forTextStyle: .title1) }
+        static var wordListWordName: UIFont{ UIFont.NadamFont(forTextStyle: .body) }
+        static var wordListWordMeaning: UIFont{ UIFont.NadamFont(forTextStyle: .callout) }
     }
 }

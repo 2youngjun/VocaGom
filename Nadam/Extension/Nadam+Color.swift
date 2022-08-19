@@ -13,5 +13,7 @@ extension UIColor {
         static var background: UIColor { UIColor(named: "NBackground")! }
         static var orange: UIColor { UIColor(named: "NOrange")! }
         static var border: UIColor { UIColor(named: "NBorder")! }
+        static var white: UIColor { UIColor(named: "NWhite")! }
+        static var black: UIColor { UIColor(named: "NBlack")! }
     }
 }

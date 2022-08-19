@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AddWordViewDelegate: AnyObject {
+    func didSelectSaveWord()
+}
+
 class AddWordViewController: UIViewController {
     
     override var sheetPresentationController: UISheetPresentationController {
@@ -14,6 +18,7 @@ class AddWordViewController: UIViewController {
     }
     
     var wordList: [Word] = []
+    weak var delegate: AddWordViewDelegate?
     
     // MARK: IBOutlet 변수
     @IBOutlet weak var saveButton: UIButton!
@@ -43,7 +48,7 @@ class AddWordViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print(wordList)
+        CoreDataManager.shared.saveContext()
     }
     
     // MARK: IBAction 함수
@@ -71,6 +76,7 @@ class AddWordViewController: UIViewController {
         let example = exampleTextField.text ?? ""
         
         CoreDataManager.shared.addWord(name: name, meaning: meaning, synoym: synoym, example: example, createTime: Date(), cntWrong: 0)
+        self.delegate?.didSelectSaveWord()
 
         self.presentingViewController?.dismiss(animated: true)
     }
