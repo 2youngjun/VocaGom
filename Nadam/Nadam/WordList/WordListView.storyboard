@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Word List View Controller-->
+        <!--단어-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="WordListViewController" customModule="Nadam" customModuleProvider="target" sceneMemberID="viewController">
@@ -58,7 +58,7 @@
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8eq-4a-6mq">
-                                <rect key="frame" x="0.0" y="129" width="414" height="733"/>
+                                <rect key="frame" x="0.0" y="129" width="414" height="684"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="euh-Up-6zJ">
                                     <size key="itemSize" width="350" height="80"/>
@@ -119,7 +119,9 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8eq-4a-6mq" secondAttribute="trailing" id="lxt-ms-rMG"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="단어" image="a.book.closed" catalog="system" selectedImage="a.book.closed.fill" id="1L5-Fu-vEN"/>
                     <navigationItem key="navigationItem" id="q36-N7-icd"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addWordButton" destination="9WH-Od-oDy" id="Rwg-Gt-nTf"/>
                         <outlet property="collectionView" destination="8eq-4a-6mq" id="Wcx-Ly-LC5"/>
@@ -155,6 +157,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="a.book.closed" catalog="system" width="115" height="128"/>
+        <image name="a.book.closed.fill" catalog="system" width="115" height="128"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="NBlue">
