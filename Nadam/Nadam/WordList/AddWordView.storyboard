@@ -11,13 +11,13 @@
         <!--Add Word View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="AddWordViewController" id="Y6W-OH-hqX" customClass="AddWordViewController" customModule="Nadam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddWordViewController" hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="AddWordViewController" customModule="Nadam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDb-2l-jbO">
-                                <rect key="frame" x="20" y="25" width="30" height="16"/>
+                                <rect key="frame" x="20" y="64" width="30" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="acI-An-dQK"/>
                                 </constraints>
@@ -29,7 +29,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wU0-NY-bxO">
-                                <rect key="frame" x="364" y="25" width="30" height="16"/>
+                                <rect key="frame" x="364" y="64" width="30" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="91y-bg-tAY"/>
                                 </constraints>
@@ -41,7 +41,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VQr-bQ-FN1">
-                                <rect key="frame" x="20" y="66" width="374" height="63.5"/>
+                                <rect key="frame" x="20" y="105" width="374" height="63.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 단어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJw-Mz-sdb">
                                         <rect key="frame" x="0.0" y="0.0" width="39" height="19.5"/>
@@ -64,7 +64,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MeO-W6-yGU">
-                                <rect key="frame" x="20" y="159.5" width="374" height="63.5"/>
+                                <rect key="frame" x="20" y="198.5" width="374" height="63.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 뜻" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyW-sD-VbX">
                                         <rect key="frame" x="0.0" y="0.0" width="25.5" height="19.5"/>
@@ -87,13 +87,13 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="단어 추가하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQa-9p-NkQ">
-                                <rect key="frame" x="163.5" y="25" width="87" height="19.5"/>
+                                <rect key="frame" x="163.5" y="64" width="87" height="19.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="q40-OL-5Ic">
-                                <rect key="frame" x="20" y="253" width="374" height="63.5"/>
+                                <rect key="frame" x="20" y="292" width="374" height="63.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="동의어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mml-EF-8Av">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="19.5"/>
@@ -116,7 +116,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vPK-T8-flw">
-                                <rect key="frame" x="20" y="346.5" width="374" height="63.5"/>
+                                <rect key="frame" x="20" y="385.5" width="374" height="63.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="예문" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owG-lk-RY3">
                                         <rect key="frame" x="0.0" y="0.0" width="28" height="19.5"/>
@@ -146,23 +146,22 @@
                             <constraint firstAttribute="trailing" secondItem="MeO-W6-yGU" secondAttribute="trailing" constant="20" id="6MC-0m-5AS"/>
                             <constraint firstItem="XQa-9p-NkQ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Akx-yS-WJQ"/>
                             <constraint firstItem="q40-OL-5Ic" firstAttribute="top" secondItem="MeO-W6-yGU" secondAttribute="bottom" constant="30" id="ErF-pn-7WO"/>
-                            <constraint firstItem="XQa-9p-NkQ" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="25" id="Hhp-0X-oST"/>
+                            <constraint firstItem="XQa-9p-NkQ" firstAttribute="top" secondItem="i5b-mP-4Fv" secondAttribute="top" constant="20" id="Hhp-0X-oST"/>
                             <constraint firstItem="YDb-2l-jbO" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="L6q-Le-2Ub"/>
                             <constraint firstAttribute="trailing" secondItem="vPK-T8-flw" secondAttribute="trailing" constant="20" id="MsJ-KK-FMJ"/>
                             <constraint firstItem="MeO-W6-yGU" firstAttribute="top" secondItem="VQr-bQ-FN1" secondAttribute="bottom" constant="30" id="NjP-2a-lJp"/>
-                            <constraint firstItem="YDb-2l-jbO" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="25" id="Nv1-Wd-lkZ"/>
+                            <constraint firstItem="YDb-2l-jbO" firstAttribute="top" secondItem="i5b-mP-4Fv" secondAttribute="top" constant="20" id="Nv1-Wd-lkZ"/>
                             <constraint firstItem="MeO-W6-yGU" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="NvH-K8-yXH"/>
                             <constraint firstAttribute="trailing" secondItem="wU0-NY-bxO" secondAttribute="trailing" constant="20" id="Sgy-uy-Hug"/>
                             <constraint firstItem="VQr-bQ-FN1" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="VD8-Xo-XC4"/>
                             <constraint firstAttribute="trailing" secondItem="q40-OL-5Ic" secondAttribute="trailing" constant="20" id="Y5P-8L-saP"/>
                             <constraint firstItem="vPK-T8-flw" firstAttribute="top" secondItem="q40-OL-5Ic" secondAttribute="bottom" constant="30" id="aqf-qF-PeI"/>
-                            <constraint firstItem="wU0-NY-bxO" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="25" id="g5l-RA-a8U"/>
+                            <constraint firstItem="wU0-NY-bxO" firstAttribute="top" secondItem="i5b-mP-4Fv" secondAttribute="top" constant="20" id="g5l-RA-a8U"/>
                             <constraint firstAttribute="trailing" secondItem="VQr-bQ-FN1" secondAttribute="trailing" constant="20" id="kTd-xJ-lrz"/>
                             <constraint firstItem="vPK-T8-flw" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="r4f-ER-P2J"/>
                             <constraint firstItem="VQr-bQ-FN1" firstAttribute="top" secondItem="YDb-2l-jbO" secondAttribute="bottom" constant="25" id="ugC-dU-RzH"/>
                         </constraints>
                     </view>
-                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="cancelButton" destination="YDb-2l-jbO" id="7Gk-IW-qDU"/>
                         <outlet property="exampleTextField" destination="A8M-1o-aWi" id="Uvt-0R-mcB"/>

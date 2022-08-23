@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Camera View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="AddCameraViewController" hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="AddCameraViewController" customModule="Nadam" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ffC-hf-42M">
+                                <rect key="frame" x="20" y="110.5" width="374" height="158"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="7XX-fS-fm3"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진으로 추가하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tic-IY-GfI">
+                                <rect key="frame" x="146" y="64" width="122" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Dv-Oo-yu7">
+                                <rect key="frame" x="20" y="64" width="48.5" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="6k6-iM-xHK"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="취소"/>
+                                <connections>
+                                    <action selector="tapCancelButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Sr1-te-Qqa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxq-1t-wcl">
+                                <rect key="frame" x="345.5" y="64" width="48.5" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="3d4-F8-hL9"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="다음"/>
+                                <connections>
+                                    <action selector="tapNextButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Mzv-tC-Pc5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pxq-1t-wcl" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="7yA-dd-Sh6"/>
+                            <constraint firstItem="Tic-IY-GfI" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="IYi-Kw-Rpc"/>
+                            <constraint firstItem="ffC-hf-42M" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="LUo-e9-DEa"/>
+                            <constraint firstItem="0Dv-Oo-yu7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="gR2-El-c1F"/>
+                            <constraint firstItem="ffC-hf-42M" firstAttribute="top" secondItem="Tic-IY-GfI" secondAttribute="bottom" constant="25" id="gkl-NU-x3S"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pxq-1t-wcl" secondAttribute="trailing" constant="20" id="hot-q2-Xtq"/>
+                            <constraint firstItem="Tic-IY-GfI" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="sRN-3A-9qz"/>
+                            <constraint firstItem="0Dv-Oo-yu7" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="snj-Hm-dDJ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ffC-hf-42M" secondAttribute="trailing" constant="20" id="uA8-5K-gXD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="sDQ-16-fTP"/>
+                    <connections>
+                        <outlet property="cameraView" destination="ffC-hf-42M" id="l72-CU-ma1"/>
+                        <outlet property="cancelButton" destination="0Dv-Oo-yu7" id="Aan-NW-1N5"/>
+                        <outlet property="nextButton" destination="pxq-1t-wcl" id="jDS-DH-20S"/>
+                        <outlet property="titleLabel" destination="Tic-IY-GfI" id="qCM-QM-KaK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="311.59420289855075" y="99.776785714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="camera" catalog="system" width="128" height="94"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

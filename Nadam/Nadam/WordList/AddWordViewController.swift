@@ -38,7 +38,7 @@ class AddWordViewController: UIViewController {
     // MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        sheetPresentationController.detents = [.medium()]
+//        sheetPresentationController.detents = [.medium()]
         wordList = CoreDataManager.shared.fetchWord()
         
         configureLayoutStyle()
@@ -64,9 +64,8 @@ class AddWordViewController: UIViewController {
         sender.layer.cornerRadius = 5.0
     }
     
-    
     @IBAction func tapCancelButton(_ sender: UIButton) {
-        self.presentingViewController?.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func tapSaveButton(_ sender: UIButton) {
@@ -78,7 +77,7 @@ class AddWordViewController: UIViewController {
         CoreDataManager.shared.addWord(name: name, meaning: meaning, synoym: synoym, example: example, createTime: Date(), cntWrong: 0)
         self.delegate?.didSelectSaveWord()
 
-        self.presentingViewController?.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func configureLayoutStyle() {

@@ -15,10 +15,11 @@ class WordListViewController: UIViewController {
         titleLabel.font = UIFont.NFont.wordListTitleLabel
         titleLabel.sizeToFit()
         self.view.backgroundColor = UIColor.NColor.background
-        self.addWordButton.tintColor = UIColor.NColor.orange
+//        self.addWordButton.tintColor = UIColor.NColor.orange
         
         self.fetchWordDateDecesending()
         
+        self.configureAddWordButton()
         self.configureCollectionView()
     }
     
@@ -30,7 +31,6 @@ class WordListViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var addWordButton: UIButton!
     
     var wordList: [Word] = [] {
@@ -39,12 +39,41 @@ class WordListViewController: UIViewController {
         }
     }
     
+    private func configureAddWordButton() {
+        self.addWordButton.showsMenuAsPrimaryAction = true
+        
+        let addHandButton = UIAction(title: "입력으로 추가하기", image: UIImage(systemName: "applepencil")) { _ in
+            self.tapAddHandButton()
+        }
+        
+        let addCameraButton = UIAction(title: "사진으로 추가하기", image: UIImage(systemName: "camera.fill")) { _ in
+            self.tapAddCameraButton()
+        }
+        
+        let menu = UIMenu(title: "단어 추가하기", children: [addHandButton, addCameraButton])
+        self.addWordButton.menu = menu
+        self.addWordButton.showsMenuAsPrimaryAction = true
+    }
+    
     @IBAction func tapAddWordButton(_ sender: UIButton) {
+        
+    }
+    
+    private func tapAddHandButton() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "AddWordView", bundle:nil)
         guard let addWordViewController = storyBoard.instantiateViewController(withIdentifier: "AddWordViewController") as? AddWordViewController else {return}
         addWordViewController.delegate = self
         
-        self.present(addWordViewController, animated:true, completion:nil)
+//        self.present(addWordViewController, animated:true, completion:nil)
+        self.navigationController?.pushViewController(addWordViewController, animated: true)
+    }
+    
+    private func tapAddCameraButton() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "AddCameraView", bundle:nil)
+        guard let addCameraViewController = storyBoard.instantiateViewController(withIdentifier: "AddCameraViewController") as? AddCameraViewController else {return}
+//        addCameraViewController.delegate = self
+        
+        self.navigationController?.pushViewController(addCameraViewController, animated: true)
     }
 
     private func configureCollectionView() {

@@ -6,6 +6,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,19 +41,22 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="magnifyingglass.circle.fill" catalog="system"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9WH-Od-oDy">
+                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axU-XL-msQ">
                                         <rect key="frame" x="40" y="0.5" width="30" height="29"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Hpk-Ce-7Eq"/>
-                                            <constraint firstAttribute="width" constant="30" id="cSA-kF-g5O"/>
+                                            <constraint firstAttribute="height" constant="30" id="Us0-0f-uub"/>
+                                            <constraint firstAttribute="width" constant="30" id="ebf-3J-zac"/>
                                         </constraints>
                                         <color key="tintColor" name="NOrange"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" backgroundImage="plus.circle.fill" catalog="system">
-                                            <color key="titleColor" name="NBlue"/>
-                                        </state>
+                                        <menu key="menu" id="rON-cB-2h0">
+                                            <children>
+                                                <command title="Item 1" id="2Qs-uj-BTG"/>
+                                                <command title="Item 2" id="GZH-TT-Iyj"/>
+                                            </children>
+                                        </menu>
+                                        <state key="normal" backgroundImage="plus.circle.fill" catalog="system"/>
                                         <connections>
-                                            <action selector="tapAddWordButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="pNj-H9-RK8"/>
+                                            <action selector="tapAddWordButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="LoL-Kd-BFV"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -123,7 +127,7 @@
                     <navigationItem key="navigationItem" id="q36-N7-icd"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addWordButton" destination="9WH-Od-oDy" id="Rwg-Gt-nTf"/>
+                        <outlet property="addWordButton" destination="axU-XL-msQ" id="snG-cB-mYc"/>
                         <outlet property="collectionView" destination="8eq-4a-6mq" id="Wcx-Ly-LC5"/>
                         <outlet property="titleLabel" destination="0al-iB-3sZ" id="LdI-YF-Fwx"/>
                     </connections>
@@ -139,6 +143,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eSv-9w-eEk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="844" y="-132"/>
+        </scene>
+        <!--AddCameraView-->
+        <scene sceneID="1Ad-Q9-EJa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddCameraView" id="QZy-7e-njf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yXD-sP-68h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="852" y="-46"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="n3v-xs-h7M">
