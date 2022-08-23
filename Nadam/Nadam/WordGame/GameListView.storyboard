@@ -15,23 +15,40 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="게임 하면서 배우는 단어 암기!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0w7-dS-UIK">
+                                <rect key="frame" x="20" y="69" width="199" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="rM3-3s-9Xb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fCL-J9-zEY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0w7-dS-UIK" firstAttribute="top" secondItem="fCL-J9-zEY" secondAttribute="top" constant="25" id="Jn9-2J-2yG"/>
+                            <constraint firstItem="0w7-dS-UIK" firstAttribute="leading" secondItem="fCL-J9-zEY" secondAttribute="leading" constant="20" id="SiH-22-KRj"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="게임" image="gamecontroller" catalog="system" selectedImage="gamecontroller.fill" id="nkR-Uw-Cyk"/>
                     <navigationItem key="navigationItem" id="tUW-bg-j0g"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="titleLabel" destination="0w7-dS-UIK" id="M8H-iU-xIx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="267" y="78"/>
+            <point key="canvasLocation" x="266.66666666666669" y="77.678571428571431"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gi7-cH-VpU">
             <objects>
-                <navigationController storyboardIdentifier="GameListViewController" id="GIX-eD-1ML" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GameListViewController" navigationBarHidden="YES" id="GIX-eD-1ML" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5SE-R8-Inj">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

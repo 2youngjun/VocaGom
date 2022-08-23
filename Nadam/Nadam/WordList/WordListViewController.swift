@@ -17,13 +17,14 @@ class WordListViewController: UIViewController {
         self.view.backgroundColor = UIColor.NColor.background
         self.addWordButton.tintColor = UIColor.NColor.orange
         
-        self.wordList = CoreDataManager.shared.fetchWord()
+        self.fetchWordDateDecesending()
         
         self.configureCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.wordList = CoreDataManager.shared.fetchWord()
+//        self.wordList = CoreDataManager.shared.fetchWord()
+        self.fetchWordDateDecesending()
         self.collectionView.reloadData()
     }
     
@@ -32,7 +33,11 @@ class WordListViewController: UIViewController {
     
     @IBOutlet weak var addWordButton: UIButton!
     
-    var wordList: [Word] = []
+    var wordList: [Word] = [] {
+        didSet {
+            CoreDataManager.shared.saveContext()
+        }
+    }
     
     @IBAction func tapAddWordButton(_ sender: UIButton) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "AddWordView", bundle:nil)
@@ -49,6 +54,13 @@ class WordListViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+    }
+    
+    private func fetchWordDateDecesending() {
+        self.wordList = CoreDataManager.shared.fetchWord()
+        self.wordList = self.wordList.sorted(by: {
+            $0.createTime?.compare($1.createTime!) == .orderedDescending
+        })
     }
 }
 
@@ -88,5 +100,9 @@ extension WordListViewController: AddWordViewDelegate {
             collectionView.deleteItems(at: [indexPath])
         }
         collectionView.insertItems(at: [indexPath])
+        // createTime 기준 내림차순 정렬
+        self.wordList = self.wordList.sorted(by: {
+            $0.createTime?.compare($1.createTime!) == .orderedDescending
+        })
     }
 }
