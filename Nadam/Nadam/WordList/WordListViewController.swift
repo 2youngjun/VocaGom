@@ -6,9 +6,29 @@
 //
 
 import UIKit
+import AVFoundation
+
+protocol CameraPictureDelegate: AnyObject {
+    func sendCameraPicture(picture: UIImage)
+}
 
 class WordListViewController: UIViewController {
 
+    // MARK: IBOutlet 변수
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var addWordButton: UIButton!
+    
+    // MARK: 변수
+    var wordList: [Word] = [] {
+        didSet {
+            CoreDataManager.shared.saveContext()
+        }
+    }
+    var picture = UIImage()
+    weak var delegate: CameraPictureDelegate?
+    
+    // MARK: View LifeCycle Function
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,16 +49,7 @@ class WordListViewController: UIViewController {
         self.collectionView.reloadData()
     }
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var addWordButton: UIButton!
-    
-    var wordList: [Word] = [] {
-        didSet {
-            CoreDataManager.shared.saveContext()
-        }
-    }
-    
+    // MARK: Function
     private func configureAddWordButton() {
         self.addWordButton.showsMenuAsPrimaryAction = true
         
@@ -47,7 +58,14 @@ class WordListViewController: UIViewController {
         }
         
         let addCameraButton = UIAction(title: "사진으로 추가하기", image: UIImage(systemName: "camera.fill")) { _ in
-            self.tapAddCameraButton()
+            AVCaptureDevice.requestAccess(for: .video) { [weak self] (isAuthorized: Bool) in
+                if isAuthorized {
+                    self?.tapAddCameraButton()
+                } else {
+                    self?.showAlertToGoSetting()
+                    return
+                }
+            }
         }
         
         let menu = UIMenu(title: "단어 추가하기", children: [addHandButton, addCameraButton])
@@ -69,11 +87,21 @@ class WordListViewController: UIViewController {
     }
     
     private func tapAddCameraButton() {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "AddCameraView", bundle:nil)
-        guard let addCameraViewController = storyBoard.instantiateViewController(withIdentifier: "AddCameraViewController") as? AddCameraViewController else {return}
 //        addCameraViewController.delegate = self
+        self.presentCamera()
+
+        DispatchQueue.main.async {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "AddCameraView", bundle:nil)
+            guard let addCameraViewController = storyBoard.instantiateViewController(withIdentifier: "AddCameraViewController") as? AddCameraViewController else { return }
+
+            self.navigationController?.pushViewController(addCameraViewController, animated: true)
+        }
         
-        self.navigationController?.pushViewController(addCameraViewController, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let addCameraViewController = segue.destination as? AddCameraViewController else { return }
+        addCameraViewController.picture = self.picture
     }
 
     private func configureCollectionView() {
@@ -90,6 +118,32 @@ class WordListViewController: UIViewController {
         self.wordList = self.wordList.sorted(by: {
             $0.createTime?.compare($1.createTime!) == .orderedDescending
         })
+    }
+    
+    // Camera Alert
+    func showAlertToGoSetting() {
+        let alertController = UIAlertController(
+            title: "현재 카메라 사용에 대한 접근 권한이 없습니다.",
+            message: "설정 > Nadam에서 접근을 활성화 할 수 있습니다.",
+            preferredStyle: .alert)
+        
+        let cancelAlert = UIAlertAction(
+            title: "취소",
+            style: .cancel) { _ in
+                alertController.dismiss(animated: true, completion: nil)
+            }
+        
+        let goToSettingAlert = UIAlertAction(
+            title: "설정으로 이동하기",
+            style: .default) { _ in
+                guard let settingURL = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingURL) else { return }
+                UIApplication.shared.open(settingURL, options: [:])
+            }
+        [cancelAlert, goToSettingAlert].forEach(alertController.addAction(_:))
+        
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true)
+        }
     }
 }
 
@@ -133,5 +187,36 @@ extension WordListViewController: AddWordViewDelegate {
         self.wordList = self.wordList.sorted(by: {
             $0.createTime?.compare($1.createTime!) == .orderedDescending
         })
+    }
+}
+
+extension WordListViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    private func presentCamera() {
+        #if targetEnvironment(simulator)
+        fatalError()
+        #endif
+        
+        DispatchQueue.main.async {
+            let pickerController = UIImagePickerController() // must be used from main thread only
+            pickerController.sourceType = .camera
+            
+            pickerController.allowsEditing = false
+            
+            pickerController.mediaTypes = ["public.image"]
+            
+            pickerController.delegate = self
+            
+            self.present(pickerController, animated: true)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            picker.dismiss(animated: true)
+            return
+        }
+//        self.delegate?.sendCameraPicture(picture: image)
+        picture = image
+        picker.dismiss(animated: true, completion: nil)
     }
 }

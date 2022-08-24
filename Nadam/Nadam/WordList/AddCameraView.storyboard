@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ffC-hf-42M">
-                                <rect key="frame" x="20" y="110.5" width="374" height="158"/>
+                                <rect key="frame" x="20" y="110" width="374" height="238"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="7XX-fS-fm3"/>
+                                    <constraint firstAttribute="height" constant="240" id="7XX-fS-fm3"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진으로 추가하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tic-IY-GfI">
-                                <rect key="frame" x="146" y="64" width="122" height="21"/>
+                                <rect key="frame" x="146" y="64" width="122" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -50,16 +50,41 @@
                                     <action selector="tapNextButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Mzv-tC-Pc5"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="yWp-Y2-8VC">
+                                <rect key="frame" x="20" y="369.5" width="374" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tng-HP-YXL">
+                                        <rect key="frame" x="0.0" y="0.0" width="172" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="촬영"/>
+                                        <connections>
+                                            <action selector="tapShootButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="uk5-y4-keT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJ1-Lj-KN6">
+                                        <rect key="frame" x="202" y="0.0" width="172" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="검색"/>
+                                        <connections>
+                                            <action selector="tapSearchButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0h1-26-1B6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="pxq-1t-wcl" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="7yA-dd-Sh6"/>
+                            <constraint firstItem="yWp-Y2-8VC" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="80r-wI-Zcv"/>
+                            <constraint firstItem="yWp-Y2-8VC" firstAttribute="top" secondItem="ffC-hf-42M" secondAttribute="bottom" constant="20" id="DAc-jn-S9I"/>
+                            <constraint firstItem="yWp-Y2-8VC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Gcb-m5-ijN"/>
                             <constraint firstItem="Tic-IY-GfI" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="IYi-Kw-Rpc"/>
                             <constraint firstItem="ffC-hf-42M" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="LUo-e9-DEa"/>
                             <constraint firstItem="0Dv-Oo-yu7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="gR2-El-c1F"/>
                             <constraint firstItem="ffC-hf-42M" firstAttribute="top" secondItem="Tic-IY-GfI" secondAttribute="bottom" constant="25" id="gkl-NU-x3S"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pxq-1t-wcl" secondAttribute="trailing" constant="20" id="hot-q2-Xtq"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yWp-Y2-8VC" secondAttribute="trailing" constant="20" id="nMn-5v-KgI"/>
                             <constraint firstItem="Tic-IY-GfI" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="sRN-3A-9qz"/>
                             <constraint firstItem="0Dv-Oo-yu7" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="snj-Hm-dDJ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ffC-hf-42M" secondAttribute="trailing" constant="20" id="uA8-5K-gXD"/>
@@ -70,6 +95,8 @@
                         <outlet property="cameraView" destination="ffC-hf-42M" id="l72-CU-ma1"/>
                         <outlet property="cancelButton" destination="0Dv-Oo-yu7" id="Aan-NW-1N5"/>
                         <outlet property="nextButton" destination="pxq-1t-wcl" id="jDS-DH-20S"/>
+                        <outlet property="searchButton" destination="zJ1-Lj-KN6" id="FhI-PO-dFW"/>
+                        <outlet property="shootButton" destination="Tng-HP-YXL" id="oli-dC-ZkV"/>
                         <outlet property="titleLabel" destination="Tic-IY-GfI" id="qCM-QM-KaK"/>
                     </connections>
                 </viewController>
