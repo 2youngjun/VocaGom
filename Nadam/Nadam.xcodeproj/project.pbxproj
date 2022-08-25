@@ -17,6 +17,9 @@
 		8B0DDEFE289A953F00F0ACC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B0DDEFC289A953F00F0ACC3 /* LaunchScreen.storyboard */; };
 		8B1DBD78289F5D6F007580D7 /* Nadam+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DBD77289F5D6F007580D7 /* Nadam+Color.swift */; };
 		8B1DBDB628A67988007580D7 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DBDB528A67988007580D7 /* WordCell.swift */; };
+		8B6DE76128B0B50300E32928 /* GameListView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6DE76028B0B50300E32928 /* GameListView.storyboard */; };
+		8B6DE76328B0B51600E32928 /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6DE76228B0B51600E32928 /* GameListViewController.swift */; };
+		8B6DE76728B0C52500E32928 /* CustomTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6DE76628B0C52500E32928 /* CustomTabBarVC.swift */; };
 		8BF3AF25289ACA8D00F049CD /* WordListView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF24289ACA8D00F049CD /* WordListView.storyboard */; };
 		8BF3AF27289ACAA700F049CD /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3AF26289ACAA700F049CD /* WordListViewController.swift */; };
 		8BF3AF2A289B5AEB00F049CD /* AddWordView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF29289B5AEB00F049CD /* AddWordView.storyboard */; };
@@ -26,6 +29,8 @@
 		8BF3AF42289C32B800F049CD /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF41289C32B800F049CD /* GmarketSansTTFBold.ttf */; };
 		8BF3AF43289C32BE00F049CD /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF3D289C328A00F049CD /* GmarketSansTTFLight.ttf */; };
 		8BF3AF44289C32C000F049CD /* GmarketSansTTFMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF3F289C329000F049CD /* GmarketSansTTFMedium.ttf */; };
+		8BFC7E3728B5140500D92E00 /* AddCameraView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BFC7E3628B5140500D92E00 /* AddCameraView.storyboard */; };
+		8BFC7E3928B5141F00D92E00 /* AddCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFC7E3828B5141F00D92E00 /* AddCameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +48,9 @@
 		8B0DDEFF289A953F00F0ACC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B1DBD77289F5D6F007580D7 /* Nadam+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nadam+Color.swift"; sourceTree = "<group>"; };
 		8B1DBDB528A67988007580D7 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
+		8B6DE76028B0B50300E32928 /* GameListView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameListView.storyboard; sourceTree = "<group>"; };
+		8B6DE76228B0B51600E32928 /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
+		8B6DE76628B0C52500E32928 /* CustomTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarVC.swift; sourceTree = "<group>"; };
 		8BF3AF24289ACA8D00F049CD /* WordListView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WordListView.storyboard; sourceTree = "<group>"; };
 		8BF3AF26289ACAA700F049CD /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		8BF3AF29289B5AEB00F049CD /* AddWordView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddWordView.storyboard; sourceTree = "<group>"; };
@@ -52,6 +60,8 @@
 		8BF3AF3D289C328A00F049CD /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFLight.ttf; sourceTree = "<group>"; };
 		8BF3AF3F289C329000F049CD /* GmarketSansTTFMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFMedium.ttf; sourceTree = "<group>"; };
 		8BF3AF41289C32B800F049CD /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFBold.ttf; sourceTree = "<group>"; };
+		8BFC7E3628B5140500D92E00 /* AddCameraView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCameraView.storyboard; sourceTree = "<group>"; };
+		8BFC7E3828B5141F00D92E00 /* AddCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +111,25 @@
 				8B0DDEEE289A953D00F0ACC3 /* AppDelegate.swift */,
 				8B0DDEF0289A953D00F0ACC3 /* SceneDelegate.swift */,
 				8B0DDEF2289A953D00F0ACC3 /* ViewController.swift */,
-				8B0DDEF4289A953D00F0ACC3 /* Main.storyboard */,
-				8BF3AF28289ACAB000F049CD /* WordList */,
 				8B0DDEFC289A953F00F0ACC3 /* LaunchScreen.storyboard */,
+				8B0DDEF4289A953D00F0ACC3 /* Main.storyboard */,
+				8B6DE76628B0C52500E32928 /* CustomTabBarVC.swift */,
+				8BF3AF28289ACAB000F049CD /* WordList */,
+				8B6DE75F28B0B4BE00E32928 /* WordGame */,
 				8B0DDEFA289A953F00F0ACC3 /* Assets.xcassets */,
 				8B0DDEFF289A953F00F0ACC3 /* Info.plist */,
 				8BF3AF2D289BBF9A00F049CD /* CoreData */,
 			);
 			path = Nadam;
+			sourceTree = "<group>";
+		};
+		8B6DE75F28B0B4BE00E32928 /* WordGame */ = {
+			isa = PBXGroup;
+			children = (
+				8B6DE76028B0B50300E32928 /* GameListView.storyboard */,
+				8B6DE76228B0B51600E32928 /* GameListViewController.swift */,
+			);
+			path = WordGame;
 			sourceTree = "<group>";
 		};
 		8BF3AF28289ACAB000F049CD /* WordList */ = {
@@ -119,6 +140,8 @@
 				8B1DBDB528A67988007580D7 /* WordCell.swift */,
 				8BF3AF29289B5AEB00F049CD /* AddWordView.storyboard */,
 				8BF3AF2B289B5AF500F049CD /* AddWordViewController.swift */,
+				8BFC7E3628B5140500D92E00 /* AddCameraView.storyboard */,
+				8BFC7E3828B5141F00D92E00 /* AddCameraViewController.swift */,
 			);
 			path = WordList;
 			sourceTree = "<group>";
@@ -227,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BFC7E3728B5140500D92E00 /* AddCameraView.storyboard in Resources */,
 				8B0DDEFE289A953F00F0ACC3 /* LaunchScreen.storyboard in Resources */,
 				8BF3AF43289C32BE00F049CD /* GmarketSansTTFLight.ttf in Resources */,
 				8BF3AF25289ACA8D00F049CD /* WordListView.storyboard in Resources */,
@@ -234,6 +258,7 @@
 				8B0DDEFB289A953F00F0ACC3 /* Assets.xcassets in Resources */,
 				8B0DDEF6289A953D00F0ACC3 /* Main.storyboard in Resources */,
 				8BF3AF2A289B5AEB00F049CD /* AddWordView.storyboard in Resources */,
+				8B6DE76128B0B50300E32928 /* GameListView.storyboard in Resources */,
 				8BF3AF42289C32B800F049CD /* GmarketSansTTFBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,9 +313,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B0DDEF3289A953D00F0ACC3 /* ViewController.swift in Sources */,
+				8BFC7E3928B5141F00D92E00 /* AddCameraViewController.swift in Sources */,
 				8B0DDEEF289A953D00F0ACC3 /* AppDelegate.swift in Sources */,
 				8BF3AF2C289B5AF500F049CD /* AddWordViewController.swift in Sources */,
+				8B6DE76728B0C52500E32928 /* CustomTabBarVC.swift in Sources */,
 				8B1DBD78289F5D6F007580D7 /* Nadam+Color.swift in Sources */,
+				8B6DE76328B0B51600E32928 /* GameListViewController.swift in Sources */,
 				8BF3AF27289ACAA700F049CD /* WordListViewController.swift in Sources */,
 				8B0DDEF1289A953D00F0ACC3 /* SceneDelegate.swift in Sources */,
 				8BF3AF2F289BBFAC00F049CD /* CoreDataManager.swift in Sources */,
