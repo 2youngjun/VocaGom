@@ -40,7 +40,7 @@
                                     <action selector="tapSaveButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ujh-l7-wST"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VQr-bQ-FN1">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VQr-bQ-FN1" userLabel="NameStackView">
                                 <rect key="frame" x="20" y="105" width="374" height="63.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 단어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJw-Mz-sdb">
@@ -138,10 +138,17 @@
                                     <constraint firstAttribute="trailing" secondItem="A8M-1o-aWi" secondAttribute="trailing" id="mOx-mm-eoy"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="동일한 단어가 이미 추가되었습니다!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQy-bc-I04">
+                                <rect key="frame" x="20" y="173.5" width="183.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="i5b-mP-4Fv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="CQy-bc-I04" firstAttribute="leading" secondItem="i5b-mP-4Fv" secondAttribute="leading" constant="20" id="36r-j0-jxD"/>
                             <constraint firstItem="q40-OL-5Ic" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="55N-OF-m5t"/>
                             <constraint firstAttribute="trailing" secondItem="MeO-W6-yGU" secondAttribute="trailing" constant="20" id="6MC-0m-5AS"/>
                             <constraint firstItem="XQa-9p-NkQ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Akx-yS-WJQ"/>
@@ -158,12 +165,15 @@
                             <constraint firstItem="vPK-T8-flw" firstAttribute="top" secondItem="q40-OL-5Ic" secondAttribute="bottom" constant="30" id="aqf-qF-PeI"/>
                             <constraint firstItem="wU0-NY-bxO" firstAttribute="top" secondItem="i5b-mP-4Fv" secondAttribute="top" constant="20" id="g5l-RA-a8U"/>
                             <constraint firstAttribute="trailing" secondItem="VQr-bQ-FN1" secondAttribute="trailing" constant="20" id="kTd-xJ-lrz"/>
+                            <constraint firstItem="CQy-bc-I04" firstAttribute="top" secondItem="VQr-bQ-FN1" secondAttribute="bottom" constant="5" id="pjA-a6-p4Z"/>
                             <constraint firstItem="vPK-T8-flw" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="r4f-ER-P2J"/>
                             <constraint firstItem="VQr-bQ-FN1" firstAttribute="top" secondItem="YDb-2l-jbO" secondAttribute="bottom" constant="25" id="ugC-dU-RzH"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="YDb-2l-jbO" id="7Gk-IW-qDU"/>
+                        <outlet property="duplicateMargin" destination="NjP-2a-lJp" id="rPz-QC-Gbo"/>
+                        <outlet property="duplicateSentense" destination="CQy-bc-I04" id="NAe-TD-QaF"/>
                         <outlet property="exampleTextField" destination="A8M-1o-aWi" id="Uvt-0R-mcB"/>
                         <outlet property="meaningTextField" destination="N5t-gQ-f8b" id="N2k-zb-XLo"/>
                         <outlet property="nameTextField" destination="8lF-Fj-StY" id="ZmY-l4-Qkn"/>

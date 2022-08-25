@@ -25,8 +25,14 @@ class WordListViewController: UIViewController {
             CoreDataManager.shared.saveContext()
         }
     }
-    var picture = UIImage()
+    
     weak var delegate: CameraPictureDelegate?
+    
+    let addCameraViewController: AddCameraViewController = {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "AddCameraView", bundle:nil)
+        guard let addCameraViewController = storyBoard.instantiateViewController(withIdentifier: "AddCameraViewController") as? AddCameraViewController else { return UIViewController() as! AddCameraViewController }
+        return addCameraViewController
+    }()
     
     // MARK: View LifeCycle Function
     override func viewDidLoad() {
@@ -35,16 +41,19 @@ class WordListViewController: UIViewController {
         titleLabel.font = UIFont.NFont.wordListTitleLabel
         titleLabel.sizeToFit()
         self.view.backgroundColor = UIColor.NColor.background
-//        self.addWordButton.tintColor = UIColor.NColor.orange
         
         self.fetchWordDateDecesending()
         
-        self.configureAddWordButton()
         self.configureCollectionView()
+        
+        self.configureAddWordButton()
+        
+        self.delegate = self.addCameraViewController
+        
+        self.configureAddWordButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        self.wordList = CoreDataManager.shared.fetchWord()
         self.fetchWordDateDecesending()
         self.collectionView.reloadData()
     }
@@ -60,7 +69,8 @@ class WordListViewController: UIViewController {
         let addCameraButton = UIAction(title: "사진으로 추가하기", image: UIImage(systemName: "camera.fill")) { _ in
             AVCaptureDevice.requestAccess(for: .video) { [weak self] (isAuthorized: Bool) in
                 if isAuthorized {
-                    self?.tapAddCameraButton()
+                    self?.presentCamera()
+//                    self?.tapAddCameraButton()
                 } else {
                     self?.showAlertToGoSetting()
                     return
@@ -80,28 +90,9 @@ class WordListViewController: UIViewController {
     private func tapAddHandButton() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "AddWordView", bundle:nil)
         guard let addWordViewController = storyBoard.instantiateViewController(withIdentifier: "AddWordViewController") as? AddWordViewController else {return}
-        addWordViewController.delegate = self
+//        addWordViewController.delegate = self
         
-//        self.present(addWordViewController, animated:true, completion:nil)
         self.navigationController?.pushViewController(addWordViewController, animated: true)
-    }
-    
-    private func tapAddCameraButton() {
-//        addCameraViewController.delegate = self
-        self.presentCamera()
-
-        DispatchQueue.main.async {
-            let storyBoard : UIStoryboard = UIStoryboard(name: "AddCameraView", bundle:nil)
-            guard let addCameraViewController = storyBoard.instantiateViewController(withIdentifier: "AddCameraViewController") as? AddCameraViewController else { return }
-
-            self.navigationController?.pushViewController(addCameraViewController, animated: true)
-        }
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let addCameraViewController = segue.destination as? AddCameraViewController else { return }
-        addCameraViewController.picture = self.picture
     }
 
     private func configureCollectionView() {
@@ -210,13 +201,21 @@ extension WordListViewController: UINavigationControllerDelegate, UIImagePickerC
         }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+    ) {
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             picker.dismiss(animated: true)
             return
         }
-//        self.delegate?.sendCameraPicture(picture: image)
-        picture = image
+        
         picker.dismiss(animated: true, completion: nil)
+        
+        self.delegate?.sendCameraPicture(picture: image)
+        
+        self.navigationController?.pushViewController(self.addCameraViewController, animated: true)
+        
     }
+    
 }

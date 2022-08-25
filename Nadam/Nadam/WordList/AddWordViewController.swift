@@ -35,6 +35,10 @@ class AddWordViewController: UIViewController {
     @IBOutlet weak var synoymTextField: UITextField!
     @IBOutlet weak var exampleTextField: UITextField!
     
+    
+    @IBOutlet weak var duplicateSentense: UILabel!
+    @IBOutlet weak var duplicateMargin: NSLayoutConstraint!
+    
     // MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +89,7 @@ class AddWordViewController: UIViewController {
         saveButton.sizeToFit()
         
         cancelButton.titleLabel?.font = UIFont.NFont.addWordButtonLabel
+        cancelButton.sizeToFit()
         
         titleLabel.font = UIFont.NFont.addWordNavigationTitle
         
@@ -92,6 +97,10 @@ class AddWordViewController: UIViewController {
         wordMeaning.font = UIFont.NFont.addWordButtonLabel
         wordSynoym.font = UIFont.NFont.addWordButtonLabel
         wordExample.font = UIFont.NFont.addWordButtonLabel
+        
+        duplicateSentense.font = UIFont.NFont.addWordButtonLabel
+        duplicateSentense.textColor = UIColor.NColor.orange
+        duplicateSentense.layer.opacity = 0
     }
     
     @objc private func saveButtonState() {
@@ -104,9 +113,11 @@ class AddWordViewController: UIViewController {
         let wordString = nameTextField.text ?? ""
         for word in wordList {
             if word.name == wordString {
+                self.ifIsSameWord()
                 return false
             }
         }
+        
         return true
     }
     
@@ -119,9 +130,20 @@ class AddWordViewController: UIViewController {
         }
     }
     
+    private func ifIsSameWord() {
+        self.duplicateSentense.layer.opacity = 1.0
+        self.nameTextField.layer.borderColor = UIColor.NColor.orange.cgColor
+    }
+    
+    private func isIsNotSameWord() {
+        self.duplicateSentense.layer.opacity = 0
+        self.nameTextField.layer.borderColor = UIColor.NColor.blue.cgColor
+    }
+    
     private func configureInputField() {
         self.nameTextField.addTarget(self, action: #selector(saveButtonState), for: .editingChanged)
         self.nameTextField.addTarget(self, action: #selector(isSameWord), for: .editingDidEnd)
+//        self.nameTextField.addTarget(self, action: #selector(isSameWord), for: .allEditingEvents)
         self.meaningTextField.addTarget(self, action: #selector(saveButtonState), for: .editingChanged)
     }
 }
