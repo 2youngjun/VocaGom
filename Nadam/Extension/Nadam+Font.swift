@@ -44,6 +44,6 @@ extension UIFont {
         static var wordListTitleLabel: UIFont{ UIFont.NadamFont(forTextStyle: .title1) }
         static var wordListWordName: UIFont{ UIFont.NadamFont(forTextStyle: .body) }
         static var wordListWordMeaning: UIFont{ UIFont.NadamFont(forTextStyle: .callout) }
-        static var wordButton: UIFont{ UIFont.NadamFont(forTextStyle: .callout) }
+        static var wordButton: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }
     }
 }

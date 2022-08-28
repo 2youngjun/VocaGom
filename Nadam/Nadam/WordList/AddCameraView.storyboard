@@ -98,11 +98,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8T-Jy-oJa">
-                                                    <rect key="frame" x="52.5" y="50" width="150" height="31"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="255" height="131"/>
                                                     <color key="backgroundColor" name="NBlue"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="nbw-pD-yjj"/>
-                                                    </constraints>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" title="Button">
                                                         <color key="titleColor" name="NWhite"/>
@@ -113,8 +110,12 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="h8T-Jy-oJa" firstAttribute="top" secondItem="obY-3E-Oo2" secondAttribute="top" id="2ob-u5-P9c"/>
+                                                <constraint firstItem="h8T-Jy-oJa" firstAttribute="leading" secondItem="obY-3E-Oo2" secondAttribute="leading" id="4jn-1C-r9h"/>
                                                 <constraint firstItem="h8T-Jy-oJa" firstAttribute="centerX" secondItem="obY-3E-Oo2" secondAttribute="centerX" id="NLn-DU-Xrm"/>
+                                                <constraint firstAttribute="bottom" secondItem="h8T-Jy-oJa" secondAttribute="bottom" id="PJj-NL-Ml7"/>
                                                 <constraint firstItem="h8T-Jy-oJa" firstAttribute="centerY" secondItem="obY-3E-Oo2" secondAttribute="centerY" id="tns-KI-njo"/>
+                                                <constraint firstAttribute="trailing" secondItem="h8T-Jy-oJa" secondAttribute="trailing" id="w66-O1-wJZ"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="255" height="131"/>

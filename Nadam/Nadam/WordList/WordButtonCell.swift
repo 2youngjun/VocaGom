@@ -13,6 +13,8 @@ class WordButtonCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        self.contentView.layer.borderWidth = 3
+        self.contentView.layer.cornerRadius = 15
+        self.contentView.layer.borderWidth = 1
+        self.contentView.layer.borderColor = UIColor.NColor.blue.cgColor
     }
 }
