@@ -97,30 +97,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="255" height="131"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8T-Jy-oJa">
-                                                    <rect key="frame" x="0.0" y="0.0" width="255" height="131"/>
-                                                    <color key="backgroundColor" name="NBlue"/>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" title="Button">
-                                                        <color key="titleColor" name="NWhite"/>
-                                                    </state>
-                                                    <buttonConfiguration key="configuration" style="plain" title="Button">
-                                                        <color key="baseForegroundColor" name="NWhite"/>
-                                                    </buttonConfiguration>
-                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFS-Zx-eXT">
+                                                    <rect key="frame" x="107" y="55.5" width="41.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="h8T-Jy-oJa" firstAttribute="top" secondItem="obY-3E-Oo2" secondAttribute="top" id="2ob-u5-P9c"/>
-                                                <constraint firstItem="h8T-Jy-oJa" firstAttribute="leading" secondItem="obY-3E-Oo2" secondAttribute="leading" id="4jn-1C-r9h"/>
-                                                <constraint firstItem="h8T-Jy-oJa" firstAttribute="centerX" secondItem="obY-3E-Oo2" secondAttribute="centerX" id="NLn-DU-Xrm"/>
-                                                <constraint firstAttribute="bottom" secondItem="h8T-Jy-oJa" secondAttribute="bottom" id="PJj-NL-Ml7"/>
-                                                <constraint firstItem="h8T-Jy-oJa" firstAttribute="centerY" secondItem="obY-3E-Oo2" secondAttribute="centerY" id="tns-KI-njo"/>
-                                                <constraint firstAttribute="trailing" secondItem="h8T-Jy-oJa" secondAttribute="trailing" id="w66-O1-wJZ"/>
+                                                <constraint firstItem="OFS-Zx-eXT" firstAttribute="centerY" secondItem="obY-3E-Oo2" secondAttribute="centerY" id="3n8-1a-I5X"/>
+                                                <constraint firstItem="OFS-Zx-eXT" firstAttribute="centerX" secondItem="obY-3E-Oo2" secondAttribute="centerX" id="EjU-Q8-JQO"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="255" height="131"/>
                                         <connections>
-                                            <outlet property="wordButton" destination="h8T-Jy-oJa" id="hyb-uI-bjj"/>
+                                            <outlet property="wordLabel" destination="OFS-Zx-eXT" id="6jq-1Z-XBE"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -180,9 +171,6 @@
         <image name="camera" catalog="system" width="128" height="94"/>
         <namedColor name="NBlue">
             <color red="0.37999999523162842" green="0.47499999403953552" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="NWhite">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

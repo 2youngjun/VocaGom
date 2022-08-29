@@ -51,6 +51,8 @@ class WordListViewController: UIViewController {
         self.delegate = self.addCameraViewController
         
         self.configureAddWordButton()
+        
+        NotificationCenter.default.addObserver(self, selector: <#T##Selector#>, name: Notification.Name("AddCameraViewPop"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

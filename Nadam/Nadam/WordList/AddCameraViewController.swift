@@ -9,6 +9,11 @@ import UIKit
 import Vision
 import Foundation
 
+struct wordStatus {
+    var wordName: String
+    var isSelected: Bool
+}
+
 class AddCameraViewController: UIViewController {
 
     
@@ -27,13 +32,14 @@ class AddCameraViewController: UIViewController {
     @IBOutlet weak var noWordsLabel: UILabel!
     
     var sentImage: UIImage?
-    var textSet = [String : Bool]()
     var checkText = [String]()
+    var wordArray = [wordStatus]()
     
     // MARK: View Lifecycle Function
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        self.viewDidLoad()
         self.configureLayout()
         self.configureCollectionView()
 
@@ -50,15 +56,37 @@ class AddCameraViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        self.cameraView.image = sentImage
+//        self.cameraView.contentMode = .scaleAspectFit
+        
         self.recognizeText(image: self.cameraView.image ?? UIImage())
-        print(checkText)
+        
         self.noWordsLabel.layer.opacity = self.checkText.count == 0 ? 1.0 : 0
         self.nextButton.isEnabled = false
+        
         self.collectionView.reloadData()
+        
+        // 구조체 배열 초기화
+        self.wordArray = Array(repeating: wordStatus(wordName: "", isSelected: false), count: self.checkText.count)
+        self.initWordArrayWord()
+    }
+    
+    private func initWordArrayWord() {
+        var cnt = 0
+        while cnt != checkText.count {
+            self.wordArray[cnt].wordName = checkText[cnt]
+            cnt += 1
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print(textSet)
+//        print(textSet)
+        print(wordArray)
+        NotificationCenter.default.post(name: Notification.Name("AddCameraViewPop"), object: nil, userInfo: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        deinit
     }
     
     // MARK: IBOutlet Function
@@ -112,14 +140,17 @@ class AddCameraViewController: UIViewController {
 //        self.collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        flowLayout.estimatedItemSize = CGSize(width: 40.0, height: 20.0)
+//        flowLayout.estimatedItemSize = CGSize(width: 100.0, height: 40.0)
+        flowLayout.estimatedItemSize =  UICollectionViewFlowLayout.automaticSize
         self.collectionView.collectionViewLayout = flowLayout
         
         self.collectionView.backgroundColor = UIColor.NColor.background
         
-//        self.collectionView.delegate = self
+        self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        
+        self.collectionView.allowsMultipleSelection = false
     }
     
     
@@ -153,9 +184,9 @@ class AddCameraViewController: UIViewController {
                 }
             }
             
-            for text in modifyingText {
-                self?.textSet.updateValue(false, forKey: text)
-            }
+//            for text in modifyingText {
+//                self?.textSet.updateValue(false, forKey: text)
+//            }
             self?.checkText = modifyingText
             
 //            DispatchQueue.main.async {
@@ -219,9 +250,37 @@ extension AddCameraViewController: CameraPictureDelegate {
 }
 
 // MARK: UICollectionView
-extension AddCameraViewController: UICollectionViewDataSource {
+extension AddCameraViewController: UICollectionViewDataSource{
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.checkText.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as? WordButtonCell
+
+        self.collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+
+        // 모든 배열 isSelected - false 처리
+        var cnt = 0
+        while cnt != wordArray.count {
+            wordArray[cnt].isSelected = false
+            cnt += 1
+        }
+
+        // cell.wordLabel.text == wordArray.name 과 같은 경우의 isSelected 만 true 처리
+        var arrayIndex = 0
+        for word in wordArray {
+            if cell?.wordLabel.text == word.wordName {
+                break
+            } else {
+                arrayIndex += 1
+            }
+        }
+        wordArray[arrayIndex].isSelected = true
+
+        // 다음 버튼 Enabled 처리
+        self.nextButton.isEnabled = true
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -230,110 +289,16 @@ extension AddCameraViewController: UICollectionViewDataSource {
         if self.checkText.count == 0 {
             return cell
         } else {
-            var configuration = UIButton.Configuration.borderless()
-            
-            configuration.buttonSize = .medium
-            var buttonTitle = AttributedString.init(self.checkText[indexPath.row])
-            buttonTitle.font = UIFont.NFont.wordButton
-            configuration.attributedTitle = buttonTitle
-            configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
-            
-            cell.wordButton.backgroundColor = UIColor.NColor.white
-//            cell.wordButton.titleLabel?.font = UIFont.NFont.wordButton
-            cell.wordButton.titleLabel?.textColor = UIColor.NColor.blue
-            cell.wordButton.titleLabel?.numberOfLines = 1
-            cell.wordButton.configuration = configuration
-            cell.wordButton.isSelected = false
-            
-            cell.wordButton.addTarget(self, action: #selector(selectWordButton(sender:)), for: .touchUpInside)
-//            cell.wordButton.addTarget(self, action: #selector(configureSelectedWordButton(sender:)), for: .touchUpInside)
-            
+            cell.layer.cornerRadius = 15
+            cell.wordLabel.text = self.checkText[indexPath.row]
+            cell.wordLabel.sizeToFit()
+            cell.wordLabel.textColor = UIColor.NColor.blue
+            cell.wordLabel.font = UIFont.NFont.wordButton
+            cell.wordLabel.numberOfLines = 1
             
             return cell
         }
-    }
-    
-    @objc func selectWordButton(sender: Any) {
-        let wordButton = sender as? UIButton
-        wordButton?.isSelected = !wordButton!.isSelected
         
-        if wordButton?.isSelected == true {
-            wordButton?.backgroundColor = UIColor.NColor.blue
-//            wordButton?.titleLabel?.textColor = UIColor.NColor.white
-//            wordButton?.configuration?.baseBackgroundColor = UIColor.NColor.blue
-            wordButton?.configuration?.baseForegroundColor = UIColor.NColor.white
-            
-            // 선택한 딕셔너리 값 true, 나머지는 모두 모두 false
-            for (key, _) in textSet {
-                if key == wordButton?.titleLabel?.text {
-                    textSet[key] = true
-//                    continue
-                } else {
-                    textSet[key] = false
-                }
-            }
-            
-            self.nextButton.isEnabled = true
-            
-        } else {
-            wordButton?.backgroundColor = UIColor.NColor.white
-//            wordButton?.titleLabel?.textColor = UIColor.NColor.blue
-//            wordButton?.configuration?.baseBackgroundColor = UIColor.NColor.white
-            wordButton?.configuration?.baseForegroundColor = UIColor.NColor.blue
-            
-            for (key, _) in textSet {
-                if key == wordButton?.titleLabel?.text {
-                    textSet[key] = false
-                    break
-                }
-            }
-            
-            // nextButton 설정 - 만약 모두 다 false 라면 nextButton disable 해야 한다.
-            for (_, value) in textSet {
-                if value == true {
-                    self.nextButton.isEnabled = true
-                    break
-                } else {
-                    self.nextButton.isEnabled = false
-                }
-            }
-        }
-        
-        
-//        wordButton.isSelected.toggle()
-//        for (key, _) in textSet {
-//            if textSet[key] == true {
-//                self.nextButton.isEnabled = true
-//            } else {
-//                self.nextButton.isEnabled = false
-//            }
-//        }
-
-        
-    }
-    
-    private func configureSelectedWordButton(wordButton: UIButton) {
-        if wordButton.isSelected {
-            wordButton.backgroundColor = UIColor.NColor.blue
-            wordButton.titleLabel?.textColor = UIColor.NColor.white
-            print("💙")
-        } else {
-            wordButton.backgroundColor = UIColor.NColor.white
-            wordButton.titleLabel?.textColor = UIColor.NColor.blue
-            print("💚")
-        }
-    }
-    
-    @objc private func configureSelectedWordButton(sender: Any) {
-        let wordButton = sender as? UIButton
-        
-        if ((wordButton?.isSelected) != nil) {
-            wordButton?.backgroundColor = UIColor.NColor.blue
-            wordButton?.titleLabel?.textColor = UIColor.NColor.white
-        } else {
-            wordButton?.backgroundColor = UIColor.NColor.white
-            wordButton?.titleLabel?.textColor = UIColor.NColor.blue
-        }
     }
     
     @objc func showAlertNextButton() {
@@ -365,21 +330,11 @@ extension AddCameraViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WordButtonCell", for: indexPath) as? WordButtonCell else { return .zero }
-//
-//        cell.wordButton.titleLabel?.numberOfLines = 1
-//        cell.wordButton.titleLabel?.sizeToFit()
-//
-////        let buttonTitleSize = cell.wordButton.titleLabel?.text.sizeThatFits(CGSize(width: intrin, height: CGFloat.greatestFiniteMagnitude)) ?? .zero
-//        let buttonTitleSizeWidth = cell.wordButton.frame.width + 20
-//        let buttonTitleSizeHeight = cell.wordButton.frame.height
-//        return CGSize(width: buttonTitleSizeWidth, height: buttonTitleSizeHeight)
         
         let label = UILabel(frame: CGRect.zero)
         label.text = checkText[indexPath.row]
         label.sizeToFit()
-        return CGSize(width: label.frame.width, height: label.frame.height)
-        
-        
+        return CGSize(width: label.frame.width + 40, height: label.frame.height + 20)
+    
     }
 }
