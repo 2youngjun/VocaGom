@@ -19,8 +19,9 @@ class WordButtonCell: UICollectionViewCell {
         super.init(coder: coder)
         
         self.contentView.layer.cornerRadius = 15
-        self.contentView.layer.borderWidth = 1
-        self.contentView.layer.borderColor = UIColor.NColor.blue.cgColor
+        self.contentView.backgroundColor = UIColor.NColor.weakBlue
+        self.contentView.layer.borderWidth = 0
+//        self.contentView.layer.borderColor = UIColor.NColor.blue.cgColor
         
     }
     
@@ -30,7 +31,7 @@ class WordButtonCell: UICollectionViewCell {
                 self.contentView.backgroundColor = UIColor.NColor.blue
                 self.wordLabel.textColor = UIColor.NColor.white
             } else {
-                self.contentView.backgroundColor = UIColor.NColor.white
+                self.contentView.backgroundColor = UIColor.NColor.weakBlue
                 self.wordLabel.textColor = UIColor.NColor.blue
             }
         }

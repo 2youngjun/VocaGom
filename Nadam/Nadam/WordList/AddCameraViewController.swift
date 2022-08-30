@@ -14,6 +14,21 @@ struct wordStatus {
     var isSelected: Bool
 }
 
+class NextButtonConfigure: UIButton {
+    
+    override var isEnabled: Bool {
+        didSet {
+            if isEnabled {
+                self.titleLabel?.textColor = UIColor.NColor.white
+                self.backgroundColor = UIColor.NColor.blue
+            } else {
+                self.titleLabel?.textColor = UIColor.NColor.blue
+                self.backgroundColor = UIColor.NColor.weakBlue
+            }
+        }
+    }
+}
+
 class AddCameraViewController: UIViewController {
 
     
@@ -34,6 +49,17 @@ class AddCameraViewController: UIViewController {
     var sentImage: UIImage?
     var checkText = [String]()
     var wordArray = [wordStatus]()
+    var nextButtonState: Bool = false {
+        didSet {
+            if nextButtonState {
+                self.nextButton.isEnabled = true
+                self.configureNextButton(self.nextButton)
+            } else {
+                self.nextButton.isEnabled = false
+                self.configureNextButton(self.nextButton)
+            }
+        }
+    }
     
     // MARK: View Lifecycle Function
     override func viewDidLoad() {
@@ -50,14 +76,20 @@ class AddCameraViewController: UIViewController {
             self.cameraView.contentMode = .scaleAspectFit
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(setNewPhoto), name: Notification.Name("newPhoto"), object: nil)
+        
         self.recognizeText(image: self.cameraView.image ?? UIImage())
         self.collectionView.reloadData()
+        
+    }
+    
+    @objc private func setNewPhoto() {
+        self.cameraView.image = sentImage
+        self.cameraView.contentMode = .scaleAspectFit
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.cameraView.image = sentImage
-//        self.cameraView.contentMode = .scaleAspectFit
         
         self.recognizeText(image: self.cameraView.image ?? UIImage())
         
@@ -85,8 +117,8 @@ class AddCameraViewController: UIViewController {
         NotificationCenter.default.post(name: Notification.Name("AddCameraViewPop"), object: nil, userInfo: nil)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        deinit
+    deinit {
+        print("🫠")
     }
     
     // MARK: IBOutlet Function
@@ -109,9 +141,11 @@ class AddCameraViewController: UIViewController {
     private func configureLayout() {
         self.view.backgroundColor = UIColor.NColor.background
         
-        self.nextButton.titleLabel?.font = UIFont.NFont.addWordButtonLabel
-        self.nextButton.titleLabel?.sizeToFit()
+//        self.nextButton.titleLabel?.sizeToFit()
+        self.nextButton.titleLabel?.font = UIFont.NFont.wordListWordMeaning
+        self.nextButton.backgroundColor = UIColor.NColor.weakBlue
         self.nextButton.isEnabled = false
+        self.nextButton.titleLabel?.textColor = UIColor.NColor.blue
         
         self.cancelButton.titleLabel?.font = UIFont.NFont.addWordButtonLabel
         self.cancelButton.titleLabel?.sizeToFit()
@@ -122,8 +156,8 @@ class AddCameraViewController: UIViewController {
         self.cameraSectionTitle.sizeToFit()
         
         self.cameraView.image = UIImage(systemName: "camera")
-        self.cameraViewHeight.constant = UIScreen.main.bounds.height / 3
-        self.cameraView.layer.borderWidth = 1.0
+        self.cameraViewHeight.constant = UIScreen.main.bounds.height / 4
+        self.cameraView.layer.borderWidth = 0
         
         self.cameraButton.titleLabel?.textColor = UIColor.NColor.blue
         self.cameraButton.titleLabel?.font = UIFont.NFont.wordListWordMeaning
@@ -151,6 +185,18 @@ class AddCameraViewController: UIViewController {
         self.collectionView.contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
         
         self.collectionView.allowsMultipleSelection = false
+    }
+    
+    private func configureNextButton(_ button: UIButton) {
+        if button.isEnabled {
+            button.setTitleColor(UIColor.NColor.white, for: .normal)
+            button.backgroundColor = UIColor.NColor.blue
+            button.layer.cornerRadius = 15
+        } else {
+            button.setTitleColor(UIColor.NColor.blue, for: .normal)
+            button.backgroundColor = UIColor.NColor.weakBlue
+            button.layer.cornerRadius = 15
+        }
     }
     
     
@@ -280,7 +326,7 @@ extension AddCameraViewController: UICollectionViewDataSource{
         wordArray[arrayIndex].isSelected = true
 
         // 다음 버튼 Enabled 처리
-        self.nextButton.isEnabled = true
+        self.nextButtonState = true
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

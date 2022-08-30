@@ -52,7 +52,7 @@ class WordListViewController: UIViewController {
         
         self.configureAddWordButton()
         
-        NotificationCenter.default.addObserver(self, selector: <#T##Selector#>, name: Notification.Name("AddCameraViewPop"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: <#T##Selector#>, name: Notification.Name("AddCameraViewPop"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -215,6 +215,8 @@ extension WordListViewController: UINavigationControllerDelegate, UIImagePickerC
         picker.dismiss(animated: true, completion: nil)
         
         self.delegate?.sendCameraPicture(picture: image)
+        
+        NotificationCenter.default.post(name: Notification.Name("newPhoto"), object: nil)
         
         self.navigationController?.pushViewController(self.addCameraViewController, animated: true)
         
