@@ -52,7 +52,6 @@ class WordListViewController: UIViewController {
         
         self.configureAddWordButton()
         
-//        NotificationCenter.default.addObserver(self, selector: <#T##Selector#>, name: Notification.Name("AddCameraViewPop"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,11 +63,11 @@ class WordListViewController: UIViewController {
     private func configureAddWordButton() {
         self.addWordButton.showsMenuAsPrimaryAction = true
         
-        let addHandButton = UIAction(title: "단어 입력", image: UIImage(systemName: "applepencil")) { _ in
+        let addHandButton = UIAction(title: "단어 입력", image: UIImage(systemName: "applepencil")?.withTintColor(UIColor.NColor.orange, renderingMode: .alwaysOriginal)) { _ in
             self.tapAddHandButton()
         }
         
-        let addCameraButton = UIAction(title: "사진 촬영", image: UIImage(systemName: "camera.fill")) { _ in
+        let addCameraButton = UIAction(title: "사진 촬영", image: UIImage(systemName: "camera.viewfinder")?.withTintColor(UIColor.NColor.orange, renderingMode: .alwaysOriginal)) { _ in
             AVCaptureDevice.requestAccess(for: .video) { [weak self] (isAuthorized: Bool) in
                 if isAuthorized {
                     self?.presentCamera()

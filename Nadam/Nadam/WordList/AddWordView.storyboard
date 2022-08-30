@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,27 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDb-2l-jbO">
-                                <rect key="frame" x="20" y="64" width="30" height="16"/>
+                                <rect key="frame" x="20" y="66" width="12.5" height="12.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="acI-An-dQK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <color key="tintColor" name="NBlack"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="취소"/>
+                                <state key="normal" backgroundImage="chevron.left" catalog="system"/>
                                 <connections>
                                     <action selector="tapCancelButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6DH-cf-lp8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wU0-NY-bxO">
-                                <rect key="frame" x="364" y="64" width="30" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="91y-bg-tAY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="저장"/>
-                                <connections>
-                                    <action selector="tapSaveButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ujh-l7-wST"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VQr-bQ-FN1" userLabel="NameStackView">
@@ -144,6 +134,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUZ-v9-t5d">
+                                <rect key="frame" x="20" y="772" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Y97-cE-lPO"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="저장">
+                                    <color key="titleColor" name="NBlue"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapSaveButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ncc-zh-3kl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="i5b-mP-4Fv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -153,6 +156,7 @@
                             <constraint firstItem="q40-OL-5Ic" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="55N-OF-m5t"/>
                             <constraint firstAttribute="trailing" secondItem="MeO-W6-yGU" secondAttribute="trailing" constant="20" id="6MC-0m-5AS"/>
                             <constraint firstItem="XQa-9p-NkQ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Akx-yS-WJQ"/>
+                            <constraint firstItem="i5b-mP-4Fv" firstAttribute="bottom" secondItem="bUZ-v9-t5d" secondAttribute="bottom" constant="40" id="EHf-aY-9Ku"/>
                             <constraint firstItem="q40-OL-5Ic" firstAttribute="top" secondItem="MeO-W6-yGU" secondAttribute="bottom" constant="30" id="ErF-pn-7WO"/>
                             <constraint firstItem="XQa-9p-NkQ" firstAttribute="top" secondItem="i5b-mP-4Fv" secondAttribute="top" constant="20" id="Hhp-0X-oST"/>
                             <constraint firstItem="YDb-2l-jbO" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="L6q-Le-2Ub"/>
@@ -160,15 +164,15 @@
                             <constraint firstItem="MeO-W6-yGU" firstAttribute="top" secondItem="VQr-bQ-FN1" secondAttribute="bottom" constant="30" id="NjP-2a-lJp"/>
                             <constraint firstItem="YDb-2l-jbO" firstAttribute="top" secondItem="i5b-mP-4Fv" secondAttribute="top" constant="20" id="Nv1-Wd-lkZ"/>
                             <constraint firstItem="MeO-W6-yGU" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="NvH-K8-yXH"/>
-                            <constraint firstAttribute="trailing" secondItem="wU0-NY-bxO" secondAttribute="trailing" constant="20" id="Sgy-uy-Hug"/>
                             <constraint firstItem="VQr-bQ-FN1" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="VD8-Xo-XC4"/>
                             <constraint firstAttribute="trailing" secondItem="q40-OL-5Ic" secondAttribute="trailing" constant="20" id="Y5P-8L-saP"/>
+                            <constraint firstItem="i5b-mP-4Fv" firstAttribute="trailing" secondItem="bUZ-v9-t5d" secondAttribute="trailing" constant="20" id="Z0H-ZV-OAS"/>
                             <constraint firstItem="vPK-T8-flw" firstAttribute="top" secondItem="q40-OL-5Ic" secondAttribute="bottom" constant="30" id="aqf-qF-PeI"/>
-                            <constraint firstItem="wU0-NY-bxO" firstAttribute="top" secondItem="i5b-mP-4Fv" secondAttribute="top" constant="20" id="g5l-RA-a8U"/>
                             <constraint firstAttribute="trailing" secondItem="VQr-bQ-FN1" secondAttribute="trailing" constant="20" id="kTd-xJ-lrz"/>
                             <constraint firstItem="CQy-bc-I04" firstAttribute="top" secondItem="VQr-bQ-FN1" secondAttribute="bottom" constant="5" id="pjA-a6-p4Z"/>
                             <constraint firstItem="vPK-T8-flw" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="r4f-ER-P2J"/>
                             <constraint firstItem="VQr-bQ-FN1" firstAttribute="top" secondItem="YDb-2l-jbO" secondAttribute="bottom" constant="25" id="ugC-dU-RzH"/>
+                            <constraint firstItem="bUZ-v9-t5d" firstAttribute="leading" secondItem="i5b-mP-4Fv" secondAttribute="leading" constant="20" id="x4V-EU-Yu3"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="GSR-P8-7It" appends="YES" id="q1k-OJ-ZrA"/>
@@ -181,7 +185,7 @@
                         <outlet property="exampleTextField" destination="A8M-1o-aWi" id="Uvt-0R-mcB"/>
                         <outlet property="meaningTextField" destination="N5t-gQ-f8b" id="N2k-zb-XLo"/>
                         <outlet property="nameTextField" destination="8lF-Fj-StY" id="ZmY-l4-Qkn"/>
-                        <outlet property="saveButton" destination="wU0-NY-bxO" id="E7j-lZ-Q0a"/>
+                        <outlet property="saveButton" destination="bUZ-v9-t5d" id="nAK-jQ-kY7"/>
                         <outlet property="synoymTextField" destination="X3G-H1-NvG" id="vst-qq-jaa"/>
                         <outlet property="titleLabel" destination="XQa-9p-NkQ" id="cAZ-KA-17V"/>
                         <outlet property="wordExample" destination="owG-lk-RY3" id="PqA-zv-xQr"/>
@@ -191,12 +195,23 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="GSR-P8-7It"/>
+                <tapGestureRecognizer id="GSR-P8-7It">
+                    <connections>
+                        <action selector="tapOtherSpace:" destination="Y6W-OH-hqX" id="VVX-CY-xxn"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-23.188405797101453" y="85.714285714285708"/>
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <namedColor name="NBlack">
+            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NBlue">
+            <color red="0.37999999523162842" green="0.47499999403953552" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

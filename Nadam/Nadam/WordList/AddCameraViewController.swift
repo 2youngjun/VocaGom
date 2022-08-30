@@ -9,24 +9,13 @@ import UIKit
 import Vision
 import Foundation
 
+protocol SendWordNameDelegate: AnyObject {
+    func sendWord(wordName: String)
+}
+
 struct wordStatus {
     var wordName: String
     var isSelected: Bool
-}
-
-class NextButtonConfigure: UIButton {
-    
-    override var isEnabled: Bool {
-        didSet {
-            if isEnabled {
-                self.titleLabel?.textColor = UIColor.NColor.white
-                self.backgroundColor = UIColor.NColor.blue
-            } else {
-                self.titleLabel?.textColor = UIColor.NColor.blue
-                self.backgroundColor = UIColor.NColor.weakBlue
-            }
-        }
-    }
 }
 
 class AddCameraViewController: UIViewController {
@@ -47,6 +36,7 @@ class AddCameraViewController: UIViewController {
     @IBOutlet weak var noWordsLabel: UILabel!
     
     var sentImage: UIImage?
+    private var wordList = [Word]()
     var checkText = [String]()
     var wordArray = [wordStatus]()
     var nextButtonState: Bool = false {
@@ -60,6 +50,13 @@ class AddCameraViewController: UIViewController {
             }
         }
     }
+    
+    weak var delegate: SendWordNameDelegate?
+    let addWordViewController: AddWordViewController = {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "AddWordView", bundle:nil)
+        guard let addWordViewController = storyBoard.instantiateViewController(withIdentifier: "AddWordViewController") as? AddWordViewController else {  return UIViewController() as! AddWordViewController }
+        return addWordViewController
+    }()
     
     // MARK: View Lifecycle Function
     override func viewDidLoad() {
@@ -81,6 +78,7 @@ class AddCameraViewController: UIViewController {
         self.recognizeText(image: self.cameraView.image ?? UIImage())
         self.collectionView.reloadData()
         
+        self.delegate = self.addWordViewController
     }
     
     @objc private func setNewPhoto() {
@@ -114,7 +112,7 @@ class AddCameraViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
 //        print(textSet)
         print(wordArray)
-        NotificationCenter.default.post(name: Notification.Name("AddCameraViewPop"), object: nil, userInfo: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("newPhoto"), object: nil)
     }
     
     deinit {
@@ -127,12 +125,35 @@ class AddCameraViewController: UIViewController {
     }
     
     @IBAction func tapNextButton(_ sender: Any) {
+        var index = 0
+        for word in wordArray {
+            if word.isSelected == true {
+                break
+            } else {
+                index += 1
+            }
+        }
         
+        self.fetchWordList()
+        for word in wordList {
+            if wordArray[index].wordName == word.name {
+                self.showAlertNextButton()
+                return
+            }
+        }
+        
+        self.delegate?.sendWord(wordName: wordArray[index].wordName)
+        self.navigationController?.pushViewController(addWordViewController, animated: true)
+    }
+    
+    private func fetchWordList() {
+        self.wordList = CoreDataManager.shared.fetchWord()
     }
     
     @IBAction func tapCameraButton(_ sender: Any) {
         
     }
+    
     @IBAction func tapPresentCameraButton(_ sender: UIButton) {
         self.presentCamera()
     }
@@ -347,10 +368,10 @@ extension AddCameraViewController: UICollectionViewDataSource{
         
     }
     
-    @objc func showAlertNextButton() {
+    func showAlertNextButton() {
         let alertController = UIAlertController(
-            title: "해당 단어를 추가하시겠습니까?",
-            message: "설정 > Nadam에서 접근을 활성화 할 수 있습니다.",
+            title: "이미 추가된 단어에요.",
+            message: "취소를 눌러 다른 단어를 추가해주세요.",
             preferredStyle: .alert)
         
         let cancelAlert = UIAlertAction(
@@ -359,16 +380,12 @@ extension AddCameraViewController: UICollectionViewDataSource{
                 alertController.dismiss(animated: true, completion: nil)
             }
         
-        let nextAlert = UIAlertAction(
-            title: "추가",
-            style: .default) { _ in
-                self.nextButton.isEnabled = true
-            }
-        [cancelAlert, nextAlert].forEach(alertController.addAction(_:))
+        [cancelAlert].forEach(alertController.addAction(_:))
         
-        DispatchQueue.main.async {
-            self.present(alertController, animated: true)
-        }
+//        DispatchQueue.main.async {
+//            self.present(alertController, animated: true)
+//        }
+        self.present(alertController, animated: true)
     }
 }
 
@@ -381,6 +398,5 @@ extension AddCameraViewController: UICollectionViewDelegateFlowLayout {
         label.text = checkText[indexPath.row]
         label.sizeToFit()
         return CGSize(width: label.frame.width + 40, height: label.frame.height + 20)
-    
     }
 }
