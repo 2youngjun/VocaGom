@@ -11,7 +11,36 @@ protocol AddWordViewDelegate: AnyObject {
     func didSelectSaveWord()
 }
 
-class AddWordViewController: UIViewController {
+class AddWordViewController: UIViewController, SendWordNameDelegate {
+    
+    var cameraWord = String()
+    var configureSaveButtonState: Bool = false {
+        didSet {
+            if configureSaveButtonState {
+                self.saveButton.isEnabled = true
+                configureSaveButton(self.saveButton)
+            } else {
+                self.saveButton.isEnabled = false
+                configureSaveButton(self.saveButton)
+            }
+        }
+    }
+    
+    private func configureSaveButton(_ button: UIButton) {
+        if button.isEnabled {
+            button.setTitleColor(UIColor.NColor.white, for: .normal)
+            button.backgroundColor = UIColor.NColor.blue
+            button.layer.cornerRadius = 15
+        } else {
+            button.setTitleColor(UIColor.NColor.blue, for: .normal)
+            button.backgroundColor = UIColor.NColor.weakBlue
+            button.layer.cornerRadius = 15
+        }
+    }
+    
+    func sendWord(wordName: String) {
+        cameraWord = wordName
+    }
     
     override var sheetPresentationController: UISheetPresentationController {
         presentationController as! UISheetPresentationController
@@ -48,12 +77,26 @@ class AddWordViewController: UIViewController {
         configureLayoutStyle()
         
         configureInputField()
+        configureTextFieldStyle()
+        
         self.saveButton.isEnabled = false
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if cameraWord != String() {
+            self.nameTextField.text = cameraWord
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         CoreDataManager.shared.saveContext()
+        cameraWord = String()
     }
+    
+    
     
     // MARK: IBAction 함수
     @IBAction func startEditingTextField(_ sender: UITextField) {
@@ -64,11 +107,8 @@ class AddWordViewController: UIViewController {
     
     @IBAction func endEditingTextField(_ sender: UITextField) {
         sender.layer.borderWidth = 0.5
-        sender.layer.borderColor = UIColor.NColor.border.cgColor
+        sender.layer.borderColor = UIColor.NColor.weakBlue.cgColor
         sender.layer.cornerRadius = 5.0
-        if sender.text != "" {
-            
-        }
     }
     
     @IBAction func tapCancelButton(_ sender: UIButton) {
@@ -84,7 +124,13 @@ class AddWordViewController: UIViewController {
         CoreDataManager.shared.addWord(name: name, meaning: meaning, synoym: synoym, example: example, createTime: Date(), cntWrong: 0)
         self.delegate?.didSelectSaveWord()
 
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
+        
+//        let storyboard: UIStoryboard = UIStoryboard(name: "WordListView", bundle: nil)
+//        guard let wordListViewController = storyboard.instantiateViewController(withIdentifier: "WordListViewController") as? WordListViewController else { return }
+//        self.navigationController?.popToViewController(wordListViewController, animated: true)
+        
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func tapOtherSpace(_ sender: UITapGestureRecognizer) {
@@ -93,8 +139,11 @@ class AddWordViewController: UIViewController {
     }
     
     private func configureLayoutStyle() {
-        saveButton.titleLabel?.font = UIFont.NFont.addWordButtonLabel
-        saveButton.sizeToFit()
+        
+        saveButton.titleLabel?.font = UIFont.NFont.wordListWordMeaning
+        saveButton.backgroundColor = UIColor.NColor.weakBlue
+        saveButton.isEnabled = false
+        saveButton.titleLabel?.textColor = UIColor.NColor.blue
         
         cancelButton.titleLabel?.font = UIFont.NFont.addWordButtonLabel
         cancelButton.sizeToFit()
@@ -110,7 +159,30 @@ class AddWordViewController: UIViewController {
         duplicateSentense.textColor = UIColor.NColor.orange
         duplicateSentense.layer.opacity = 0
         
+
         attributeNameMeaningTitle()
+    }
+    
+    private func configureTextFieldStyle() {
+        nameTextField.backgroundColor = UIColor.NColor.weakBlue
+        meaningTextField.backgroundColor = UIColor.NColor.weakBlue
+        synoymTextField.backgroundColor = UIColor.NColor.weakBlue
+        exampleTextField.backgroundColor = UIColor.NColor.weakBlue
+        
+        nameTextField.layer.borderWidth = 0.5
+        meaningTextField.layer.borderWidth = 0.5
+        synoymTextField.layer.borderWidth = 0.5
+        exampleTextField.layer.borderWidth = 0.5
+        
+        nameTextField.layer.cornerRadius = 5.0
+        meaningTextField.layer.cornerRadius = 5.0
+        synoymTextField.layer.cornerRadius = 5.0
+        exampleTextField.layer.cornerRadius = 5.0
+        
+        nameTextField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
+        meaningTextField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
+        synoymTextField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
+        exampleTextField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
     }
     
     private func attributeNameMeaningTitle() {
@@ -126,7 +198,10 @@ class AddWordViewController: UIViewController {
     @objc private func saveButtonState() {
         if nameTextField.text != "" && meaningTextField.text != "" {
             checkSameWord()
-        } else { saveButton.isEnabled = false }
+        } else {
+//            saveButton.isEnabled = false
+            configureSaveButtonState = false
+        }
     }
     
     private func checkSameWord() {
@@ -134,12 +209,15 @@ class AddWordViewController: UIViewController {
         for word in wordList {
             if word.name == wordString {
                 self.ifIsSameWord()
-                saveButton.isEnabled = false
+//                saveButton.isEnabled = false
+                configureSaveButtonState = false
                 return
             }
         }
         self.ifIsNotSameWord()
-        saveButton.isEnabled = true
+//        saveButton.isEnabled = true
+        configureSaveButtonState = true
+
     }
     
     @objc private func isSameWord() {
