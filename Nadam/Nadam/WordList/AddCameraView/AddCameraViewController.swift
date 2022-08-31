@@ -397,6 +397,6 @@ extension AddCameraViewController: UICollectionViewDelegateFlowLayout {
         let label = UILabel(frame: CGRect.zero)
         label.text = checkText[indexPath.row]
         label.sizeToFit()
-        return CGSize(width: label.frame.width + 40, height: label.frame.height + 20)
+        return CGSize(width: label.frame.width + 30, height: label.frame.height + 20)
     }
 }

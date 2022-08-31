@@ -147,6 +147,14 @@
                                     <action selector="tapSaveButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ncc-zh-3kl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3o-wU-AUj">
+                                <rect key="frame" x="160" y="499" width="94" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="PapagoAPI"/>
+                                <connections>
+                                    <action selector="tapAPIButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fNX-Rg-xlY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="i5b-mP-4Fv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -172,6 +180,8 @@
                             <constraint firstItem="CQy-bc-I04" firstAttribute="top" secondItem="VQr-bQ-FN1" secondAttribute="bottom" constant="5" id="pjA-a6-p4Z"/>
                             <constraint firstItem="vPK-T8-flw" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="r4f-ER-P2J"/>
                             <constraint firstItem="VQr-bQ-FN1" firstAttribute="top" secondItem="YDb-2l-jbO" secondAttribute="bottom" constant="25" id="ugC-dU-RzH"/>
+                            <constraint firstItem="e3o-wU-AUj" firstAttribute="top" secondItem="vPK-T8-flw" secondAttribute="bottom" constant="50" id="utq-mQ-8gn"/>
+                            <constraint firstItem="e3o-wU-AUj" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="vbA-cD-iek"/>
                             <constraint firstItem="bUZ-v9-t5d" firstAttribute="leading" secondItem="i5b-mP-4Fv" secondAttribute="leading" constant="20" id="x4V-EU-Yu3"/>
                         </constraints>
                         <connections>

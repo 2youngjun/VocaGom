@@ -89,6 +89,8 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         if cameraWord != String() {
             self.nameTextField.text = cameraWord
         }
+        
+        self.meaningTextField.text = ""
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -136,6 +138,10 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     @IBAction func tapOtherSpace(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
         
+    }
+    
+    @IBAction func tapAPIButton(_ sender: Any) {
+        self.callPapagoAPI()
     }
     
     private func configureLayoutStyle() {
@@ -243,5 +249,68 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         
         
         self.meaningTextField.addTarget(self, action: #selector(saveButtonState), for: .editingChanged)
+    }
+    
+    
+    
+}
+
+extension AddWordViewController {
+    
+    func callPapagoAPI() {
+        guard let wordText = self.nameTextField.text else { return }
+        let param = "source=en&target=ko&text=\(wordText)"
+        let paramData = param.data(using: .utf8)
+        let Naver_URL = URL(string: "https://openapi.naver.com/v1/papago/n2mt")
+        
+        let clientID = "FWrqCje_fP44uWfeKMLc"
+        let clientSecret = "WsPCkYkMRF"
+        
+        var request = URLRequest(url: Naver_URL!)
+        request.httpMethod = "POST"
+        request.addValue(clientID, forHTTPHeaderField: "X-Naver-Client-Id")
+        request.addValue(clientSecret, forHTTPHeaderField: "X-Naver-Client-Secret")
+        request.httpBody = paramData
+        request.setValue(String(paramData!.count), forHTTPHeaderField: "Content-Length")
+                
+        
+        let session = URLSession(configuration: .default)
+        
+        session.dataTask(with: request) { [weak self] data, response, error in
+            let successRange = (200..<300)
+            
+            guard let data = data, error == nil else { return }
+            
+            let decoder = JSONDecoder()
+            
+            if let response = response as? HTTPURLResponse, successRange.contains(response.statusCode) {
+                guard let wordInformation = try? decoder.decode(WordInformation.self, from: data) else { return }
+                
+                DispatchQueue.main.async {
+                    self?.meaningTextField.text = wordInformation.message.result.translatedWord.replacingOccurrences(of: "[^가-힣]", with: "", options: .regularExpression)
+                    self?.afterAPINextButtonState()
+                }
+            } else {
+                guard let errorMessage = try? decoder.decode(ErrorMessage.self, from: data) else { return }
+                
+                DispatchQueue.main.async {
+                    self?.showPapagoAPIAlert(errorMessage: errorMessage.errorMessage)
+                }
+            }
+        }.resume()
+    }
+    
+    private func showPapagoAPIAlert(errorMessage: String) {
+        let alert = UIAlertController(title: "에러", message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    private func afterAPINextButtonState() {
+        if nameTextField.text != "" && meaningTextField.text != "" {
+            checkSameWord()
+        } else {
+            configureSaveButtonState = false
+        }
     }
 }
