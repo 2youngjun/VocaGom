@@ -8,6 +8,7 @@
 import UIKit
 import Vision
 import Foundation
+import NaturalLanguage
 
 protocol SendWordNameDelegate: AnyObject {
     func sendWord(wordName: String)
@@ -220,6 +221,30 @@ class AddCameraViewController: UIViewController {
         }
     }
     
+    private func retrieveLemmas(from text: String) -> [String] {
+        let tagger = NLTagger(tagSchemes: [.lemma])
+        tagger.string = text
+        
+        var tags = [String]()
+        let options: NLTagger.Options = [.omitPunctuation, .omitWhitespace]
+        tagger.enumerateTags(in: text.startIndex..<text.endIndex, unit: .word, scheme: .lemma, options: options) { (tag, tokenRange) -> Bool in
+            if let tag = tag {
+                tags.append(tag.rawValue)
+            }
+            return true
+        }
+        return tags
+    }
+    
+    private func removedSameWord(wordArray: [String]) -> [String] {
+        var removedArray = [String]()
+        for word in wordArray {
+            if removedArray.contains(word) == false {
+                removedArray.append(word)
+            }
+        }
+        return removedArray
+    }
     
     private func recognizeText(image: UIImage) {
         guard let cgImage = image.cgImage else { return }
@@ -231,30 +256,49 @@ class AddCameraViewController: UIViewController {
                 return
             }
             
+//            let text = observations.compactMap({
+//                $0.topCandidates(1).first?.string.lowercased().replacingOccurrences(of: "[^a-zA-Z ]", with: "", options: .regularExpression)
+//            }).joined(separator: ", ")
+//
+//            var modifyingText = text.components(separatedBy: [",", " "])
+//
+//            while modifyingText.contains("") {
+//                if let index = modifyingText.firstIndex(of: "") {
+//                    modifyingText.remove(at: index)
+//                }
+//            }
+//
+//            for text in modifyingText {
+//                if text.count == 1 || text.count == 2 {
+//                    if let index = modifyingText.firstIndex(of: text) {
+//                        modifyingText.remove(at: index)
+//                    }
+//                }
+//            }
+            
             let text = observations.compactMap({
-                $0.topCandidates(1).first?.string.lowercased().replacingOccurrences(of: "[^a-zA-Z ]", with: "", options: .regularExpression)
-            }).joined(separator: ", ")
+                $0.topCandidates(1).first?.string.lowercased()
+            }).joined(separator: " ")
             
-            var modifyingText = text.components(separatedBy: [",", " "])
+            var lemmatizedWordArray = self?.retrieveLemmas(from: text) ?? [String]()
             
-            while modifyingText.contains("") {
-                if let index = modifyingText.firstIndex(of: "") {
-                    modifyingText.remove(at: index)
-                }
-            }
-            
-            for text in modifyingText {
-                if text.count == 1 || text.count == 2 {
-                    if let index = modifyingText.firstIndex(of: text) {
-                        modifyingText.remove(at: index)
+            for word in lemmatizedWordArray {
+                if word.count == 1 || word.count == 2 {
+                    if let index = lemmatizedWordArray.firstIndex(of: word) {
+                        lemmatizedWordArray.remove(at: index)
                     }
                 }
             }
             
+            self?.checkText = self?.removedSameWord(wordArray: lemmatizedWordArray) ?? [String]()
+            
+            
 //            for text in modifyingText {
 //                self?.textSet.updateValue(false, forKey: text)
 //            }
-            self?.checkText = modifyingText
+            
+            // 이전
+//            self?.checkText = modifyingText
             
 //            DispatchQueue.main.async {
 //                self?.textSet = modifyingText
@@ -358,10 +402,10 @@ extension AddCameraViewController: UICollectionViewDataSource{
         } else {
             cell.layer.cornerRadius = 15
             cell.wordLabel.text = self.checkText[indexPath.row]
-            cell.wordLabel.sizeToFit()
             cell.wordLabel.textColor = UIColor.NColor.blue
             cell.wordLabel.font = UIFont.NFont.wordButton
             cell.wordLabel.numberOfLines = 1
+            cell.wordLabel.sizeToFit()
             
             return cell
         }
@@ -371,11 +415,11 @@ extension AddCameraViewController: UICollectionViewDataSource{
     func showAlertNextButton() {
         let alertController = UIAlertController(
             title: "이미 추가된 단어에요.",
-            message: "취소를 눌러 다른 단어를 추가해주세요.",
+            message: "확인을 눌러 다른 단어를 추가해주세요.",
             preferredStyle: .alert)
         
         let cancelAlert = UIAlertAction(
-            title: "취소",
+            title: "확인",
             style: .cancel) { _ in
                 alertController.dismiss(animated: true, completion: nil)
             }

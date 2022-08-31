@@ -287,7 +287,7 @@ extension AddWordViewController {
                 guard let wordInformation = try? decoder.decode(WordInformation.self, from: data) else { return }
                 
                 DispatchQueue.main.async {
-                    self?.meaningTextField.text = wordInformation.message.result.translatedWord.replacingOccurrences(of: "[^가-힣]", with: "", options: .regularExpression)
+                    self?.meaningTextField.text = wordInformation.message.result.translatedWord.replacingOccurrences(of: "[^가-힣 ]", with: "", options: .regularExpression)
                     self?.afterAPINextButtonState()
                 }
             } else {
