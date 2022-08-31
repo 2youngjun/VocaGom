@@ -168,13 +168,14 @@ class AddCameraViewController: UIViewController {
         self.nextButton.backgroundColor = UIColor.NColor.weakBlue
         self.nextButton.isEnabled = false
         self.nextButton.titleLabel?.textColor = UIColor.NColor.blue
+        self.nextButton.layer.cornerRadius = 5
         
-        self.cancelButton.titleLabel?.font = UIFont.NFont.addWordButtonLabel
+        self.cancelButton.titleLabel?.font = UIFont.NFont.addWordSection
         self.cancelButton.titleLabel?.sizeToFit()
         
         self.titleLabel.font = UIFont.NFont.addWordNavigationTitle
         
-        self.cameraSectionTitle.font = UIFont.NFont.wordListWordMeaning
+        self.cameraSectionTitle.font = UIFont.NFont.addWordSection
         self.cameraSectionTitle.sizeToFit()
         
         self.cameraView.image = UIImage(systemName: "camera")
@@ -185,7 +186,7 @@ class AddCameraViewController: UIViewController {
         self.cameraButton.titleLabel?.font = UIFont.NFont.wordListWordMeaning
         self.cameraButton.layer.cornerRadius = self.cameraButton.frame.height / 2
         
-        self.searchedWordTitle.font = UIFont.NFont.wordListWordMeaning
+        self.searchedWordTitle.font = UIFont.NFont.addWordSection
         
         self.noWordsLabel.textColor = UIColor.NColor.orange
         self.noWordsLabel.font = UIFont.NFont.wordListWordMeaning
@@ -213,11 +214,11 @@ class AddCameraViewController: UIViewController {
         if button.isEnabled {
             button.setTitleColor(UIColor.NColor.white, for: .normal)
             button.backgroundColor = UIColor.NColor.blue
-            button.layer.cornerRadius = 15
+            button.layer.cornerRadius = 5
         } else {
             button.setTitleColor(UIColor.NColor.blue, for: .normal)
             button.backgroundColor = UIColor.NColor.weakBlue
-            button.layer.cornerRadius = 15
+            button.layer.cornerRadius = 5
         }
     }
     

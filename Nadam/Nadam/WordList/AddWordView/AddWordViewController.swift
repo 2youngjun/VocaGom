@@ -150,18 +150,19 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         saveButton.backgroundColor = UIColor.NColor.weakBlue
         saveButton.isEnabled = false
         saveButton.titleLabel?.textColor = UIColor.NColor.blue
+        saveButton.layer.cornerRadius = 5
         
-        cancelButton.titleLabel?.font = UIFont.NFont.addWordButtonLabel
+        cancelButton.titleLabel?.font = UIFont.NFont.addWordSection
         cancelButton.sizeToFit()
         
         titleLabel.font = UIFont.NFont.addWordNavigationTitle
         
-        wordName.font = UIFont.NFont.addWordButtonLabel
-        wordMeaning.font = UIFont.NFont.addWordButtonLabel
-        wordSynoym.font = UIFont.NFont.addWordButtonLabel
-        wordExample.font = UIFont.NFont.addWordButtonLabel
+        wordName.font = UIFont.NFont.addWordSection
+        wordMeaning.font = UIFont.NFont.addWordSection
+        wordSynoym.font = UIFont.NFont.addWordSection
+        wordExample.font = UIFont.NFont.addWordSection
         
-        duplicateSentense.font = UIFont.NFont.addWordButtonLabel
+        duplicateSentense.font = UIFont.NFont.addWordSection
         duplicateSentense.textColor = UIColor.NColor.orange
         duplicateSentense.layer.opacity = 0
         
