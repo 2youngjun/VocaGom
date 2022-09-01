@@ -6,10 +6,6 @@
 //
 
 import UIKit
-//
-protocol TapWordButtonDelegate {
-    func tapWordButton(isTapped: Bool)
-}
 
 class WordButtonCell: UICollectionViewCell {
     
@@ -18,7 +14,7 @@ class WordButtonCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        self.contentView.layer.cornerRadius = 15
+        self.contentView.layer.cornerRadius = 20
         self.contentView.backgroundColor = UIColor.NColor.weakBlue
         self.contentView.layer.borderWidth = 0
 //        self.contentView.layer.borderColor = UIColor.NColor.blue.cgColor

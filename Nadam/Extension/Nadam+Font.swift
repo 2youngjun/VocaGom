@@ -40,10 +40,12 @@ extension UIFont {
     // 필요한 폰트 종류는 여기에 추가하기
     enum NFont {
         static var addWordNavigationTitle: UIFont{ UIFont.NadamFont(forTextStyle: .headline) }
-        static var addWordButtonLabel: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }
+        static var addWordSection: UIFont{ UIFont.NadamFont(forTextStyle: .headline) }
         static var wordListTitleLabel: UIFont{ UIFont.NadamFont(forTextStyle: .title1) }
         static var wordListWordName: UIFont{ UIFont.NadamFont(forTextStyle: .body) }
         static var wordListWordMeaning: UIFont{ UIFont.NadamFont(forTextStyle: .callout) }
         static var wordButton: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }
+        static var textFieldFont: UIFont{ UIFont.NadamFont(forTextStyle: .caption1) }
+        static var sameWordButton: UIFont{ UIFont.NadamFont(forTextStyle: .caption2) }
     }
 }
