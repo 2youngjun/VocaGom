@@ -94,6 +94,7 @@ class AddCameraViewController: UIViewController {
         
         self.noWordsLabel.layer.opacity = self.checkText.count == 0 ? 1.0 : 0
         self.nextButton.isEnabled = false
+        self.configureNextButton(nextButton)
         
         self.collectionView.reloadData()
         

@@ -91,6 +91,8 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         }
         
         self.meaningTextField.text = ""
+        self.saveButton.isEnabled = false
+        self.configureSaveButton(saveButton)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
