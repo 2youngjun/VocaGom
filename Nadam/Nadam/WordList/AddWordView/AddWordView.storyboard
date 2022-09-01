@@ -17,15 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDb-2l-jbO">
-                                <rect key="frame" x="20" y="66" width="12.5" height="12.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDb-2l-jbO">
+                                <rect key="frame" x="20" y="64" width="12.5" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="acI-An-dQK"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="tintColor" name="NBlack"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" backgroundImage="chevron.left" catalog="system"/>
+                                <state key="normal" image="chevron.backward" catalog="system"/>
                                 <connections>
                                     <action selector="tapCancelButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6DH-cf-lp8"/>
                                 </connections>
@@ -215,7 +214,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <namedColor name="NBlack">
             <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -30,11 +30,9 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         if button.isEnabled {
             button.setTitleColor(UIColor.NColor.white, for: .normal)
             button.backgroundColor = UIColor.NColor.blue
-            button.layer.cornerRadius = 15
         } else {
             button.setTitleColor(UIColor.NColor.blue, for: .normal)
             button.backgroundColor = UIColor.NColor.weakBlue
-            button.layer.cornerRadius = 15
         }
     }
     
@@ -162,7 +160,7 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         wordSynoym.font = UIFont.NFont.addWordSection
         wordExample.font = UIFont.NFont.addWordSection
         
-        duplicateSentense.font = UIFont.NFont.addWordSection
+        duplicateSentense.font = UIFont.NFont.sameWordButton
         duplicateSentense.textColor = UIColor.NColor.orange
         duplicateSentense.layer.opacity = 0
         
@@ -190,6 +188,11 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         meaningTextField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
         synoymTextField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
         exampleTextField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
+        
+        nameTextField.font = UIFont.NFont.textFieldFont
+        meaningTextField.font = UIFont.NFont.textFieldFont
+        synoymTextField.font = UIFont.NFont.textFieldFont
+        exampleTextField.font = UIFont.NFont.textFieldFont
     }
     
     private func attributeNameMeaningTitle() {
