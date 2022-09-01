@@ -47,5 +47,6 @@ extension UIFont {
         static var wordButton: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }
         static var textFieldFont: UIFont{ UIFont.NadamFont(forTextStyle: .caption1) }
         static var sameWordButton: UIFont{ UIFont.NadamFont(forTextStyle: .caption2) }
+        static var automaticMeaningButton: UIFont{ UIFont.NadamFont(forTextStyle: .caption2) }
     }
 }

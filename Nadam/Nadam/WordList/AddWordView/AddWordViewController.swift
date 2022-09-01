@@ -66,6 +66,8 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     @IBOutlet weak var duplicateSentense: UILabel!
     @IBOutlet weak var duplicateMargin: NSLayoutConstraint!
     
+    @IBOutlet weak var automaticMeaningButton: UIButton!
+    
     // MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,6 +166,11 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         duplicateSentense.textColor = UIColor.NColor.orange
         duplicateSentense.layer.opacity = 0
         
+        automaticMeaningButton.titleLabel?.font = UIFont.NFont.automaticMeaningButton
+        automaticMeaningButton.titleLabel?.sizeToFit()
+        automaticMeaningButton.titleLabel?.textColor = UIColor.NColor.white
+        automaticMeaningButton.backgroundColor = UIColor.NColor.orange
+        automaticMeaningButton.layer.cornerRadius = 5
 
         attributeNameMeaningTitle()
     }

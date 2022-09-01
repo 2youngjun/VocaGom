@@ -16,5 +16,6 @@ extension UIColor {
         static var white: UIColor { UIColor(named: "NWhite")! }
         static var black: UIColor { UIColor(named: "NBlack")! }
         static var weakBlue: UIColor { UIColor(named: "NWeakBlue")! }
+        static var weakOrange: UIColor { UIColor(named: "NWeakOrange")! }
     }
 }
