@@ -162,7 +162,7 @@ class AddCameraViewController: UIViewController {
     
     // MARK: Layout Configure Function
     private func configureLayout() {
-        self.view.backgroundColor = UIColor.NColor.background
+        self.view.backgroundColor = UIColor.NColor.white
         
 //        self.nextButton.titleLabel?.sizeToFit()
         self.nextButton.titleLabel?.font = UIFont.NFont.wordListWordMeaning
@@ -202,7 +202,7 @@ class AddCameraViewController: UIViewController {
         flowLayout.estimatedItemSize =  UICollectionViewFlowLayout.automaticSize
         self.collectionView.collectionViewLayout = flowLayout
         
-        self.collectionView.backgroundColor = UIColor.NColor.background
+        self.collectionView.backgroundColor = UIColor.NColor.white
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
