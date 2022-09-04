@@ -7,38 +7,51 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UISearchBarDelegate {
+class SearchViewController: UIViewController {
     
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var noSearchedLabel: UILabel!
     
     var wordList = [Word]()
+    var filteredWord = [Word]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.NColor.background
-        wordList = CoreDataManager.shared.fetchWord()
-//        self.configureCollectionView()
-        configureSearchBar()
+        self.view.backgroundColor = UIColor.NColor.background
+        self.wordList = CoreDataManager.shared.fetchWord()
+        self.configureCollectionView()
+        self.configureSearchBar()
+        self.configureSearchedLabel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.wordList = CoreDataManager.shared.fetchWord()
+    }
+    
+    private func configureSearchedLabel() {
+        self.noSearchedLabel.isHidden = true
+        self.noSearchedLabel.textColor = UIColor.NColor.black
+        self.noSearchedLabel.font = UIFont.NFont.noSearchedTextFont
     }
     
     private func configureCollectionView() {
-        collectionView.dataSource = self
-        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        collectionView.backgroundColor = UIColor.NColor.background
-        collectionView.contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 20, right: 20)
-        
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        self.collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        self.collectionView.backgroundColor = UIColor.NColor.background
+        self.collectionView.contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
     }
     
     private func configureSearchBar() {
-        searchBar.delegate = self
-        searchBar.placeholder = "찾고 싶은 단어를 입력해주세요."
-        searchBar.setImage(UIImage(), for: .search, state: .normal)
-        searchBar.searchBarStyle = .prominent
-        searchBar.backgroundImage = UIImage()
-        searchBar.barTintColor = UIColor.NColor.white
+        self.searchBar.delegate = self
+        self.searchBar.placeholder = "찾고 싶은 단어를 입력해주세요."
+        self.searchBar.setImage(UIImage(), for: .search, state: .normal)
+        self.searchBar.searchBarStyle = .prominent
+        self.searchBar.backgroundImage = UIImage()
+        self.searchBar.barTintColor = UIColor.NColor.white
         
         if let textField = searchBar.value(forKey: "searchField") as? UITextField {
             textField.backgroundColor = UIColor.NColor.white
@@ -50,19 +63,46 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     }
     
     @IBAction func tapBackButton(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func tapOtherSpace(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
 }
 
-extension SearchViewController: UICollectionViewDataSource {
+extension SearchViewController: UICollectionViewDataSource, UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let text = searchBar.text?.lowercased() else { return }
+        if text == "" {
+            self.noSearchedLabel.isHidden = false
+            self.filteredWord = self.wordList.filter({ $0.name?.localizedStandardContains(text) ?? false })
+        } else {
+            self.noSearchedLabel.isHidden = true
+            self.filteredWord = self.wordList.filter({ $0.name?.localizedStandardContains(text) ?? false })
+            if filteredWord.count == 0 {
+                self.noSearchedLabel.isHidden = false
+            }
+        }
+        
+        self.collectionView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        self.isSearching = true
+//        self.collectionView.reloadData()
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return self.filteredWord.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WordCell", for: indexPath) as? WordCell else { return UICollectionViewCell() }
-        let word = wordList[indexPath.row]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchedWordCell", for: indexPath) as? SearchedWordCell else { return UICollectionViewCell() }
+        
+        let word = filteredWord[indexPath.row]
         cell.wordName.text = word.name
         cell.wordMeaning.text = word.meaning
         cell.layer.cornerRadius = 10.0
@@ -71,6 +111,7 @@ extension SearchViewController: UICollectionViewDataSource {
         cell.wordName.textColor = UIColor.NColor.blue
         cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
         cell.wordMeaning.textColor = UIColor.NColor.black
+        
         return cell
     }
 
