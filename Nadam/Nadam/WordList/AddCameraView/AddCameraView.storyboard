@@ -177,7 +177,7 @@
         <image name="camera" catalog="system" width="128" height="94"/>
         <image name="camera.viewfinder" catalog="system" width="128" height="115"/>
         <namedColor name="NBlue">
-            <color red="0.37999999523162842" green="0.47499999403953552" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.38039215686274508" green="0.47450980392156861" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NOrange">
             <color red="1" green="0.53725490196078429" blue="0.35294117647058826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

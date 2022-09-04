@@ -40,6 +40,9 @@
                                         <color key="tintColor" name="NOrange"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="magnifyingglass.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="tapSearchButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7XW-kE-MED"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axU-XL-msQ">
                                         <rect key="frame" x="40" y="0.5" width="30" height="29"/>
@@ -174,7 +177,7 @@
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="NBlue">
-            <color red="0.37999999523162842" green="0.47499999403953552" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.38039215686274508" green="0.47450980392156861" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NOrange">
             <color red="1" green="0.53725490196078429" blue="0.35294117647058826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

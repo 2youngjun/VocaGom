@@ -84,6 +84,12 @@ class WordListViewController: UIViewController {
         self.addWordButton.showsMenuAsPrimaryAction = true
     }
     
+    @IBAction func tapSearchButton(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "SearchView", bundle: nil)
+        guard let searchViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else { return }
+        self.navigationController?.pushViewController(searchViewController, animated: true)
+    }
+    
     @IBAction func tapAddWordButton(_ sender: UIButton) {
         
     }

@@ -204,6 +204,10 @@
                         <outlet property="wordMeaning" destination="JyW-sD-VbX" id="Ngy-Qw-SQK"/>
                         <outlet property="wordName" destination="eJw-Mz-sdb" id="l5f-12-sqt"/>
                         <outlet property="wordSynoym" destination="mml-EF-8Av" id="bJi-7k-7pq"/>
+                        <outletCollection property="textFieldCollection" destination="8lF-Fj-StY" collectionClass="NSMutableArray" id="060-Ca-im7"/>
+                        <outletCollection property="textFieldCollection" destination="N5t-gQ-f8b" collectionClass="NSMutableArray" id="OfG-Bc-1ES"/>
+                        <outletCollection property="textFieldCollection" destination="X3G-H1-NvG" collectionClass="NSMutableArray" id="dJt-pU-It1"/>
+                        <outletCollection property="textFieldCollection" destination="A8M-1o-aWi" collectionClass="NSMutableArray" id="ICu-GW-JdX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -222,7 +226,7 @@
             <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NBlue">
-            <color red="0.37999999523162842" green="0.47499999403953552" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.38039215686274508" green="0.47450980392156861" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -68,6 +68,8 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     
     @IBOutlet weak var automaticMeaningButton: UIButton!
     
+    @IBOutlet var textFieldCollection: [UITextField]!
+    
     // MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,12 +130,6 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         CoreDataManager.shared.addWord(name: name, meaning: meaning, synoym: synoym, example: example, createTime: Date(), cntWrong: 0)
         self.delegate?.didSelectSaveWord()
 
-//        self.navigationController?.popViewController(animated: true)
-        
-//        let storyboard: UIStoryboard = UIStoryboard(name: "WordListView", bundle: nil)
-//        guard let wordListViewController = storyboard.instantiateViewController(withIdentifier: "WordListViewController") as? WordListViewController else { return }
-//        self.navigationController?.popToViewController(wordListViewController, animated: true)
-        
         self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -178,30 +174,13 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     }
     
     private func configureTextFieldStyle() {
-        nameTextField.backgroundColor = UIColor.NColor.weakBlue
-        meaningTextField.backgroundColor = UIColor.NColor.weakBlue
-        synoymTextField.backgroundColor = UIColor.NColor.weakBlue
-        exampleTextField.backgroundColor = UIColor.NColor.weakBlue
-        
-        nameTextField.layer.borderWidth = 0.5
-        meaningTextField.layer.borderWidth = 0.5
-        synoymTextField.layer.borderWidth = 0.5
-        exampleTextField.layer.borderWidth = 0.5
-        
-        nameTextField.layer.cornerRadius = 5.0
-        meaningTextField.layer.cornerRadius = 5.0
-        synoymTextField.layer.cornerRadius = 5.0
-        exampleTextField.layer.cornerRadius = 5.0
-        
-        nameTextField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
-        meaningTextField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
-        synoymTextField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
-        exampleTextField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
-        
-        nameTextField.font = UIFont.NFont.textFieldFont
-        meaningTextField.font = UIFont.NFont.textFieldFont
-        synoymTextField.font = UIFont.NFont.textFieldFont
-        exampleTextField.font = UIFont.NFont.textFieldFont
+        for textField in textFieldCollection {
+            textField.backgroundColor = UIColor.NColor.weakBlue
+            textField.layer.borderWidth = 0.5
+            textField.layer.cornerRadius = 5.0
+            textField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
+            textField.font = UIFont.NFont.textFieldFont
+        }
     }
     
     private func attributeNameMeaningTitle() {
