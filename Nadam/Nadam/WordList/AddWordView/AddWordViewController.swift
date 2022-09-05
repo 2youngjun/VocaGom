@@ -82,7 +82,6 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         configureTextFieldStyle()
         
         self.saveButton.isEnabled = false
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -162,19 +161,20 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         
         duplicateSentense.font = UIFont.NFont.sameWordButton
         duplicateSentense.textColor = UIColor.NColor.orange
-        duplicateSentense.layer.opacity = 0
+        duplicateSentense.isHidden = true
         
         automaticMeaningButton.titleLabel?.font = UIFont.NFont.automaticMeaningButton
         automaticMeaningButton.titleLabel?.sizeToFit()
         automaticMeaningButton.titleLabel?.textColor = UIColor.NColor.white
         automaticMeaningButton.backgroundColor = UIColor.NColor.orange
         automaticMeaningButton.layer.cornerRadius = 5
-
+        
         attributeNameMeaningTitle()
     }
     
     private func configureTextFieldStyle() {
         for textField in textFieldCollection {
+            textField.delegate = self
             textField.backgroundColor = UIColor.NColor.weakBlue
             textField.layer.borderWidth = 0.5
             textField.layer.cornerRadius = 5.0
@@ -225,12 +225,12 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     }
     
     private func ifIsSameWord() {
-        self.duplicateSentense.layer.opacity = 1.0
+        self.duplicateSentense.isHidden = true
 //        self.nameTextField.layer.borderColor = UIColor.NColor.orange.cgColor
     }
     
     private func ifIsNotSameWord() {
-        self.duplicateSentense.layer.opacity = 0
+        self.duplicateSentense.isHidden = true
 //        self.nameTextField.layer.borderColor = UIColor.NColor.blue.cgColor
     }
     
@@ -242,9 +242,21 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         
         self.meaningTextField.addTarget(self, action: #selector(saveButtonState), for: .editingChanged)
     }
-    
-    
-    
+}
+
+extension AddWordViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.nameTextField {
+            meaningTextField.becomeFirstResponder()
+        } else if textField == self.meaningTextField {
+            synoymTextField.becomeFirstResponder()
+        } else if textField == self.synoymTextField {
+            exampleTextField.becomeFirstResponder()
+        } else {
+            exampleTextField.resignFirstResponder()
+        }
+        return true
+    }
 }
 
 extension AddWordViewController {

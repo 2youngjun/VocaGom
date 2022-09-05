@@ -29,10 +29,11 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.wordList = CoreDataManager.shared.fetchWord()
+        self.noSearchedLabel.isHidden = false
     }
     
     private func configureSearchedLabel() {
-        self.noSearchedLabel.isHidden = true
+        self.noSearchedLabel.isHidden = false
         self.noSearchedLabel.textColor = UIColor.NColor.black
         self.noSearchedLabel.font = UIFont.NFont.noSearchedTextFont
     }
@@ -88,11 +89,6 @@ extension SearchViewController: UICollectionViewDataSource, UISearchBarDelegate 
         }
         
         self.collectionView.reloadData()
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        self.isSearching = true
-//        self.collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
