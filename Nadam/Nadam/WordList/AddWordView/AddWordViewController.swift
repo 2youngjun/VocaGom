@@ -66,6 +66,10 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     @IBOutlet weak var duplicateSentense: UILabel!
     @IBOutlet weak var duplicateMargin: NSLayoutConstraint!
     
+    @IBOutlet weak var automaticMeaningButton: UIButton!
+    
+    @IBOutlet var textFieldCollection: [UITextField]!
+    
     // MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +82,6 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         configureTextFieldStyle()
         
         self.saveButton.isEnabled = false
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,6 +92,8 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         }
         
         self.meaningTextField.text = ""
+        self.saveButton.isEnabled = false
+        self.configureSaveButton(saveButton)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -124,12 +129,6 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         CoreDataManager.shared.addWord(name: name, meaning: meaning, synoym: synoym, example: example, createTime: Date(), cntWrong: 0)
         self.delegate?.didSelectSaveWord()
 
-//        self.navigationController?.popViewController(animated: true)
-        
-//        let storyboard: UIStoryboard = UIStoryboard(name: "WordListView", bundle: nil)
-//        guard let wordListViewController = storyboard.instantiateViewController(withIdentifier: "WordListViewController") as? WordListViewController else { return }
-//        self.navigationController?.popToViewController(wordListViewController, animated: true)
-        
         self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -162,37 +161,26 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         
         duplicateSentense.font = UIFont.NFont.sameWordButton
         duplicateSentense.textColor = UIColor.NColor.orange
-        duplicateSentense.layer.opacity = 0
+        duplicateSentense.isHidden = true
         
-
+        automaticMeaningButton.titleLabel?.font = UIFont.NFont.automaticMeaningButton
+        automaticMeaningButton.titleLabel?.sizeToFit()
+        automaticMeaningButton.titleLabel?.textColor = UIColor.NColor.white
+        automaticMeaningButton.backgroundColor = UIColor.NColor.orange
+        automaticMeaningButton.layer.cornerRadius = 5
+        
         attributeNameMeaningTitle()
     }
     
     private func configureTextFieldStyle() {
-        nameTextField.backgroundColor = UIColor.NColor.weakBlue
-        meaningTextField.backgroundColor = UIColor.NColor.weakBlue
-        synoymTextField.backgroundColor = UIColor.NColor.weakBlue
-        exampleTextField.backgroundColor = UIColor.NColor.weakBlue
-        
-        nameTextField.layer.borderWidth = 0.5
-        meaningTextField.layer.borderWidth = 0.5
-        synoymTextField.layer.borderWidth = 0.5
-        exampleTextField.layer.borderWidth = 0.5
-        
-        nameTextField.layer.cornerRadius = 5.0
-        meaningTextField.layer.cornerRadius = 5.0
-        synoymTextField.layer.cornerRadius = 5.0
-        exampleTextField.layer.cornerRadius = 5.0
-        
-        nameTextField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
-        meaningTextField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
-        synoymTextField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
-        exampleTextField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
-        
-        nameTextField.font = UIFont.NFont.textFieldFont
-        meaningTextField.font = UIFont.NFont.textFieldFont
-        synoymTextField.font = UIFont.NFont.textFieldFont
-        exampleTextField.font = UIFont.NFont.textFieldFont
+        for textField in textFieldCollection {
+            textField.delegate = self
+            textField.backgroundColor = UIColor.NColor.weakBlue
+            textField.layer.borderWidth = 0.5
+            textField.layer.cornerRadius = 5.0
+            textField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
+            textField.font = UIFont.NFont.textFieldFont
+        }
     }
     
     private func attributeNameMeaningTitle() {
@@ -237,12 +225,12 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     }
     
     private func ifIsSameWord() {
-        self.duplicateSentense.layer.opacity = 1.0
+        self.duplicateSentense.isHidden = true
 //        self.nameTextField.layer.borderColor = UIColor.NColor.orange.cgColor
     }
     
     private func ifIsNotSameWord() {
-        self.duplicateSentense.layer.opacity = 0
+        self.duplicateSentense.isHidden = true
 //        self.nameTextField.layer.borderColor = UIColor.NColor.blue.cgColor
     }
     
@@ -254,9 +242,21 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         
         self.meaningTextField.addTarget(self, action: #selector(saveButtonState), for: .editingChanged)
     }
-    
-    
-    
+}
+
+extension AddWordViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.nameTextField {
+            meaningTextField.becomeFirstResponder()
+        } else if textField == self.meaningTextField {
+            synoymTextField.becomeFirstResponder()
+        } else if textField == self.synoymTextField {
+            exampleTextField.becomeFirstResponder()
+        } else {
+            exampleTextField.resignFirstResponder()
+        }
+        return true
+    }
 }
 
 extension AddWordViewController {

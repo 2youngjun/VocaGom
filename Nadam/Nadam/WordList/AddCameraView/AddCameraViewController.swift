@@ -94,6 +94,7 @@ class AddCameraViewController: UIViewController {
         
         self.noWordsLabel.layer.opacity = self.checkText.count == 0 ? 1.0 : 0
         self.nextButton.isEnabled = false
+        self.configureNextButton(nextButton)
         
         self.collectionView.reloadData()
         
@@ -113,7 +114,7 @@ class AddCameraViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
 //        print(textSet)
         print(wordArray)
-        NotificationCenter.default.removeObserver(self, name: Notification.Name("newPhoto"), object: nil)
+//        NotificationCenter.default.removeObserver(self, name: Notification.Name("newPhoto"), object: nil)
     }
     
     deinit {
@@ -161,7 +162,7 @@ class AddCameraViewController: UIViewController {
     
     // MARK: Layout Configure Function
     private func configureLayout() {
-        self.view.backgroundColor = UIColor.NColor.background
+        self.view.backgroundColor = UIColor.NColor.white
         
 //        self.nextButton.titleLabel?.sizeToFit()
         self.nextButton.titleLabel?.font = UIFont.NFont.wordListWordMeaning
@@ -201,7 +202,7 @@ class AddCameraViewController: UIViewController {
         flowLayout.estimatedItemSize =  UICollectionViewFlowLayout.automaticSize
         self.collectionView.collectionViewLayout = flowLayout
         
-        self.collectionView.backgroundColor = UIColor.NColor.background
+        self.collectionView.backgroundColor = UIColor.NColor.white
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self

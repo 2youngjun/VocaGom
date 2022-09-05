@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="SearchViewController" customModule="Nadam" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l7C-f9-a2X">
+                                <rect key="frame" x="0.0" y="115" width="414" height="747"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hEG-zR-ugi">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchedWordCell" id="Phe-r5-0H0" customClass="SearchedWordCell" customModule="Nadam" customModuleProvider="target">
+                                        <rect key="frame" x="32" y="0.0" width="350" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3Oa-Kz-MOo">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="word" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4GT-Id-N0c">
+                                                    <rect key="frame" x="15" y="10" width="244.5" height="60"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="meaning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oY-7l-GTX">
+                                                    <rect key="frame" x="269.5" y="10" width="65.5" height="60"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2oY-7l-GTX" firstAttribute="top" secondItem="3Oa-Kz-MOo" secondAttribute="top" constant="10" id="Asu-XG-2Py"/>
+                                                <constraint firstAttribute="bottom" secondItem="2oY-7l-GTX" secondAttribute="bottom" constant="10" id="C4W-zv-ga2"/>
+                                                <constraint firstItem="2oY-7l-GTX" firstAttribute="leading" secondItem="4GT-Id-N0c" secondAttribute="trailing" constant="10" id="bmx-zK-afz"/>
+                                                <constraint firstAttribute="bottom" secondItem="4GT-Id-N0c" secondAttribute="bottom" constant="10" id="fiz-kU-z0Q"/>
+                                                <constraint firstAttribute="trailing" secondItem="2oY-7l-GTX" secondAttribute="trailing" constant="15" id="kHR-71-zB9"/>
+                                                <constraint firstItem="4GT-Id-N0c" firstAttribute="leading" secondItem="3Oa-Kz-MOo" secondAttribute="leading" constant="15" id="lD2-Pg-wKG"/>
+                                                <constraint firstItem="4GT-Id-N0c" firstAttribute="top" secondItem="3Oa-Kz-MOo" secondAttribute="top" constant="10" id="lxp-of-pDt"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="350" height="80"/>
+                                        <connections>
+                                            <outlet property="wordMeaning" destination="2oY-7l-GTX" id="mBU-yS-on8"/>
+                                            <outlet property="wordName" destination="4GT-Id-N0c" id="Qvb-KE-F8u"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OZq-8i-3Cn">
+                                <rect key="frame" x="20" y="64" width="382" height="51"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZM-jH-LWG">
+                                        <rect key="frame" x="0.0" y="0.0" width="12.5" height="51"/>
+                                        <color key="tintColor" name="NBlack"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="chevron.backward" catalog="system"/>
+                                        <connections>
+                                            <action selector="tapBackButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ycG-Zq-xqG"/>
+                                        </connections>
+                                    </button>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6T1-7Q-xJU">
+                                        <rect key="frame" x="32.5" y="0.0" width="349.5" height="51"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="단어장에서 단어를 찾을 수가 없어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHF-tG-NfR">
+                                <rect key="frame" x="85.5" y="438" width="243" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="OZq-8i-3Cn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="0vb-cM-29b"/>
+                            <constraint firstItem="OZq-8i-3Cn" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="2h2-ty-nqq"/>
+                            <constraint firstItem="l7C-f9-a2X" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="Ez5-bA-pY6"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="l7C-f9-a2X" secondAttribute="bottom" id="Jfm-ep-ZxR"/>
+                            <constraint firstItem="vHF-tG-NfR" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="WKr-Go-nBg"/>
+                            <constraint firstItem="vHF-tG-NfR" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Z7o-7R-SeT"/>
+                            <constraint firstItem="l7C-f9-a2X" firstAttribute="top" secondItem="OZq-8i-3Cn" secondAttribute="bottom" id="ap2-kg-x6X"/>
+                            <constraint firstItem="l7C-f9-a2X" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="kZs-7q-TVh"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="OZq-8i-3Cn" secondAttribute="trailing" constant="12" id="yrD-j1-w9Z"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Kqy-97-Hyz" appends="YES" id="zlR-gi-bjP"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="l7C-f9-a2X" id="TZw-tw-zfH"/>
+                        <outlet property="noSearchedLabel" destination="vHF-tG-NfR" id="GeD-8o-Xfz"/>
+                        <outlet property="searchBar" destination="6T1-7Q-xJU" id="VFY-xs-X3g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Kqy-97-Hyz">
+                    <connections>
+                        <action selector="tapOtherSpace:" destination="Y6W-OH-hqX" id="Sm7-dW-n0W"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="71.014492753623188" y="89.732142857142847"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <namedColor name="NBlack">
+            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
