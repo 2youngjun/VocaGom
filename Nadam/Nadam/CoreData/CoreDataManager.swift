@@ -36,7 +36,7 @@ class CoreDataManager {
     }
     
     // 단어 추가/생성/삭제 함수
-    func addWord(name: String, meaning: String, synoym: String, example: String, createTime: Date, cntWrong: Int) {
+    func addWord(name: String, meaning: String, synoym: String, example: String, createTime: Date, cntWrong: Int, isTapped: Bool) {
         let word = Word(context: persistentContainer.viewContext)
         word.id = UUID()
         word.name = name
@@ -45,6 +45,7 @@ class CoreDataManager {
         word.example = example
         word.createTime = Date()
         word.cntWrong = 0
+        word.isTapped = false
         
         saveContext()
     }

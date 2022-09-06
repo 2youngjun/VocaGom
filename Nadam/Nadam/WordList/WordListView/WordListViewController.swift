@@ -59,6 +59,12 @@ class WordListViewController: UIViewController {
         self.collectionView.reloadData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        for word in wordList {
+            word.isTapped = false
+        }
+    }
+    
     // MARK: Function
     private func configureAddWordButton() {
         self.addWordButton.showsMenuAsPrimaryAction = true
@@ -109,6 +115,8 @@ class WordListViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        
+        self.collectionView.register(UINib(nibName: "TapWordCell", bundle: nil), forCellWithReuseIdentifier: "TapWordCell")
     }
     
     private func fetchWordDateDecesending() {
@@ -143,6 +151,38 @@ class WordListViewController: UIViewController {
             self.present(alertController, animated: true)
         }
     }
+    
+    @objc func showAlertDeleteWord() {
+        var tapWord = String()
+        for word in wordList {
+            if word.isTapped == true {
+                tapWord = word.name ?? ""
+            }
+        }
+        
+        let alertController = UIAlertController(
+            title: "단어 삭제",
+            message: "「\(tapWord)」 를 삭제하시겠습니까?",
+            preferredStyle: .alert)
+        
+        let cancelAlert = UIAlertAction(
+            title: "취소",
+            style: .default) { _ in
+                alertController.dismiss(animated: true, completion: nil)
+            }
+        
+        let confirmAlert = UIAlertAction(
+            title: "삭제",
+            style: .destructive) { _ in
+                self.tapDeleteButton()
+            }
+        
+        [cancelAlert, confirmAlert].forEach(alertController.addAction(_:))
+        
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true)
+        }
+    }
 }
 
 extension WordListViewController: UICollectionViewDataSource {
@@ -151,23 +191,65 @@ extension WordListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WordCell", for: indexPath) as? WordCell else { return UICollectionViewCell() }
-        let word = wordList[indexPath.row]
-        cell.wordName.text = word.name
-        cell.wordMeaning.text = word.meaning
-        cell.layer.cornerRadius = 10.0
-        cell.backgroundColor = UIColor.NColor.white
-        cell.wordName.font = UIFont.NFont.wordListWordName
-        cell.wordName.textColor = UIColor.NColor.blue
-        cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
-        cell.wordMeaning.textColor = UIColor.NColor.black
-        return cell
+        
+        if wordList[indexPath.row].isTapped {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TapWordCell", for: indexPath) as? TapWordCell else { return UICollectionViewCell() }
+            let word = wordList[indexPath.row]
+            cell.wordName.text = word.name
+            cell.wordMeaning.text = word.meaning
+            cell.layer.cornerRadius = 10.0
+            cell.backgroundColor = UIColor.NColor.white
+            cell.wordName.font = UIFont.NFont.wordListWordName
+            cell.wordName.textColor = UIColor.NColor.blue
+            cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
+            cell.wordMeaning.textColor = UIColor.NColor.black
+            cell.deleteButton.tintColor = UIColor.NColor.orange
+            cell.deleteButton.addTarget(self, action: #selector(showAlertDeleteWord), for: .touchUpInside)
+            return cell
+            
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WordCell", for: indexPath) as? WordCell else { return UICollectionViewCell() }
+            let word = wordList[indexPath.row]
+            cell.wordName.text = word.name
+            cell.wordMeaning.text = word.meaning
+            cell.layer.cornerRadius = 10.0
+            cell.backgroundColor = UIColor.NColor.white
+            cell.wordName.font = UIFont.NFont.wordListWordName
+            cell.wordName.textColor = UIColor.NColor.blue
+            cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
+            cell.wordMeaning.textColor = UIColor.NColor.black
+            return cell
+        }
+        
+    }
+    
+    private func tapDeleteButton() {
+        for word in wordList {
+            if word.isTapped == true {
+                CoreDataManager.shared.deleteWord(word: word)
+            }
+        }
+        self.fetchWordDateDecesending()
+        self.collectionView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        for word in wordList {
+            word.isTapped = false
+        }
+        wordList[indexPath.row].isTapped = !wordList[indexPath.row].isTapped
+        print(wordList[indexPath.row].isTapped)
+        self.collectionView.reloadData()
     }
 }
 
 extension WordListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width - 40, height: 80)
+        if wordList[indexPath.row].isTapped {
+            return CGSize(width: UIScreen.main.bounds.width - 40, height: 160)
+        } else {
+            return CGSize(width: UIScreen.main.bounds.width - 40, height: 80)
+        }
     }
 }
 

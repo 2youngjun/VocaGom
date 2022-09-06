@@ -21,6 +21,8 @@
 		8B21436528C2D20300C073CE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21436428C2D20300C073CE /* SearchViewController.swift */; };
 		8B5026CF28BF8CE5009271AA /* WordInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5026CE28BF8CE5009271AA /* WordInformation.swift */; };
 		8B5026D128BF90C2009271AA /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5026D028BF90C2009271AA /* ErrorMessage.swift */; };
+		8B6A522B28C626A9005CA74B /* TapWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A522928C626A9005CA74B /* TapWordCell.swift */; };
+		8B6A522C28C626A9005CA74B /* TapWordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A522A28C626A9005CA74B /* TapWordCell.xib */; };
 		8B6DE76128B0B50300E32928 /* GameListView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6DE76028B0B50300E32928 /* GameListView.storyboard */; };
 		8B6DE76328B0B51600E32928 /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6DE76228B0B51600E32928 /* GameListViewController.swift */; };
 		8B6DE76728B0C52500E32928 /* CustomTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6DE76628B0C52500E32928 /* CustomTabBarVC.swift */; };
@@ -58,6 +60,8 @@
 		8B21436428C2D20300C073CE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8B5026CE28BF8CE5009271AA /* WordInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordInformation.swift; sourceTree = "<group>"; };
 		8B5026D028BF90C2009271AA /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		8B6A522928C626A9005CA74B /* TapWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapWordCell.swift; sourceTree = "<group>"; };
+		8B6A522A28C626A9005CA74B /* TapWordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapWordCell.xib; sourceTree = "<group>"; };
 		8B6DE76028B0B50300E32928 /* GameListView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameListView.storyboard; sourceTree = "<group>"; };
 		8B6DE76228B0B51600E32928 /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 		8B6DE76628B0C52500E32928 /* CustomTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarVC.swift; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 				8BF3AF24289ACA8D00F049CD /* WordListView.storyboard */,
 				8BF3AF26289ACAA700F049CD /* WordListViewController.swift */,
 				8B1DBDB528A67988007580D7 /* WordCell.swift */,
+				8B6A522928C626A9005CA74B /* TapWordCell.swift */,
+				8B6A522A28C626A9005CA74B /* TapWordCell.xib */,
 			);
 			path = WordListView;
 			sourceTree = "<group>";
@@ -305,6 +311,7 @@
 				8BF3AF43289C32BE00F049CD /* GmarketSansTTFLight.ttf in Resources */,
 				8BF3AF25289ACA8D00F049CD /* WordListView.storyboard in Resources */,
 				8BF3AF44289C32C000F049CD /* GmarketSansTTFMedium.ttf in Resources */,
+				8B6A522C28C626A9005CA74B /* TapWordCell.xib in Resources */,
 				8B0DDEFB289A953F00F0ACC3 /* Assets.xcassets in Resources */,
 				8B0DDEF6289A953D00F0ACC3 /* Main.storyboard in Resources */,
 				8BF3AF2A289B5AEB00F049CD /* AddWordView.storyboard in Resources */,
@@ -370,6 +377,7 @@
 				8B0DDEEF289A953D00F0ACC3 /* AppDelegate.swift in Sources */,
 				8BF3AF2C289B5AF500F049CD /* AddWordViewController.swift in Sources */,
 				8B6DE76728B0C52500E32928 /* CustomTabBarVC.swift in Sources */,
+				8B6A522B28C626A9005CA74B /* TapWordCell.swift in Sources */,
 				8B1DBD78289F5D6F007580D7 /* Nadam+Color.swift in Sources */,
 				8B6DE76328B0B51600E32928 /* GameListViewController.swift in Sources */,
 				8BFC7E3B28B88AB700D92E00 /* WordButtonCell.swift in Sources */,
