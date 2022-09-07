@@ -161,8 +161,8 @@ class WordListViewController: UIViewController {
         }
         
         let alertController = UIAlertController(
-            title: "단어 삭제",
-            message: "「\(tapWord)」 를 삭제하시겠습니까?",
+            title: "「\(tapWord)」 를 삭제하시겠습니까?",
+            message: "삭제한 데이터는 복원되지 않습니다.",
             preferredStyle: .alert)
         
         let cancelAlert = UIAlertAction(
@@ -203,8 +203,34 @@ extension WordListViewController: UICollectionViewDataSource {
             cell.wordName.textColor = UIColor.NColor.blue
             cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
             cell.wordMeaning.textColor = UIColor.NColor.black
-            cell.deleteButton.tintColor = UIColor.NColor.orange
+            
+            cell.wordSynoym.text = word.synoym
+            if cell.wordSynoym.text == "" {
+                cell.wordSynoym.text = "No Synoym"
+                cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
+                cell.wordSynoym.textColor = UIColor.NColor.gray
+            } else {
+                cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
+                cell.wordSynoym.textColor = UIColor.NColor.black
+            }
+            
+            cell.wordExample.text = word.example
+            if cell.wordExample.text == "" {
+                cell.wordExample.text = "No Example"
+                cell.wordExample.font = UIFont.NFont.wordListWordSynoym
+                cell.wordExample.textColor = UIColor.NColor.gray
+            } else {
+                cell.wordExample.font = UIFont.NFont.wordListWordSynoym
+                cell.wordExample.textColor = UIColor.NColor.black
+            }
+            
+            cell.deleteButton.tintColor = UIColor.NColor.middleBlue
             cell.deleteButton.addTarget(self, action: #selector(showAlertDeleteWord), for: .touchUpInside)
+            
+            cell.starButton.imageView?.image = word.star ? UIImage(named: "star_filled") : UIImage(named: "star")
+            cell.starButton.tag = indexPath.row
+            cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
+            
             return cell
             
         } else {
@@ -218,9 +244,17 @@ extension WordListViewController: UICollectionViewDataSource {
             cell.wordName.textColor = UIColor.NColor.blue
             cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
             cell.wordMeaning.textColor = UIColor.NColor.black
+            
+            cell.starButton.tag = indexPath.row
+            cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
             return cell
         }
         
+    }
+    
+    @objc func tapStarButton(sender: UIButton) {
+        sender.isSelected.toggle()
+        wordList[sender.tag].star = sender.isSelected ? true : false
     }
     
     private func tapDeleteButton() {
@@ -239,6 +273,7 @@ extension WordListViewController: UICollectionViewDataSource {
         }
         wordList[indexPath.row].isTapped = !wordList[indexPath.row].isTapped
         print(wordList[indexPath.row].isTapped)
+        print(wordList[indexPath.row].star)
         self.collectionView.reloadData()
     }
 }
