@@ -217,15 +217,16 @@ extension WordListViewController: UICollectionViewDataSource {
             cell.wordExample.text = word.example
             if cell.wordExample.text == "" {
                 cell.wordExample.text = "No Example"
-                cell.wordExample.font = UIFont.NFont.wordListWordSynoym
+                cell.wordExample.font = UIFont.NFont.wordListWordSynoym 
                 cell.wordExample.textColor = UIColor.NColor.gray
             } else {
                 cell.wordExample.font = UIFont.NFont.wordListWordSynoym
                 cell.wordExample.textColor = UIColor.NColor.black
             }
             
-            cell.deleteButton.tintColor = UIColor.NColor.middleBlue
-            cell.deleteButton.addTarget(self, action: #selector(showAlertDeleteWord), for: .touchUpInside)
+//            cell.deleteButton.tintColor = UIColor.NColor.middleBlue
+//            cell.deleteButton.addTarget(self, action: #selector(showAlertDeleteWord), for: .touchUpInside)
+            
             
             cell.starButton.imageView?.image = word.star ? UIImage(named: "star_filled") : UIImage(named: "star")
             cell.starButton.tag = indexPath.row
@@ -245,6 +246,7 @@ extension WordListViewController: UICollectionViewDataSource {
             cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
             cell.wordMeaning.textColor = UIColor.NColor.black
             
+            cell.starButton.imageView?.image = word.star ? UIImage(named: "star_filled") : UIImage(named: "star")
             cell.starButton.tag = indexPath.row
             cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
             return cell
@@ -256,6 +258,7 @@ extension WordListViewController: UICollectionViewDataSource {
         sender.isSelected.toggle()
         wordList[sender.tag].star = sender.isSelected ? true : false
     }
+    
     
     private func tapDeleteButton() {
         for word in wordList {
@@ -281,7 +284,7 @@ extension WordListViewController: UICollectionViewDataSource {
 extension WordListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if wordList[indexPath.row].isTapped {
-            return CGSize(width: UIScreen.main.bounds.width - 40, height: 160)
+            return CGSize(width: UIScreen.main.bounds.width - 40, height: 140)
         } else {
             return CGSize(width: UIScreen.main.bounds.width - 40, height: 80)
         }

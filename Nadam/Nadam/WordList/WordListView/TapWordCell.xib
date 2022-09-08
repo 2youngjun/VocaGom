@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,36 +16,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="350" height="160"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU2-Fj-9Qo" userLabel="DeleteButton">
-                        <rect key="frame" x="302" y="10.5" width="25" height="24"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="25" id="7R1-h1-5Kf"/>
-                            <constraint firstAttribute="height" constant="25" id="7hr-Aj-5aN"/>
-                        </constraints>
-                        <color key="tintColor" name="NMiddleBlue"/>
-                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" backgroundImage="trash.circle" catalog="system"/>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Meaning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGH-Jg-HTx" customClass="PaddingLabel" customModule="Nadam" customModuleProvider="target">
-                        <rect key="frame" x="264.5" y="40" width="62.5" height="19.5"/>
+                        <rect key="frame" x="264.5" y="27" width="62.5" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Synoym" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPf-dX-rDR" customClass="PaddingLabel" customModule="Nadam" customModuleProvider="target">
-                        <rect key="frame" x="50" y="73" width="52" height="17"/>
+                        <rect key="frame" x="50" y="60" width="52" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zY-QN-ca3" customClass="PaddingLabel" customModule="Nadam" customModuleProvider="target">
-                        <rect key="frame" x="50" y="100" width="35.5" height="17"/>
+                        <rect key="frame" x="50" y="87" width="35.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cnr-g4-Ynx">
-                        <rect key="frame" x="15" y="40" width="239.5" height="23"/>
+                        <rect key="frame" x="15" y="27" width="239.5" height="23"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fk9-Qd-8Ej" userLabel="StarButton">
                                 <rect key="frame" x="0.0" y="0.0" width="25" height="23"/>
@@ -70,17 +59,15 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="cnr-g4-Ynx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="27" id="HGC-XZ-VZb"/>
                 <constraint firstItem="JPf-dX-rDR" firstAttribute="top" secondItem="cnr-g4-Ynx" secondAttribute="bottom" constant="10" id="MWl-Nw-2jj"/>
                 <constraint firstAttribute="trailing" secondItem="SGH-Jg-HTx" secondAttribute="trailing" constant="23" id="Mou-mz-i07"/>
                 <constraint firstItem="cnr-g4-Ynx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="Sbq-VZ-vQZ"/>
                 <constraint firstItem="SGH-Jg-HTx" firstAttribute="leading" secondItem="cnr-g4-Ynx" secondAttribute="trailing" constant="10" id="X1g-kq-M2Q"/>
                 <constraint firstItem="0zY-QN-ca3" firstAttribute="top" secondItem="JPf-dX-rDR" secondAttribute="bottom" constant="10" id="XLs-xz-Iv4"/>
-                <constraint firstItem="SGH-Jg-HTx" firstAttribute="top" secondItem="gU2-Fj-9Qo" secondAttribute="bottom" constant="5" id="ZRY-vc-dyW"/>
                 <constraint firstItem="JPf-dX-rDR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="50" id="Zs8-Fu-2dR"/>
-                <constraint firstItem="cnr-g4-Ynx" firstAttribute="top" secondItem="gU2-Fj-9Qo" secondAttribute="bottom" constant="5" id="eel-oQ-tDV"/>
-                <constraint firstItem="gU2-Fj-9Qo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="k53-ge-Fnx"/>
                 <constraint firstItem="0zY-QN-ca3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="50" id="ngB-bN-LgG"/>
-                <constraint firstAttribute="trailing" secondItem="gU2-Fj-9Qo" secondAttribute="trailing" constant="23" id="rgt-H5-lyk"/>
+                <constraint firstItem="SGH-Jg-HTx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="27" id="yfB-nG-Ea1"/>
             </constraints>
             <size key="customSize" width="384" height="117"/>
             <connections>
@@ -97,9 +84,5 @@
     <resources>
         <image name="star" width="533" height="512"/>
         <image name="star_filled" width="533" height="512"/>
-        <image name="trash.circle" catalog="system" width="128" height="121"/>
-        <namedColor name="NMiddleBlue">
-            <color red="0.58823529411764708" green="0.65098039215686276" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>
