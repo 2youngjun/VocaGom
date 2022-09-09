@@ -4,10 +4,10 @@
         <attribute name="createTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="example" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isStar" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isTapped" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="meaning" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="star" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="synoym" optional="YES" attributeType="String"/>
     </entity>
     <elements>

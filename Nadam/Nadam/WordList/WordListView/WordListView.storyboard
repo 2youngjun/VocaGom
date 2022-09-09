@@ -58,14 +58,11 @@
                                             </children>
                                         </menu>
                                         <state key="normal" backgroundImage="plus.circle.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="tapAddWordButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="LoL-Kd-BFV"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8eq-4a-6mq">
-                                <rect key="frame" x="0.0" y="129" width="414" height="684"/>
+                                <rect key="frame" x="0.0" y="159" width="414" height="654"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="euh-Up-6zJ">
                                     <size key="itemSize" width="350" height="80"/>
@@ -128,6 +125,33 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="yP0-6O-IHF">
+                                <rect key="frame" x="20" y="114" width="162" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urK-go-kog" customClass="ArrangeButton" customModule="Nadam" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="72.5" height="31"/>
+                                        <color key="tintColor" name="NWhite"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="시간 순" cornerStyle="capsule">
+                                            <backgroundConfiguration key="background">
+                                                <color key="backgroundColor" name="NOrange"/>
+                                            </backgroundConfiguration>
+                                            <directionalEdgeInsets key="contentInsets" top="5" leading="5" bottom="5" trailing="5"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="tapArrangeButtons:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="yee-uM-WCz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ZN-s9-oTq" customClass="ArrangeButton" customModule="Nadam" customModuleProvider="target">
+                                        <rect key="frame" x="89.5" y="0.0" width="72.5" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="즐겨찾기"/>
+                                        <connections>
+                                            <action selector="tapArrangeButtons:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3Zc-K5-2ec"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -135,11 +159,13 @@
                             <constraint firstItem="8eq-4a-6mq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="2cj-Mm-xWB"/>
                             <constraint firstItem="NC4-pd-K5a" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="25" id="A42-FO-8Yv"/>
                             <constraint firstItem="0al-iB-3sZ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="25" id="BHa-3d-N43"/>
-                            <constraint firstItem="8eq-4a-6mq" firstAttribute="top" secondItem="0al-iB-3sZ" secondAttribute="top" constant="60" id="Ozh-qq-gYm"/>
+                            <constraint firstItem="8eq-4a-6mq" firstAttribute="top" secondItem="0al-iB-3sZ" secondAttribute="top" constant="90" id="Ozh-qq-gYm"/>
+                            <constraint firstItem="yP0-6O-IHF" firstAttribute="top" secondItem="0al-iB-3sZ" secondAttribute="bottom" constant="15" id="Q8y-t3-wMB"/>
                             <constraint firstItem="0al-iB-3sZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="bRQ-ni-Lc6"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="NC4-pd-K5a" secondAttribute="trailing" constant="20" id="gm0-ao-h31"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8eq-4a-6mq" secondAttribute="bottom" id="gqj-fL-6yC"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8eq-4a-6mq" secondAttribute="trailing" id="lxt-ms-rMG"/>
+                            <constraint firstItem="yP0-6O-IHF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="xal-oL-T3u"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="단어장" image="book" catalog="system" selectedImage="book.fill" id="1L5-Fu-vEN"/>
@@ -148,7 +174,11 @@
                     <connections>
                         <outlet property="addWordButton" destination="axU-XL-msQ" id="snG-cB-mYc"/>
                         <outlet property="collectionView" destination="8eq-4a-6mq" id="Wcx-Ly-LC5"/>
+                        <outlet property="starArrangeButton" destination="3ZN-s9-oTq" id="TN9-TO-lrD"/>
+                        <outlet property="timeArrangeButton" destination="urK-go-kog" id="4jL-kZ-rNb"/>
                         <outlet property="titleLabel" destination="0al-iB-3sZ" id="LdI-YF-Fwx"/>
+                        <outletCollection property="arrangeCollection" destination="urK-go-kog" collectionClass="NSMutableArray" id="YcV-Mr-ag2"/>
+                        <outletCollection property="arrangeCollection" destination="3ZN-s9-oTq" collectionClass="NSMutableArray" id="dYp-ga-qmY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -199,6 +229,9 @@
         </namedColor>
         <namedColor name="NOrange">
             <color red="1" green="0.53725490196078429" blue="0.35294117647058826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

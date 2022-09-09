@@ -44,7 +44,7 @@ class CoreDataManager {
         word.synoym = synoym
         word.example = example
         word.createTime = Date()
-        word.star = false
+        word.isStar = false
         word.isTapped = false
         
         saveContext()

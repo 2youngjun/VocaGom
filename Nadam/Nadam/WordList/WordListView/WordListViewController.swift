@@ -8,6 +8,11 @@
 import UIKit
 import AVFoundation
 
+enum Arrangement {
+    case time
+    case star
+}
+
 protocol CameraPictureDelegate: AnyObject {
     func sendCameraPicture(picture: UIImage)
 }
@@ -18,6 +23,11 @@ class WordListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addWordButton: UIButton!
+    
+    @IBOutlet var arrangeCollection: [UIButton]!
+    
+    @IBOutlet weak var timeArrangeButton: ArrangeButton!
+    @IBOutlet weak var starArrangeButton: ArrangeButton!
     
     // MARK: 변수
     var wordList: [Word] = [] {
@@ -34,6 +44,8 @@ class WordListViewController: UIViewController {
         return addCameraViewController
     }()
     
+    var arrange: Arrangement = .time
+    
     // MARK: View LifeCycle Function
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +58,17 @@ class WordListViewController: UIViewController {
         
         self.configureCollectionView()
         
+        self.configureArrangeButton()
+        self.configureArrangeButtonLayout()
+        
         self.configureAddWordButton()
         
         self.delegate = self.addCameraViewController
         
-        self.configureAddWordButton()
         
+        for word in wordList {
+            word.isTapped = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,19 +107,60 @@ class WordListViewController: UIViewController {
         self.addWordButton.showsMenuAsPrimaryAction = true
     }
     
+    private func configureArrangeButton() {
+        for index in arrangeCollection.indices {
+            if index == 0 {
+                arrangeCollection[index].isSelected = true
+            } else {
+                arrangeCollection[index].isSelected = false
+            }
+        }
+        self.timeArrangeButton.tag = 0
+        self.starArrangeButton.tag = 1
+    }
+    
+    private func configureArrangeButtonLayout() {
+        for button in arrangeCollection {
+            var buttonTitle = AttributedString.init(button.titleLabel?.text ?? "")
+            buttonTitle.font = UIFont.NFont.arrangeButtonFont
+            button.configuration?.attributedTitle = buttonTitle
+            button.configuration?.cornerStyle = .capsule
+            button.configuration?.background.cornerRadius = 5
+        }
+    }
+    
     @IBAction func tapSearchButton(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "SearchView", bundle: nil)
         guard let searchViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else { return }
         self.navigationController?.pushViewController(searchViewController, animated: true)
     }
     
-    @IBAction func tapAddWordButton(_ sender: UIButton) {
+    @IBAction func tapArrangeButtons(_ sender: UIButton) {
+        // otherButton disSelected
+        if sender.isSelected {
+            return
+        } else {
+            for button in arrangeCollection {
+                button.isSelected = button != sender ? false : true
+            }
+        }
         
+        if sender.tag == 0 {
+            self.wordList = self.wordList.sorted(by: {
+                $0.createTime?.compare($1.createTime!) == .orderedDescending
+            })
+            self.collectionView.reloadData()
+        } else {
+            self.wordList = self.wordList.sorted(by: {
+                $0.createTime?.compare($1.createTime!) == .orderedAscending
+            })
+            self.collectionView.reloadData()
+        }
     }
     
     private func tapAddHandButton() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "AddWordView", bundle:nil)
-        guard let addWordViewController = storyBoard.instantiateViewController(withIdentifier: "AddWordViewController") as? AddWordViewController else {return}
+        guard let addWordViewController = storyBoard.instantiateViewController(withIdentifier: "AddWordViewController") as? AddWordViewController else { return }
 //        addWordViewController.delegate = self
         
         self.navigationController?.pushViewController(addWordViewController, animated: true)
@@ -187,11 +245,15 @@ class WordListViewController: UIViewController {
 
 extension WordListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        if self.timeArrangeButton.isSelected {
+//            return self.wordList.count
+//        } else {
+//            return self.numberOfStars
+//        }
         return self.wordList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if wordList[indexPath.row].isTapped {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TapWordCell", for: indexPath) as? TapWordCell else { return UICollectionViewCell() }
             let word = wordList[indexPath.row]
@@ -224,13 +286,9 @@ extension WordListViewController: UICollectionViewDataSource {
                 cell.wordExample.textColor = UIColor.NColor.black
             }
             
-//            cell.deleteButton.tintColor = UIColor.NColor.middleBlue
-//            cell.deleteButton.addTarget(self, action: #selector(showAlertDeleteWord), for: .touchUpInside)
-            
-            
-            cell.starButton.imageView?.image = word.star ? UIImage(named: "star_filled") : UIImage(named: "star")
             cell.starButton.tag = indexPath.row
             cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
+            cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
             
             return cell
             
@@ -245,20 +303,33 @@ extension WordListViewController: UICollectionViewDataSource {
             cell.wordName.textColor = UIColor.NColor.blue
             cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
             cell.wordMeaning.textColor = UIColor.NColor.black
-            
-            cell.starButton.imageView?.image = word.star ? UIImage(named: "star_filled") : UIImage(named: "star")
+                 
             cell.starButton.tag = indexPath.row
             cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
+            cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
             return cell
         }
-        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        for word in wordList {
+            word.isTapped = false
+        }
+        wordList[indexPath.row].isTapped = !wordList[indexPath.row].isTapped
+        print(wordList[indexPath.row].isStar)
+        self.collectionView.reloadData()
     }
     
     @objc func tapStarButton(sender: UIButton) {
         sender.isSelected.toggle()
-        wordList[sender.tag].star = sender.isSelected ? true : false
+        print(sender.tag)
+        
+        wordList[sender.tag].isStar = sender.isSelected ? true : false
+//        sender.imageView?.image = sender.isSelected ? UIImage(named: "star_filled") : UIImage(named: "star")
+        CoreDataManager.shared.saveContext()
+//        self.collectionView.reloadData()
+        
     }
-    
     
     private func tapDeleteButton() {
         for word in wordList {
@@ -267,16 +338,6 @@ extension WordListViewController: UICollectionViewDataSource {
             }
         }
         self.fetchWordDateDecesending()
-        self.collectionView.reloadData()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        for word in wordList {
-            word.isTapped = false
-        }
-        wordList[indexPath.row].isTapped = !wordList[indexPath.row].isTapped
-        print(wordList[indexPath.row].isTapped)
-        print(wordList[indexPath.row].star)
         self.collectionView.reloadData()
     }
 }

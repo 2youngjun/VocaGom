@@ -52,5 +52,6 @@ extension UIFont {
         static var automaticMeaningButton: UIFont{ UIFont.NadamFont(forTextStyle: .caption2) }
         static var searchBarTextFieldFont: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }
         static var noSearchedTextFont: UIFont{ UIFont.NadamFont(forTextStyle: .callout) }
+        static var arrangeButtonFont: UIFont{ UIFont.NadamFont(forTextStyle: .caption1) }
     }
 }
