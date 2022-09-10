@@ -44,7 +44,12 @@ class WordListViewController: UIViewController {
         return addCameraViewController
     }()
     
-    var arrange: Arrangement = .time
+    var arrangeType: Arrangement = .time
+    var wordStars = [Word]() {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
     
     // MARK: View LifeCycle Function
     override func viewDidLoad() {
@@ -74,6 +79,9 @@ class WordListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.fetchWordDateDecesending()
         self.collectionView.reloadData()
+        
+        self.addWordStars()
+        print(wordStars.count)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -82,7 +90,42 @@ class WordListViewController: UIViewController {
         }
     }
     
+    // MARK: IBAction 함수
+    @IBAction func tapSearchButton(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "SearchView", bundle: nil)
+        guard let searchViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else { return }
+        self.navigationController?.pushViewController(searchViewController, animated: true)
+    }
+    
+    @IBAction func tapArrangeButtons(_ sender: UIButton) {
+        // otherButton disSelected
+        if sender.isSelected {
+            return
+        } else {
+            for button in arrangeCollection {
+                button.isSelected = button != sender ? false : true
+            }
+        }
+    
+        if sender.tag == 0 {
+            self.arrangeType = .time
+            self.addWordStars()
+            self.wordList = self.wordList.sorted(by: {
+                $0.createTime?.compare($1.createTime!) == .orderedDescending
+            })
+            self.collectionView.reloadData()
+        } else {
+            self.arrangeType = .star
+            self.addWordStars()
+            self.wordStars = self.wordStars.sorted(by: {
+                $0.createTime?.compare($1.createTime!) == .orderedDescending
+            })
+            self.collectionView.reloadData()
+        }
+    }
+    
     // MARK: Function
+    // 단어 추가 버튼
     private func configureAddWordButton() {
         self.addWordButton.showsMenuAsPrimaryAction = true
         
@@ -107,6 +150,7 @@ class WordListViewController: UIViewController {
         self.addWordButton.showsMenuAsPrimaryAction = true
     }
     
+    // Arrange 버튼 함수
     private func configureArrangeButton() {
         for index in arrangeCollection.indices {
             if index == 0 {
@@ -129,35 +173,16 @@ class WordListViewController: UIViewController {
         }
     }
     
-    @IBAction func tapSearchButton(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "SearchView", bundle: nil)
-        guard let searchViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else { return }
-        self.navigationController?.pushViewController(searchViewController, animated: true)
-    }
-    
-    @IBAction func tapArrangeButtons(_ sender: UIButton) {
-        // otherButton disSelected
-        if sender.isSelected {
-            return
-        } else {
-            for button in arrangeCollection {
-                button.isSelected = button != sender ? false : true
+    private func addWordStars() {
+        wordStars.removeAll()
+        for word in wordList {
+            if word.isStar && !wordStars.contains(word) {
+                wordStars.append(word)
             }
         }
-        
-        if sender.tag == 0 {
-            self.wordList = self.wordList.sorted(by: {
-                $0.createTime?.compare($1.createTime!) == .orderedDescending
-            })
-            self.collectionView.reloadData()
-        } else {
-            self.wordList = self.wordList.sorted(by: {
-                $0.createTime?.compare($1.createTime!) == .orderedAscending
-            })
-            self.collectionView.reloadData()
-        }
     }
     
+    // 직접 입력 View
     private func tapAddHandButton() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "AddWordView", bundle:nil)
         guard let addWordViewController = storyBoard.instantiateViewController(withIdentifier: "AddWordViewController") as? AddWordViewController else { return }
@@ -245,90 +270,184 @@ class WordListViewController: UIViewController {
 
 extension WordListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if self.timeArrangeButton.isSelected {
-//            return self.wordList.count
-//        } else {
-//            return self.numberOfStars
-//        }
-        return self.wordList.count
+        switch arrangeType {
+        case .time:
+            return self.wordList.count
+        case .star:
+            return self.wordStars.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if wordList[indexPath.row].isTapped {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TapWordCell", for: indexPath) as? TapWordCell else { return UICollectionViewCell() }
-            let word = wordList[indexPath.row]
-            cell.wordName.text = word.name
-            cell.wordMeaning.text = word.meaning
-            cell.layer.cornerRadius = 10.0
-            cell.backgroundColor = UIColor.NColor.white
-            cell.wordName.font = UIFont.NFont.wordListWordName
-            cell.wordName.textColor = UIColor.NColor.blue
-            cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
-            cell.wordMeaning.textColor = UIColor.NColor.black
-            
-            cell.wordSynoym.text = word.synoym
-            if cell.wordSynoym.text == "" {
-                cell.wordSynoym.text = "No Synoym"
-                cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
-                cell.wordSynoym.textColor = UIColor.NColor.gray
+        
+        switch arrangeType {
+        case .time:
+            if wordList[indexPath.row].isTapped {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TapWordCell", for: indexPath) as? TapWordCell else { return UICollectionViewCell() }
+                let word = wordList[indexPath.row]
+                cell.wordName.text = word.name
+                cell.wordMeaning.text = word.meaning
+                cell.layer.cornerRadius = 10.0
+                cell.backgroundColor = UIColor.NColor.white
+                cell.wordName.font = UIFont.NFont.wordListWordName
+                cell.wordName.textColor = UIColor.NColor.blue
+                cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
+                cell.wordMeaning.textColor = UIColor.NColor.black
+                
+                cell.wordSynoym.text = word.synoym
+                if cell.wordSynoym.text == "" {
+                    cell.wordSynoym.text = "No Synoym"
+                    cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
+                    cell.wordSynoym.textColor = UIColor.NColor.gray
+                } else {
+                    cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
+                    cell.wordSynoym.textColor = UIColor.NColor.black
+                }
+                
+                cell.wordExample.text = word.example
+                if cell.wordExample.text == "" {
+                    cell.wordExample.text = "No Example"
+                    cell.wordExample.font = UIFont.NFont.wordListWordSynoym
+                    cell.wordExample.textColor = UIColor.NColor.gray
+                } else {
+                    cell.wordExample.font = UIFont.NFont.wordListWordSynoym
+                    cell.wordExample.textColor = UIColor.NColor.black
+                }
+                
+                cell.starButton.tag = indexPath.row
+                cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
+                cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
+                
+                return cell
+                
             } else {
-                cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
-                cell.wordSynoym.textColor = UIColor.NColor.black
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WordCell", for: indexPath) as? WordCell else { return UICollectionViewCell() }
+                let word = wordList[indexPath.row]
+                cell.wordName.text = word.name
+                cell.wordMeaning.text = word.meaning
+                cell.layer.cornerRadius = 10.0
+                cell.backgroundColor = UIColor.NColor.white
+                cell.wordName.font = UIFont.NFont.wordListWordName
+                cell.wordName.textColor = UIColor.NColor.blue
+                cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
+                cell.wordMeaning.textColor = UIColor.NColor.black
+                     
+                cell.starButton.tag = indexPath.row
+                cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
+                cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
+                return cell
             }
-            
-            cell.wordExample.text = word.example
-            if cell.wordExample.text == "" {
-                cell.wordExample.text = "No Example"
-                cell.wordExample.font = UIFont.NFont.wordListWordSynoym 
-                cell.wordExample.textColor = UIColor.NColor.gray
+        case .star:
+            if wordStars[indexPath.row].isTapped {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TapWordCell", for: indexPath) as? TapWordCell else { return UICollectionViewCell() }
+                let word = wordStars[indexPath.row]
+                cell.wordName.text = word.name
+                cell.wordMeaning.text = word.meaning
+                cell.layer.cornerRadius = 10.0
+                cell.backgroundColor = UIColor.NColor.white
+                cell.wordName.font = UIFont.NFont.wordListWordName
+                cell.wordName.textColor = UIColor.NColor.blue
+                cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
+                cell.wordMeaning.textColor = UIColor.NColor.black
+                
+                cell.wordSynoym.text = word.synoym
+                if cell.wordSynoym.text == "" {
+                    cell.wordSynoym.text = "No Synoym"
+                    cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
+                    cell.wordSynoym.textColor = UIColor.NColor.gray
+                } else {
+                    cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
+                    cell.wordSynoym.textColor = UIColor.NColor.black
+                }
+                
+                cell.wordExample.text = word.example
+                if cell.wordExample.text == "" {
+                    cell.wordExample.text = "No Example"
+                    cell.wordExample.font = UIFont.NFont.wordListWordSynoym
+                    cell.wordExample.textColor = UIColor.NColor.gray
+                } else {
+                    cell.wordExample.font = UIFont.NFont.wordListWordSynoym
+                    cell.wordExample.textColor = UIColor.NColor.black
+                }
+                
+                cell.starButton.tag = indexPath.row
+                cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
+                cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
+                
+                return cell
+                
             } else {
-                cell.wordExample.font = UIFont.NFont.wordListWordSynoym
-                cell.wordExample.textColor = UIColor.NColor.black
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WordCell", for: indexPath) as? WordCell else { return UICollectionViewCell() }
+                let word = wordStars[indexPath.row]
+                cell.wordName.text = word.name
+                cell.wordMeaning.text = word.meaning
+                cell.layer.cornerRadius = 10.0
+                cell.backgroundColor = UIColor.NColor.white
+                cell.wordName.font = UIFont.NFont.wordListWordName
+                cell.wordName.textColor = UIColor.NColor.blue
+                cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
+                cell.wordMeaning.textColor = UIColor.NColor.black
+                     
+                cell.starButton.tag = indexPath.row
+                cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
+                cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
+                return cell
             }
-            
-            cell.starButton.tag = indexPath.row
-            cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
-            cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
-            
-            return cell
-            
-        } else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WordCell", for: indexPath) as? WordCell else { return UICollectionViewCell() }
-            let word = wordList[indexPath.row]
-            cell.wordName.text = word.name
-            cell.wordMeaning.text = word.meaning
-            cell.layer.cornerRadius = 10.0
-            cell.backgroundColor = UIColor.NColor.white
-            cell.wordName.font = UIFont.NFont.wordListWordName
-            cell.wordName.textColor = UIColor.NColor.blue
-            cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
-            cell.wordMeaning.textColor = UIColor.NColor.black
-                 
-            cell.starButton.tag = indexPath.row
-            cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
-            cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
-            return cell
         }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        for word in wordList {
-            word.isTapped = false
+        switch arrangeType {
+        case .time:
+            for word in wordList {
+                word.isTapped = false
+            }
+            wordList[indexPath.row].isTapped = !wordList[indexPath.row].isTapped
+            print(wordList[indexPath.row].isStar)
+            self.collectionView.reloadData()
+        
+        case .star:
+            for word in wordStars {
+                word.isTapped = false
+            }
+            wordStars[indexPath.row].isTapped = !wordStars[indexPath.row].isTapped
+            self.collectionView.reloadData()
         }
-        wordList[indexPath.row].isTapped = !wordList[indexPath.row].isTapped
-        print(wordList[indexPath.row].isStar)
-        self.collectionView.reloadData()
+        
     }
     
+    // Star Button 누를 시
     @objc func tapStarButton(sender: UIButton) {
-        sender.isSelected.toggle()
-        print(sender.tag)
+        switch arrangeType {
+        case .time:
+            wordList[sender.tag].isStar = !wordList[sender.tag].isStar
+            if wordList[sender.tag].isStar {
+                sender.isSelected = true
+            } else {
+                sender.isSelected = false
+            }
+        case .star:
+            wordStars[sender.tag].isStar = !wordStars[sender.tag].isStar
+            if wordStars[sender.tag].isStar {
+                sender.isSelected = true
+                for word in wordList {
+                    if wordStars[sender.tag] == word {
+                        word.isStar = true
+                    }
+                }
+            } else {
+                sender.isSelected = false
+                for word in wordList {
+                    if wordStars[sender.tag] == word {
+                        word.isStar = false
+                    }
+                }
+            }
+            
+        }
         
-        wordList[sender.tag].isStar = sender.isSelected ? true : false
-//        sender.imageView?.image = sender.isSelected ? UIImage(named: "star_filled") : UIImage(named: "star")
         CoreDataManager.shared.saveContext()
-//        self.collectionView.reloadData()
-        
     }
     
     private func tapDeleteButton() {
@@ -344,11 +463,21 @@ extension WordListViewController: UICollectionViewDataSource {
 
 extension WordListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if wordList[indexPath.row].isTapped {
-            return CGSize(width: UIScreen.main.bounds.width - 40, height: 140)
-        } else {
-            return CGSize(width: UIScreen.main.bounds.width - 40, height: 80)
+        switch arrangeType {
+        case .time:
+            if wordList[indexPath.row].isTapped {
+                return CGSize(width: UIScreen.main.bounds.width - 40, height: 140)
+            } else {
+                return CGSize(width: UIScreen.main.bounds.width - 40, height: 80)
+            }
+        case .star:
+            if wordStars[indexPath.row].isTapped {
+                return CGSize(width: UIScreen.main.bounds.width - 40, height: 140)
+            } else {
+                return CGSize(width: UIScreen.main.bounds.width - 40, height: 80)
+            }
         }
+        
     }
 }
 
