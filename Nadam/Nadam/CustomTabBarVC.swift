@@ -9,10 +9,15 @@ import UIKit
 
 class CustomTabBarVC: UITabBar {
     override func draw(_ rect: CGRect) {
-        let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height),cornerRadius: 26)
-        UIColor.NColor.blue.setFill()
-        self.unselectedItemTintColor = UIColor.NColor.background
-        self.tintColor = UIColor.white
-        path.fill()
+        UIColor.NColor.background.setFill()
+        self.unselectedItemTintColor = UIColor.NColor.blue
+        self.tintColor = UIColor.NColor.blue
+        self.shadowImage = UIImage()
+    }
+    
+    static func clearShadow() {
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().backgroundColor = UIColor.NColor.weakBlue
     }
 }

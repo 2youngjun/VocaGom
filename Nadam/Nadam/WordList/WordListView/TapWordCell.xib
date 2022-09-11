@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TapWordCell" customModule="Nadam" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="160"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="160"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Meaning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGH-Jg-HTx" customClass="PaddingLabel" customModule="Nadam" customModuleProvider="target">
+                        <rect key="frame" x="264.5" y="27" width="62.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Synoym" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPf-dX-rDR" customClass="PaddingLabel" customModule="Nadam" customModuleProvider="target">
+                        <rect key="frame" x="50" y="60" width="52" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zY-QN-ca3" customClass="PaddingLabel" customModule="Nadam" customModuleProvider="target">
+                        <rect key="frame" x="50" y="87" width="35.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cnr-g4-Ynx">
+                        <rect key="frame" x="15" y="27" width="239.5" height="23"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fk9-Qd-8Ej" userLabel="StarButton">
+                                <rect key="frame" x="0.0" y="0.0" width="25" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="6if-2e-rp1"/>
+                                    <constraint firstAttribute="height" constant="23" id="XrW-NN-gwy"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="star"/>
+                                <state key="selected" image="star_filled"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gma-Yq-aft" customClass="PaddingLabel" customModule="Nadam" customModuleProvider="target">
+                                <rect key="frame" x="35" y="2" width="204.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="cnr-g4-Ynx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="27" id="HGC-XZ-VZb"/>
+                <constraint firstItem="JPf-dX-rDR" firstAttribute="top" secondItem="cnr-g4-Ynx" secondAttribute="bottom" constant="10" id="MWl-Nw-2jj"/>
+                <constraint firstAttribute="trailing" secondItem="SGH-Jg-HTx" secondAttribute="trailing" constant="23" id="Mou-mz-i07"/>
+                <constraint firstItem="cnr-g4-Ynx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="Sbq-VZ-vQZ"/>
+                <constraint firstItem="SGH-Jg-HTx" firstAttribute="leading" secondItem="cnr-g4-Ynx" secondAttribute="trailing" constant="10" id="X1g-kq-M2Q"/>
+                <constraint firstItem="0zY-QN-ca3" firstAttribute="top" secondItem="JPf-dX-rDR" secondAttribute="bottom" constant="10" id="XLs-xz-Iv4"/>
+                <constraint firstItem="JPf-dX-rDR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="50" id="Zs8-Fu-2dR"/>
+                <constraint firstItem="0zY-QN-ca3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="50" id="ngB-bN-LgG"/>
+                <constraint firstItem="SGH-Jg-HTx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="27" id="yfB-nG-Ea1"/>
+            </constraints>
+            <size key="customSize" width="384" height="117"/>
+            <connections>
+                <outlet property="deleteButton" destination="Fk9-Qd-8Ej" id="5ke-xx-eM2"/>
+                <outlet property="starButton" destination="Fk9-Qd-8Ej" id="g3Y-4t-cFr"/>
+                <outlet property="wordExample" destination="0zY-QN-ca3" id="PsM-5q-K6Q"/>
+                <outlet property="wordMeaning" destination="SGH-Jg-HTx" id="ony-Li-zBt"/>
+                <outlet property="wordName" destination="Gma-Yq-aft" id="KkK-BC-Xkw"/>
+                <outlet property="wordSynoym" destination="JPf-dX-rDR" id="MnX-tc-aQu"/>
+            </connections>
+            <point key="canvasLocation" x="257.97101449275362" y="105.80357142857143"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="star" width="533" height="512"/>
+        <image name="star_filled" width="533" height="512"/>
+    </resources>
+</document>

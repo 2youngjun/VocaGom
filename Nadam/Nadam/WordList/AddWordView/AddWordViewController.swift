@@ -126,7 +126,7 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         let synoym = synoymTextField.text ?? ""
         let example = exampleTextField.text ?? ""
         
-        CoreDataManager.shared.addWord(name: name, meaning: meaning, synoym: synoym, example: example, createTime: Date(), cntWrong: 0)
+        CoreDataManager.shared.addWord(name: name, meaning: meaning, synoym: synoym, example: example, createTime: Date(), star: false, isTapped: false)
         self.delegate?.didSelectSaveWord()
 
         self.navigationController?.popToRootViewController(animated: true)
