@@ -44,7 +44,34 @@ class GameListViewController: UIViewController {
     }
     
     @IBAction func tapSpellingTestButton(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "SpellingTestView", bundle: nil)
+        guard let spellingTestViewController = storyboard.instantiateViewController(withIdentifier: "SpellingTestViewController") as? SpellingTestViewController else { return }
         
+        self.navigationController?.pushViewController(spellingTestViewController, animated: true)
     }
     
+    private func showAlertSpellingTest() {
+        let alert = UIAlertController(title: "단어 철자 테스트",
+                                      message: "무작위로 최대 10개의 단어로 테스트가 진행됩니다.",
+                                      preferredStyle: .alert)
+        
+        let cancelAlert = UIAlertAction(title: "취소",
+                                        style: .cancel) { _ in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        
+        let startTestAlert = UIAlertAction(title: "시작", style: .default) { _ in
+            let storyboard = UIStoryboard(name: "SpellingTestView", bundle: nil)
+            guard let spellingTestViewController = storyboard.instantiateViewController(withIdentifier: "SpellingTestViewController") as? SpellingTestViewController else { return }
+            
+            self.navigationController?.pushViewController(spellingTestViewController, animated: true)
+        }
+        
+        [cancelAlert, startTestAlert].forEach(alert.addAction(_:))
+        
+        DispatchQueue.main.async {
+            alert.present(alert, animated: true, completion: nil)
+        }
+
+    }
 }

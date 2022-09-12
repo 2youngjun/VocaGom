@@ -214,7 +214,7 @@ class WordListViewController: UIViewController {
     func showAlertToGoSetting() {
         let alertController = UIAlertController(
             title: "현재 카메라 사용에 대한 접근 권한이 없습니다.",
-            message: "설정 > Nadam에서 접근을 활성화 할 수 있습니다.",
+            message: "설정 > Nadam 에서 접근을 활성화 할 수 있습니다.",
             preferredStyle: .alert)
         
         let cancelAlert = UIAlertAction(
