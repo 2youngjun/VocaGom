@@ -170,6 +170,7 @@ class WordListViewController: UIViewController {
             button.configuration?.attributedTitle = buttonTitle
             button.configuration?.cornerStyle = .capsule
             button.configuration?.background.cornerRadius = 5
+            button.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         }
     }
     

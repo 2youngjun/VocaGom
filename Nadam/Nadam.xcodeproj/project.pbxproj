@@ -191,10 +191,18 @@
 		8B6DE75F28B0B4BE00E32928 /* WordGame */ = {
 			isa = PBXGroup;
 			children = (
+				8BF3045328CF13E100A5374A /* GameListView */,
+			);
+			path = WordGame;
+			sourceTree = "<group>";
+		};
+		8BF3045328CF13E100A5374A /* GameListView */ = {
+			isa = PBXGroup;
+			children = (
 				8B6DE76028B0B50300E32928 /* GameListView.storyboard */,
 				8B6DE76228B0B51600E32928 /* GameListViewController.swift */,
 			);
-			path = WordGame;
+			path = GameListView;
 			sourceTree = "<group>";
 		};
 		8BF3AF28289ACAB000F049CD /* WordList */ = {

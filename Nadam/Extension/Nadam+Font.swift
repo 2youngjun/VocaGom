@@ -22,7 +22,7 @@ private let customFonts: [UIFont.TextStyle: UIFont] = [
     .body: UIFont(name: "GmarketSansTTFBold", size: 16)!,
     .callout: UIFont(name: "GmarketSansTTFMedium", size: 16)!,
     .subheadline: UIFont(name: "GmarketSansTTFMedium", size: 15)!,
-    .footnote: UIFont(name: "GmarketSansTTFLight", size: 12)!,
+    .footnote: UIFont(name: "GmarketSansTTFLight", size: 10)!,
     .caption1: UIFont(name: "GmarketSansTTFMedium", size: 14)!,
     .caption2: UIFont(name: "GmarketSansTTFMedium", size: 12)!
 ]
@@ -53,5 +53,7 @@ extension UIFont {
         static var searchBarTextFieldFont: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }
         static var noSearchedTextFont: UIFont{ UIFont.NadamFont(forTextStyle: .callout) }
         static var arrangeButtonFont: UIFont{ UIFont.NadamFont(forTextStyle: .caption1) }
+        static var testMainLabelFont: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }
+        static var testSubLabelFont: UIFont{ UIFont.NadamFont(forTextStyle: .footnote) }
     }
 }
