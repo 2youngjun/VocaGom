@@ -37,7 +37,7 @@ class GameListViewController: UIViewController {
         self.spellingTestSubLabel.textColor = UIColor.NColor.gray
         self.spellingTestMainLabel.font = UIFont.NFont.testMainLabelFont
         self.spellingTestMainLabel.textColor = UIColor.NColor.black
-        self.spellingTestMainImage.image = UIImage(named: "spellingTestImage")
+        self.spellingTestMainImage.image = UIImage(named: "spellingTest")
         self.spellingTestButton.layer.opacity = 1.0
         self.spellingTestButton.tintColor = UIColor.clear
         self.spellingTestButton.layer.cornerRadius = 10.0

@@ -57,5 +57,6 @@ extension UIFont {
         static var testSubLabelFont: UIFont{ UIFont.NadamFont(forTextStyle: .footnote) }
         static var spellingTestLabel: UIFont{ UIFont.NadamFont(forTextStyle: .title1) }
         static var spellingTestNextButton: UIFont{ UIFont.NadamFont(forTextStyle: .title2) }
+        static var resultLabel: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }
     }
 }

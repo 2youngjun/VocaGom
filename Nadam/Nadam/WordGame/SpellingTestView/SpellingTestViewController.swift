@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SendTestWordResultDelegate {
+    func sendTestWordResult(wordTests: isCorrectWord)
+}
+
 struct isCorrectWord {
     let word: Word
     var isCorrect: Bool
@@ -72,7 +76,9 @@ class SpellingTestViewController: UIViewController {
     @IBAction func tapNextButton(_ sender: UIButton) {
         self.currentQuestionIndex += 1
         if self.currentQuestionIndex > self.totalQuestion {
-            
+            let storyboard = UIStoryboard(name: "ResultView", bundle: nil)
+            guard let resultViewController = storyboard.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else { return }
+            self.navigationController?.pushViewController(resultViewController, animated: true)
         } else {
             if self.checkWordCorrect(textFieldString: self.textField.text ?? "", meaning: self.wordCardLabel.text ?? "") {
                 self.countCorrect += 1
