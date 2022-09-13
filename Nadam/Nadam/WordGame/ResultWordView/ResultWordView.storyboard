@@ -3,8 +3,10 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,16 +17,117 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="맞힌 문제" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gT-ch-XOQ">
+                                <rect key="frame" x="175.5" y="64" width="63.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qlz-3c-d20">
+                                <rect key="frame" x="20" y="64" width="12.5" height="22"/>
+                                <color key="tintColor" name="NBlack"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="chevron.left" catalog="system"/>
+                                <connections>
+                                    <action selector="tapBackButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="c1v-qs-91t"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Kol-6b-gjt">
+                                <rect key="frame" x="0.0" y="104.5" width="414" height="757.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KEh-pq-3Yg">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ResultWordCell" id="2Dh-45-Db9" customClass="ResultWordCell" customModule="Nadam" customModuleProvider="target">
+                                        <rect key="frame" x="32" y="0.0" width="350" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MGu-I5-mCK">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vam-Rf-osn">
+                                                    <rect key="frame" x="15" y="10" width="244.5" height="60"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTC-Sx-QFy">
+                                                            <rect key="frame" x="0.0" y="18.5" width="25" height="23"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="25" id="fjH-Sa-kCQ"/>
+                                                                <constraint firstAttribute="height" constant="23" id="mdf-hE-Blx"/>
+                                                            </constraints>
+                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                            <state key="normal" image="star"/>
+                                                            <state key="selected" image="star_filled"/>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="324-LC-SK9" customClass="PaddingLabel" customModule="Nadam" customModuleProvider="target">
+                                                            <rect key="frame" x="35" y="20" width="209.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Meaning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiJ-u5-Lih" customClass="PaddingLabel" customModule="Nadam" customModuleProvider="target">
+                                                    <rect key="frame" x="269.5" y="10" width="65.5" height="60"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hiJ-u5-Lih" firstAttribute="leading" secondItem="vam-Rf-osn" secondAttribute="trailing" constant="10" id="Gss-SM-Ebz"/>
+                                                <constraint firstItem="vam-Rf-osn" firstAttribute="top" secondItem="MGu-I5-mCK" secondAttribute="top" constant="10" id="Ha8-AX-A9A"/>
+                                                <constraint firstAttribute="bottom" secondItem="hiJ-u5-Lih" secondAttribute="bottom" constant="10" id="Ih9-HA-aAX"/>
+                                                <constraint firstItem="vam-Rf-osn" firstAttribute="leading" secondItem="MGu-I5-mCK" secondAttribute="leading" constant="15" id="Ogs-wv-LcG"/>
+                                                <constraint firstItem="hiJ-u5-Lih" firstAttribute="top" secondItem="MGu-I5-mCK" secondAttribute="top" constant="10" id="Xea-ja-mlk"/>
+                                                <constraint firstAttribute="trailing" secondItem="hiJ-u5-Lih" secondAttribute="trailing" constant="15" id="iDw-Hs-XcP"/>
+                                                <constraint firstAttribute="bottom" secondItem="vam-Rf-osn" secondAttribute="bottom" constant="10" id="mxk-md-PXZ"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="350" height="80"/>
+                                        <connections>
+                                            <outlet property="starButton" destination="MTC-Sx-QFy" id="xWW-dz-IKF"/>
+                                            <outlet property="wordMeaning" destination="hiJ-u5-Lih" id="9iK-9v-VKL"/>
+                                            <outlet property="wordName" destination="324-LC-SK9" id="NTV-Oc-LWw"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Kol-6b-gjt" secondAttribute="bottom" id="Ese-O7-beG"/>
+                            <constraint firstItem="Kol-6b-gjt" firstAttribute="top" secondItem="7gT-ch-XOQ" secondAttribute="bottom" constant="20" id="JBP-6S-sAz"/>
+                            <constraint firstItem="Kol-6b-gjt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="KJY-G8-c2z"/>
+                            <constraint firstItem="Qlz-3c-d20" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="Kak-5c-q0a"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Kol-6b-gjt" secondAttribute="trailing" id="RdR-Y1-1ju"/>
+                            <constraint firstItem="7gT-ch-XOQ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Rfa-Td-BHS"/>
+                            <constraint firstItem="Qlz-3c-d20" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="cMO-UM-jxl"/>
+                            <constraint firstItem="7gT-ch-XOQ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="yL2-bp-05a"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Kol-6b-gjt" id="l0S-D9-wrl"/>
+                        <outlet property="titleText" destination="7gT-ch-XOQ" id="PdB-hu-Cia"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-25" y="82"/>
+            <point key="canvasLocation" x="-26.086956521739133" y="81.696428571428569"/>
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="star" width="533" height="512"/>
+        <image name="star_filled" width="533" height="512"/>
+        <namedColor name="NBlack">
+            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9x-RB-ahL">
-                                <rect key="frame" x="20" y="132" width="374" height="150"/>
+                                <rect key="frame" x="20" y="131" width="374" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="하늘" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4al-08-sAr">
                                         <rect key="frame" x="172" y="64.5" width="30" height="21"/>
@@ -64,7 +64,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pa8-nw-G6W">
-                                <rect key="frame" x="20" y="322" width="374" height="40"/>
+                                <rect key="frame" x="20" y="321" width="374" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="l7w-ZQ-0LZ"/>
                                 </constraints>
@@ -76,7 +76,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vx0-ju-zLt">
-                                <rect key="frame" x="20" y="402" width="374" height="60"/>
+                                <rect key="frame" x="20" y="401" width="374" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="SBJ-O7-mKG"/>
                                 </constraints>
@@ -87,9 +87,9 @@
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lOA-dy-tcb">
-                                <rect key="frame" x="20" y="84" width="374" height="8"/>
+                                <rect key="frame" x="20" y="84" width="374" height="7"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="8" id="YJG-Vi-Bce"/>
+                                    <constraint firstAttribute="height" constant="7" id="YJG-Vi-Bce"/>
                                 </constraints>
                             </progressView>
                         </subviews>

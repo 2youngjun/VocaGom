@@ -7,9 +7,24 @@
 
 import UIKit
 
-class ResultViewController: UIViewController {
+protocol SendResultWordDelegate: AnyObject {
+    func sendTestWordDelegate(resultWord: [questionWord], color: UIColor, titleText: String)
+}
 
+class ResultViewController: UIViewController {
+    
     // MARK: 변수
+    var resultWords = [questionWord]()
+    var cntCorrect: Int = 0
+    
+    weak var delegate: SendResultWordDelegate?
+    let resultWordViewController: ResultWordViewController = {
+        let storyBoard = UIStoryboard(name: "ResultWordView", bundle: nil)
+        guard let resultWordViewController = storyBoard.instantiateViewController(withIdentifier: "ResultWordViewController") as? ResultWordViewController else { return UIViewController() as! ResultWordViewController }
+        return resultWordViewController
+    }()
+    
+    // MARK: IBOutlet
     @IBOutlet weak var progressView: UIProgressView!
     
     @IBOutlet weak var resultLabel: UILabel!
@@ -28,23 +43,36 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var countCorrect: UILabel!
     @IBOutlet weak var countWrong: UILabel!
     
-    var resultWords = [isCorrectWord]()
-    var cntCorrect: Int = 0
-    
     // MARK: View Lifecycle Function
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.countResult()
         self.styleFunction()
+        self.delegate = self.resultWordViewController
     }
     
+    // MARK: IBAction
     @IBAction func tapCorrectButton(_ sender: UIButton) {
-        
+        var tossWords = [questionWord]()
+        for word in resultWords {
+            if word.isCorrect {
+                tossWords.append(word)
+            }
+        }
+        self.delegate?.sendTestWordDelegate(resultWord: tossWords, color: UIColor.NColor.orange, titleText: "맞힌 문제")
+        self.navigationController?.pushViewController(self.resultWordViewController, animated: true)
     }
     
     @IBAction func tapWrongButton(_ sender: UIButton) {
-        
+        var tossWords = [questionWord]()
+        for word in resultWords {
+            if word.isCorrect == false {
+                tossWords.append(word)
+            }
+        }
+        self.delegate?.sendTestWordDelegate(resultWord: tossWords, color: UIColor.NColor.blue, titleText: "틀린 문제")
+        self.navigationController?.pushViewController(self.resultWordViewController, animated: true)
     }
     
     @IBAction func tapCompleteButton(_ sender: UIButton) {
@@ -82,9 +110,9 @@ class ResultViewController: UIViewController {
             buttonInnerView.layer.cornerRadius = 10.0
         }
         for buttonView in buttonViewCollection {
-            buttonView.layer.shadowColor = UIColor.NColor.border.cgColor
-            buttonView.layer.shadowOpacity = 0.6
-            buttonView.layer.shadowOffset = CGSize(width: 5, height: 5)
+            buttonView.layer.applySketchShadow(color: UIColor.NColor.black, alpha: 0.05, x: 0, y: 0, blur: 10, spread: 0)
+            buttonView.layer.cornerRadius = 10.0
+
         }
         for buttonLabel in buttonLabelCollection {
             buttonLabel.font = UIFont.NFont.resultLabel
@@ -112,7 +140,30 @@ class ResultViewController: UIViewController {
 }
 
 extension ResultViewController: SendTestWordResultDelegate {
-    func sendTestWordResult(wordTests: [isCorrectWord]) {
+    func sendTestWordResult(wordTests: [questionWord]) {
         self.resultWords = wordTests
+    }
+}
+
+extension CALayer {
+    func applySketchShadow(
+        color: UIColor,
+        alpha: Float,
+        x: CGFloat,
+        y: CGFloat,
+        blur: CGFloat,
+        spread: CGFloat
+    ) {
+        masksToBounds = false
+        shadowColor = color.cgColor
+        shadowOpacity = alpha
+        shadowOffset = CGSize(width: x, height: y)
+        shadowRadius = blur / UIScreen.main.scale
+        if spread == 0 {
+            shadowPath = nil
+        } else {
+            let rect = bounds.insetBy(dx: -spread, dy: -spread)
+            shadowPath = UIBezierPath(rect: rect).cgPath
+        }
     }
 }

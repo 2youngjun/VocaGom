@@ -32,7 +32,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="GqV-Ap-SyJ">
                                         <rect key="frame" x="15" y="20" width="242" height="40"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spellingTestImage" translatesAutoresizingMaskIntoConstraints="NO" id="VT2-rX-hwD">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spellingTest" translatesAutoresizingMaskIntoConstraints="NO" id="VT2-rX-hwD">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="1A8-tB-vLu"/>
@@ -135,7 +135,7 @@
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="spellingTestImage" width="305" height="512"/>
+        <image name="spellingTest" width="305" height="512"/>
         <namedColor name="NBackground">
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

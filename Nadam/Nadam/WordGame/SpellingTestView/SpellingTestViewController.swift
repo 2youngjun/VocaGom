@@ -8,19 +8,14 @@
 import UIKit
 
 protocol SendTestWordResultDelegate: AnyObject {
-    func sendTestWordResult(wordTests: [isCorrectWord])
-}
-
-struct isCorrectWord {
-    let word: Word
-    var isCorrect: Bool
+    func sendTestWordResult(wordTests: [questionWord])
 }
 
 class SpellingTestViewController: UIViewController {
     
     // MARK: 변수
     var wordList = [Word]()
-    var wordTests = [isCorrectWord]()
+    var wordTests = [questionWord]()
     var countCorrect = 0
     var totalQuestion = 0
     var currentQuestionIndex = 0 {
@@ -129,11 +124,11 @@ class SpellingTestViewController: UIViewController {
                 }
             }
             for index in numbers {
-                wordTests.append(isCorrectWord(word: wordList[index], isCorrect: false))
+                wordTests.append(questionWord(word: wordList[index], isCorrect: false))
             }
         } else {
             for word in wordList {
-                wordTests.append(isCorrectWord(word: word, isCorrect: false))
+                wordTests.append(questionWord(word: word, isCorrect: false))
             }
         }
         self.totalQuestion = self.wordTests.count
@@ -152,15 +147,13 @@ class SpellingTestViewController: UIViewController {
     private func configureProgressView() {
         self.progressView.progress = 0.0
         self.progressView.progressTintColor = UIColor.NColor.blue
-        self.progressView.trackTintColor = UIColor.NColor.border
+        self.progressView.trackTintColor = UIColor.NColor.background
         self.progressView.progressViewStyle = .default
     }
     
     private func configureWordCardView() {
-        self.wordCardView.layer.shadowColor = UIColor.NColor.border.cgColor
-        self.wordCardView.layer.shadowOpacity = 0.6
-        self.wordCardView.layer.shadowOffset = CGSize(width: 5, height: 5)
         self.wordCardView.backgroundColor = UIColor.NColor.white
+        self.wordCardView.layer.applySketchShadow(color: UIColor.NColor.black, alpha: 0.05, x: 0, y: 0, blur: 10, spread: 0)
         self.wordCardView.layer.cornerRadius = 10.0
         self.wordCardView.layer.shadowRadius = 10.0
         

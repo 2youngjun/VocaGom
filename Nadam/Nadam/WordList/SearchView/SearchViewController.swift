@@ -100,14 +100,17 @@ extension SearchViewController: UICollectionViewDataSource, UISearchBarDelegate 
         
         let word = filteredWord[indexPath.row]
         cell.wordName.text = word.name
-        cell.wordMeaning.text = word.meaning
-        cell.layer.cornerRadius = 10.0
-        cell.backgroundColor = UIColor.NColor.white
         cell.wordName.font = UIFont.NFont.wordListWordName
         cell.wordName.textColor = UIColor.NColor.blue
+        
+        cell.wordMeaning.text = word.meaning
         cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
         cell.wordMeaning.textColor = UIColor.NColor.black
         
+        cell.backgroundColor = UIColor.NColor.white
+        cell.layer.cornerRadius = 10.0
+        cell.layer.applySketchShadow(color: UIColor.NColor.black, alpha: 0.05, x: 0, y: 0, blur: 10, spread: 0)
+
         return cell
     }
 
