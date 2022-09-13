@@ -267,6 +267,8 @@
                     </view>
                     <connections>
                         <outlet property="completeButton" destination="SfV-BC-cfD" id="dQI-d2-Kzr"/>
+                        <outlet property="countCorrect" destination="bit-FB-oQV" id="v3X-o8-vPn"/>
+                        <outlet property="countWrong" destination="zDH-V7-bYh" id="Mi9-Nz-PjI"/>
                         <outlet property="progressView" destination="dxD-4u-dJo" id="3BS-tI-lzS"/>
                         <outlet property="resultLabel" destination="KHj-IE-CD1" id="42h-fn-iFT"/>
                         <outlet property="totalCorrectionLabel" destination="bit-FB-oQV" id="maT-eC-pdf"/>

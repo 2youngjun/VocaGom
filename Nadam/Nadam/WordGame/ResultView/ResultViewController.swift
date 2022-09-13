@@ -18,7 +18,6 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var totalWrongView: UIView!
     @IBOutlet weak var totalWrongLabel: UILabel!
     
-    
     @IBOutlet var buttonViewCollection: [UIView]!
     @IBOutlet var buttonInnerViewCollection: [UIView]!
     @IBOutlet var buttonLabelCollection: [UILabel]!
@@ -26,15 +25,22 @@ class ResultViewController: UIViewController {
     
     @IBOutlet weak var completeButton: UIButton!
     
+    @IBOutlet weak var countCorrect: UILabel!
+    @IBOutlet weak var countWrong: UILabel!
+    
+    var resultWords = [isCorrectWord]()
+    var cntCorrect: Int = 0
+    
     // MARK: View Lifecycle Function
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.countResult()
         self.styleFunction()
     }
     
     @IBAction func tapCorrectButton(_ sender: UIButton) {
-        print("1")
+        
     }
     
     @IBAction func tapWrongButton(_ sender: UIButton) {
@@ -66,6 +72,9 @@ class ResultViewController: UIViewController {
         self.totalWrongView.layer.cornerRadius = 10.0
         self.totalWrongLabel.font = UIFont.NFont.automaticMeaningButton
         self.totalWrongLabel.textColor = UIColor.NColor.blue
+        
+        self.countCorrect.text = String(self.cntCorrect)
+        self.countWrong.text = String(self.resultWords.count - self.cntCorrect)
     }
     
     private func configureButtonView() {
@@ -93,5 +102,17 @@ class ResultViewController: UIViewController {
         self.completeButton.configuration?.background.backgroundColor = UIColor.NColor.orange
         self.completeButton.layer.cornerRadius = 10.0
         self.completeButton.tintColor = UIColor.NColor.white
+    }
+    
+    private func countResult() {
+        for resultWord in resultWords {
+            self.cntCorrect = resultWord.isCorrect ? self.cntCorrect + 1 : self.cntCorrect
+        }
+    }
+}
+
+extension ResultViewController: SendTestWordResultDelegate {
+    func sendTestWordResult(wordTests: [isCorrectWord]) {
+        self.resultWords = wordTests
     }
 }

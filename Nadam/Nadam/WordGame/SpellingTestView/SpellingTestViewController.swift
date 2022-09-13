@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol SendTestWordResultDelegate {
-    func sendTestWordResult(wordTests: isCorrectWord)
+protocol SendTestWordResultDelegate: AnyObject {
+    func sendTestWordResult(wordTests: [isCorrectWord])
 }
 
 struct isCorrectWord {
@@ -35,6 +35,14 @@ class SpellingTestViewController: UIViewController {
     }
     var progressing: Float = 0
     
+    weak var delegate: SendTestWordResultDelegate?
+    
+    let resultViewController: ResultViewController = {
+        let storyboard = UIStoryboard(name: "ResultView", bundle: nil)
+        guard let resultViewController = storyboard.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else { return UIViewController() as! ResultViewController }
+        return resultViewController
+    }()
+    
     // MARK: IBOutlet
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var wordCardView: UIView!
@@ -54,6 +62,7 @@ class SpellingTestViewController: UIViewController {
 
         self.countWordList()
         self.styleFunction()
+        self.delegate = self.resultViewController
     }
     
     // MARK: IBAction
@@ -76,9 +85,8 @@ class SpellingTestViewController: UIViewController {
     @IBAction func tapNextButton(_ sender: UIButton) {
         self.currentQuestionIndex += 1
         if self.currentQuestionIndex > self.totalQuestion {
-            let storyboard = UIStoryboard(name: "ResultView", bundle: nil)
-            guard let resultViewController = storyboard.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else { return }
-            self.navigationController?.pushViewController(resultViewController, animated: true)
+            self.delegate?.sendTestWordResult(wordTests: wordTests)
+            self.navigationController?.pushViewController(self.resultViewController, animated: true)
         } else {
             if self.checkWordCorrect(textFieldString: self.textField.text ?? "", meaning: self.wordCardLabel.text ?? "") {
                 self.countCorrect += 1
