@@ -170,6 +170,7 @@ class WordListViewController: UIViewController {
             button.configuration?.attributedTitle = buttonTitle
             button.configuration?.cornerStyle = .capsule
             button.configuration?.background.cornerRadius = 5
+            button.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         }
     }
     
@@ -213,7 +214,7 @@ class WordListViewController: UIViewController {
     func showAlertToGoSetting() {
         let alertController = UIAlertController(
             title: "현재 카메라 사용에 대한 접근 권한이 없습니다.",
-            message: "설정 > Nadam에서 접근을 활성화 할 수 있습니다.",
+            message: "설정 > Nadam 에서 접근을 활성화 할 수 있습니다.",
             preferredStyle: .alert)
         
         let cancelAlert = UIAlertAction(
@@ -286,13 +287,20 @@ extension WordListViewController: UICollectionViewDataSource {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TapWordCell", for: indexPath) as? TapWordCell else { return UICollectionViewCell() }
                 let word = wordList[indexPath.row]
                 cell.wordName.text = word.name
-                cell.wordMeaning.text = word.meaning
-                cell.layer.cornerRadius = 10.0
-                cell.backgroundColor = UIColor.NColor.white
                 cell.wordName.font = UIFont.NFont.wordListWordName
                 cell.wordName.textColor = UIColor.NColor.blue
+                
+                cell.wordMeaning.text = word.meaning
                 cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
                 cell.wordMeaning.textColor = UIColor.NColor.black
+                
+                cell.starButton.tag = indexPath.row
+                cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
+                cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
+                
+                cell.layer.cornerRadius = 10.0
+                cell.backgroundColor = UIColor.NColor.white
+                cell.layer.applySketchShadow(color: UIColor.NColor.black, alpha: 0.05, x: 0, y: 0, blur: 10, spread: 0)
                 
                 cell.wordSynoym.text = word.synoym
                 if cell.wordSynoym.text == "" {
@@ -314,9 +322,6 @@ extension WordListViewController: UICollectionViewDataSource {
                     cell.wordExample.textColor = UIColor.NColor.black
                 }
                 
-                cell.starButton.tag = indexPath.row
-                cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
-                cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
                 
                 return cell
                 
@@ -324,17 +329,21 @@ extension WordListViewController: UICollectionViewDataSource {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WordCell", for: indexPath) as? WordCell else { return UICollectionViewCell() }
                 let word = wordList[indexPath.row]
                 cell.wordName.text = word.name
-                cell.wordMeaning.text = word.meaning
-                cell.layer.cornerRadius = 10.0
-                cell.backgroundColor = UIColor.NColor.white
                 cell.wordName.font = UIFont.NFont.wordListWordName
                 cell.wordName.textColor = UIColor.NColor.blue
+                
+                cell.wordMeaning.text = word.meaning
                 cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
                 cell.wordMeaning.textColor = UIColor.NColor.black
-                     
+                
                 cell.starButton.tag = indexPath.row
                 cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
                 cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
+                
+                cell.layer.cornerRadius = 10.0
+                cell.backgroundColor = UIColor.NColor.white
+                cell.layer.applySketchShadow(color: UIColor.NColor.black, alpha: 0.05, x: 0, y: 0, blur: 10, spread: 0)
+                
                 return cell
             }
         case .star:
@@ -342,13 +351,20 @@ extension WordListViewController: UICollectionViewDataSource {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TapWordCell", for: indexPath) as? TapWordCell else { return UICollectionViewCell() }
                 let word = wordStars[indexPath.row]
                 cell.wordName.text = word.name
-                cell.wordMeaning.text = word.meaning
-                cell.layer.cornerRadius = 10.0
-                cell.backgroundColor = UIColor.NColor.white
                 cell.wordName.font = UIFont.NFont.wordListWordName
                 cell.wordName.textColor = UIColor.NColor.blue
+                
+                cell.wordMeaning.text = word.meaning
                 cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
                 cell.wordMeaning.textColor = UIColor.NColor.black
+                
+                cell.starButton.tag = indexPath.row
+                cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
+                cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
+                
+                cell.layer.cornerRadius = 10.0
+                cell.backgroundColor = UIColor.NColor.white
+                cell.layer.applySketchShadow(color: UIColor.NColor.black, alpha: 0.05, x: 0, y: 0, blur: 10, spread: 0)
                 
                 cell.wordSynoym.text = word.synoym
                 if cell.wordSynoym.text == "" {
@@ -370,31 +386,30 @@ extension WordListViewController: UICollectionViewDataSource {
                     cell.wordExample.textColor = UIColor.NColor.black
                 }
                 
-                cell.starButton.tag = indexPath.row
-                cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
-                cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
-                
                 return cell
                 
             } else {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WordCell", for: indexPath) as? WordCell else { return UICollectionViewCell() }
                 let word = wordStars[indexPath.row]
                 cell.wordName.text = word.name
-                cell.wordMeaning.text = word.meaning
-                cell.layer.cornerRadius = 10.0
-                cell.backgroundColor = UIColor.NColor.white
                 cell.wordName.font = UIFont.NFont.wordListWordName
                 cell.wordName.textColor = UIColor.NColor.blue
+                
+                cell.wordMeaning.text = word.meaning
                 cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
                 cell.wordMeaning.textColor = UIColor.NColor.black
-                     
+                
                 cell.starButton.tag = indexPath.row
                 cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
                 cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
+                
+                cell.layer.cornerRadius = 10.0
+                cell.backgroundColor = UIColor.NColor.white
+                cell.layer.applySketchShadow(color: UIColor.NColor.black, alpha: 0.05, x: 0, y: 0, blur: 10, spread: 0)
+                
                 return cell
             }
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -414,7 +429,6 @@ extension WordListViewController: UICollectionViewDataSource {
             wordStars[indexPath.row].isTapped = !wordStars[indexPath.row].isTapped
             self.collectionView.reloadData()
         }
-        
     }
     
     // Star Button 누를 시

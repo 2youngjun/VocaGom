@@ -19,8 +19,12 @@
 		8B1DBDB628A67988007580D7 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DBDB528A67988007580D7 /* WordCell.swift */; };
 		8B21436328C2D1ED00C073CE /* SearchView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B21436228C2D1ED00C073CE /* SearchView.storyboard */; };
 		8B21436528C2D20300C073CE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21436428C2D20300C073CE /* SearchViewController.swift */; };
+		8B4D72A428D0B523000E9BBB /* questionWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D72A328D0B523000E9BBB /* questionWord.swift */; };
+		8B4D72A628D0B7DF000E9BBB /* ResultWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D72A528D0B7DF000E9BBB /* ResultWordCell.swift */; };
 		8B5026CF28BF8CE5009271AA /* WordInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5026CE28BF8CE5009271AA /* WordInformation.swift */; };
 		8B5026D128BF90C2009271AA /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5026D028BF90C2009271AA /* ErrorMessage.swift */; };
+		8B63ABE928D04BB200D38973 /* ResultWordView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B63ABE828D04BB200D38973 /* ResultWordView.storyboard */; };
+		8B63ABEB28D04BB900D38973 /* ResultWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B63ABEA28D04BB900D38973 /* ResultWordViewController.swift */; };
 		8B6A522B28C626A9005CA74B /* TapWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A522928C626A9005CA74B /* TapWordCell.swift */; };
 		8B6A522C28C626A9005CA74B /* TapWordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A522A28C626A9005CA74B /* TapWordCell.xib */; };
 		8B6DE76128B0B50300E32928 /* GameListView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6DE76028B0B50300E32928 /* GameListView.storyboard */; };
@@ -29,6 +33,10 @@
 		8BDDCE9828C7AF64000DE395 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDCE9728C7AF64000DE395 /* PaddingLabel.swift */; };
 		8BDDCE9A28C9CA42000DE395 /* ArrangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDCE9928C9CA42000DE395 /* ArrangeButton.swift */; };
 		8BE57A0E28C4FDAD00484284 /* SearchedWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE57A0D28C4FDAD00484284 /* SearchedWordCell.swift */; };
+		8BF3045628CF19C200A5374A /* SpellingTestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3045528CF19C200A5374A /* SpellingTestView.storyboard */; };
+		8BF3045828CF19D400A5374A /* SpellingTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3045728CF19D400A5374A /* SpellingTestViewController.swift */; };
+		8BF3045B28CF78C900A5374A /* ResultView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3045A28CF78C900A5374A /* ResultView.storyboard */; };
+		8BF3045D28CF78D300A5374A /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3045C28CF78D300A5374A /* ResultViewController.swift */; };
 		8BF3AF25289ACA8D00F049CD /* WordListView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF24289ACA8D00F049CD /* WordListView.storyboard */; };
 		8BF3AF27289ACAA700F049CD /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3AF26289ACAA700F049CD /* WordListViewController.swift */; };
 		8BF3AF2A289B5AEB00F049CD /* AddWordView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF29289B5AEB00F049CD /* AddWordView.storyboard */; };
@@ -60,8 +68,12 @@
 		8B1DBDB528A67988007580D7 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		8B21436228C2D1ED00C073CE /* SearchView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchView.storyboard; sourceTree = "<group>"; };
 		8B21436428C2D20300C073CE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		8B4D72A328D0B523000E9BBB /* questionWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = questionWord.swift; sourceTree = "<group>"; };
+		8B4D72A528D0B7DF000E9BBB /* ResultWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWordCell.swift; sourceTree = "<group>"; };
 		8B5026CE28BF8CE5009271AA /* WordInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordInformation.swift; sourceTree = "<group>"; };
 		8B5026D028BF90C2009271AA /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		8B63ABE828D04BB200D38973 /* ResultWordView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResultWordView.storyboard; sourceTree = "<group>"; };
+		8B63ABEA28D04BB900D38973 /* ResultWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWordViewController.swift; sourceTree = "<group>"; };
 		8B6A522928C626A9005CA74B /* TapWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapWordCell.swift; sourceTree = "<group>"; };
 		8B6A522A28C626A9005CA74B /* TapWordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapWordCell.xib; sourceTree = "<group>"; };
 		8B6DE76028B0B50300E32928 /* GameListView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameListView.storyboard; sourceTree = "<group>"; };
@@ -70,6 +82,10 @@
 		8BDDCE9728C7AF64000DE395 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		8BDDCE9928C9CA42000DE395 /* ArrangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangeButton.swift; sourceTree = "<group>"; };
 		8BE57A0D28C4FDAD00484284 /* SearchedWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedWordCell.swift; sourceTree = "<group>"; };
+		8BF3045528CF19C200A5374A /* SpellingTestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SpellingTestView.storyboard; sourceTree = "<group>"; };
+		8BF3045728CF19D400A5374A /* SpellingTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellingTestViewController.swift; sourceTree = "<group>"; };
+		8BF3045A28CF78C900A5374A /* ResultView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResultView.storyboard; sourceTree = "<group>"; };
+		8BF3045C28CF78D300A5374A /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		8BF3AF24289ACA8D00F049CD /* WordListView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WordListView.storyboard; sourceTree = "<group>"; };
 		8BF3AF26289ACAA700F049CD /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		8BF3AF29289B5AEB00F049CD /* AddWordView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddWordView.storyboard; sourceTree = "<group>"; };
@@ -191,10 +207,50 @@
 		8B6DE75F28B0B4BE00E32928 /* WordGame */ = {
 			isa = PBXGroup;
 			children = (
+				8B4D72A328D0B523000E9BBB /* questionWord.swift */,
+				8BF3045E28D04AD800A5374A /* ResultWordView */,
+				8BF3045928CF78B100A5374A /* ResultView */,
+				8BF3045428CF15A400A5374A /* SpellingTestView */,
+				8BF3045328CF13E100A5374A /* GameListView */,
+			);
+			path = WordGame;
+			sourceTree = "<group>";
+		};
+		8BF3045328CF13E100A5374A /* GameListView */ = {
+			isa = PBXGroup;
+			children = (
 				8B6DE76028B0B50300E32928 /* GameListView.storyboard */,
 				8B6DE76228B0B51600E32928 /* GameListViewController.swift */,
 			);
-			path = WordGame;
+			path = GameListView;
+			sourceTree = "<group>";
+		};
+		8BF3045428CF15A400A5374A /* SpellingTestView */ = {
+			isa = PBXGroup;
+			children = (
+				8BF3045528CF19C200A5374A /* SpellingTestView.storyboard */,
+				8BF3045728CF19D400A5374A /* SpellingTestViewController.swift */,
+			);
+			path = SpellingTestView;
+			sourceTree = "<group>";
+		};
+		8BF3045928CF78B100A5374A /* ResultView */ = {
+			isa = PBXGroup;
+			children = (
+				8BF3045A28CF78C900A5374A /* ResultView.storyboard */,
+				8BF3045C28CF78D300A5374A /* ResultViewController.swift */,
+			);
+			path = ResultView;
+			sourceTree = "<group>";
+		};
+		8BF3045E28D04AD800A5374A /* ResultWordView */ = {
+			isa = PBXGroup;
+			children = (
+				8B63ABE828D04BB200D38973 /* ResultWordView.storyboard */,
+				8B63ABEA28D04BB900D38973 /* ResultWordViewController.swift */,
+				8B4D72A528D0B7DF000E9BBB /* ResultWordCell.swift */,
+			);
+			path = ResultWordView;
 			sourceTree = "<group>";
 		};
 		8BF3AF28289ACAB000F049CD /* WordList */ = {
@@ -313,12 +369,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BFC7E3728B5140500D92E00 /* AddCameraView.storyboard in Resources */,
+				8BF3045628CF19C200A5374A /* SpellingTestView.storyboard in Resources */,
 				8B0DDEFE289A953F00F0ACC3 /* LaunchScreen.storyboard in Resources */,
+				8B63ABE928D04BB200D38973 /* ResultWordView.storyboard in Resources */,
 				8BF3AF43289C32BE00F049CD /* GmarketSansTTFLight.ttf in Resources */,
 				8BF3AF25289ACA8D00F049CD /* WordListView.storyboard in Resources */,
 				8BF3AF44289C32C000F049CD /* GmarketSansTTFMedium.ttf in Resources */,
 				8B6A522C28C626A9005CA74B /* TapWordCell.xib in Resources */,
 				8B0DDEFB289A953F00F0ACC3 /* Assets.xcassets in Resources */,
+				8BF3045B28CF78C900A5374A /* ResultView.storyboard in Resources */,
 				8B0DDEF6289A953D00F0ACC3 /* Main.storyboard in Resources */,
 				8BF3AF2A289B5AEB00F049CD /* AddWordView.storyboard in Resources */,
 				8B21436328C2D1ED00C073CE /* SearchView.storyboard in Resources */,
@@ -384,12 +443,17 @@
 				8BF3AF2C289B5AF500F049CD /* AddWordViewController.swift in Sources */,
 				8B6DE76728B0C52500E32928 /* CustomTabBarVC.swift in Sources */,
 				8B6A522B28C626A9005CA74B /* TapWordCell.swift in Sources */,
+				8B4D72A628D0B7DF000E9BBB /* ResultWordCell.swift in Sources */,
 				8B1DBD78289F5D6F007580D7 /* Nadam+Color.swift in Sources */,
+				8BF3045D28CF78D300A5374A /* ResultViewController.swift in Sources */,
 				8B6DE76328B0B51600E32928 /* GameListViewController.swift in Sources */,
+				8B63ABEB28D04BB900D38973 /* ResultWordViewController.swift in Sources */,
 				8BFC7E3B28B88AB700D92E00 /* WordButtonCell.swift in Sources */,
 				8BF3AF27289ACAA700F049CD /* WordListViewController.swift in Sources */,
+				8B4D72A428D0B523000E9BBB /* questionWord.swift in Sources */,
 				8B0DDEF1289A953D00F0ACC3 /* SceneDelegate.swift in Sources */,
 				8BF3AF2F289BBFAC00F049CD /* CoreDataManager.swift in Sources */,
+				8BF3045828CF19D400A5374A /* SpellingTestViewController.swift in Sources */,
 				8B5026D128BF90C2009271AA /* ErrorMessage.swift in Sources */,
 				8B1DBDB628A67988007580D7 /* WordCell.swift in Sources */,
 				8BDDCE9828C7AF64000DE395 /* PaddingLabel.swift in Sources */,

@@ -22,7 +22,7 @@ private let customFonts: [UIFont.TextStyle: UIFont] = [
     .body: UIFont(name: "GmarketSansTTFBold", size: 16)!,
     .callout: UIFont(name: "GmarketSansTTFMedium", size: 16)!,
     .subheadline: UIFont(name: "GmarketSansTTFMedium", size: 15)!,
-    .footnote: UIFont(name: "GmarketSansTTFLight", size: 12)!,
+    .footnote: UIFont(name: "GmarketSansTTFLight", size: 10)!,
     .caption1: UIFont(name: "GmarketSansTTFMedium", size: 14)!,
     .caption2: UIFont(name: "GmarketSansTTFMedium", size: 12)!
 ]
@@ -42,8 +42,8 @@ extension UIFont {
         static var addWordNavigationTitle: UIFont{ UIFont.NadamFont(forTextStyle: .headline) }
         static var addWordSection: UIFont{ UIFont.NadamFont(forTextStyle: .headline) }
         static var wordListTitleLabel: UIFont{ UIFont.NadamFont(forTextStyle: .title1) }
-        static var wordListWordName: UIFont{ UIFont.NadamFont(forTextStyle: .body) }
-        static var wordListWordMeaning: UIFont{ UIFont.NadamFont(forTextStyle: .callout) }
+        static var wordListWordName: UIFont{ UIFont.NadamFont(forTextStyle: .title3) }
+        static var wordListWordMeaning: UIFont{ UIFont.NadamFont(forTextStyle: .title2) }
         static var wordListWordSynoym: UIFont{ UIFont.NadamFont(forTextStyle: .caption2) }
         static var wordListWordExample: UIFont{ UIFont.NadamFont(forTextStyle: .caption2) }
         static var wordButton: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }
@@ -53,5 +53,10 @@ extension UIFont {
         static var searchBarTextFieldFont: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }
         static var noSearchedTextFont: UIFont{ UIFont.NadamFont(forTextStyle: .callout) }
         static var arrangeButtonFont: UIFont{ UIFont.NadamFont(forTextStyle: .caption1) }
+        static var testMainLabelFont: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }
+        static var testSubLabelFont: UIFont{ UIFont.NadamFont(forTextStyle: .footnote) }
+        static var spellingTestLabel: UIFont{ UIFont.NadamFont(forTextStyle: .title1) }
+        static var spellingTestNextButton: UIFont{ UIFont.NadamFont(forTextStyle: .title2) }
+        static var resultLabel: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }
     }
 }

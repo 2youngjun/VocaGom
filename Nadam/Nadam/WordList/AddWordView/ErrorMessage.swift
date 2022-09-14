@@ -8,6 +8,5 @@
 import Foundation
 
 struct ErrorMessage: Codable {
-//    let error: String
     let errorMessage: String
 }
