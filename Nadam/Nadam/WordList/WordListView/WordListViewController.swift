@@ -70,7 +70,6 @@ class WordListViewController: UIViewController {
         
         self.delegate = self.addCameraViewController
         
-        
         for word in wordList {
             word.isTapped = false
         }
@@ -98,6 +97,10 @@ class WordListViewController: UIViewController {
     }
     
     @IBAction func tapArrangeButtons(_ sender: UIButton) {
+        for word in wordList {
+            word.isTapped = false
+        }
+        
         // otherButton disSelected
         if sender.isSelected {
             return
@@ -548,7 +551,5 @@ extension WordListViewController: UINavigationControllerDelegate, UIImagePickerC
         NotificationCenter.default.post(name: Notification.Name("newPhoto"), object: nil)
         
         self.navigationController?.pushViewController(self.addCameraViewController, animated: true)
-        
     }
-    
 }

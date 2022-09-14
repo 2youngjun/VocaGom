@@ -32,7 +32,7 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
             button.backgroundColor = UIColor.NColor.blue
         } else {
             button.setTitleColor(UIColor.NColor.blue, for: .normal)
-            button.backgroundColor = UIColor.NColor.weakBlue
+            button.backgroundColor = UIColor.NColor.lightBlue
         }
     }
     
@@ -107,12 +107,12 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     @IBAction func startEditingTextField(_ sender: UITextField) {
         sender.layer.borderWidth = 0.5
         sender.layer.cornerRadius = 5.0
-        sender.layer.borderColor = UIColor.NColor.blue.cgColor
+        sender.layer.borderColor = UIColor.NColor.borderBlue.cgColor
     }
     
     @IBAction func endEditingTextField(_ sender: UITextField) {
         sender.layer.borderWidth = 0.5
-        sender.layer.borderColor = UIColor.NColor.weakBlue.cgColor
+        sender.layer.borderColor = UIColor.NColor.lightBlue.cgColor
         sender.layer.cornerRadius = 5.0
     }
     
@@ -144,7 +144,7 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     private func configureLayoutStyle() {
         
         saveButton.titleLabel?.font = UIFont.NFont.wordListWordMeaning
-        saveButton.backgroundColor = UIColor.NColor.weakBlue
+        saveButton.backgroundColor = UIColor.NColor.lightBlue
         saveButton.isEnabled = false
         saveButton.titleLabel?.textColor = UIColor.NColor.blue
         saveButton.layer.cornerRadius = 5
@@ -160,7 +160,7 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         wordExample.font = UIFont.NFont.addWordSection
         
         duplicateSentense.font = UIFont.NFont.sameWordButton
-        duplicateSentense.textColor = UIColor.NColor.orange
+        duplicateSentense.textColor = UIColor.NColor.subBlue
         duplicateSentense.isHidden = true
         
         automaticMeaningButton.titleLabel?.font = UIFont.NFont.automaticMeaningButton
@@ -175,10 +175,10 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     private func configureTextFieldStyle() {
         for textField in textFieldCollection {
             textField.delegate = self
-            textField.backgroundColor = UIColor.NColor.weakBlue
+            textField.backgroundColor = UIColor.NColor.lightBlue
             textField.layer.borderWidth = 0.5
             textField.layer.cornerRadius = 5.0
-            textField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
+            textField.layer.borderColor = UIColor.NColor.lightBlue.cgColor
             textField.font = UIFont.NFont.textFieldFont
         }
     }
@@ -225,7 +225,7 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     }
     
     private func ifIsSameWord() {
-        self.duplicateSentense.isHidden = true
+        self.duplicateSentense.isHidden = false
 //        self.nameTextField.layer.borderColor = UIColor.NColor.orange.cgColor
     }
     

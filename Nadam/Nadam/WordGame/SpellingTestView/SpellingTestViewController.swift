@@ -64,13 +64,13 @@ class SpellingTestViewController: UIViewController {
     @IBAction func startEditingTextField(_ sender: UITextField) {
         self.textField.layer.borderWidth = 0.5
         self.textField.layer.cornerRadius = 5.0
-        self.textField.layer.borderColor = UIColor.NColor.blue.cgColor
+        self.textField.layer.borderColor = UIColor.NColor.borderBlue.cgColor
     }
     
     @IBAction func endEditingTextField(_ sender: UITextField) {
         self.textField.layer.borderWidth = 0.5
         self.textField.layer.cornerRadius = 5.0
-        self.textField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
+        self.textField.layer.borderColor = UIColor.NColor.lightBlue.cgColor
     }
     
     @IBAction func tapOtherSpace(_ sender: UITapGestureRecognizer) {
@@ -164,10 +164,10 @@ class SpellingTestViewController: UIViewController {
     }
     
     private func configureTextField() {
-        self.textField.backgroundColor = UIColor.NColor.weakBlue
+        self.textField.backgroundColor = UIColor.NColor.lightBlue
         self.textField.layer.borderWidth = 0.5
         self.textField.layer.cornerRadius = 5.0
-        self.textField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
+        self.textField.layer.borderColor = UIColor.NColor.lightBlue.cgColor
         self.textField.font = UIFont.NFont.textFieldFont
     }
     

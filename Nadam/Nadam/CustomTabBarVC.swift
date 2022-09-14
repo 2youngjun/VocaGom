@@ -18,6 +18,6 @@ class CustomTabBarVC: UITabBar {
     static func clearShadow() {
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
-        UITabBar.appearance().backgroundColor = UIColor.NColor.weakBlue
+        UITabBar.appearance().backgroundColor = UIColor.NColor.lightBlue
     }
 }
