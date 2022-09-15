@@ -180,6 +180,8 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
             textField.layer.cornerRadius = 5.0
             textField.layer.borderColor = UIColor.NColor.lightBlue.cgColor
             textField.font = UIFont.NFont.textFieldFont
+            textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+            textField.leftViewMode = .always
         }
     }
     
