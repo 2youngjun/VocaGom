@@ -123,11 +123,11 @@ class SpellingTestViewController: UIViewController {
                     numbers.append(number)
                 }
             }
-            for index in numbers {
+            numbers.forEach { index in
                 wordTests.append(questionWord(word: wordList[index], isCorrect: false))
             }
         } else {
-            for word in wordList {
+            self.wordList.forEach { word in
                 wordTests.append(questionWord(word: word, isCorrect: false))
             }
         }

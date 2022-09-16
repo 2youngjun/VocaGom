@@ -24,17 +24,44 @@
                                     <constraint firstAttribute="height" constant="320" id="lAB-lx-3hH"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hG9-as-LwX">
+                                <rect key="frame" x="20" y="419" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9ZO-h1-cdN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aR9-e4-UpL">
+                                <rect key="frame" x="20" y="474" width="374" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="TNc-XQ-Oqc"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="다음"/>
+                                <connections>
+                                    <action selector="tapNextButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="vRy-vc-0W7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="aR9-e4-UpL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="AUF-hH-8uQ"/>
                             <constraint firstItem="mHl-5b-RPl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="L3U-If-c23"/>
                             <constraint firstItem="mHl-5b-RPl" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="40" id="UCg-zt-1qi"/>
+                            <constraint firstItem="hG9-as-LwX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Wge-au-gtD"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aR9-e4-UpL" secondAttribute="trailing" constant="20" id="fhe-FJ-yer"/>
+                            <constraint firstItem="aR9-e4-UpL" firstAttribute="top" secondItem="hG9-as-LwX" secondAttribute="bottom" constant="15" id="gAr-GU-raq"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hG9-as-LwX" secondAttribute="trailing" constant="20" id="hfr-pG-gNs"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mHl-5b-RPl" secondAttribute="trailing" constant="20" id="jcN-s8-tek"/>
+                            <constraint firstItem="hG9-as-LwX" firstAttribute="top" secondItem="mHl-5b-RPl" secondAttribute="bottom" constant="15" id="mxN-0J-ctD"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="nextButton" destination="aR9-e4-UpL" id="7JG-Qv-xYJ"/>
                         <outlet property="rainBackgroundView" destination="mHl-5b-RPl" id="Q1W-wV-FGV"/>
+                        <outlet property="textField" destination="hG9-as-LwX" id="xTu-Dl-5mK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
