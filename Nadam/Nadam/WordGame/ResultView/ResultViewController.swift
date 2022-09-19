@@ -52,6 +52,10 @@ class ResultViewController: UIViewController {
         self.delegate = self.resultWordViewController
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print(self.resultWords.count)
+    }
+    
     // MARK: IBAction
     @IBAction func tapCorrectButton(_ sender: UIButton) {
         var tossWords = [questionWord]()

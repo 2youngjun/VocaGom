@@ -8,17 +8,33 @@
 import UIKit
 
 class RainTestViewController: UIViewController {
-
+    
     //MARK: 변수
     var wordList = [Word]()
     var wordTests = [questionWord]()
     var countQuestion = 0
-    var fallintIndex = 0
+    var fallingIndex = 0
     
     var wordTestLayer = [CATextLayer]()
     var randomPositionXArray = [Float]()
     
     var rightCounut = 0
+    var isEnded = false {
+        didSet {
+            if isEnded {
+                var buttonTitle = AttributedString.init("완료")
+                buttonTitle.font = UIFont.NFont.spellingTestNextButton
+                self.nextButton.configuration?.attributedTitle = buttonTitle
+                self.nextButton.configuration?.background.backgroundColor = UIColor.NColor.orange
+            }
+        }
+    }
+    weak var delegate: SendTestWordResultDelegate?
+    let resultViewController: ResultViewController = {
+        let storyboard = UIStoryboard(name: "ResultView", bundle: nil)
+        guard let resultViewController = storyboard.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else { return UIViewController() as! ResultViewController }
+        return resultViewController
+    }()
     
     //MARK: IBOutlet 변수
     @IBOutlet weak var rainBackgroundView: UIView!
@@ -29,19 +45,24 @@ class RainTestViewController: UIViewController {
     @IBAction func tapNextButton(_ sender: UIButton) {
         var foundName = ""
         
-        self.wordList.forEach { word in
-            if word.meaning == self.wordTestLayer[fallintIndex].string as? String {
-                foundName = word.name ?? ""
+        if self.isEnded {
+            self.delegate?.sendTestWordResult(wordTests: wordTests)
+            self.navigationController?.pushViewController(self.resultViewController, animated: true)
+        } else {
+            self.wordList.forEach { word in
+                if word.meaning == self.wordTestLayer[fallingIndex].string as? String {
+                    foundName = word.name ?? ""
+                }
             }
+            
+            if foundName == self.textField.text {
+                self.wordTestLayer[fallingIndex].foregroundColor = UIColor.clear.cgColor
+                self.rightCounut += 1
+                self.wordTests[fallingIndex].isCorrect = true
+            }
+            self.textField.text = ""
         }
         
-        if foundName == self.textField.text {
-            self.wordTestLayer[fallintIndex].foregroundColor = UIColor.clear.cgColor
-            self.rightCounut += 1
-            print(rightCounut)
-        }
-        
-        self.textField.text = ""
     }
     
     //MARK: View LifeCycle Function
@@ -50,7 +71,8 @@ class RainTestViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(notificationCheck(_:)),
                                                name: Notification.Name("@@"), object: nil)
-        
+        self.delegate = self.resultViewController
+
         self.styleFunction()
         self.countWord()
         
@@ -59,18 +81,15 @@ class RainTestViewController: UIViewController {
         self.rainTestStart()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        print(wordTests)
+    }
+    
     @objc func notificationCheck(_ notification: Notification) {
         guard let index = notification.object as? Int else { return }
-//        var foundName = ""
-//
-//        self.wordList.forEach { word in
-//            if word.meaning == self.wordTestLayer[index].string as? String {
-//                foundName = word.name ?? ""
-//            }
-//        }
-//        print(index)
 
-        self.fallintIndex = index
+        self.fallingIndex = index
+        print(fallingIndex)
     }
     
     //MARK: 기능 구현
@@ -80,8 +99,8 @@ class RainTestViewController: UIViewController {
 
         self.wordList = CoreDataManager.shared.fetchWord()
         count = wordList.count
-        if count > 10 {
-            while numbers.count < 10 {
+        if count > 7 {
+            while numbers.count < 7 {
                 let number = Int.random(in: 0..<count)
                 if !numbers.contains(number) {
                     numbers.append(number)
@@ -107,8 +126,7 @@ class RainTestViewController: UIViewController {
     }
     
     private func setCALayer() {
-        let layerWidth = self.rainBackgroundView.bounds.width / 4
-        
+        let layerWidth = self.rainBackgroundView.bounds.width / 10
         
         self.wordTests.indices.forEach { index in
             let rainDropWord = CATextLayer()
@@ -126,67 +144,40 @@ class RainTestViewController: UIViewController {
         }
     }
     
-    private func addLayer(rainDropWord: CATextLayer) {
-        self.rainBackgroundView.layer.addSublayer(rainDropWord)
-        print("💚")
-    }
-    
     private func animationLayer(rainDropWord: CATextLayer) {
         let baseViewHeight = self.rainBackgroundView.bounds.height
         // CATextLayer Animation
         let animation = CABasicAnimation(keyPath: "position")
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
         animation.fromValue = rainDropWord.position
-        animation.toValue = CGPoint(x: rainDropWord.position.x, y: baseViewHeight - baseViewHeight / 10)
-        animation.duration = 4
+        animation.toValue = CGPoint(x: rainDropWord.position.x, y: baseViewHeight - baseViewHeight / 12)
+        animation.duration = 3
         animation.fillMode = .both
         rainDropWord.add(animation, forKey: "basic animation")
-        
         rainDropWord.position = CGPoint(x: rainDropWord.position.x, y: baseViewHeight - baseViewHeight / 10)
     }
     
     private func rainTestStart() {
         var time: Double = 0
         self.wordTestLayer.indices.forEach { index in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4.0 * time) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0 * time) {
                 
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
                     NotificationCenter.default.post(name: Notification.Name("@@"), object: index, userInfo: nil)
                 }
-                
-                self.rainBackgroundView.layer.insertSublayer(self.wordTestLayer[index], at: 1)
+                self.rainBackgroundView.layer.insertSublayer(self.wordTestLayer[index], at: 0)
                 self.animationLayer(rainDropWord: self.wordTestLayer[index])
                 print(self.wordTestLayer[index].position)
-                
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4.5) {
+                print(self.isEnded)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.3) {
                     self.wordTestLayer[index].foregroundColor = UIColor.clear.cgColor
-//                    self.wordTestLayer[index].removeFromSuperlayer()
                 }
             }
-            time += 1
+            time += 1.0
         }
-        
-    }
-    
-    private func removeLayer(rainDropWord: CATextLayer) {
-        rainDropWord.removeFromSuperlayer()
-        print("🔥")
-        print("\(self.wordTestLayer.firstIndex(of: rainDropWord))")
-    }
-    
-    private func rainTestSequence() {
-        
-        // wordTests 값은 넣어져있음 (인덱스 최대 10개)
-        
-        // 단어가 내려오고
-        
-        // 다음이 눌렸을 때 TextField.text 값 비교하여
-        
-        // 맞으면 removeSubLayer
-        
-        // 아니면 그대로 지속
-        
-        // 최종적으로 countQuestion 같으면 종료
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0 * time) {
+            self.isEnded = true
+        }
     }
     
     //MARK: Style Function
