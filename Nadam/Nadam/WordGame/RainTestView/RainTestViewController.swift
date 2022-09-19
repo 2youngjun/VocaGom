@@ -13,10 +13,12 @@ class RainTestViewController: UIViewController {
     var wordList = [Word]()
     var wordTests = [questionWord]()
     var countQuestion = 0
+    var fallintIndex = 0
     
     var wordTestLayer = [CATextLayer]()
     var randomPositionXArray = [Float]()
     
+    var rightCounut = 0
     
     //MARK: IBOutlet 변수
     @IBOutlet weak var rainBackgroundView: UIView!
@@ -25,6 +27,19 @@ class RainTestViewController: UIViewController {
     
     //MARK: IBOutlet Function
     @IBAction func tapNextButton(_ sender: UIButton) {
+        var foundName = ""
+        
+        self.wordList.forEach { word in
+            if word.meaning == self.wordTestLayer[fallintIndex].string as? String {
+                foundName = word.name ?? ""
+            }
+        }
+        
+        if foundName == self.textField.text {
+            self.wordTestLayer[fallintIndex].foregroundColor = UIColor.clear.cgColor
+            self.rightCounut += 1
+            print(rightCounut)
+        }
         
         self.textField.text = ""
     }
@@ -34,7 +49,7 @@ class RainTestViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(notificationCheck(_:)),
-                                               name: Notification.Name("hello"), object: nil)
+                                               name: Notification.Name("@@"), object: nil)
         
         self.styleFunction()
         self.countWord()
@@ -45,21 +60,17 @@ class RainTestViewController: UIViewController {
     }
     
     @objc func notificationCheck(_ notification: Notification) {
-        guard let string = notification.object as? CATextLayer else { return }
-        var foundMeaning = ""
-        
-        self.wordList.forEach { word in
-            if self.textField.text == word.name {
-                foundMeaning = word.meaning ?? ""
-            }
-        }
-        print(foundMeaning)
-        
-        DispatchQueue.main.async {
-            if foundMeaning == string.string as! String {
-                self.removeLayer(rainDropWord: string)
-            }
-        }
+        guard let index = notification.object as? Int else { return }
+//        var foundName = ""
+//
+//        self.wordList.forEach { word in
+//            if word.meaning == self.wordTestLayer[index].string as? String {
+//                foundName = word.name ?? ""
+//            }
+//        }
+//        print(index)
+
+        self.fallintIndex = index
     }
     
     //MARK: 기능 구현
@@ -90,7 +101,7 @@ class RainTestViewController: UIViewController {
     
     private func addRandomPositionXArray() {
         while self.randomPositionXArray.count < self.countQuestion {
-            let randomX = Float.random(in: 50.0..<Float(self.rainBackgroundView.bounds.width - 50))
+            let randomX = Float.random(in: 75.0..<Float(self.rainBackgroundView.bounds.width - 75))
             randomPositionXArray.append(randomX)
         }
     }
@@ -98,14 +109,17 @@ class RainTestViewController: UIViewController {
     private func setCALayer() {
         let layerWidth = self.rainBackgroundView.bounds.width / 4
         
+        
         self.wordTests.indices.forEach { index in
             let rainDropWord = CATextLayer()
-            rainDropWord.bounds = CGRect(x: 0, y: 0, width: layerWidth, height: layerWidth)
+            rainDropWord.bounds = CGRect(x: 0, y: 0, width: self.rainBackgroundView.bounds.width / 3, height: 30)
             rainDropWord.position = CGPoint(x: CGFloat(randomPositionXArray[index]), y: layerWidth)
+            
             rainDropWord.string = wordTests[index].word.meaning
             rainDropWord.foregroundColor = UIColor.NColor.blue.cgColor
+            rainDropWord.font = UIFont.NFont.arrangeButtonFont
             rainDropWord.isWrapped = true
-            rainDropWord.fontSize = 18
+            rainDropWord.fontSize = 16
             rainDropWord.contentsScale = UIScreen.main.scale
             
             self.wordTestLayer.append(rainDropWord)
@@ -121,25 +135,37 @@ class RainTestViewController: UIViewController {
         let baseViewHeight = self.rainBackgroundView.bounds.height
         // CATextLayer Animation
         let animation = CABasicAnimation(keyPath: "position")
-//        animation.beginTime = CACurrentMediaTime() + 3.0
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
         animation.fromValue = rainDropWord.position
         animation.toValue = CGPoint(x: rainDropWord.position.x, y: baseViewHeight - baseViewHeight / 10)
-        animation.duration = 5
+        animation.duration = 4
+        animation.fillMode = .both
         rainDropWord.add(animation, forKey: "basic animation")
         
         rainDropWord.position = CGPoint(x: rainDropWord.position.x, y: baseViewHeight - baseViewHeight / 10)
     }
     
     private func rainTestStart() {
-        var time = 0
+        var time: Double = 0
         self.wordTestLayer.indices.forEach { index in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0 * Double(time)) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4.0 * time) {
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
+                    NotificationCenter.default.post(name: Notification.Name("@@"), object: index, userInfo: nil)
+                }
+                
                 self.rainBackgroundView.layer.insertSublayer(self.wordTestLayer[index], at: 1)
                 self.animationLayer(rainDropWord: self.wordTestLayer[index])
+                print(self.wordTestLayer[index].position)
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4.5) {
+                    self.wordTestLayer[index].foregroundColor = UIColor.clear.cgColor
+//                    self.wordTestLayer[index].removeFromSuperlayer()
+                }
             }
             time += 1
         }
+        
     }
     
     private func removeLayer(rainDropWord: CATextLayer) {
@@ -172,6 +198,7 @@ class RainTestViewController: UIViewController {
     
     private func configureTestView() {
         self.rainBackgroundView.backgroundColor = UIColor.NColor.lightBlue
+        self.rainBackgroundView.layer.cornerRadius = 10.0
     }
     
     private func configureTextField() {

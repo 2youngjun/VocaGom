@@ -225,10 +225,10 @@
         <image name="star" width="533" height="512"/>
         <image name="star_filled" width="533" height="512"/>
         <namedColor name="NBlue">
-            <color red="0.38039215686274508" green="0.47450980392156861" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.29411764705882354" green="0.38039215686274508" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NOrange">
-            <color red="1" green="0.53725490196078429" blue="0.35294117647058826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.46666666666666667" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -80,7 +80,6 @@ class WordListViewController: UIViewController {
         self.collectionView.reloadData()
         
         self.addWordStars()
-        print(wordStars.count)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
