@@ -13,7 +13,7 @@
         <!--Result Word View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="ResultWordViewController" id="Y6W-OH-hqX" customClass="ResultWordViewController" customModule="Nadam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResultWordViewController" hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="ResultWordViewController" customModule="Nadam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,7 +126,7 @@
         <image name="star" width="533" height="512"/>
         <image name="star_filled" width="533" height="512"/>
         <namedColor name="NBlack">
-            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.12156862745098039" green="0.13333333333333333" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

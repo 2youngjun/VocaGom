@@ -8,23 +8,45 @@
 import UIKit
 
 class GameListViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.configureTitleLabel()
-        self.view.backgroundColor = UIColor.NColor.background
-        self.configureSpellingTestButtonView()
-    }
     
+    //MARK: IBOutlet Variable
     @IBOutlet weak var titleLabel: UILabel!
     
-    @IBOutlet weak var spellingTestButtonView: UIView!
-    @IBOutlet weak var spellingTestSubLabel: UILabel!
-    @IBOutlet weak var spellingTestMainLabel: UILabel!
     @IBOutlet weak var spellingTestMainImage: UIImageView!
     @IBOutlet weak var spellingTestButtonImage: UIImageView!
-    @IBOutlet weak var spellingTestButton: UIButton!
+    @IBOutlet weak var rainTestMainImage: UIImageView!
+    
+    @IBOutlet var testButtonViewCollection: [UIView]!
+    @IBOutlet var testSubLabelCollection: [UILabel]!
+    @IBOutlet var testMainLabelCollection: [UILabel]!
+    @IBOutlet var testButtonCollection: [UIButton]!
+    
+    //MARK: View Lifecycle Function
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.styleFunction()
+    }
+    
+    //MARK: IBAction Function
+    @IBAction func tapSpellingTestButton(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "SpellingTestView", bundle: nil)
+        guard let spellingTestViewController = storyboard.instantiateViewController(withIdentifier: "SpellingTestViewController") as? SpellingTestViewController else { return }
+        
+        self.navigationController?.pushViewController(spellingTestViewController, animated: true)
+    }
+    
+    @IBAction func tapRainTestButton(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "RainTestView", bundle: nil)
+        guard let rainTestViewController = storyboard.instantiateViewController(withIdentifier: "RainTestViewController") as? RainTestViewController else { return }
+        self.navigationController?.pushViewController(rainTestViewController, animated: true)
+    }
+    
+    //MARK: Style Function
+    private func styleFunction() {
+        self.view.backgroundColor = UIColor.NColor.background
+        self.configureTitleLabel()
+        self.configureSpellingTestButtonView()
+    }
     
     private func configureTitleLabel() {
         self.titleLabel.font = UIFont.NFont.wordListTitleLabel
@@ -32,22 +54,28 @@ class GameListViewController: UIViewController {
     }
     
     private func configureSpellingTestButtonView() {
-        self.spellingTestButtonView.layer.cornerRadius = 10.0
-        self.spellingTestSubLabel.font = UIFont.NFont.testSubLabelFont
-        self.spellingTestSubLabel.textColor = UIColor.NColor.gray
-        self.spellingTestMainLabel.font = UIFont.NFont.testMainLabelFont
-        self.spellingTestMainLabel.textColor = UIColor.NColor.black
-        self.spellingTestMainImage.image = UIImage(named: "spellingTest")
-        self.spellingTestButton.layer.opacity = 1.0
-        self.spellingTestButton.tintColor = UIColor.clear
-        self.spellingTestButton.layer.cornerRadius = 10.0
-    }
-    
-    @IBAction func tapSpellingTestButton(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "SpellingTestView", bundle: nil)
-        guard let spellingTestViewController = storyboard.instantiateViewController(withIdentifier: "SpellingTestViewController") as? SpellingTestViewController else { return }
+        self.testButtonViewCollection.forEach { testButtonView in
+            testButtonView.layer.cornerRadius = 10.0
+        }
         
-        self.navigationController?.pushViewController(spellingTestViewController, animated: true)
+        self.testSubLabelCollection.forEach { testSubLabel in
+            testSubLabel.font = UIFont.NFont.testSubLabelFont
+            testSubLabel.textColor = UIColor.NColor.gray
+        }
+        
+        self.testMainLabelCollection.forEach { testMainLabel in
+            testMainLabel.font = UIFont.NFont.testMainLabelFont
+            testMainLabel.textColor = UIColor.NColor.black
+        }
+        
+        self.testButtonCollection.forEach { testButton in
+            testButton.layer.opacity = 1.0
+            testButton.tintColor = UIColor.clear
+            testButton.layer.cornerRadius = 10.0
+        }
+        
+        self.spellingTestMainImage.image = UIImage(named: "spellingTest")
+        self.rainTestMainImage.image = UIImage(named: "spellingTest")
     }
     
     private func showAlertSpellingTest() {

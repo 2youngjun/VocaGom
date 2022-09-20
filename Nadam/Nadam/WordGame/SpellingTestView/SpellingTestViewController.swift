@@ -64,13 +64,13 @@ class SpellingTestViewController: UIViewController {
     @IBAction func startEditingTextField(_ sender: UITextField) {
         self.textField.layer.borderWidth = 0.5
         self.textField.layer.cornerRadius = 5.0
-        self.textField.layer.borderColor = UIColor.NColor.blue.cgColor
+        self.textField.layer.borderColor = UIColor.NColor.borderBlue.cgColor
     }
     
     @IBAction func endEditingTextField(_ sender: UITextField) {
         self.textField.layer.borderWidth = 0.5
         self.textField.layer.cornerRadius = 5.0
-        self.textField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
+        self.textField.layer.borderColor = UIColor.NColor.lightBlue.cgColor
     }
     
     @IBAction func tapOtherSpace(_ sender: UITapGestureRecognizer) {
@@ -123,11 +123,11 @@ class SpellingTestViewController: UIViewController {
                     numbers.append(number)
                 }
             }
-            for index in numbers {
+            numbers.forEach { index in
                 wordTests.append(questionWord(word: wordList[index], isCorrect: false))
             }
         } else {
-            for word in wordList {
+            self.wordList.forEach { word in
                 wordTests.append(questionWord(word: word, isCorrect: false))
             }
         }
@@ -164,11 +164,13 @@ class SpellingTestViewController: UIViewController {
     }
     
     private func configureTextField() {
-        self.textField.backgroundColor = UIColor.NColor.weakBlue
+        self.textField.backgroundColor = UIColor.NColor.lightBlue
         self.textField.layer.borderWidth = 0.5
         self.textField.layer.cornerRadius = 5.0
-        self.textField.layer.borderColor = UIColor.NColor.weakBlue.cgColor
+        self.textField.layer.borderColor = UIColor.NColor.lightBlue.cgColor
         self.textField.font = UIFont.NFont.textFieldFont
+        self.textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+        self.textField.leftViewMode = .always
     }
     
     private func configureCurrentCorrectView() {

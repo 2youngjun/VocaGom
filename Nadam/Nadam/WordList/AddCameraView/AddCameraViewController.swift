@@ -112,13 +112,7 @@ class AddCameraViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-//        print(textSet)
         print(wordArray)
-//        NotificationCenter.default.removeObserver(self, name: Notification.Name("newPhoto"), object: nil)
-    }
-    
-    deinit {
-        print("🫠")
     }
     
     // MARK: IBOutlet Function
@@ -166,7 +160,7 @@ class AddCameraViewController: UIViewController {
         
 //        self.nextButton.titleLabel?.sizeToFit()
         self.nextButton.titleLabel?.font = UIFont.NFont.wordListWordMeaning
-        self.nextButton.backgroundColor = UIColor.NColor.weakBlue
+        self.nextButton.backgroundColor = UIColor.NColor.lightBlue
         self.nextButton.isEnabled = false
         self.nextButton.titleLabel?.textColor = UIColor.NColor.blue
         self.nextButton.layer.cornerRadius = 5
@@ -218,7 +212,7 @@ class AddCameraViewController: UIViewController {
             button.layer.cornerRadius = 5
         } else {
             button.setTitleColor(UIColor.NColor.blue, for: .normal)
-            button.backgroundColor = UIColor.NColor.weakBlue
+            button.backgroundColor = UIColor.NColor.lightBlue
             button.layer.cornerRadius = 5
         }
     }

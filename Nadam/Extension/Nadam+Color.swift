@@ -13,11 +13,12 @@ extension UIColor {
         static var background: UIColor { UIColor(named: "NBackground")! }
         static var orange: UIColor { UIColor(named: "NOrange")! }
         static var border: UIColor { UIColor(named: "NBorder")! }
+        static var borderBlue: UIColor { UIColor(named: "NBorderBlue")! }
         static var white: UIColor { UIColor(named: "NWhite")! }
         static var black: UIColor { UIColor(named: "NBlack")! }
-        static var weakBlue: UIColor { UIColor(named: "NWeakBlue")! }
-        static var weakOrange: UIColor { UIColor(named: "NWeakOrange")! }
-        static var middleBlue: UIColor { UIColor(named: "NMiddleBlue")! }
+        static var lightBlue: UIColor { UIColor(named: "NLightBlue")! }
+        static var lightOrange: UIColor { UIColor(named: "NLightOrange")! }
+        static var subBlue: UIColor { UIColor(named: "NSubBlue")! }
         static var gray: UIColor { UIColor(named: "NGray")! }
     }
 }

@@ -33,6 +33,8 @@
 		8BDDCE9828C7AF64000DE395 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDCE9728C7AF64000DE395 /* PaddingLabel.swift */; };
 		8BDDCE9A28C9CA42000DE395 /* ArrangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDCE9928C9CA42000DE395 /* ArrangeButton.swift */; };
 		8BE57A0E28C4FDAD00484284 /* SearchedWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE57A0D28C4FDAD00484284 /* SearchedWordCell.swift */; };
+		8BE59CC628D2E93600C878AC /* RainTestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE59CC528D2E93600C878AC /* RainTestView.storyboard */; };
+		8BE59CC828D2E94800C878AC /* RainTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE59CC728D2E94800C878AC /* RainTestViewController.swift */; };
 		8BF3045628CF19C200A5374A /* SpellingTestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3045528CF19C200A5374A /* SpellingTestView.storyboard */; };
 		8BF3045828CF19D400A5374A /* SpellingTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3045728CF19D400A5374A /* SpellingTestViewController.swift */; };
 		8BF3045B28CF78C900A5374A /* ResultView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3045A28CF78C900A5374A /* ResultView.storyboard */; };
@@ -82,6 +84,8 @@
 		8BDDCE9728C7AF64000DE395 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		8BDDCE9928C9CA42000DE395 /* ArrangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangeButton.swift; sourceTree = "<group>"; };
 		8BE57A0D28C4FDAD00484284 /* SearchedWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedWordCell.swift; sourceTree = "<group>"; };
+		8BE59CC528D2E93600C878AC /* RainTestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RainTestView.storyboard; sourceTree = "<group>"; };
+		8BE59CC728D2E94800C878AC /* RainTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainTestViewController.swift; sourceTree = "<group>"; };
 		8BF3045528CF19C200A5374A /* SpellingTestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SpellingTestView.storyboard; sourceTree = "<group>"; };
 		8BF3045728CF19D400A5374A /* SpellingTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellingTestViewController.swift; sourceTree = "<group>"; };
 		8BF3045A28CF78C900A5374A /* ResultView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResultView.storyboard; sourceTree = "<group>"; };
@@ -208,12 +212,22 @@
 			isa = PBXGroup;
 			children = (
 				8B4D72A328D0B523000E9BBB /* questionWord.swift */,
+				8BE59CC428D2E91A00C878AC /* RainTestView */,
 				8BF3045E28D04AD800A5374A /* ResultWordView */,
 				8BF3045928CF78B100A5374A /* ResultView */,
 				8BF3045428CF15A400A5374A /* SpellingTestView */,
 				8BF3045328CF13E100A5374A /* GameListView */,
 			);
 			path = WordGame;
+			sourceTree = "<group>";
+		};
+		8BE59CC428D2E91A00C878AC /* RainTestView */ = {
+			isa = PBXGroup;
+			children = (
+				8BE59CC528D2E93600C878AC /* RainTestView.storyboard */,
+				8BE59CC728D2E94800C878AC /* RainTestViewController.swift */,
+			);
+			path = RainTestView;
 			sourceTree = "<group>";
 		};
 		8BF3045328CF13E100A5374A /* GameListView */ = {
@@ -371,6 +385,7 @@
 				8BFC7E3728B5140500D92E00 /* AddCameraView.storyboard in Resources */,
 				8BF3045628CF19C200A5374A /* SpellingTestView.storyboard in Resources */,
 				8B0DDEFE289A953F00F0ACC3 /* LaunchScreen.storyboard in Resources */,
+				8BE59CC628D2E93600C878AC /* RainTestView.storyboard in Resources */,
 				8B63ABE928D04BB200D38973 /* ResultWordView.storyboard in Resources */,
 				8BF3AF43289C32BE00F049CD /* GmarketSansTTFLight.ttf in Resources */,
 				8BF3AF25289ACA8D00F049CD /* WordListView.storyboard in Resources */,
@@ -435,6 +450,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BE59CC828D2E94800C878AC /* RainTestViewController.swift in Sources */,
 				8B5026CF28BF8CE5009271AA /* WordInformation.swift in Sources */,
 				8B0DDEF3289A953D00F0ACC3 /* ViewController.swift in Sources */,
 				8BFC7E3928B5141F00D92E00 /* AddCameraViewController.swift in Sources */,
@@ -611,6 +627,8 @@
 				DEVELOPMENT_TEAM = V8U96P27D9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Nadam/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "사진 촬영을 통해 단어를 추가하기 위하여 카메라 권한이 필요합니다. 촬영된 사진은 저장되지 않습니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -640,6 +658,8 @@
 				DEVELOPMENT_TEAM = V8U96P27D9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Nadam/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "사진 촬영을 통해 단어를 추가하기 위하여 카메라 권한이 필요합니다. 촬영된 사진은 저장되지 않습니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
