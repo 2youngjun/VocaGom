@@ -85,10 +85,6 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         self.textField.becomeFirstResponder()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        print(wordTests)
-    }
-    
     @objc func notificationCheck(_ notification: Notification) {
         guard let index = notification.object as? Int else { return }
 
@@ -171,9 +167,7 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
                     self.rainBackgroundView.layer.insertSublayer(self.wordTestLayer[index], at: 0)
                     self.animationLayer(rainDropWord: self.wordTestLayer[index])
                 }
-                print(self.wordTestLayer[index].position)
-                print(self.isEnded)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3.7) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.6) {
                     self.wordTestLayer[index].foregroundColor = UIColor.clear.cgColor
                 }
             }
@@ -182,23 +176,6 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4.0 * time) {
             self.isEnded = true
         }
-    }
-    
-    private func setWordLabelView(index: Int) {
-        let baseViewHeight = self.rainBackgroundView.bounds.height
-        
-        let wordLabel = UILabel(frame: CGRect(x: CGFloat(self.randomPositionXArray[index]), y: baseViewHeight / 10, width: self.rainBackgroundView.bounds.width / 3, height: 30))
-        wordLabel.numberOfLines = 1
-        wordLabel.adjustsFontSizeToFitWidth = false
-        wordLabel.text = wordTests[index].word.meaning
-        wordLabel.font = UIFont.NFont.addWordSection
-        wordLabel.textColor = UIColor.NColor.blue
-        wordLabel.sizeToFit()
-        wordLabel.layer.opacity = 1
-        wordLabel.tag = index
-        self.rainBackgroundView.addSubview(wordLabel)
-        
-        print(self.rainBackgroundView.subviews)
     }
     
     //MARK: Style Function
