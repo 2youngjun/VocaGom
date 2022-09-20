@@ -61,6 +61,7 @@
                     <connections>
                         <outlet property="nextButton" destination="aR9-e4-UpL" id="7JG-Qv-xYJ"/>
                         <outlet property="rainBackgroundView" destination="mHl-5b-RPl" id="Q1W-wV-FGV"/>
+                        <outlet property="rainBackgroundViewHeight" destination="lAB-lx-3hH" id="67H-LP-PN5"/>
                         <outlet property="textField" destination="hG9-as-LwX" id="xTu-Dl-5mK"/>
                     </connections>
                 </viewController>

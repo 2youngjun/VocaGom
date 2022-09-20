@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RainTestViewController: UIViewController {
+class RainTestViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: 변수
     var wordList = [Word]()
@@ -38,6 +38,7 @@ class RainTestViewController: UIViewController {
     
     //MARK: IBOutlet 변수
     @IBOutlet weak var rainBackgroundView: UIView!
+    @IBOutlet weak var rainBackgroundViewHeight: NSLayoutConstraint!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     
@@ -54,7 +55,7 @@ class RainTestViewController: UIViewController {
                     foundName = word.name ?? ""
                 }
             }
-            
+            print(fallingIndex)
             if foundName == self.textField.text {
                 self.wordTestLayer[fallingIndex].foregroundColor = UIColor.clear.cgColor
                 self.rightCounut += 1
@@ -70,15 +71,18 @@ class RainTestViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(notificationCheck(_:)),
-                                               name: Notification.Name("@@"), object: nil)
+                                               name: Notification.Name("newIndex"), object: nil)
         self.delegate = self.resultViewController
-
+        
         self.styleFunction()
         self.countWord()
-        
         self.addRandomPositionXArray()
         self.setCALayer()
         self.rainTestStart()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.textField.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -99,8 +103,8 @@ class RainTestViewController: UIViewController {
 
         self.wordList = CoreDataManager.shared.fetchWord()
         count = wordList.count
-        if count > 7 {
-            while numbers.count < 7 {
+        if count > 10 {
+            while numbers.count < 10 {
                 let number = Int.random(in: 0..<count)
                 if !numbers.contains(number) {
                     numbers.append(number)
@@ -116,7 +120,6 @@ class RainTestViewController: UIViewController {
         }
         self.countQuestion = wordTests.count
     }
-    
     
     private func addRandomPositionXArray() {
         while self.randomPositionXArray.count < self.countQuestion {
@@ -151,7 +154,7 @@ class RainTestViewController: UIViewController {
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
         animation.fromValue = rainDropWord.position
         animation.toValue = CGPoint(x: rainDropWord.position.x, y: baseViewHeight - baseViewHeight / 12)
-        animation.duration = 3
+        animation.duration = 4
         animation.fillMode = .both
         rainDropWord.add(animation, forKey: "basic animation")
         rainDropWord.position = CGPoint(x: rainDropWord.position.x, y: baseViewHeight - baseViewHeight / 10)
@@ -160,24 +163,42 @@ class RainTestViewController: UIViewController {
     private func rainTestStart() {
         var time: Double = 0
         self.wordTestLayer.indices.forEach { index in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0 * time) {
-                
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
-                    NotificationCenter.default.post(name: Notification.Name("@@"), object: index, userInfo: nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0 * time) {
+
+                NotificationCenter.default.post(name: Notification.Name("newIndex"), object: index, userInfo: nil)
+
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    self.rainBackgroundView.layer.insertSublayer(self.wordTestLayer[index], at: 0)
+                    self.animationLayer(rainDropWord: self.wordTestLayer[index])
                 }
-                self.rainBackgroundView.layer.insertSublayer(self.wordTestLayer[index], at: 0)
-                self.animationLayer(rainDropWord: self.wordTestLayer[index])
                 print(self.wordTestLayer[index].position)
                 print(self.isEnded)
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.7) {
                     self.wordTestLayer[index].foregroundColor = UIColor.clear.cgColor
                 }
             }
             time += 1.0
         }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0 * time) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4.0 * time) {
             self.isEnded = true
         }
+    }
+    
+    private func setWordLabelView(index: Int) {
+        let baseViewHeight = self.rainBackgroundView.bounds.height
+        
+        let wordLabel = UILabel(frame: CGRect(x: CGFloat(self.randomPositionXArray[index]), y: baseViewHeight / 10, width: self.rainBackgroundView.bounds.width / 3, height: 30))
+        wordLabel.numberOfLines = 1
+        wordLabel.adjustsFontSizeToFitWidth = false
+        wordLabel.text = wordTests[index].word.meaning
+        wordLabel.font = UIFont.NFont.addWordSection
+        wordLabel.textColor = UIColor.NColor.blue
+        wordLabel.sizeToFit()
+        wordLabel.layer.opacity = 1
+        wordLabel.tag = index
+        self.rainBackgroundView.addSubview(wordLabel)
+        
+        print(self.rainBackgroundView.subviews)
     }
     
     //MARK: Style Function
@@ -193,6 +214,7 @@ class RainTestViewController: UIViewController {
     }
     
     private func configureTextField() {
+        self.textField.delegate = self
         self.textField.backgroundColor = UIColor.NColor.lightBlue
         self.textField.layer.borderWidth = 0.5
         self.textField.layer.cornerRadius = 5.0
@@ -210,7 +232,4 @@ class RainTestViewController: UIViewController {
         self.nextButton.layer.cornerRadius = 5.0
         self.nextButton.configuration?.background.backgroundColor = UIColor.NColor.blue
     }
-    
-    
-    
 }

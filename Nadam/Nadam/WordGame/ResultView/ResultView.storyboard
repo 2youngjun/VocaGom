@@ -12,7 +12,7 @@
         <!--Result View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="ResultViewController" id="Y6W-OH-hqX" customClass="ResultViewController" customModule="Nadam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResultViewController" hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="ResultViewController" customModule="Nadam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -294,14 +294,14 @@
         <image name="chevron.forward" catalog="system" width="96" height="128"/>
         <image name="congratuation" width="362" height="512"/>
         <image name="correct_large" width="512" height="512"/>
-        <image name="correct_small" width="13" height="13"/>
+        <image name="correct_small" width="44" height="47"/>
         <image name="wrong_large" width="512" height="512"/>
-        <image name="wrong_small" width="13" height="13"/>
+        <image name="wrong_small" width="39" height="38"/>
         <namedColor name="NBackground">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NBlack">
-            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.12156862745098039" green="0.13333333333333333" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NWeakBlue">
             <color red="0.95294117647058818" green="0.96078431372549022" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -112,13 +112,7 @@ class AddCameraViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-//        print(textSet)
         print(wordArray)
-//        NotificationCenter.default.removeObserver(self, name: Notification.Name("newPhoto"), object: nil)
-    }
-    
-    deinit {
-        print("🫠")
     }
     
     // MARK: IBOutlet Function
