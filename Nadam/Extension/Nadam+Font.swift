@@ -43,7 +43,7 @@ extension UIFont {
         static var addWordSection: UIFont{ UIFont.NadamFont(forTextStyle: .headline) }
         static var wordListTitleLabel: UIFont{ UIFont.NadamFont(forTextStyle: .title1) }
         static var wordListWordName: UIFont{ UIFont.NadamFont(forTextStyle: .title3) }
-        static var wordListWordMeaning: UIFont{ UIFont.NadamFont(forTextStyle: .title2) }
+        static var wordListWordMeaning: UIFont{ UIFont.NadamFont(forTextStyle: .headline) }
         static var wordListWordSynoym: UIFont{ UIFont.NadamFont(forTextStyle: .caption2) }
         static var wordListWordExample: UIFont{ UIFont.NadamFont(forTextStyle: .caption2) }
         static var wordButton: UIFont{ UIFont.NadamFont(forTextStyle: .subheadline) }

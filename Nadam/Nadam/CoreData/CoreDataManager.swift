@@ -121,4 +121,39 @@ class CoreDataManager {
         let selectedDate: String = dateFormatter.string(from: date)
         return selectedDate
     }
+    
+    func selectedDateCountWord(_ date: Date) -> Int {
+        var count = 0
+        let selectedDate = changeSelectedDateToString(date)
+        let request: NSFetchRequest<Word> = Word.fetchRequest()
+        do {
+            let wordArray = try context.fetch(request)
+            wordArray.forEach { word in
+                if changeSelectedDateToString(word.createTime ?? Date()) == selectedDate {
+                    count += 1
+                }
+            }
+        } catch {
+            print("-----fetchDateCountWords error-----")
+        }
+        return count
+    }
+    
+    func selectedDateWordArray(_ date: Date) -> [Word] {
+        var resultWordList = [Word]()
+        let selectedDate = changeSelectedDateToString(date)
+        let request: NSFetchRequest<Word> = Word.fetchRequest()
+        do {
+            let wordArray = try context.fetch(request)
+            wordArray.forEach { word in
+                if changeSelectedDateToString(word.createTime ?? Date()) == selectedDate {
+                    resultWordList.append(word)
+                }
+            }
+        } catch {
+            print("-----fetchDateWordArray error-----")
+        }
+        return resultWordList
+    }
+    
 }

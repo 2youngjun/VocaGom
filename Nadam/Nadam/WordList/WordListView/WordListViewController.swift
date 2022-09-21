@@ -421,7 +421,6 @@ extension WordListViewController: UICollectionViewDataSource {
                 word.isTapped = false
             }
             wordList[indexPath.row].isTapped = !wordList[indexPath.row].isTapped
-            print(wordList[indexPath.row].createTime)
             self.collectionView.reloadData()
         
         case .star:

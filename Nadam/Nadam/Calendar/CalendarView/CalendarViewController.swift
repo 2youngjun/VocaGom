@@ -24,6 +24,7 @@ class CalendarViewController: UIViewController {
         return Date()
     }()
     var wordAppendedDate = [String]()
+    var wordArray = [Word]()
     
     //MARK: IBOutlet Variables
     @IBOutlet weak var calendarView: FSCalendar!
@@ -32,10 +33,13 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var calendarBackgroundView: UIView!
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     //MARK: IBOutlet Function
     override func viewDidLoad() {
         super.viewDidLoad()
         self.styleFunction()
+        self.initCollecitonView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +48,8 @@ class CalendarViewController: UIViewController {
         
         self.calendarCurrentPageDidChange(self.calendarView)
         self.calendarView.reloadData()
+        
+        self.initCollecitonView()
     }
     
     @IBAction func tapPrevButton(_ sender: UIButton) {
@@ -58,8 +64,10 @@ class CalendarViewController: UIViewController {
     private func styleFunction(){
         self.configureBackGroundView()
         self.configureCalendarView()
+        self.configureCollecionView()
     }
     
+    // CalendarView Method
     private func configureBackGroundView() {
         self.dateLabel.font = UIFont.NFont.noSearchedTextFont
         self.view.backgroundColor = UIColor.NColor.background
@@ -92,7 +100,6 @@ class CalendarViewController: UIViewController {
         self.calendarView.calendarWeekdayView.weekdayLabels[4].text = "THU"
         self.calendarView.calendarWeekdayView.weekdayLabels[5].text = "FRI"
         self.calendarView.calendarWeekdayView.weekdayLabels[6].text = "SAT"
-        
     }
     
     private func scrollCurrentPage(isPrev: Bool) {
@@ -110,10 +117,28 @@ class CalendarViewController: UIViewController {
         self.wordAppendedDate = CoreDataManager.shared.isSelectedMonthWord(date: calendar.currentPage)
         self.calendarView.reloadData()
     }
+    
+    // CollectionView Method
+    private func configureCollecionView() {
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        self.collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        self.collectionView.backgroundColor = UIColor.NColor.background
+        self.collectionView.contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        
+    }
+    
+    private func initCollecitonView() {
+        self.wordArray = CoreDataManager.shared.selectedDateWordArray(Date())
+        self.collectionView.reloadData()
+    }
 }
 
 extension CalendarViewController: FSCalendarDelegate {
-    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        self.wordArray = CoreDataManager.shared.selectedDateWordArray(date)
+        self.collectionView.reloadData()
+    }
 }
 
 extension CalendarViewController: FSCalendarDataSource {
@@ -135,5 +160,40 @@ extension CalendarViewController: FSCalendarDelegateAppearance {
             colorSet.append(UIColor.NColor.orange)
         }
         return colorSet
+    }
+}
+
+extension CalendarViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.wordArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarWordCell", for: indexPath) as? CalendarWordCell else { return UICollectionViewCell() }
+        let word = wordArray[indexPath.row]
+        cell.wordName.text = word.name
+        cell.wordName.font = UIFont.NFont.wordListWordName
+        cell.wordName.textColor = UIColor.NColor.blue
+        
+        cell.wordMeaning.text = word.meaning
+        cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
+        cell.wordMeaning.textColor = UIColor.NColor.black
+        
+        cell.backgroundColor = UIColor.NColor.white
+        cell.layer.cornerRadius = 10.0
+        cell.layer.applySketchShadow(color: UIColor.NColor.black, alpha: 0.05, x: 0, y: 0, blur: 10, spread: 0)
+
+        return cell
+    }
+    
+}
+
+extension CalendarViewController: UICollectionViewDelegate {
+    
+}
+
+extension CalendarViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width - 40, height: 80)
     }
 }
