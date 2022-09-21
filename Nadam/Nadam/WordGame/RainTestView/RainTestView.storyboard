@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,20 +13,20 @@
         <!--Rain Test View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="RainTestViewController" id="Y6W-OH-hqX" customClass="RainTestViewController" customModule="Nadam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RainTestViewController" hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="RainTestViewController" customModule="Nadam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHl-5b-RPl">
-                                <rect key="frame" x="20" y="84" width="374" height="320"/>
+                                <rect key="frame" x="20" y="88" width="374" height="320"/>
                                 <color key="backgroundColor" name="NLightBlue"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="lAB-lx-3hH"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hG9-as-LwX">
-                                <rect key="frame" x="20" y="419" width="374" height="40"/>
+                                <rect key="frame" x="20" y="423" width="374" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9ZO-h1-cdN"/>
                                 </constraints>
@@ -33,7 +34,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aR9-e4-UpL">
-                                <rect key="frame" x="20" y="474" width="374" height="60"/>
+                                <rect key="frame" x="20" y="478" width="374" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="TNc-XQ-Oqc"/>
                                 </constraints>

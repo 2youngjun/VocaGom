@@ -77,8 +77,48 @@ class CoreDataManager {
             wordArray = try context.fetch(request)
             return wordArray
         } catch {
-            print("-----fetchWord error -------")
+            print("-----fetchWord error-----")
         }
         return wordArray
+    }
+    
+    func isSelectedMonthWord(date: Date) -> [String] {
+        var resultDate = [String]()
+        let selectedDate: String = changeSelectedDateToMonth(date)
+        let request: NSFetchRequest<Word> = Word.fetchRequest()
+        do {
+            let wordArray = try context.fetch(request)
+            var day = 0
+            while day < 32 {
+                var compareDate: String
+                compareDate = day < 10 ? selectedDate + "-0" + "\(day)" : selectedDate + "-\(day)"
+                
+                wordArray.forEach { word in
+                    if changeSelectedDateToString(word.createTime ?? Date()) == compareDate {
+                        resultDate.append(compareDate)
+                    }
+                }
+                day += 1
+            }
+        } catch {
+            print("-----fetchMonthWords error-----")
+        }
+        return resultDate
+    }
+    
+    func changeSelectedDateToMonth(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM"
+        
+        let selectedDate: String = dateFormatter.string(from: date)
+        return selectedDate
+    }
+    
+    func changeSelectedDateToString(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let selectedDate: String = dateFormatter.string(from: date)
+        return selectedDate
     }
 }
