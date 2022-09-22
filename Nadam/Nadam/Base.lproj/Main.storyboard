@@ -32,7 +32,7 @@
         <scene sceneID="JQm-09-VbW">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="WordListViewController" storyboardName="WordListView" referencedIdentifier="WordListViewController" id="MOq-By-Xhd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="a.book.closed" catalog="system" selectedImage="a.book.closed.fill" id="K5y-VT-Xnf"/>
+                    <tabBarItem key="tabBarItem" title="" image="list" selectedImage="list_filled" id="K5y-VT-Xnf"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkG-Dz-Kpv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -42,7 +42,7 @@
         <scene sceneID="XSD-4d-OgZ">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="GameListViewController" storyboardName="GameListView" referencedIdentifier="GameListViewController" id="TIh-tX-brK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="gamecontroller" catalog="system" selectedImage="gamecontroller.fill" id="Eec-wk-ufH"/>
+                    <tabBarItem key="tabBarItem" title="" image="pencil" selectedImage="pencil_filled" id="Eec-wk-ufH"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yRz-gE-smY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -52,7 +52,7 @@
         <scene sceneID="PPv-X4-gaK">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="CalendarViewController" storyboardName="CalendarView" referencedIdentifier="CalendarViewController" id="VVr-Df-lvW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="aO4-hk-tJo"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="schedule" selectedImage="schedule_filled" id="aO4-hk-tJo"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Lb-Ck-zUc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,9 +61,11 @@
     </scenes>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
-        <image name="a.book.closed" catalog="system" width="115" height="128"/>
-        <image name="a.book.closed.fill" catalog="system" width="115" height="128"/>
-        <image name="gamecontroller" catalog="system" width="128" height="79"/>
-        <image name="gamecontroller.fill" catalog="system" width="128" height="79"/>
+        <image name="list" width="25" height="25"/>
+        <image name="list_filled" width="25" height="25"/>
+        <image name="pencil" width="25" height="25"/>
+        <image name="pencil_filled" width="25" height="25"/>
+        <image name="schedule" width="25" height="25"/>
+        <image name="schedule_filled" width="25" height="25"/>
     </resources>
 </document>

@@ -9,6 +9,8 @@ import UIKit
 
 class GameListViewController: UIViewController {
     
+    var wordList = [Word]()
+    
     //MARK: IBOutlet Variable
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -29,16 +31,24 @@ class GameListViewController: UIViewController {
     
     //MARK: IBAction Function
     @IBAction func tapSpellingTestButton(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "SpellingTestView", bundle: nil)
-        guard let spellingTestViewController = storyboard.instantiateViewController(withIdentifier: "SpellingTestViewController") as? SpellingTestViewController else { return }
-        
-        self.navigationController?.pushViewController(spellingTestViewController, animated: true)
+        if wordList.isEmpty {
+            self.showAlertNoWord()
+        } else {
+            let storyboard = UIStoryboard(name: "SpellingTestView", bundle: nil)
+            guard let spellingTestViewController = storyboard.instantiateViewController(withIdentifier: "SpellingTestViewController") as? SpellingTestViewController else { return }
+            
+            self.navigationController?.pushViewController(spellingTestViewController, animated: true)
+        }
     }
     
     @IBAction func tapRainTestButton(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "RainTestView", bundle: nil)
-        guard let rainTestViewController = storyboard.instantiateViewController(withIdentifier: "RainTestViewController") as? RainTestViewController else { return }
-        self.navigationController?.pushViewController(rainTestViewController, animated: true)
+        if wordList.isEmpty {
+            self.showAlertNoWord()
+        } else {
+            let storyboard = UIStoryboard(name: "RainTestView", bundle: nil)
+            guard let rainTestViewController = storyboard.instantiateViewController(withIdentifier: "RainTestViewController") as? RainTestViewController else { return }
+            self.navigationController?.pushViewController(rainTestViewController, animated: true)
+        }
     }
     
     //MARK: Style Function
@@ -46,6 +56,7 @@ class GameListViewController: UIViewController {
         self.view.backgroundColor = UIColor.NColor.background
         self.configureTitleLabel()
         self.configureSpellingTestButtonView()
+        self.wordList = CoreDataManager.shared.fetchWord()
     }
     
     private func configureTitleLabel() {
@@ -97,9 +108,21 @@ class GameListViewController: UIViewController {
         
         [cancelAlert, startTestAlert].forEach(alert.addAction(_:))
         
-        DispatchQueue.main.async {
-            alert.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func showAlertNoWord() {
+        let alert = UIAlertController(title: "테스트할 단어가 없습니다.",
+                                      message: "단어를 추가한 후 다시 진행 해주세요.",
+                                      preferredStyle: .alert)
+        
+        let cancelAlert = UIAlertAction(title: "확인",
+                                        style: .default) { _ in
+            alert.dismiss(animated: true, completion: nil)
         }
-
+        
+        [cancelAlert].forEach(alert.addAction(_:))
+        
+        self.present(alert, animated: false)
     }
 }

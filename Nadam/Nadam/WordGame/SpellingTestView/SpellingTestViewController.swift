@@ -169,7 +169,7 @@ class SpellingTestViewController: UIViewController {
         self.textField.layer.cornerRadius = 5.0
         self.textField.layer.borderColor = UIColor.NColor.lightBlue.cgColor
         self.textField.font = UIFont.NFont.textFieldFont
-        self.textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+        self.textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         self.textField.leftViewMode = .always
     }
     

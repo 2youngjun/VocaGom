@@ -18,7 +18,6 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     var wordTestLayer = [CATextLayer]()
     var randomPositionXArray = [Float]()
     
-    var rightCounut = 0
     var isEnded = false {
         didSet {
             if isEnded {
@@ -36,11 +35,18 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         return resultViewController
     }()
     
+    var progressing: Float = 0
+    var rightCount = 0
+    
     //MARK: IBOutlet 변수
     @IBOutlet weak var rainBackgroundView: UIView!
     @IBOutlet weak var rainBackgroundViewHeight: NSLayoutConstraint!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
+    
+    @IBOutlet weak var countCorrectView: UIView!
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var countCorrectLabel: UILabel!
     
     //MARK: IBOutlet Function
     @IBAction func tapNextButton(_ sender: UIButton) {
@@ -58,12 +64,12 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
             print(fallingIndex)
             if foundName == self.textField.text {
                 self.wordTestLayer[fallingIndex].foregroundColor = UIColor.clear.cgColor
-                self.rightCounut += 1
+                self.rightCount += 1
+                self.countCorrectLabel.text = String(rightCount)
                 self.wordTests[fallingIndex].isCorrect = true
             }
             self.textField.text = ""
         }
-        
     }
     
     //MARK: View LifeCycle Function
@@ -89,7 +95,6 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         guard let index = notification.object as? Int else { return }
 
         self.fallingIndex = index
-        print(fallingIndex)
     }
     
     //MARK: 기능 구현
@@ -99,8 +104,8 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
 
         self.wordList = CoreDataManager.shared.fetchWord()
         count = wordList.count
-        if count > 10 {
-            while numbers.count < 10 {
+        if count > 8 {
+            while numbers.count < 8 {
                 let number = Int.random(in: 0..<count)
                 if !numbers.contains(number) {
                     numbers.append(number)
@@ -115,6 +120,7 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
             }
         }
         self.countQuestion = wordTests.count
+        self.progressing = Float(1) / Float(self.countQuestion)
     }
     
     private func addRandomPositionXArray() {
@@ -149,11 +155,11 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         let animation = CABasicAnimation(keyPath: "position")
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
         animation.fromValue = rainDropWord.position
-        animation.toValue = CGPoint(x: rainDropWord.position.x, y: baseViewHeight - baseViewHeight / 12)
+        animation.toValue = CGPoint(x: rainDropWord.position.x, y: baseViewHeight)
         animation.duration = 4
         animation.fillMode = .both
         rainDropWord.add(animation, forKey: "basic animation")
-        rainDropWord.position = CGPoint(x: rainDropWord.position.x, y: baseViewHeight - baseViewHeight / 10)
+        rainDropWord.position = CGPoint(x: rainDropWord.position.x, y: baseViewHeight)
     }
     
     private func rainTestStart() {
@@ -167,9 +173,10 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
                     self.rainBackgroundView.layer.insertSublayer(self.wordTestLayer[index], at: 0)
                     self.animationLayer(rainDropWord: self.wordTestLayer[index])
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3.6) {
-                    self.wordTestLayer[index].foregroundColor = UIColor.clear.cgColor
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.7) {
+                    self.rainBackgroundView.layer.sublayers?.remove(at: 0)
                 }
+                self.progressView.progress += self.progressing
             }
             time += 1.0
         }
@@ -183,11 +190,14 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         self.configureTestView()
         self.configureTextField()
         self.configureNextButton()
+        self.configureCountView()
+        self.configureProgressView()
     }
     
     private func configureTestView() {
         self.rainBackgroundView.backgroundColor = UIColor.NColor.lightBlue
         self.rainBackgroundView.layer.cornerRadius = 10.0
+        self.rainBackgroundViewHeight.constant = UIScreen.main.bounds.height / 3.5
     }
     
     private func configureTextField() {
@@ -197,7 +207,7 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         self.textField.layer.cornerRadius = 5.0
         self.textField.layer.borderColor = UIColor.NColor.lightBlue.cgColor
         self.textField.font = UIFont.NFont.textFieldFont
-        self.textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+        self.textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         self.textField.leftViewMode = .always
     }
     
@@ -208,5 +218,18 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         self.nextButton.tintColor = UIColor.NColor.white
         self.nextButton.layer.cornerRadius = 5.0
         self.nextButton.configuration?.background.backgroundColor = UIColor.NColor.blue
+    }
+    
+    private func configureCountView() {
+        self.countCorrectView.layer.cornerRadius = 10.0
+        self.countCorrectLabel.font = UIFont.NFont.automaticMeaningButton
+        self.countCorrectLabel.textColor = UIColor.NColor.orange
+    }
+    
+    private func configureProgressView() {
+        self.progressView.progress = 0.0
+        self.progressView.progressTintColor = UIColor.NColor.blue
+        self.progressView.trackTintColor = UIColor.NColor.background
+        self.progressView.progressViewStyle = .default
     }
 }
