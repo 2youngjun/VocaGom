@@ -34,10 +34,9 @@ class GameListViewController: UIViewController {
         if wordList.isEmpty {
             self.showAlertNoWord()
         } else {
-            let storyboard = UIStoryboard(name: "SpellingTestView", bundle: nil)
-            guard let spellingTestViewController = storyboard.instantiateViewController(withIdentifier: "SpellingTestViewController") as? SpellingTestViewController else { return }
-            
-            self.navigationController?.pushViewController(spellingTestViewController, animated: true)
+            let storyboard = UIStoryboard(name: "RainTestView", bundle: nil)
+            guard let rainTestViewController = storyboard.instantiateViewController(withIdentifier: "RainTestViewController") as? RainTestViewController else { return }
+            self.navigationController?.pushViewController(rainTestViewController, animated: true)
         }
     }
     
@@ -45,9 +44,10 @@ class GameListViewController: UIViewController {
         if wordList.isEmpty {
             self.showAlertNoWord()
         } else {
-            let storyboard = UIStoryboard(name: "RainTestView", bundle: nil)
-            guard let rainTestViewController = storyboard.instantiateViewController(withIdentifier: "RainTestViewController") as? RainTestViewController else { return }
-            self.navigationController?.pushViewController(rainTestViewController, animated: true)
+            let storyboard = UIStoryboard(name: "SpellingTestView", bundle: nil)
+            guard let spellingTestViewController = storyboard.instantiateViewController(withIdentifier: "SpellingTestViewController") as? SpellingTestViewController else { return }
+            
+            self.navigationController?.pushViewController(spellingTestViewController, animated: true)
         }
     }
     
@@ -85,7 +85,7 @@ class GameListViewController: UIViewController {
             testButton.layer.cornerRadius = 10.0
         }
         
-        self.spellingTestMainImage.image = UIImage(named: "spellingTest")
+        self.spellingTestMainImage.image = UIImage(named: "rainTest")
         self.rainTestMainImage.image = UIImage(named: "spellingTest")
     }
     
@@ -113,7 +113,7 @@ class GameListViewController: UIViewController {
     
     private func showAlertNoWord() {
         let alert = UIAlertController(title: "테스트할 단어가 없습니다.",
-                                      message: "단어를 추가한 후 다시 진행 해주세요.",
+                                      message: "단어를 추가한 후 다시 진행해 주세요.",
                                       preferredStyle: .alert)
         
         let cancelAlert = UIAlertAction(title: "확인",

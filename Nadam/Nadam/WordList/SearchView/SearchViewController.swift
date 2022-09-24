@@ -13,6 +13,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var noSearchedLabel: UILabel!
+    @IBOutlet weak var noSearchedImage: UIImageView!
     
     var wordList = [Word]()
     var filteredWord = [Word]()
@@ -34,7 +35,8 @@ class SearchViewController: UIViewController {
     
     private func configureSearchedLabel() {
         self.noSearchedLabel.isHidden = false
-        self.noSearchedLabel.textColor = UIColor.NColor.black
+        self.noSearchedImage.isHidden = false
+        self.noSearchedLabel.textColor = UIColor.NColor.gray
         self.noSearchedLabel.font = UIFont.NFont.noSearchedTextFont
     }
     
@@ -79,12 +81,17 @@ extension SearchViewController: UICollectionViewDataSource, UISearchBarDelegate 
         guard let text = searchBar.text?.lowercased() else { return }
         if text == "" {
             self.noSearchedLabel.isHidden = false
+            self.noSearchedImage.isHidden = false
+            
             self.filteredWord = self.wordList.filter({ $0.name?.localizedStandardContains(text) ?? false })
         } else {
             self.noSearchedLabel.isHidden = true
+            self.noSearchedImage.isHidden = true
+
             self.filteredWord = self.wordList.filter({ $0.name?.localizedStandardContains(text) ?? false })
             if filteredWord.count == 0 {
                 self.noSearchedLabel.isHidden = false
+                self.noSearchedImage.isHidden = false
             }
         }
         

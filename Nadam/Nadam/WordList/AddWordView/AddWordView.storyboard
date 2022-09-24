@@ -164,7 +164,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUZ-v9-t5d">
-                                <rect key="frame" x="20" y="772" width="374" height="50"/>
+                                <rect key="frame" x="20" y="812" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Y97-cE-lPO"/>
                                 </constraints>
@@ -199,7 +199,7 @@
                             <constraint firstItem="i5b-mP-4Fv" firstAttribute="trailing" secondItem="ohl-nq-wu1" secondAttribute="trailing" constant="30" id="9YV-DA-OOp"/>
                             <constraint firstItem="XQa-9p-NkQ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Akx-yS-WJQ"/>
                             <constraint firstItem="atf-YK-oZv" firstAttribute="top" secondItem="C0u-D7-eKs" secondAttribute="bottom" id="Brb-EV-KS6"/>
-                            <constraint firstItem="i5b-mP-4Fv" firstAttribute="bottom" secondItem="bUZ-v9-t5d" secondAttribute="bottom" constant="40" id="EHf-aY-9Ku"/>
+                            <constraint firstItem="i5b-mP-4Fv" firstAttribute="bottom" secondItem="bUZ-v9-t5d" secondAttribute="bottom" id="EHf-aY-9Ku"/>
                             <constraint firstItem="XQa-9p-NkQ" firstAttribute="top" secondItem="i5b-mP-4Fv" secondAttribute="top" constant="20" id="Hhp-0X-oST"/>
                             <constraint firstItem="ohl-nq-wu1" firstAttribute="top" secondItem="86G-hw-Onb" secondAttribute="bottom" constant="-20" id="KWr-nW-dO5"/>
                             <constraint firstItem="86G-hw-Onb" firstAttribute="top" secondItem="q40-OL-5Ic" secondAttribute="bottom" constant="30" id="Kw2-fR-88P"/>

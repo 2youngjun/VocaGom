@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l7C-f9-a2X">
-                                <rect key="frame" x="0.0" y="115" width="414" height="747"/>
+                                <rect key="frame" x="0.0" y="124" width="414" height="738"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hEG-zR-ugi">
                                     <size key="itemSize" width="128" height="128"/>
@@ -66,11 +67,14 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OZq-8i-3Cn">
-                                <rect key="frame" x="20" y="64" width="382" height="51"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZq-8i-3Cn">
+                                <rect key="frame" x="20" y="68" width="382" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZM-jH-LWG">
-                                        <rect key="frame" x="0.0" y="0.0" width="12.5" height="51"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="OEC-Nz-kr2"/>
+                                        </constraints>
                                         <color key="tintColor" name="NBlack"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="chevron.backward" catalog="system"/>
@@ -79,17 +83,29 @@
                                         </connections>
                                     </button>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6T1-7Q-xJU">
-                                        <rect key="frame" x="32.5" y="0.0" width="349.5" height="51"/>
+                                        <rect key="frame" x="20" y="0.0" width="362" height="56"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="단어장에서 단어를 찾을 수가 없어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHF-tG-NfR">
-                                <rect key="frame" x="85.5" y="438" width="243" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zs1-DU-KPh">
+                                <rect key="frame" x="85.5" y="370" width="243" height="156.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noSearchedImage" translatesAutoresizingMaskIntoConstraints="NO" id="uya-Fw-Fhd">
+                                        <rect key="frame" x="38.5" y="0.0" width="166" height="126"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="166" id="AZA-fN-9m4"/>
+                                            <constraint firstAttribute="height" constant="126" id="jh0-HL-5FP"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="단어장에서 단어를 찾을 수가 없어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHF-tG-NfR">
+                                        <rect key="frame" x="0.0" y="136" width="243" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -99,9 +115,9 @@
                             <constraint firstItem="OZq-8i-3Cn" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="2h2-ty-nqq"/>
                             <constraint firstItem="l7C-f9-a2X" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="Ez5-bA-pY6"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="l7C-f9-a2X" secondAttribute="bottom" id="Jfm-ep-ZxR"/>
-                            <constraint firstItem="vHF-tG-NfR" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="WKr-Go-nBg"/>
-                            <constraint firstItem="vHF-tG-NfR" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Z7o-7R-SeT"/>
+                            <constraint firstItem="Zs1-DU-KPh" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ZN0-M8-9eo"/>
                             <constraint firstItem="l7C-f9-a2X" firstAttribute="top" secondItem="OZq-8i-3Cn" secondAttribute="bottom" id="ap2-kg-x6X"/>
+                            <constraint firstItem="Zs1-DU-KPh" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="far-AT-Boa"/>
                             <constraint firstItem="l7C-f9-a2X" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="kZs-7q-TVh"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="OZq-8i-3Cn" secondAttribute="trailing" constant="12" id="yrD-j1-w9Z"/>
                         </constraints>
@@ -111,6 +127,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="l7C-f9-a2X" id="TZw-tw-zfH"/>
+                        <outlet property="noSearchedImage" destination="uya-Fw-Fhd" id="6r9-cv-fSm"/>
                         <outlet property="noSearchedLabel" destination="vHF-tG-NfR" id="GeD-8o-Xfz"/>
                         <outlet property="searchBar" destination="6T1-7Q-xJU" id="VFY-xs-X3g"/>
                     </connections>
@@ -126,9 +143,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="noSearchedImage" width="675" height="512"/>
         <namedColor name="NBlack">
-            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.12156862745098039" green="0.13333333333333333" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

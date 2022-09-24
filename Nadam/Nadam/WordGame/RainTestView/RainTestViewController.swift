@@ -21,7 +21,7 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     var isEnded = false {
         didSet {
             if isEnded {
-                var buttonTitle = AttributedString.init("완료")
+                var buttonTitle = AttributedString.init("결과 확인")
                 buttonTitle.font = UIFont.NFont.spellingTestNextButton
                 self.nextButton.configuration?.attributedTitle = buttonTitle
                 self.nextButton.configuration?.background.backgroundColor = UIColor.NColor.orange
@@ -51,7 +51,6 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     //MARK: IBOutlet Function
     @IBAction func tapNextButton(_ sender: UIButton) {
         var foundName = ""
-        
         if self.isEnded {
             self.delegate?.sendTestWordResult(wordTests: wordTests)
             self.navigationController?.pushViewController(self.resultViewController, animated: true)
@@ -61,9 +60,9 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
                     foundName = word.name ?? ""
                 }
             }
-            print(fallingIndex)
+            
             if foundName == self.textField.text {
-                self.wordTestLayer[fallingIndex].foregroundColor = UIColor.clear.cgColor
+                self.rainBackgroundView.layer.sublayers?.remove(at: 0)
                 self.rightCount += 1
                 self.countCorrectLabel.text = String(rightCount)
                 self.wordTests[fallingIndex].isCorrect = true
@@ -93,7 +92,6 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     
     @objc func notificationCheck(_ notification: Notification) {
         guard let index = notification.object as? Int else { return }
-
         self.fallingIndex = index
     }
     
@@ -104,8 +102,8 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
 
         self.wordList = CoreDataManager.shared.fetchWord()
         count = wordList.count
-        if count > 8 {
-            while numbers.count < 8 {
+        if count > 7 {
+            while numbers.count < 7 {
                 let number = Int.random(in: 0..<count)
                 if !numbers.contains(number) {
                     numbers.append(number)
@@ -169,7 +167,7 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
 
                 NotificationCenter.default.post(name: Notification.Name("newIndex"), object: index, userInfo: nil)
 
-                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                DispatchQueue.main.async {
                     self.rainBackgroundView.layer.insertSublayer(self.wordTestLayer[index], at: 0)
                     self.animationLayer(rainDropWord: self.wordTestLayer[index])
                 }
@@ -198,6 +196,8 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         self.rainBackgroundView.backgroundColor = UIColor.NColor.lightBlue
         self.rainBackgroundView.layer.cornerRadius = 10.0
         self.rainBackgroundViewHeight.constant = UIScreen.main.bounds.height / 3.5
+        self.rainBackgroundView.layer.shouldRasterize = true
+        self.rainBackgroundView.layer.drawsAsynchronously = true
     }
     
     private func configureTextField() {
@@ -209,6 +209,7 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         self.textField.font = UIFont.NFont.textFieldFont
         self.textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         self.textField.leftViewMode = .always
+        self.textField.clearButtonMode = .whileEditing
     }
     
     private func configureNextButton() {
