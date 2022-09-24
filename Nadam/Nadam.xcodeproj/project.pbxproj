@@ -35,6 +35,7 @@
 		8BAF4F2028DB6B1D008ADFCC /* CalendarWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF4F1F28DB6B1D008ADFCC /* CalendarWordCell.swift */; };
 		8BDDCE9828C7AF64000DE395 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDCE9728C7AF64000DE395 /* PaddingLabel.swift */; };
 		8BDDCE9A28C9CA42000DE395 /* ArrangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDCE9928C9CA42000DE395 /* ArrangeButton.swift */; };
+		8BDFBFB528DF390C001622D6 /* NextButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDFBFB428DF390C001622D6 /* NextButtonState.swift */; };
 		8BE57A0E28C4FDAD00484284 /* SearchedWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE57A0D28C4FDAD00484284 /* SearchedWordCell.swift */; };
 		8BE59CC628D2E93600C878AC /* RainTestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE59CC528D2E93600C878AC /* RainTestView.storyboard */; };
 		8BE59CC828D2E94800C878AC /* RainTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE59CC728D2E94800C878AC /* RainTestViewController.swift */; };
@@ -89,6 +90,7 @@
 		8BAF4F1F28DB6B1D008ADFCC /* CalendarWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWordCell.swift; sourceTree = "<group>"; };
 		8BDDCE9728C7AF64000DE395 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		8BDDCE9928C9CA42000DE395 /* ArrangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangeButton.swift; sourceTree = "<group>"; };
+		8BDFBFB428DF390C001622D6 /* NextButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonState.swift; sourceTree = "<group>"; };
 		8BE57A0D28C4FDAD00484284 /* SearchedWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedWordCell.swift; sourceTree = "<group>"; };
 		8BE59CC528D2E93600C878AC /* RainTestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RainTestView.storyboard; sourceTree = "<group>"; };
 		8BE59CC728D2E94800C878AC /* RainTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainTestViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			children = (
 				8BE59CC528D2E93600C878AC /* RainTestView.storyboard */,
 				8BE59CC728D2E94800C878AC /* RainTestViewController.swift */,
+				8BDFBFB428DF390C001622D6 /* NextButtonState.swift */,
 			);
 			path = RainTestView;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				8BAF4F1C28DAB22C008ADFCC /* CalendarViewController.swift in Sources */,
 				8B6DE76328B0B51600E32928 /* GameListViewController.swift in Sources */,
 				8B63ABEB28D04BB900D38973 /* ResultWordViewController.swift in Sources */,
+				8BDFBFB528DF390C001622D6 /* NextButtonState.swift in Sources */,
 				8BFC7E3B28B88AB700D92E00 /* WordButtonCell.swift in Sources */,
 				8BF3AF27289ACAA700F049CD /* WordListViewController.swift in Sources */,
 				8B4D72A428D0B523000E9BBB /* questionWord.swift in Sources */,

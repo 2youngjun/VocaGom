@@ -19,8 +19,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDb-2l-jbO">
-                                <rect key="frame" x="20" y="68" width="12.5" height="16"/>
+                                <rect key="frame" x="17.5" y="68" width="20" height="16"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="MaP-FY-OCv"/>
                                     <constraint firstAttribute="height" constant="16" id="acI-An-dQK"/>
                                 </constraints>
                                 <color key="tintColor" name="NBlack"/>
@@ -87,8 +88,9 @@
                                                     <constraint firstAttribute="height" constant="40" id="CWf-Aw-Gr6"/>
                                                     <constraint firstAttribute="width" constant="40" id="mFa-DW-gZL"/>
                                                 </constraints>
+                                                <color key="tintColor" name="NWhite"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" image="globe">
+                                                <state key="normal" image="globe" catalog="system">
                                                     <color key="titleColor" name="NWhite"/>
                                                 </state>
                                                 <connections>
@@ -203,7 +205,7 @@
                             <constraint firstItem="XQa-9p-NkQ" firstAttribute="top" secondItem="i5b-mP-4Fv" secondAttribute="top" constant="20" id="Hhp-0X-oST"/>
                             <constraint firstItem="ohl-nq-wu1" firstAttribute="top" secondItem="86G-hw-Onb" secondAttribute="bottom" constant="-20" id="KWr-nW-dO5"/>
                             <constraint firstItem="86G-hw-Onb" firstAttribute="top" secondItem="q40-OL-5Ic" secondAttribute="bottom" constant="30" id="Kw2-fR-88P"/>
-                            <constraint firstItem="YDb-2l-jbO" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="L6q-Le-2Ub"/>
+                            <constraint firstItem="YDb-2l-jbO" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="17.5" id="L6q-Le-2Ub"/>
                             <constraint firstItem="YDb-2l-jbO" firstAttribute="top" secondItem="i5b-mP-4Fv" secondAttribute="top" constant="20" id="Nv1-Wd-lkZ"/>
                             <constraint firstItem="C0u-D7-eKs" firstAttribute="leading" secondItem="i5b-mP-4Fv" secondAttribute="leading" constant="20" id="RsQ-IP-uXx"/>
                             <constraint firstItem="VQr-bQ-FN1" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="VD8-Xo-XC4"/>
@@ -255,7 +257,7 @@
     </scenes>
     <resources>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
-        <image name="globe" width="20" height="20"/>
+        <image name="globe" catalog="system" width="128" height="123"/>
         <namedColor name="NBlack">
             <color red="0.12156862745098039" green="0.13333333333333333" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

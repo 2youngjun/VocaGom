@@ -13,7 +13,6 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     var wordList = [Word]()
     var wordTests = [questionWord]()
     var countQuestion = 0
-    var fallingIndex = 0
     
     var wordTestLayer = [CATextLayer]()
     var randomPositionXArray = [Float]()
@@ -35,8 +34,10 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         return resultViewController
     }()
     
+    var timer: Timer?
     var progressing: Float = 0
     var rightCount = 0
+    var isAnimationEnded = 0
     
     //MARK: IBOutlet 변수
     @IBOutlet weak var rainBackgroundView: UIView!
@@ -56,16 +57,15 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
             self.navigationController?.pushViewController(self.resultViewController, animated: true)
         } else {
             self.wordList.forEach { word in
-                if word.meaning == self.wordTestLayer[fallingIndex].string as? String {
+                if word.meaning == self.wordTests[self.isAnimationEnded - 1].word.meaning {
                     foundName = word.name ?? ""
                 }
             }
-            
             if foundName == self.textField.text {
-                self.rainBackgroundView.layer.sublayers?.remove(at: 0)
+                self.rainBackgroundView.subviews.forEach { $0.removeFromSuperview() }
                 self.rightCount += 1
                 self.countCorrectLabel.text = String(rightCount)
-                self.wordTests[fallingIndex].isCorrect = true
+                self.wordTests[self.isAnimationEnded - 1].isCorrect = true
             }
             self.textField.text = ""
         }
@@ -74,25 +74,16 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     //MARK: View LifeCycle Function
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(notificationCheck(_:)),
-                                               name: Notification.Name("newIndex"), object: nil)
         self.delegate = self.resultViewController
         
         self.styleFunction()
         self.countWord()
         self.addRandomPositionXArray()
-        self.setCALayer()
-        self.rainTestStart()
+        self.startRainTest()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.textField.becomeFirstResponder()
-    }
-    
-    @objc func notificationCheck(_ notification: Notification) {
-        guard let index = notification.object as? Int else { return }
-        self.fallingIndex = index
     }
     
     //MARK: 기능 구현
@@ -102,8 +93,8 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
 
         self.wordList = CoreDataManager.shared.fetchWord()
         count = wordList.count
-        if count > 7 {
-            while numbers.count < 7 {
+        if count > 8 {
+            while numbers.count < 8 {
                 let number = Int.random(in: 0..<count)
                 if !numbers.contains(number) {
                     numbers.append(number)
@@ -123,64 +114,49 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     
     private func addRandomPositionXArray() {
         while self.randomPositionXArray.count < self.countQuestion {
-            let randomX = Float.random(in: 75.0..<Float(self.rainBackgroundView.bounds.width - 75))
+            let randomX = Float.random(in: 80.0..<Float(self.rainBackgroundView.bounds.width - 80))
             randomPositionXArray.append(randomX)
         }
     }
     
-    private func setCALayer() {
-        let layerWidth = self.rainBackgroundView.bounds.width / 10
+    private func setUILabelView(index: Int) -> UILabel {
+        let layerWidth = self.rainBackgroundView.bounds.width / 11
+        let label = UILabel()
+        label.text = self.wordTests[index].word.meaning
+        label.textColor = UIColor.NColor.blue
+        label.font = UIFont.NFont.wordButton
+        label.numberOfLines = 1
+        label.frame = CGRect(x: CGFloat(self.randomPositionXArray[index]), y: layerWidth, width: 100, height: 30)
+        label.sizeToFit()
         
-        self.wordTests.indices.forEach { index in
-            let rainDropWord = CATextLayer()
-            rainDropWord.bounds = CGRect(x: 0, y: 0, width: self.rainBackgroundView.bounds.width / 3, height: 30)
-            rainDropWord.position = CGPoint(x: CGFloat(randomPositionXArray[index]), y: layerWidth)
-            
-            rainDropWord.string = wordTests[index].word.meaning
-            rainDropWord.foregroundColor = UIColor.NColor.blue.cgColor
-            rainDropWord.font = UIFont.NFont.arrangeButtonFont
-            rainDropWord.isWrapped = true
-            rainDropWord.fontSize = 16
-            rainDropWord.contentsScale = UIScreen.main.scale
-            
-            self.wordTestLayer.append(rainDropWord)
+        UIView.animate(withDuration: 4, delay: 0) {
+            label.transform = CGAffineTransform(translationX: 0, y: self.rainBackgroundView.bounds.height - 60)
+        } completion: { finished in
+            label.textColor = UIColor.clear
         }
+        return label
     }
     
-    private func animationLayer(rainDropWord: CATextLayer) {
-        let baseViewHeight = self.rainBackgroundView.bounds.height
-        // CATextLayer Animation
-        let animation = CABasicAnimation(keyPath: "position")
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
-        animation.fromValue = rainDropWord.position
-        animation.toValue = CGPoint(x: rainDropWord.position.x, y: baseViewHeight)
-        animation.duration = 4
-        animation.fillMode = .both
-        rainDropWord.add(animation, forKey: "basic animation")
-        rainDropWord.position = CGPoint(x: rainDropWord.position.x, y: baseViewHeight)
+    private func startRainTest() {
+        timer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(checkFallingIndex), userInfo: nil, repeats: true)
     }
     
-    private func rainTestStart() {
-        var time: Double = 0
-        self.wordTestLayer.indices.forEach { index in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0 * time) {
-
-                NotificationCenter.default.post(name: Notification.Name("newIndex"), object: index, userInfo: nil)
-
-                DispatchQueue.main.async {
-                    self.rainBackgroundView.layer.insertSublayer(self.wordTestLayer[index], at: 0)
-                    self.animationLayer(rainDropWord: self.wordTestLayer[index])
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3.7) {
-                    self.rainBackgroundView.layer.sublayers?.remove(at: 0)
-                }
-                self.progressView.progress += self.progressing
-            }
-            time += 1.0
+    @objc func checkFallingIndex() {
+        if self.isAnimationEnded == 0 {
+            self.nextButton.isEnabled = true
         }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4.0 * time) {
+        
+        if self.isAnimationEnded == self.countQuestion
+        {
+            self.timer?.invalidate()
+            self.timer = nil
             self.isEnded = true
+        } else {
+            self.rainBackgroundView.addSubview(self.setUILabelView(index: self.isAnimationEnded))
+            self.progressView.progress += self.progressing
         }
+        
+        self.isAnimationEnded += 1
     }
     
     //MARK: Style Function
@@ -216,9 +192,8 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         var buttonTitle = AttributedString.init(self.nextButton.titleLabel?.text ?? "")
         buttonTitle.font = UIFont.NFont.spellingTestNextButton
         self.nextButton.configuration?.attributedTitle = buttonTitle
-        self.nextButton.tintColor = UIColor.NColor.white
         self.nextButton.layer.cornerRadius = 5.0
-        self.nextButton.configuration?.background.backgroundColor = UIColor.NColor.blue
+        self.nextButton.isEnabled = false
     }
     
     private func configureCountView() {
