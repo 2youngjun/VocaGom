@@ -11,7 +11,7 @@ protocol SendTestWordResultDelegate: AnyObject {
     func sendTestWordResult(wordTests: [questionWord])
 }
 
-class SpellingTestViewController: UIViewController {
+class SpellingTestViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: 변수
     var wordList = [Word]()
@@ -58,6 +58,10 @@ class SpellingTestViewController: UIViewController {
         self.countWordList()
         self.styleFunction()
         self.delegate = self.resultViewController
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.textField.becomeFirstResponder()
     }
     
     // MARK: IBAction
@@ -169,8 +173,9 @@ class SpellingTestViewController: UIViewController {
         self.textField.layer.cornerRadius = 5.0
         self.textField.layer.borderColor = UIColor.NColor.lightBlue.cgColor
         self.textField.font = UIFont.NFont.textFieldFont
-        self.textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+        self.textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         self.textField.leftViewMode = .always
+        self.textField.clearButtonMode = .whileEditing
     }
     
     private func configureCurrentCorrectView() {

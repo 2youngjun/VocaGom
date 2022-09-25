@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "schedule_filled.png",
+      "filename" : "rainTest.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "schedule_filled-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "schedule_filled-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -21,6 +19,6 @@
     "version" : 1
   },
   "properties" : {
-    "template-rendering-intent" : "original"
+    "preserves-vector-representation" : true
   }
 }

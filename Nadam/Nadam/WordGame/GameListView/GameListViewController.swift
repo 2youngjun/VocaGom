@@ -9,6 +9,8 @@ import UIKit
 
 class GameListViewController: UIViewController {
     
+    var wordList = [Word]()
+    
     //MARK: IBOutlet Variable
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -29,16 +31,24 @@ class GameListViewController: UIViewController {
     
     //MARK: IBAction Function
     @IBAction func tapSpellingTestButton(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "SpellingTestView", bundle: nil)
-        guard let spellingTestViewController = storyboard.instantiateViewController(withIdentifier: "SpellingTestViewController") as? SpellingTestViewController else { return }
-        
-        self.navigationController?.pushViewController(spellingTestViewController, animated: true)
+        if wordList.isEmpty {
+            self.showAlertNoWord()
+        } else {
+            let storyboard = UIStoryboard(name: "RainTestView", bundle: nil)
+            guard let rainTestViewController = storyboard.instantiateViewController(withIdentifier: "RainTestViewController") as? RainTestViewController else { return }
+            self.navigationController?.pushViewController(rainTestViewController, animated: true)
+        }
     }
     
     @IBAction func tapRainTestButton(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "RainTestView", bundle: nil)
-        guard let rainTestViewController = storyboard.instantiateViewController(withIdentifier: "RainTestViewController") as? RainTestViewController else { return }
-        self.navigationController?.pushViewController(rainTestViewController, animated: true)
+        if wordList.isEmpty {
+            self.showAlertNoWord()
+        } else {
+            let storyboard = UIStoryboard(name: "SpellingTestView", bundle: nil)
+            guard let spellingTestViewController = storyboard.instantiateViewController(withIdentifier: "SpellingTestViewController") as? SpellingTestViewController else { return }
+            
+            self.navigationController?.pushViewController(spellingTestViewController, animated: true)
+        }
     }
     
     //MARK: Style Function
@@ -46,6 +56,7 @@ class GameListViewController: UIViewController {
         self.view.backgroundColor = UIColor.NColor.background
         self.configureTitleLabel()
         self.configureSpellingTestButtonView()
+        self.wordList = CoreDataManager.shared.fetchWord()
     }
     
     private func configureTitleLabel() {
@@ -74,32 +85,22 @@ class GameListViewController: UIViewController {
             testButton.layer.cornerRadius = 10.0
         }
         
-        self.spellingTestMainImage.image = UIImage(named: "spellingTest")
+        self.spellingTestMainImage.image = UIImage(named: "rainTest")
         self.rainTestMainImage.image = UIImage(named: "spellingTest")
     }
     
-    private func showAlertSpellingTest() {
-        let alert = UIAlertController(title: "단어 철자 테스트",
-                                      message: "무작위로 최대 10개의 단어로 테스트가 진행됩니다.",
+    private func showAlertNoWord() {
+        let alert = UIAlertController(title: "테스트할 단어가 없습니다.",
+                                      message: "단어를 추가한 후 다시 진행해 주세요.",
                                       preferredStyle: .alert)
         
-        let cancelAlert = UIAlertAction(title: "취소",
-                                        style: .cancel) { _ in
+        let cancelAlert = UIAlertAction(title: "확인",
+                                        style: .default) { _ in
             alert.dismiss(animated: true, completion: nil)
         }
         
-        let startTestAlert = UIAlertAction(title: "시작", style: .default) { _ in
-            let storyboard = UIStoryboard(name: "SpellingTestView", bundle: nil)
-            guard let spellingTestViewController = storyboard.instantiateViewController(withIdentifier: "SpellingTestViewController") as? SpellingTestViewController else { return }
-            
-            self.navigationController?.pushViewController(spellingTestViewController, animated: true)
-        }
+        [cancelAlert].forEach(alert.addAction(_:))
         
-        [cancelAlert, startTestAlert].forEach(alert.addAction(_:))
-        
-        DispatchQueue.main.async {
-            alert.present(alert, animated: true, completion: nil)
-        }
-
+        self.present(alert, animated: false)
     }
 }

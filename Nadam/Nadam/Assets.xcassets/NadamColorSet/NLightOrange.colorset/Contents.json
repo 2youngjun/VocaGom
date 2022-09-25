@@ -5,8 +5,8 @@
         "color-space" : "srgb",
         "components" : {
           "alpha" : "1.000",
-          "blue" : "0x66",
-          "green" : "0x90",
+          "blue" : "0xF1",
+          "green" : "0xF6",
           "red" : "0xFF"
         }
       },

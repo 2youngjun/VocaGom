@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X9x-cc-vRo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X9x-cc-vRo">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,6 +21,7 @@
                     <connections>
                         <segue destination="MOq-By-Xhd" kind="relationship" relationship="viewControllers" id="Gtv-DQ-nCw"/>
                         <segue destination="TIh-tX-brK" kind="relationship" relationship="viewControllers" id="CQ0-Wt-fiv"/>
+                        <segue destination="VVr-Df-lvW" kind="relationship" relationship="viewControllers" id="6cn-O1-LKn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cD2-1U-zwo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -30,7 +32,7 @@
         <scene sceneID="JQm-09-VbW">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="WordListViewController" storyboardName="WordListView" referencedIdentifier="WordListViewController" id="MOq-By-Xhd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="a.book.closed" catalog="system" selectedImage="a.book.closed.fill" id="K5y-VT-Xnf"/>
+                    <tabBarItem key="tabBarItem" title="" image="list" selectedImage="list_filled" id="K5y-VT-Xnf"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkG-Dz-Kpv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -40,18 +42,30 @@
         <scene sceneID="XSD-4d-OgZ">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="GameListViewController" storyboardName="GameListView" referencedIdentifier="GameListViewController" id="TIh-tX-brK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="gamecontroller" catalog="system" selectedImage="gamecontroller.fill" id="Eec-wk-ufH"/>
+                    <tabBarItem key="tabBarItem" title="" image="pencil" selectedImage="pencil_filled" id="Eec-wk-ufH"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yRz-gE-smY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="751" y="-84"/>
         </scene>
+        <!--CalendarViewController-->
+        <scene sceneID="PPv-X4-gaK">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CalendarViewController" storyboardName="CalendarView" referencedIdentifier="CalendarViewController" id="VVr-Df-lvW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="schedule" selectedImage="schedule_filled" id="aO4-hk-tJo"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Lb-Ck-zUc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="773" y="86"/>
+        </scene>
     </scenes>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
-        <image name="a.book.closed" catalog="system" width="115" height="128"/>
-        <image name="a.book.closed.fill" catalog="system" width="115" height="128"/>
-        <image name="gamecontroller" catalog="system" width="128" height="80"/>
-        <image name="gamecontroller.fill" catalog="system" width="128" height="80"/>
+        <image name="list" width="25" height="25"/>
+        <image name="list_filled" width="25" height="25"/>
+        <image name="pencil" width="25" height="25"/>
+        <image name="pencil_filled" width="25" height="25"/>
+        <image name="schedule" width="25" height="25"/>
+        <image name="schedule_filled" width="25" height="25"/>
     </resources>
 </document>

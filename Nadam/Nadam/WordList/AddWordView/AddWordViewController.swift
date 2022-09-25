@@ -60,8 +60,8 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var meaningTextField: UITextField!
     @IBOutlet weak var synoymTextField: UITextField!
-    @IBOutlet weak var exampleTextField: UITextField!
-    
+    @IBOutlet weak var exampleTextView: UITextView!
+    @IBOutlet weak var exampleTextViewLimitLabel: UILabel!
     
     @IBOutlet weak var duplicateSentense: UILabel!
     @IBOutlet weak var duplicateMargin: NSLayoutConstraint!
@@ -80,6 +80,7 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         
         configureInputField()
         configureTextFieldStyle()
+        configureTextView()
         
         self.saveButton.isEnabled = false
     }
@@ -100,8 +101,6 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         CoreDataManager.shared.saveContext()
         cameraWord = String()
     }
-    
-    
     
     // MARK: IBAction 함수
     @IBAction func startEditingTextField(_ sender: UITextField) {
@@ -124,7 +123,7 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         let name = nameTextField.text ?? ""
         let meaning = meaningTextField.text ?? ""
         let synoym = synoymTextField.text ?? ""
-        let example = exampleTextField.text ?? ""
+        let example = exampleTextView.text ?? ""
         
         CoreDataManager.shared.addWord(name: name, meaning: meaning, synoym: synoym, example: example, createTime: Date(), star: false, isTapped: false)
         self.delegate?.didSelectSaveWord()
@@ -134,7 +133,6 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     
     @IBAction func tapOtherSpace(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
-        
     }
     
     @IBAction func tapAPIButton(_ sender: Any) {
@@ -163,13 +161,23 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         duplicateSentense.textColor = UIColor.NColor.subBlue
         duplicateSentense.isHidden = true
         
-        automaticMeaningButton.titleLabel?.font = UIFont.NFont.automaticMeaningButton
-        automaticMeaningButton.titleLabel?.sizeToFit()
-        automaticMeaningButton.titleLabel?.textColor = UIColor.NColor.white
-        automaticMeaningButton.backgroundColor = UIColor.NColor.orange
+        automaticMeaningButton.backgroundColor = UIColor.NColor.blue
         automaticMeaningButton.layer.cornerRadius = 5
         
         attributeNameMeaningTitle()
+    }
+    
+    private func configureTextView() {
+        self.exampleTextView.delegate = self
+        self.exampleTextView.layer.borderWidth = 0.5
+        self.exampleTextView.layer.cornerRadius = 5.0
+        self.exampleTextView.layer.borderColor = UIColor.NColor.lightBlue.cgColor
+        self.exampleTextView.backgroundColor = UIColor.NColor.lightBlue
+        self.exampleTextView.font = UIFont.NFont.textFieldFont
+        self.exampleTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+        self.exampleTextView.isScrollEnabled = false
+        self.exampleTextViewLimitLabel.font = UIFont.NFont.automaticMeaningButton
+        self.exampleTextViewLimitLabel.textColor = UIColor.NColor.subBlue
     }
     
     private func configureTextFieldStyle() {
@@ -180,7 +188,7 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
             textField.layer.cornerRadius = 5.0
             textField.layer.borderColor = UIColor.NColor.lightBlue.cgColor
             textField.font = UIFont.NFont.textFieldFont
-            textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+            textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
             textField.leftViewMode = .always
         }
     }
@@ -199,7 +207,6 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         if nameTextField.text != "" && meaningTextField.text != "" {
             checkSameWord()
         } else {
-//            saveButton.isEnabled = false
             configureSaveButtonState = false
         }
     }
@@ -209,13 +216,11 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         for word in wordList {
             if word.name == wordString {
                 self.ifIsSameWord()
-//                saveButton.isEnabled = false
                 configureSaveButtonState = false
                 return
             }
         }
         self.ifIsNotSameWord()
-//        saveButton.isEnabled = true
         configureSaveButtonState = true
 
     }
@@ -228,19 +233,16 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     
     private func ifIsSameWord() {
         self.duplicateSentense.isHidden = false
-//        self.nameTextField.layer.borderColor = UIColor.NColor.orange.cgColor
     }
     
     private func ifIsNotSameWord() {
         self.duplicateSentense.isHidden = true
-//        self.nameTextField.layer.borderColor = UIColor.NColor.blue.cgColor
     }
     
     private func configureInputField() {
         self.nameTextField.addTarget(self, action: #selector(saveButtonState), for: .editingChanged)
         self.nameTextField.addTarget(self, action: #selector(isSameWord), for: .editingChanged)
         self.nameTextField.addTarget(self, action: #selector(isSameWord), for: .editingDidEnd)
-        
         
         self.meaningTextField.addTarget(self, action: #selector(saveButtonState), for: .editingChanged)
     }
@@ -253,11 +255,38 @@ extension AddWordViewController: UITextFieldDelegate {
         } else if textField == self.meaningTextField {
             synoymTextField.becomeFirstResponder()
         } else if textField == self.synoymTextField {
-            exampleTextField.becomeFirstResponder()
+            exampleTextView.becomeFirstResponder()
         } else {
-            exampleTextField.resignFirstResponder()
+            exampleTextView.resignFirstResponder()
         }
         return true
+    }
+}
+
+extension AddWordViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        self.exampleTextView.layer.borderWidth = 0.5
+        self.exampleTextView.layer.cornerRadius = 5.0
+        self.exampleTextView.layer.borderColor = UIColor.NColor.borderBlue.cgColor
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        self.exampleTextView.layer.borderWidth = 0.5
+        self.exampleTextView.layer.cornerRadius = 5.0
+        self.exampleTextView.layer.borderColor = UIColor.NColor.lightBlue.cgColor
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentDetailContext = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentDetailContext) else { return false }
+        
+        let changedText = currentDetailContext.replacingCharacters(in: stringRange, with: text)
+        
+        exampleTextViewLimitLabel.text = "(\(changedText.count)/50)"
+        
+        exampleTextViewLimitLabel.textColor = changedText.count == 50 ? UIColor.NColor.blue : UIColor.NColor.subBlue
+        
+        return changedText.count <= 49
     }
 }
 

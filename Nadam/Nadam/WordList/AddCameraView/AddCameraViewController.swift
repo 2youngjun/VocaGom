@@ -67,9 +67,7 @@ class AddCameraViewController: UIViewController {
         self.configureLayout()
         self.configureCollectionView()
 
-        if cameraView.image == nil {
-            print("🐰")
-        } else {
+        if cameraView.image != nil {
             self.cameraView.image = sentImage
             self.cameraView.contentMode = .scaleAspectFit
         }
@@ -109,10 +107,6 @@ class AddCameraViewController: UIViewController {
             self.wordArray[cnt].wordName = checkText[cnt]
             cnt += 1
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        print(wordArray)
     }
     
     // MARK: IBOutlet Function
@@ -192,7 +186,6 @@ class AddCameraViewController: UIViewController {
 //        self.collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//        flowLayout.estimatedItemSize = CGSize(width: 100.0, height: 40.0)
         flowLayout.estimatedItemSize =  UICollectionViewFlowLayout.automaticSize
         self.collectionView.collectionViewLayout = flowLayout
         
@@ -430,13 +423,13 @@ extension AddCameraViewController: UICollectionViewDataSource{
 }
 
 extension AddCameraViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let label = UILabel(frame: CGRect.zero)
-        label.text = checkText[indexPath.row]
-        label.sizeToFit()
-        return CGSize(width: label.frame.width + 30, height: label.frame.height + 20)
-    }
+        func collectionView(_ collectionView: UICollectionView,
+                            layout collectionViewLayout: UICollectionViewLayout,
+                            sizeForItemAt indexPath: IndexPath) -> CGSize {
+            
+            let label = UILabel(frame: CGRect.zero)
+            label.text = checkText[indexPath.row]
+            label.sizeToFit()
+            return CGSize(width: label.frame.width + 30, height: label.frame.height + 20)
+        }
 }
