@@ -67,9 +67,7 @@ class AddCameraViewController: UIViewController {
         self.configureLayout()
         self.configureCollectionView()
 
-        if cameraView.image == nil {
-            print("🐰")
-        } else {
+        if cameraView.image != nil {
             self.cameraView.image = sentImage
             self.cameraView.contentMode = .scaleAspectFit
         }
@@ -109,10 +107,6 @@ class AddCameraViewController: UIViewController {
             self.wordArray[cnt].wordName = checkText[cnt]
             cnt += 1
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        print(wordArray)
     }
     
     // MARK: IBOutlet Function

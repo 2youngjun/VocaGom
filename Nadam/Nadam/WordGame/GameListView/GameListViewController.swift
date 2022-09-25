@@ -89,28 +89,6 @@ class GameListViewController: UIViewController {
         self.rainTestMainImage.image = UIImage(named: "spellingTest")
     }
     
-    private func showAlertSpellingTest() {
-        let alert = UIAlertController(title: "단어 철자 테스트",
-                                      message: "무작위로 최대 10개의 단어로 테스트가 진행됩니다.",
-                                      preferredStyle: .alert)
-        
-        let cancelAlert = UIAlertAction(title: "취소",
-                                        style: .cancel) { _ in
-            alert.dismiss(animated: true, completion: nil)
-        }
-        
-        let startTestAlert = UIAlertAction(title: "시작", style: .default) { _ in
-            let storyboard = UIStoryboard(name: "SpellingTestView", bundle: nil)
-            guard let spellingTestViewController = storyboard.instantiateViewController(withIdentifier: "SpellingTestViewController") as? SpellingTestViewController else { return }
-            
-            self.navigationController?.pushViewController(spellingTestViewController, animated: true)
-        }
-        
-        [cancelAlert, startTestAlert].forEach(alert.addAction(_:))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     private func showAlertNoWord() {
         let alert = UIAlertController(title: "테스트할 단어가 없습니다.",
                                       message: "단어를 추가한 후 다시 진행해 주세요.",
