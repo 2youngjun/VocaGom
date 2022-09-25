@@ -4,7 +4,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -56,6 +58,21 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AcF-XH-chd">
+                        <rect key="frame" x="282" y="15" width="45" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="Pve-UT-O7W"/>
+                            <constraint firstAttribute="width" constant="45" id="wm6-DU-fap"/>
+                        </constraints>
+                        <color key="tintColor" name="NGray"/>
+                        <menu key="menu" id="Pm1-pG-ju9">
+                            <children>
+                                <command title="Item 1" id="s2d-2B-90p"/>
+                                <command title="Item 2" id="h5f-b9-xID"/>
+                            </children>
+                        </menu>
+                        <state key="normal" image="ellipsis" catalog="system"/>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -64,16 +81,18 @@
                 <constraint firstAttribute="trailing" secondItem="JPf-dX-rDR" secondAttribute="trailing" constant="23" id="Ghc-qL-bzZ"/>
                 <constraint firstItem="cnr-g4-Ynx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="27" id="HGC-XZ-VZb"/>
                 <constraint firstAttribute="trailing" secondItem="SGH-Jg-HTx" secondAttribute="trailing" constant="23" id="Mou-mz-i07"/>
+                <constraint firstAttribute="trailing" secondItem="AcF-XH-chd" secondAttribute="trailing" constant="23" id="NsA-VK-KIH"/>
                 <constraint firstItem="cnr-g4-Ynx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="Sbq-VZ-vQZ"/>
                 <constraint firstItem="SGH-Jg-HTx" firstAttribute="leading" secondItem="cnr-g4-Ynx" secondAttribute="trailing" constant="10" id="X1g-kq-M2Q"/>
                 <constraint firstItem="0zY-QN-ca3" firstAttribute="top" secondItem="JPf-dX-rDR" secondAttribute="bottom" constant="3" id="XLs-xz-Iv4"/>
                 <constraint firstItem="0zY-QN-ca3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="XUA-jg-knu"/>
+                <constraint firstItem="AcF-XH-chd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="nkT-Im-VX0"/>
                 <constraint firstAttribute="trailing" secondItem="0zY-QN-ca3" secondAttribute="trailing" constant="23" id="vcG-kZ-j3e"/>
                 <constraint firstItem="SGH-Jg-HTx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="27" id="yfB-nG-Ea1"/>
             </constraints>
             <size key="customSize" width="384" height="117"/>
             <connections>
-                <outlet property="deleteButton" destination="Fk9-Qd-8Ej" id="5ke-xx-eM2"/>
+                <outlet property="editDeleteButton" destination="AcF-XH-chd" id="FxF-Qp-sqA"/>
                 <outlet property="starButton" destination="Fk9-Qd-8Ej" id="g3Y-4t-cFr"/>
                 <outlet property="wordExample" destination="0zY-QN-ca3" id="PsM-5q-K6Q"/>
                 <outlet property="wordMeaning" destination="SGH-Jg-HTx" id="ony-Li-zBt"/>
@@ -84,7 +103,11 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="star" width="533" height="512"/>
         <image name="star_filled" width="533" height="512"/>
+        <namedColor name="NGray">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
