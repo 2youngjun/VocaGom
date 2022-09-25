@@ -44,7 +44,6 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var rainBackgroundViewHeight: NSLayoutConstraint!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
-    
     @IBOutlet weak var countCorrectView: UIView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var countCorrectLabel: UILabel!
@@ -74,8 +73,9 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     //MARK: View LifeCycle Function
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self.resultViewController
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardUp), name: UIResponder.keyboardWillShowNotification, object: nil)
         
+        self.delegate = self.resultViewController
         self.styleFunction()
         self.countWord()
         self.addRandomPositionXArray()
@@ -84,6 +84,10 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         self.textField.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     //MARK: 기능 구현
@@ -145,7 +149,6 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         if self.isAnimationEnded == 0 {
             self.nextButton.isEnabled = true
         }
-        
         if self.isAnimationEnded == self.countQuestion
         {
             self.timer?.invalidate()
@@ -155,7 +158,6 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
             self.rainBackgroundView.addSubview(self.setUILabelView(index: self.isAnimationEnded))
             self.progressView.progress += self.progressing
         }
-        
         self.isAnimationEnded += 1
     }
     
@@ -169,9 +171,8 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func configureTestView() {
-        self.rainBackgroundView.backgroundColor = UIColor.NColor.lightBlue
+        self.rainBackgroundView.backgroundColor = UIColor.NColor.background
         self.rainBackgroundView.layer.cornerRadius = 10.0
-        self.rainBackgroundViewHeight.constant = UIScreen.main.bounds.height / 3.5
         self.rainBackgroundView.layer.shouldRasterize = true
         self.rainBackgroundView.layer.drawsAsynchronously = true
     }
@@ -186,6 +187,13 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         self.textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         self.textField.leftViewMode = .always
         self.textField.clearButtonMode = .whileEditing
+    }
+    
+    @objc func keyboardUp(notification: NSNotification){
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            self.rainBackgroundViewHeight.constant = UIScreen.main.bounds.height - keyboardRectangle.height - 234
+        }
     }
     
     private func configureNextButton() {

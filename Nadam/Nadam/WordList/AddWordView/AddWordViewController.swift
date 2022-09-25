@@ -87,6 +87,7 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        wordList = CoreDataManager.shared.fetchWord()
         
         if cameraWord != String() {
             self.nameTextField.text = cameraWord
@@ -174,10 +175,10 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         self.exampleTextView.layer.borderColor = UIColor.NColor.lightBlue.cgColor
         self.exampleTextView.backgroundColor = UIColor.NColor.lightBlue
         self.exampleTextView.font = UIFont.NFont.textFieldFont
-        self.exampleTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+        self.exampleTextView.textContainerInset = UIEdgeInsets(top: 13, left: 5, bottom: 0, right: 5)
         self.exampleTextView.isScrollEnabled = false
         self.exampleTextViewLimitLabel.font = UIFont.NFont.automaticMeaningButton
-        self.exampleTextViewLimitLabel.textColor = UIColor.NColor.subBlue
+        self.exampleTextViewLimitLabel.textColor = UIColor.NColor.borderBlue
     }
     
     private func configureTextFieldStyle() {
@@ -282,11 +283,9 @@ extension AddWordViewController: UITextViewDelegate {
         
         let changedText = currentDetailContext.replacingCharacters(in: stringRange, with: text)
         
-        exampleTextViewLimitLabel.text = "(\(changedText.count)/50)"
+        exampleTextViewLimitLabel.text = "(\(changedText.count)/90)"
         
-        exampleTextViewLimitLabel.textColor = changedText.count == 50 ? UIColor.NColor.blue : UIColor.NColor.subBlue
-        
-        return changedText.count <= 49
+        return changedText.count <= 89
     }
 }
 

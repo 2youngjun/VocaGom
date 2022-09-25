@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0w7-dS-UIK">
-                                <rect key="frame" x="20" y="73" width="54.5" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="테스트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0w7-dS-UIK">
+                                <rect key="frame" x="20" y="73" width="44.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="rM3-3s-9Xb"/>
                                 </constraints>
@@ -165,7 +165,7 @@
                             <constraint firstItem="fCL-J9-zEY" firstAttribute="trailing" secondItem="0cP-c4-IMI" secondAttribute="trailing" constant="20" id="zBe-Gv-MUd"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="테스트" image="pencil.circle" catalog="system" selectedImage="pencil.circle.fill" id="nkR-Uw-Cyk"/>
+                    <tabBarItem key="tabBarItem" title="테스트" image="pencil" selectedImage="pencil_filled" id="nkR-Uw-Cyk"/>
                     <navigationItem key="navigationItem" id="tUW-bg-j0g"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -205,8 +205,8 @@
     </scenes>
     <resources>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
-        <image name="pencil.circle" catalog="system" width="128" height="123"/>
-        <image name="pencil.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="pencil" width="25" height="25"/>
+        <image name="pencil_filled" width="25" height="25"/>
         <image name="rainTest" width="465" height="512"/>
         <image name="spellingTest" width="305" height="512"/>
         <namedColor name="NBackground">

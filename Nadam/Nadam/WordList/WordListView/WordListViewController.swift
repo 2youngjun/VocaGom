@@ -306,22 +306,28 @@ extension WordListViewController: UICollectionViewDataSource {
                 
                 cell.wordSynoym.text = word.synoym
                 if cell.wordSynoym.text == "" {
-                    cell.wordSynoym.text = "No Synoym"
+                    cell.wordSynoym.text = "동의어 추가하기"
                     cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
-                    cell.wordSynoym.textColor = UIColor.NColor.gray
+                    cell.wordSynoym.textColor = UIColor.NColor.middleGray
                 } else {
                     cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
-                    cell.wordSynoym.textColor = UIColor.NColor.black
+                    cell.wordSynoym.textColor = UIColor.NColor.gray
                 }
                 
                 cell.wordExample.text = word.example
                 if cell.wordExample.text == "" {
-                    cell.wordExample.text = "No Example"
+                    cell.wordExample.text = "예문 추가하기"
+                    cell.wordExample.font = UIFont.NFont.wordListWordSynoym
+                    cell.wordExample.textColor = UIColor.NColor.middleGray
+                } else {
+                    let attributedString = NSMutableAttributedString(string: cell.wordExample.text!)
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.lineSpacing = 4
+                    attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+                    cell.wordExample.attributedText = attributedString
+                    cell.wordExample.textAlignment = .right
                     cell.wordExample.font = UIFont.NFont.wordListWordSynoym
                     cell.wordExample.textColor = UIColor.NColor.gray
-                } else {
-                    cell.wordExample.font = UIFont.NFont.wordListWordSynoym
-                    cell.wordExample.textColor = UIColor.NColor.black
                 }
                 
                 
@@ -370,22 +376,28 @@ extension WordListViewController: UICollectionViewDataSource {
                 
                 cell.wordSynoym.text = word.synoym
                 if cell.wordSynoym.text == "" {
-                    cell.wordSynoym.text = "No Synoym"
+                    cell.wordSynoym.text = "동의어 추가하기"
                     cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
-                    cell.wordSynoym.textColor = UIColor.NColor.gray
+                    cell.wordSynoym.textColor = UIColor.NColor.middleGray
                 } else {
                     cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
-                    cell.wordSynoym.textColor = UIColor.NColor.black
+                    cell.wordSynoym.textColor = UIColor.NColor.gray
                 }
                 
                 cell.wordExample.text = word.example
                 if cell.wordExample.text == "" {
-                    cell.wordExample.text = "No Example"
+                    cell.wordExample.text = "예문 추가하기"
+                    cell.wordExample.font = UIFont.NFont.wordListWordSynoym
+                    cell.wordExample.textColor = UIColor.NColor.middleGray
+                } else {
+                    let attributedString = NSMutableAttributedString(string: cell.wordExample.text!)
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.lineSpacing = 4
+                    attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+                    cell.wordExample.attributedText = attributedString
+                    cell.wordExample.textAlignment = .right
                     cell.wordExample.font = UIFont.NFont.wordListWordSynoym
                     cell.wordExample.textColor = UIColor.NColor.gray
-                } else {
-                    cell.wordExample.font = UIFont.NFont.wordListWordSynoym
-                    cell.wordExample.textColor = UIColor.NColor.black
                 }
                 
                 return cell
