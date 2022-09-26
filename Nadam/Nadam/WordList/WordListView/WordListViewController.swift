@@ -18,7 +18,7 @@ protocol CameraPictureDelegate: AnyObject {
 }
 
 class WordListViewController: UIViewController {
-
+    
     // MARK: IBOutlet 변수
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -151,11 +151,13 @@ class WordListViewController: UIViewController {
         self.addWordButton.menu = menu
     }
     
-    private func configureEditDeleteButton(button: UIButton) {
+//    var indexPath: IndexPath
+    private func configureEditDeleteButton(button: UIButton, word: Word) {
         button.showsMenuAsPrimaryAction = true
         
         let editButton = UIAction(title: "단어 수정", image: UIImage(systemName: "applepencil")?.withTintColor(UIColor.NColor.orange, renderingMode: .alwaysOriginal)) { _ in
-            
+            self.editWord(word: word)
+//            print(indexPath.row)
         }
         
         let deleteButton = UIAction(title: "단어 삭제", image: UIImage(systemName: "trash")?.withTintColor(UIColor.NColor.orange, renderingMode: .alwaysOriginal)) { _ in
@@ -165,6 +167,22 @@ class WordListViewController: UIViewController {
         let menu = UIMenu(title: "", children: [editButton, deleteButton])
         button.menu = menu
     }
+    
+    private func editWord(word: Word) {
+        let storyboard = UIStoryboard(name: "AddWordView", bundle: nil)
+        guard let addWordViewController = storyboard.instantiateViewController(withIdentifier: "AddWordViewController") as? AddWordViewController else { return }
+        
+        addWordViewController.editMode = .edit(word)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(editWordNotification), name: Notification.Name("editWord"), object: nil)
+        
+        self.navigationController?.pushViewController(addWordViewController, animated: true)
+    }
+    
+    @objc func editWordNotification(){
+        self.collectionView.reloadData()
+    }
+    
     
     // Arrange 버튼 함수
     private func configureArrangeButton() {
@@ -203,6 +221,7 @@ class WordListViewController: UIViewController {
     private func tapAddHandButton() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "AddWordView", bundle:nil)
         guard let addWordViewController = storyBoard.instantiateViewController(withIdentifier: "AddWordViewController") as? AddWordViewController else { return }
+        addWordViewController.editMode = .new
         self.navigationController?.pushViewController(addWordViewController, animated: true)
     }
 
@@ -340,7 +359,7 @@ extension WordListViewController: UICollectionViewDataSource {
                     cell.wordExample.textColor = UIColor.NColor.gray
                 }
                 
-                self.configureEditDeleteButton(button: cell.editDeleteButton)
+                self.configureEditDeleteButton(button: cell.editDeleteButton, word: word)
                 
                 return cell
                 
@@ -411,7 +430,7 @@ extension WordListViewController: UICollectionViewDataSource {
                     cell.wordExample.textColor = UIColor.NColor.gray
                 }
                 
-                self.configureEditDeleteButton(button: cell.editDeleteButton)
+                self.configureEditDeleteButton(button: cell.editDeleteButton, word: word)
                 
                 return cell
                 

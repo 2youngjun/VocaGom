@@ -173,7 +173,6 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     private func configureTestView() {
         self.rainBackgroundView.backgroundColor = UIColor.NColor.background
         self.rainBackgroundView.layer.cornerRadius = 10.0
-        self.rainBackgroundView.layer.shouldRasterize = true
         self.rainBackgroundView.layer.drawsAsynchronously = true
     }
     

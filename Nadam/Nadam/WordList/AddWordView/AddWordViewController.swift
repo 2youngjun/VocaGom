@@ -11,91 +11,63 @@ protocol AddWordViewDelegate: AnyObject {
     func didSelectSaveWord()
 }
 
+enum EditMode {
+    case new
+    case edit(Word)
+}
+
 class AddWordViewController: UIViewController, SendWordNameDelegate {
     
+    var wordList: [Word] = []
+    weak var delegate: AddWordViewDelegate?
     var cameraWord = String()
     var configureSaveButtonState: Bool = false {
         didSet {
-            if configureSaveButtonState {
-                self.saveButton.isEnabled = true
-                configureSaveButton(self.saveButton)
-            } else {
-                self.saveButton.isEnabled = false
-                configureSaveButton(self.saveButton)
-            }
+            self.saveButton.isEnabled = configureSaveButtonState ? true : false
+            self.configureSaveButton(self.saveButton)
         }
     }
-    
-    private func configureSaveButton(_ button: UIButton) {
-        if button.isEnabled {
-            button.setTitleColor(UIColor.NColor.white, for: .normal)
-            button.backgroundColor = UIColor.NColor.blue
-        } else {
-            button.setTitleColor(UIColor.NColor.blue, for: .normal)
-            button.backgroundColor = UIColor.NColor.lightBlue
-        }
-    }
-    
+    var editMode: EditMode = .new
     func sendWord(wordName: String) {
         cameraWord = wordName
     }
     
-    override var sheetPresentationController: UISheetPresentationController {
-        presentationController as! UISheetPresentationController
-    }
-    
-    var wordList: [Word] = []
-    weak var delegate: AddWordViewDelegate?
-    
     // MARK: IBOutlet 변수
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var wordName: UILabel!
     @IBOutlet weak var wordMeaning: UILabel!
     @IBOutlet weak var wordSynoym: UILabel!
     @IBOutlet weak var wordExample: UILabel!
     
+    @IBOutlet var titleLabelCollection: [UILabel]!
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var meaningTextField: UITextField!
     @IBOutlet weak var synoymTextField: UITextField!
     @IBOutlet weak var exampleTextView: UITextView!
+    @IBOutlet var textFieldCollection: [UITextField]!
     @IBOutlet weak var exampleTextViewLimitLabel: UILabel!
     
     @IBOutlet weak var duplicateSentense: UILabel!
-    @IBOutlet weak var duplicateMargin: NSLayoutConstraint!
     
     @IBOutlet weak var automaticMeaningButton: UIButton!
     
-    @IBOutlet var textFieldCollection: [UITextField]!
     
     // MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        sheetPresentationController.detents = [.medium()]
-        wordList = CoreDataManager.shared.fetchWord()
-        
-        configureLayoutStyle()
-        
-        configureInputField()
-        configureTextFieldStyle()
-        configureTextView()
-        
-        self.saveButton.isEnabled = false
+        self.wordList = CoreDataManager.shared.fetchWord()
+        self.defaultStyleFunction()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        wordList = CoreDataManager.shared.fetchWord()
-        
-        if cameraWord != String() {
-            self.nameTextField.text = cameraWord
-        }
-        
-        self.meaningTextField.text = ""
-        self.saveButton.isEnabled = false
-        self.configureSaveButton(saveButton)
+        self.wordList = CoreDataManager.shared.fetchWord()
+        self.configureEditMode()
+        self.configureInputField()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -103,7 +75,7 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         cameraWord = String()
     }
     
-    // MARK: IBAction 함수
+    // MARK: IBAction Function
     @IBAction func startEditingTextField(_ sender: UITextField) {
         sender.layer.borderWidth = 0.5
         sender.layer.cornerRadius = 5.0
@@ -126,9 +98,20 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         let synoym = synoymTextField.text ?? ""
         let example = exampleTextView.text ?? ""
         
-        CoreDataManager.shared.addWord(name: name, meaning: meaning, synoym: synoym, example: example, createTime: Date(), star: false, isTapped: false)
-        self.delegate?.didSelectSaveWord()
-
+        switch self.editMode {
+        case .new:
+            CoreDataManager.shared.addWord(name: name, meaning: meaning, synoym: synoym, example: example, createTime: Date(), star: false, isTapped: false)
+            self.delegate?.didSelectSaveWord()
+        
+        case let .edit(word):
+            word.name = name
+            word.meaning = meaning
+            word.synoym = synoym
+            word.example = example
+            CoreDataManager.shared.saveContext()
+            NotificationCenter.default.post(name: Notification.Name("editWord"), object: nil)
+        }
+        
         self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -140,32 +123,60 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         self.callPapagoAPI()
     }
     
-    private func configureLayoutStyle() {
-        
-        saveButton.titleLabel?.font = UIFont.NFont.wordListWordMeaning
-        saveButton.backgroundColor = UIColor.NColor.lightBlue
-        saveButton.isEnabled = false
-        saveButton.titleLabel?.textColor = UIColor.NColor.blue
-        saveButton.layer.cornerRadius = 5
-        
-        cancelButton.titleLabel?.font = UIFont.NFont.addWordSection
-        cancelButton.sizeToFit()
-        
-        titleLabel.font = UIFont.NFont.addWordNavigationTitle
-        
-        wordName.font = UIFont.NFont.addWordSection
-        wordMeaning.font = UIFont.NFont.addWordSection
-        wordSynoym.font = UIFont.NFont.addWordSection
-        wordExample.font = UIFont.NFont.addWordSection
-        
-        duplicateSentense.font = UIFont.NFont.sameWordButton
-        duplicateSentense.textColor = UIColor.NColor.subBlue
-        duplicateSentense.isHidden = true
-        
-        automaticMeaningButton.backgroundColor = UIColor.NColor.blue
-        automaticMeaningButton.layer.cornerRadius = 5
-        
-        attributeNameMeaningTitle()
+    //MARK: Default Style Function
+    private func defaultStyleFunction() {
+        self.configureTitleLabel()
+        self.configureDuplicatieLabel()
+        self.configurePapagoButton()
+        self.configureCancelButton()
+        self.configureDefaultSaveButton()
+        self.configureTextField()
+        self.configureTextView()
+    }
+    
+    private func configureTitleLabel() {
+        self.titleLabelCollection.forEach { titleLabel in
+            titleLabel.font = UIFont.NFont.addWordSection
+        }
+        self.attributeNameMeaningTitle()
+        self.mainLabel.font = UIFont.NFont.addWordNavigationTitle
+    }
+    
+    private func configureDuplicatieLabel() {
+        self.duplicateSentense.font = UIFont.NFont.sameWordButton
+        self.duplicateSentense.textColor = UIColor.NColor.subBlue
+        self.duplicateSentense.isHidden = true
+    }
+    
+    private func configurePapagoButton() {
+        self.automaticMeaningButton.backgroundColor = UIColor.NColor.blue
+        self.automaticMeaningButton.layer.cornerRadius = 5
+    }
+    
+    private func configureCancelButton() {
+        self.cancelButton.titleLabel?.font = UIFont.NFont.addWordSection
+        self.cancelButton.sizeToFit()
+    }
+    
+    private func configureDefaultSaveButton() {
+        self.saveButton.titleLabel?.font = UIFont.NFont.wordListWordMeaning
+        self.saveButton.backgroundColor = UIColor.NColor.lightBlue
+        self.saveButton.titleLabel?.textColor = UIColor.NColor.blue
+        self.saveButton.layer.cornerRadius = 5
+        self.saveButton.isEnabled = false
+    }
+    
+    private func configureTextField() {
+        for textField in textFieldCollection {
+            textField.delegate = self
+            textField.backgroundColor = UIColor.NColor.lightBlue
+            textField.layer.borderWidth = 0.5
+            textField.layer.cornerRadius = 5.0
+            textField.layer.borderColor = UIColor.NColor.lightBlue.cgColor
+            textField.font = UIFont.NFont.textFieldFont
+            textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
+            textField.leftViewMode = .always
+        }
     }
     
     private func configureTextView() {
@@ -181,19 +192,6 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         self.exampleTextViewLimitLabel.textColor = UIColor.NColor.borderBlue
     }
     
-    private func configureTextFieldStyle() {
-        for textField in textFieldCollection {
-            textField.delegate = self
-            textField.backgroundColor = UIColor.NColor.lightBlue
-            textField.layer.borderWidth = 0.5
-            textField.layer.cornerRadius = 5.0
-            textField.layer.borderColor = UIColor.NColor.lightBlue.cgColor
-            textField.font = UIFont.NFont.textFieldFont
-            textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
-            textField.leftViewMode = .always
-        }
-    }
-    
     private func attributeNameMeaningTitle() {
         let attributedNameStr = NSMutableAttributedString(string: wordName.text!)
         let attributedMeaningStr = NSMutableAttributedString(string: wordMeaning.text!)
@@ -204,6 +202,49 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         wordMeaning.attributedText = attributedMeaningStr
     }
     
+    //MARK: editMode 에 따른 Style Function
+    private func configureEditMode() {
+        switch self.editMode {
+        case let .edit(word):
+            self.nameTextField.text = word.name
+            self.meaningTextField.text = word.meaning
+            self.synoymTextField.text = word.synoym
+            self.exampleTextView.text = word.example
+            
+            self.mainLabel.text = "단어 수정하기"
+            self.saveButton.isEnabled = true
+            self.configureSaveButton(self.saveButton)
+            
+        case .new:
+            if cameraWord != String() {
+                self.nameTextField.text = cameraWord
+            }
+            self.meaningTextField.text = ""
+            
+            self.saveButton.isEnabled = false
+            self.configureSaveButton(saveButton)
+        }
+    }
+    
+    private func configureInputField() {
+        switch self.editMode {
+        case .new:
+            self.nameTextField.addTarget(self, action: #selector(saveButtonState), for: .editingChanged)
+            self.nameTextField.addTarget(self, action: #selector(isSameWord), for: .editingChanged)
+            self.nameTextField.addTarget(self, action: #selector(isSameWord), for: .editingDidEnd)
+            self.meaningTextField.addTarget(self, action: #selector(saveButtonState), for: .editingChanged)
+        default:
+            self.nameTextField.addTarget(self, action: #selector(noStringTextField), for: .editingChanged)
+            self.meaningTextField.addTarget(self, action: #selector(noStringTextField), for: .editingChanged)
+        }
+        
+    }
+    
+    private func configureSaveButton(_ button: UIButton) {
+        button.setTitleColor(button.isEnabled ? UIColor.NColor.white : UIColor.NColor.blue, for: .normal)
+        button.backgroundColor = button.isEnabled ? UIColor.NColor.blue : UIColor.NColor.lightBlue
+    }
+    
     @objc private func saveButtonState() {
         if nameTextField.text != "" && meaningTextField.text != "" {
             checkSameWord()
@@ -212,40 +253,31 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         }
     }
     
-    private func checkSameWord() {
-        let wordString = nameTextField.text ?? ""
-        for word in wordList {
-            if word.name == wordString {
-                self.ifIsSameWord()
-                configureSaveButtonState = false
-                return
-            }
-        }
-        self.ifIsNotSameWord()
-        configureSaveButtonState = true
-
-    }
-    
     @objc private func isSameWord() {
-        if nameTextField.text != ""{
+        if nameTextField.text != "" {
             checkSameWord()
         }
     }
     
-    private func ifIsSameWord() {
-        self.duplicateSentense.isHidden = false
-    }
-    
-    private func ifIsNotSameWord() {
+    private func checkSameWord() {
+        let wordString = nameTextField.text ?? ""
+        for word in wordList {
+            if word.name == wordString {
+                self.duplicateSentense.isHidden = false
+                configureSaveButtonState = false
+                return
+            }
+        }
         self.duplicateSentense.isHidden = true
+        configureSaveButtonState = true
     }
     
-    private func configureInputField() {
-        self.nameTextField.addTarget(self, action: #selector(saveButtonState), for: .editingChanged)
-        self.nameTextField.addTarget(self, action: #selector(isSameWord), for: .editingChanged)
-        self.nameTextField.addTarget(self, action: #selector(isSameWord), for: .editingDidEnd)
-        
-        self.meaningTextField.addTarget(self, action: #selector(saveButtonState), for: .editingChanged)
+    @objc func noStringTextField() {
+        if nameTextField.text == "" || meaningTextField.text == "" {
+            configureSaveButtonState = false
+        } else {
+            configureSaveButtonState = true
+        }
     }
 }
 
@@ -282,7 +314,6 @@ extension AddWordViewController: UITextViewDelegate {
         guard let stringRange = Range(range, in: currentDetailContext) else { return false }
         
         let changedText = currentDetailContext.replacingCharacters(in: stringRange, with: text)
-        
         exampleTextViewLimitLabel.text = "(\(changedText.count)/90)"
         
         return changedText.count <= 89
@@ -322,7 +353,12 @@ extension AddWordViewController {
                 
                 DispatchQueue.main.async {
                     self?.meaningTextField.text = wordInformation.message.result.translatedWord.replacingOccurrences(of: "[^가-힣 ]", with: "", options: .regularExpression)
-                    self?.afterAPINextButtonState()
+                    switch self?.editMode {
+                    case .new:
+                        self?.afterAPINextButtonState()
+                    default:
+                        break
+                    }
                 }
             } else {
                 guard let errorMessage = try? decoder.decode(ErrorMessage.self, from: data) else { return }

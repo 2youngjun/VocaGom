@@ -156,4 +156,34 @@ class CoreDataManager {
         return resultWordList
     }
     
+    func setWord(name: String, meaning: String, synoym: String, example: String, createTime: Date, star: Bool, isTapped: Bool) -> Word {
+        let word = Word(context: persistentContainer.viewContext)
+        word.id = UUID()
+        word.name = name
+        word.meaning = meaning
+        word.synoym = synoym
+        word.example = example
+        word.createTime = Date()
+        word.isStar = false
+        word.isTapped = false
+        
+        return word
+    }
+    
+//    func getWord(word: Word) -> Word {
+//        var wordArray = [Word]()
+//        var resultWord: Word
+//        let request: NSFetchRequest<Word> = Word.fetchRequest()
+//        do {
+//            wordArray = try context.fetch(request)
+//            wordArray.forEach { indexWord in
+//                if indexWord
+//            }
+//            
+//        } catch {
+//            print("-----fetchWord error-----")
+//        }
+//        return wordArray[indexPath.row]
+//    }
+    
 }

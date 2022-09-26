@@ -231,11 +231,11 @@
                         <outlet property="duplicateSentense" destination="CQy-bc-I04" id="NAe-TD-QaF"/>
                         <outlet property="exampleTextView" destination="8jk-rb-yQz" id="qhI-vc-RHI"/>
                         <outlet property="exampleTextViewLimitLabel" destination="ohl-nq-wu1" id="R1M-jp-qY7"/>
+                        <outlet property="mainLabel" destination="XQa-9p-NkQ" id="omJ-kK-1EC"/>
                         <outlet property="meaningTextField" destination="N5t-gQ-f8b" id="N2k-zb-XLo"/>
                         <outlet property="nameTextField" destination="8lF-Fj-StY" id="ZmY-l4-Qkn"/>
                         <outlet property="saveButton" destination="bUZ-v9-t5d" id="nAK-jQ-kY7"/>
                         <outlet property="synoymTextField" destination="X3G-H1-NvG" id="vst-qq-jaa"/>
-                        <outlet property="titleLabel" destination="XQa-9p-NkQ" id="cAZ-KA-17V"/>
                         <outlet property="wordExample" destination="owG-lk-RY3" id="PqA-zv-xQr"/>
                         <outlet property="wordMeaning" destination="JyW-sD-VbX" id="Ngy-Qw-SQK"/>
                         <outlet property="wordName" destination="eJw-Mz-sdb" id="l5f-12-sqt"/>
@@ -243,6 +243,10 @@
                         <outletCollection property="textFieldCollection" destination="8lF-Fj-StY" collectionClass="NSMutableArray" id="060-Ca-im7"/>
                         <outletCollection property="textFieldCollection" destination="X3G-H1-NvG" collectionClass="NSMutableArray" id="dJt-pU-It1"/>
                         <outletCollection property="textFieldCollection" destination="N5t-gQ-f8b" collectionClass="NSMutableArray" id="OfG-Bc-1ES"/>
+                        <outletCollection property="titleLabelCollection" destination="eJw-Mz-sdb" collectionClass="NSMutableArray" id="Rpz-8H-Uby"/>
+                        <outletCollection property="titleLabelCollection" destination="JyW-sD-VbX" collectionClass="NSMutableArray" id="tTP-4y-iOH"/>
+                        <outletCollection property="titleLabelCollection" destination="mml-EF-8Av" collectionClass="NSMutableArray" id="Qj4-TJ-SRn"/>
+                        <outletCollection property="titleLabelCollection" destination="owG-lk-RY3" collectionClass="NSMutableArray" id="4Zw-3K-qp7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
