@@ -120,7 +120,19 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     }
     
     @IBAction func tapAPIButton(_ sender: Any) {
-        self.callPapagoAPI()
+        if networkReachability.isConnectedToNetwork() {
+            self.callPapagoAPI()
+        } else {
+            self.showAlertNetworkUnreachable()
+        }
+    }
+    
+    private func showAlertNetworkUnreachable() {
+        let alert = UIAlertController(title: "네트워크 연결을 확인해주세요.",
+                                      message: "현재 디바이스가 네트워크에 연결되어 있지 않습니다.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:  "확인", style: .default))
+        self.present(alert, animated: true)
     }
     
     //MARK: Default Style Function

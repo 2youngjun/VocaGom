@@ -36,6 +36,7 @@
 		8BDDCE9828C7AF64000DE395 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDCE9728C7AF64000DE395 /* PaddingLabel.swift */; };
 		8BDDCE9A28C9CA42000DE395 /* ArrangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDCE9928C9CA42000DE395 /* ArrangeButton.swift */; };
 		8BDFBFB528DF390C001622D6 /* NextButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDFBFB428DF390C001622D6 /* NextButtonState.swift */; };
+		8BDFBFB728E2EDF9001622D6 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDFBFB628E2EDF9001622D6 /* NetworkReachability.swift */; };
 		8BE57A0E28C4FDAD00484284 /* SearchedWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE57A0D28C4FDAD00484284 /* SearchedWordCell.swift */; };
 		8BE59CC628D2E93600C878AC /* RainTestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE59CC528D2E93600C878AC /* RainTestView.storyboard */; };
 		8BE59CC828D2E94800C878AC /* RainTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE59CC728D2E94800C878AC /* RainTestViewController.swift */; };
@@ -91,6 +92,7 @@
 		8BDDCE9728C7AF64000DE395 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		8BDDCE9928C9CA42000DE395 /* ArrangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangeButton.swift; sourceTree = "<group>"; };
 		8BDFBFB428DF390C001622D6 /* NextButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonState.swift; sourceTree = "<group>"; };
+		8BDFBFB628E2EDF9001622D6 /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		8BE57A0D28C4FDAD00484284 /* SearchedWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedWordCell.swift; sourceTree = "<group>"; };
 		8BE59CC528D2E93600C878AC /* RainTestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RainTestView.storyboard; sourceTree = "<group>"; };
 		8BE59CC728D2E94800C878AC /* RainTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainTestViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				8BF3AF2B289B5AF500F049CD /* AddWordViewController.swift */,
 				8B5026CE28BF8CE5009271AA /* WordInformation.swift */,
 				8B5026D028BF90C2009271AA /* ErrorMessage.swift */,
+				8BDFBFB628E2EDF9001622D6 /* NetworkReachability.swift */,
 			);
 			path = AddWordView;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				8BDDCE9A28C9CA42000DE395 /* ArrangeButton.swift in Sources */,
 				8BE57A0E28C4FDAD00484284 /* SearchedWordCell.swift in Sources */,
 				8B0DDEF9289A953D00F0ACC3 /* Nadam.xcdatamodeld in Sources */,
+				8BDFBFB728E2EDF9001622D6 /* NetworkReachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
