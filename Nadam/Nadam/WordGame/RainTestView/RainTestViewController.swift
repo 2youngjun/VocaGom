@@ -48,6 +48,13 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var countCorrectLabel: UILabel!
     
+    
+    @IBOutlet weak var countStartLabel: UILabel!
+    @IBOutlet weak var countOne: UILabel!
+    @IBOutlet weak var countTwo: UILabel!
+    @IBOutlet weak var countThree: UILabel!
+    @IBOutlet var startCountCollection: [UILabel]!
+    
     //MARK: IBOutlet Function
     @IBAction func tapNextButton(_ sender: UIButton) {
         var foundName = ""
@@ -94,7 +101,7 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     private func countWord() {
         var count = 0
         var numbers = [Int]()
-
+        
         self.wordList = CoreDataManager.shared.fetchWord()
         count = wordList.count
         if count > 8 {
@@ -118,7 +125,7 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     
     private func addRandomPositionXArray() {
         while self.randomPositionXArray.count < self.countQuestion {
-            let randomX = Float.random(in: 80.0..<Float(self.rainBackgroundView.bounds.width - 80))
+            let randomX = Float.random(in: 90.0..<Float(self.rainBackgroundView.bounds.width - 90))
             randomPositionXArray.append(randomX)
         }
     }
@@ -142,6 +149,14 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func startRainTest() {
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(startCountTwo), userInfo: nil, repeats: false)
+        
+        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(startCountOne), userInfo: nil, repeats: false)
+        
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(startImageOn), userInfo: nil, repeats: false)
+        
+        timer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(startImageDown), userInfo: nil, repeats: false)
+        
         timer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(checkFallingIndex), userInfo: nil, repeats: true)
     }
     
@@ -161,13 +176,45 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         self.isAnimationEnded += 1
     }
     
+    @objc func startCountTwo() {
+        self.countThree.isHidden = true
+        self.countTwo.isHidden = false
+    }
+    
+    @objc func startCountOne() {
+        self.countTwo.isHidden = true
+        self.countOne.isHidden = false
+    }
+    
+    @objc func startImageOn() {
+        self.countOne.isHidden = true
+        self.countStartLabel.isHidden = false
+    }
+    
+    @objc func startImageDown() {
+        self.countStartLabel.isHidden = true
+    }
+    
     //MARK: Style Function
     private func styleFunction(){
         self.configureTestView()
+        self.configureStartCountView()
         self.configureTextField()
         self.configureNextButton()
         self.configureCountView()
         self.configureProgressView()
+    }
+    
+    private func configureStartCountView() {
+        self.countStartLabel.isHidden = true
+        self.countStartLabel.font = UIFont.NFont.wordListTitleLabel
+        self.countStartLabel.textColor = UIColor.NColor.orange
+        self.startCountCollection.forEach { count in
+            count.font = UIFont.NFont.wordListTitleLabel
+            count.textColor = UIColor.NColor.blue
+            count.isHidden = true
+        }
+        self.countThree.isHidden = false
     }
     
     private func configureTestView() {

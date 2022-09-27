@@ -20,9 +20,43 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHl-5b-RPl">
                                 <rect key="frame" x="20" y="102" width="335" height="280"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdY-u9-Kla">
+                                        <rect key="frame" x="162.33333333333334" y="130" width="10.333333333333343" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-WE-1Wj">
+                                        <rect key="frame" x="162.66666666666666" y="130" width="10" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLQ-oS-cE5">
+                                        <rect key="frame" x="163.66666666666666" y="130" width="7.6666666666666572" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="START" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcb-fW-SI3">
+                                        <rect key="frame" x="141.66666666666666" y="130" width="51.666666666666657" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" name="NLightBlue"/>
                                 <constraints>
+                                    <constraint firstItem="xdY-u9-Kla" firstAttribute="centerX" secondItem="mHl-5b-RPl" secondAttribute="centerX" id="5lg-NH-64b"/>
+                                    <constraint firstItem="xdY-u9-Kla" firstAttribute="centerY" secondItem="mHl-5b-RPl" secondAttribute="centerY" id="CaD-MK-Mbz"/>
+                                    <constraint firstItem="pfv-WE-1Wj" firstAttribute="centerY" secondItem="mHl-5b-RPl" secondAttribute="centerY" id="ZDN-ze-JqF"/>
+                                    <constraint firstItem="KLQ-oS-cE5" firstAttribute="centerY" secondItem="mHl-5b-RPl" secondAttribute="centerY" id="eEe-ev-OKb"/>
+                                    <constraint firstItem="pfv-WE-1Wj" firstAttribute="centerX" secondItem="mHl-5b-RPl" secondAttribute="centerX" id="g6w-EE-rGt"/>
                                     <constraint firstAttribute="height" constant="280" id="lAB-lx-3hH"/>
+                                    <constraint firstItem="KLQ-oS-cE5" firstAttribute="centerX" secondItem="mHl-5b-RPl" secondAttribute="centerX" id="qcA-jd-EWR"/>
+                                    <constraint firstItem="gcb-fW-SI3" firstAttribute="centerY" secondItem="mHl-5b-RPl" secondAttribute="centerY" id="r8A-zN-NLL"/>
+                                    <constraint firstItem="gcb-fW-SI3" firstAttribute="centerX" secondItem="mHl-5b-RPl" secondAttribute="centerX" id="xLX-6o-NGC"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hG9-as-LwX">
@@ -103,11 +137,18 @@
                     <connections>
                         <outlet property="countCorrectLabel" destination="o0R-Va-gQz" id="RRv-fc-qrS"/>
                         <outlet property="countCorrectView" destination="gbo-09-Hsi" id="VTK-pT-Zmq"/>
+                        <outlet property="countOne" destination="KLQ-oS-cE5" id="rLn-c3-7Zm"/>
+                        <outlet property="countStartLabel" destination="gcb-fW-SI3" id="4KL-3P-YFY"/>
+                        <outlet property="countThree" destination="xdY-u9-Kla" id="ETX-9G-or6"/>
+                        <outlet property="countTwo" destination="pfv-WE-1Wj" id="huX-eb-lKl"/>
                         <outlet property="nextButton" destination="aR9-e4-UpL" id="7JG-Qv-xYJ"/>
                         <outlet property="progressView" destination="2qD-vu-jEX" id="zYc-tv-xF4"/>
                         <outlet property="rainBackgroundView" destination="mHl-5b-RPl" id="Q1W-wV-FGV"/>
                         <outlet property="rainBackgroundViewHeight" destination="lAB-lx-3hH" id="67H-LP-PN5"/>
                         <outlet property="textField" destination="hG9-as-LwX" id="xTu-Dl-5mK"/>
+                        <outletCollection property="startCountCollection" destination="KLQ-oS-cE5" collectionClass="NSMutableArray" id="b3M-Mo-6kv"/>
+                        <outletCollection property="startCountCollection" destination="pfv-WE-1Wj" collectionClass="NSMutableArray" id="s02-Rn-bOT"/>
+                        <outletCollection property="startCountCollection" destination="xdY-u9-Kla" collectionClass="NSMutableArray" id="aAC-JY-Taw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
