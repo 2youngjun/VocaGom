@@ -41,14 +41,17 @@ class GameListViewController: UIViewController {
     }
     
     @IBAction func tapRainTestButton(_ sender: UIButton) {
-        if wordList.isEmpty {
-            self.showAlertNoWord()
-        } else {
-            let storyboard = UIStoryboard(name: "SpellingTestView", bundle: nil)
-            guard let spellingTestViewController = storyboard.instantiateViewController(withIdentifier: "SpellingTestViewController") as? SpellingTestViewController else { return }
-            
-            self.navigationController?.pushViewController(spellingTestViewController, animated: true)
-        }
+//        if wordList.isEmpty {
+//            self.showAlertNoWord()
+//        } else {
+//            let storyboard = UIStoryboard(name: "SpellingTestView", bundle: nil)
+//            guard let spellingTestViewController = storyboard.instantiateViewController(withIdentifier: "SpellingTestViewController") as? SpellingTestViewController else { return }
+//
+//            self.navigationController?.pushViewController(spellingTestViewController, animated: true)
+//        }
+        let storyboard = UIStoryboard(name: "SelectTestListView", bundle: nil)
+        guard let selectTestListViewController = storyboard.instantiateViewController(withIdentifier: "SelectTestListViewController") as? SelectTestListViewController else { return }
+        self.present(selectTestListViewController, animated: true)
     }
     
     //MARK: Style Function
