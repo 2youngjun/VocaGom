@@ -47,9 +47,18 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.countResult()
         self.styleFunction()
         self.delegate = self.resultWordViewController
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.countResult()
+        self.countCorrect.text = String(self.cntCorrect)
+        self.countWrong.text = String(self.resultWords.count - self.cntCorrect)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.cntCorrect = 0
     }
     
     // MARK: IBAction
@@ -100,9 +109,6 @@ class ResultViewController: UIViewController {
         self.totalWrongView.layer.cornerRadius = 10.0
         self.totalWrongLabel.font = UIFont.NFont.automaticMeaningButton
         self.totalWrongLabel.textColor = UIColor.NColor.blue
-        
-        self.countCorrect.text = String(self.cntCorrect)
-        self.countWrong.text = String(self.resultWords.count - self.cntCorrect)
     }
     
     private func configureButtonView() {

@@ -70,7 +70,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title=""/>
                                         <connections>
-                                            <action selector="tapSpellingTestButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ZX2-ca-Uqp"/>
+                                            <action selector="tapRainTestButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Rrm-fY-Sce"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -132,7 +132,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
                                         <connections>
-                                            <action selector="tapRainTestButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="NVL-gg-ZI8"/>
+                                            <action selector="tapSpellingTestButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="gS3-4T-FLD"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -173,14 +173,14 @@
                         <outlet property="spellingTestButtonImage" destination="HKg-zw-flV" id="eMw-oD-RG1"/>
                         <outlet property="spellingTestMainImage" destination="VT2-rX-hwD" id="yVn-gZ-ggx"/>
                         <outlet property="titleLabel" destination="0w7-dS-UIK" id="M8H-iU-xIx"/>
-                        <outletCollection property="testSubLabelCollection" destination="xxh-s2-8p4" collectionClass="NSMutableArray" id="icd-Fj-OKT"/>
-                        <outletCollection property="testMainLabelCollection" destination="em9-Sh-fxQ" collectionClass="NSMutableArray" id="dQp-uk-tqa"/>
-                        <outletCollection property="testButtonViewCollection" destination="JNz-6d-hoc" collectionClass="NSMutableArray" id="SO4-AD-KK8"/>
-                        <outletCollection property="testButtonCollection" destination="04R-rj-dGb" collectionClass="NSMutableArray" id="YMA-H2-oDT"/>
-                        <outletCollection property="testButtonCollection" destination="7vE-qQ-RSQ" collectionClass="NSMutableArray" id="H56-Lw-MhC"/>
-                        <outletCollection property="testButtonViewCollection" destination="0cP-c4-IMI" collectionClass="NSMutableArray" id="IRf-es-kBO"/>
-                        <outletCollection property="testMainLabelCollection" destination="bR6-oC-F4g" collectionClass="NSMutableArray" id="uKX-yn-v66"/>
-                        <outletCollection property="testSubLabelCollection" destination="q59-h4-12Z" collectionClass="NSMutableArray" id="Pyv-mI-5iG"/>
+                        <outletCollection property="testButtonCollection" destination="7vE-qQ-RSQ" collectionClass="NSMutableArray" id="4Xo-yf-iGq"/>
+                        <outletCollection property="testButtonCollection" destination="04R-rj-dGb" collectionClass="NSMutableArray" id="eFy-ca-ZTR"/>
+                        <outletCollection property="testButtonViewCollection" destination="0cP-c4-IMI" collectionClass="NSMutableArray" id="R6t-cN-yah"/>
+                        <outletCollection property="testButtonViewCollection" destination="JNz-6d-hoc" collectionClass="NSMutableArray" id="LwX-0o-h7m"/>
+                        <outletCollection property="testMainLabelCollection" destination="bR6-oC-F4g" collectionClass="NSMutableArray" id="0JD-8k-Sra"/>
+                        <outletCollection property="testMainLabelCollection" destination="em9-Sh-fxQ" collectionClass="NSMutableArray" id="GLw-CQ-MGB"/>
+                        <outletCollection property="testSubLabelCollection" destination="q59-h4-12Z" collectionClass="NSMutableArray" id="Ops-I8-efX"/>
+                        <outletCollection property="testSubLabelCollection" destination="xxh-s2-8p4" collectionClass="NSMutableArray" id="RUE-Gk-Qan"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -10,13 +10,11 @@ import UIKit
 class RainTestViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: 변수
-    var wordList = [Word]()
+//    var wordList = [Word]()
+    var wordList: [Word]?
     var wordTests = [questionWord]()
     var countQuestion = 0
-    
-    var wordTestLayer = [CATextLayer]()
     var randomPositionXArray = [Float]()
-    
     var isEnded = false {
         didSet {
             if isEnded {
@@ -24,6 +22,11 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
                 buttonTitle.font = UIFont.NFont.spellingTestNextButton
                 self.nextButton.configuration?.attributedTitle = buttonTitle
                 self.nextButton.configuration?.background.backgroundColor = UIColor.NColor.orange
+            } else {
+                var buttonTitle = AttributedString.init("다음")
+                buttonTitle.font = UIFont.NFont.spellingTestNextButton
+                self.nextButton.configuration?.attributedTitle = buttonTitle
+                self.nextButton.configuration?.background.backgroundColor = UIColor.NColor.blue
             }
         }
     }
@@ -48,7 +51,6 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var countCorrectLabel: UILabel!
     
-    
     @IBOutlet weak var countStartLabel: UILabel!
     @IBOutlet weak var countOne: UILabel!
     @IBOutlet weak var countTwo: UILabel!
@@ -62,7 +64,7 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
             self.delegate?.sendTestWordResult(wordTests: wordTests)
             self.navigationController?.pushViewController(self.resultViewController, animated: true)
         } else {
-            self.wordList.forEach { word in
+            self.wordList!.forEach { word in
                 if word.meaning == self.wordTests[self.isAnimationEnded - 1].word.meaning {
                     foundName = word.name ?? ""
                 }
@@ -84,17 +86,26 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         
         self.delegate = self.resultViewController
         self.styleFunction()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.textField.becomeFirstResponder()
+        self.setRestartTest()
         self.countWord()
         self.addRandomPositionXArray()
         self.startRainTest()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.textField.becomeFirstResponder()
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.isAnimationEnded = 0
+        self.countQuestion = 0
+        self.rightCount = 0
+        self.progressView.progress = 0
+        self.progressing = 0
     }
     
     //MARK: 기능 구현
@@ -102,8 +113,8 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         var count = 0
         var numbers = [Int]()
         
-        self.wordList = CoreDataManager.shared.fetchWord()
-        count = wordList.count
+//        self.wordList = CoreDataManager.shared.fetchWord()
+        count = wordList!.count
         if count > 8 {
             while numbers.count < 8 {
                 let number = Int.random(in: 0..<count)
@@ -112,10 +123,10 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             numbers.forEach { index in
-                wordTests.append(questionWord(word: wordList[index], isCorrect: false))
+                wordTests.append(questionWord(word: wordList![index], isCorrect: false))
             }
         } else {
-            self.wordList.forEach { word in
+            self.wordList!.forEach { word in
                 wordTests.append(questionWord(word: word, isCorrect: false))
             }
         }
@@ -195,20 +206,34 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         self.countStartLabel.isHidden = true
     }
     
+    private func setRestartTest() {
+        self.timer = Timer()
+        self.isEnded = false
+        self.countThree.isHidden = false
+        self.nextButton.isEnabled = false
+        self.textField.text = ""
+        self.wordTests = [questionWord]()
+        self.randomPositionXArray = [Float]()
+    }
+    
     //MARK: Style Function
     private func styleFunction(){
         self.configureTestView()
         self.configureStartCountView()
+        self.configureStartCountLabel()
         self.configureTextField()
         self.configureNextButton()
         self.configureCountView()
         self.configureProgressView()
     }
     
-    private func configureStartCountView() {
+    private func configureStartCountLabel() {
         self.countStartLabel.isHidden = true
         self.countStartLabel.font = UIFont.NFont.wordListTitleLabel
         self.countStartLabel.textColor = UIColor.NColor.orange
+    }
+    
+    private func configureStartCountView() {
         self.startCountCollection.forEach { count in
             count.font = UIFont.NFont.wordListTitleLabel
             count.textColor = UIColor.NColor.blue
@@ -261,5 +286,11 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         self.progressView.progressTintColor = UIColor.NColor.blue
         self.progressView.trackTintColor = UIColor.NColor.background
         self.progressView.progressViewStyle = .default
+    }
+}
+
+extension RainTestViewController: SendTestListDelegate {
+    func sendTestList(testList: [Word]) {
+        self.wordList = testList
     }
 }

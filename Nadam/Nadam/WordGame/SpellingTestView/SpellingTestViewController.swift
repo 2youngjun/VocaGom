@@ -55,13 +55,23 @@ class SpellingTestViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.countWordList()
         self.styleFunction()
         self.delegate = self.resultViewController
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.textField.becomeFirstResponder()
+        self.setRestartTest()
+        self.countWordList()
+        self.configureFirstWordCard()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.countCorrect = 0
+        self.totalQuestion = 0
+        self.currentQuestionIndex = 0
+        self.progressView.progress = 0
+        self.progressing = 0
     }
     
     // MARK: IBAction
@@ -118,7 +128,7 @@ class SpellingTestViewController: UIViewController, UITextFieldDelegate {
     private func countWordList() {
         var count = 0
         var numbers = [Int]()
-        wordList = CoreDataManager.shared.fetchWord()
+//        wordList = CoreDataManager.shared.fetchWord()
         count = wordList.count
         if count > 10 {
             while numbers.count < 10 {
@@ -137,6 +147,15 @@ class SpellingTestViewController: UIViewController, UITextFieldDelegate {
         }
         self.totalQuestion = self.wordTests.count
         self.progressing = Float(1) / Float(self.totalQuestion)
+    }
+    
+    private func setRestartTest() {
+        var buttonTitle = AttributedString.init("다음")
+        buttonTitle.font = UIFont.NFont.spellingTestNextButton
+        self.nextButton.configuration?.attributedTitle = buttonTitle
+        self.nextButton.configuration?.background.backgroundColor = UIColor.NColor.blue
+        self.textField.text = ""
+        self.wordTests = [questionWord]()
     }
     
     // MARK: Style Function
@@ -160,7 +179,9 @@ class SpellingTestViewController: UIViewController, UITextFieldDelegate {
         self.wordCardView.layer.applySketchShadow(color: UIColor.NColor.black, alpha: 0.05, x: 0, y: 0, blur: 10, spread: 0)
         self.wordCardView.layer.cornerRadius = 10.0
         self.wordCardView.layer.shadowRadius = 10.0
-        
+    }
+    
+    private func configureFirstWordCard() {
         self.wordCardLabel.font = UIFont.NFont.spellingTestLabel
         self.wordCardLabel.textColor = UIColor.NColor.blue
         self.wordCardLabel.sizeToFit()
@@ -194,5 +215,10 @@ class SpellingTestViewController: UIViewController, UITextFieldDelegate {
         self.nextButton.layer.cornerRadius = 5.0
         self.nextButton.configuration?.background.backgroundColor = UIColor.NColor.blue
     }
-    
+}
+
+extension SpellingTestViewController: SendTestListDelegate {
+    func sendTestList(testList: [Word]) {
+        self.wordList = testList
+    }
 }

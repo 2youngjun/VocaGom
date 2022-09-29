@@ -11,7 +11,7 @@ class SelectTestListViewController: UIViewController, UISheetPresentationControl
     
     //MARK: Variables
     var wordList = [Word]()
-    var whichTestIndex = 0
+    var whichTestIndex: Int = 0
     override var sheetPresentationController: UISheetPresentationController {
         presentationController as! UISheetPresentationController
     }
@@ -19,6 +19,9 @@ class SelectTestListViewController: UIViewController, UISheetPresentationControl
     //MARK: IBOutlet Variables
     @IBOutlet weak var mainTitleLabel: UILabel!
     @IBOutlet var listButtonCollection: [UIButton]!
+    @IBOutlet weak var allWordListButton: UIButton!
+    @IBOutlet weak var favoriteWordListButton: UIButton!
+    @IBOutlet weak var dismissButton: UIButton!
     
     //MARK: IBOutlet Function
     @IBAction func tapAllWordListButton(_ sender: UIButton) {
@@ -30,8 +33,11 @@ class SelectTestListViewController: UIViewController, UISheetPresentationControl
         }
     }
     
+    @IBAction func tapDismissButton(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
     @IBAction func tapFavoriteWordListButton(_ sender: UIButton) {
-        print(self.whichTestIndex)
         var favoriteWordList = [Word]()
         self.wordList.forEach { word in
             if word.isStar {
@@ -42,8 +48,8 @@ class SelectTestListViewController: UIViewController, UISheetPresentationControl
         if favoriteWordList.isEmpty {
             self.showAlertNoWord()
         } else {
-            NotificationCenter.default.post(name: Notification.Name("favorite"), object: self.whichTestIndex)
             self.dismiss(animated: true)
+            NotificationCenter.default.post(name: Notification.Name("favorite"), object: self.whichTestIndex)
         }
     }
     
@@ -56,12 +62,14 @@ class SelectTestListViewController: UIViewController, UISheetPresentationControl
     
     override func viewWillAppear(_ animated: Bool) {
         self.configureSheetVersion()
+        print(self.whichTestIndex)
     }
     
     //MARK: Style Function
     private func styleFunction() {
         self.configureTitleLabel()
         self.configureListButton()
+        self.configureDismissButton()
     }
     
     private func configureSheetVersion() {
@@ -90,12 +98,18 @@ class SelectTestListViewController: UIViewController, UISheetPresentationControl
             var buttonTitle = AttributedString.init(button.titleLabel?.text ?? "")
             buttonTitle.font = UIFont.NFont.testMainLabelFont
             button.configuration?.attributedTitle = buttonTitle
-            button.configuration?.background.backgroundColor = UIColor.NColor.white
-            button.layer.cornerRadius = 20.0
-            button.tintColor = UIColor.NColor.blue
-            button.layer.borderWidth = 1.5
+            button.layer.cornerRadius = button.bounds.height / 2
+            button.layer.borderWidth = 1.0
             button.layer.borderColor = UIColor.NColor.blue.cgColor
         }
+        self.allWordListButton.configuration?.background.backgroundColor = UIColor.NColor.white
+        self.allWordListButton.tintColor = UIColor.NColor.blue
+        self.favoriteWordListButton.backgroundColor = UIColor.NColor.blue
+        self.favoriteWordListButton.tintColor = UIColor.NColor.white
+    }
+    
+    private func configureDismissButton() {
+        self.dismissButton.tintColor = UIColor.NColor.black
     }
     
     private func showAlertNoWord() {
@@ -111,5 +125,11 @@ class SelectTestListViewController: UIViewController, UISheetPresentationControl
         [cancelAlert].forEach(alert.addAction(_:))
         
         self.present(alert, animated: false)
+    }
+}
+
+extension SelectTestListViewController: SendWhichTestIndex {
+    func sendWhichTestIndex(index: Int) {
+        self.whichTestIndex = index
     }
 }
