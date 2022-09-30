@@ -33,6 +33,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var calendarBackgroundView: UIView!
     
+    @IBOutlet weak var calendarTitleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: IBOutlet Function
@@ -126,6 +127,8 @@ class CalendarViewController: UIViewController {
         self.collectionView.backgroundColor = UIColor.NColor.background
         self.collectionView.contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
         
+        self.calendarTitleLabel.font = UIFont.NFont.wordListTitleLabel
+        self.calendarTitleLabel.textColor = UIColor.NColor.blue
     }
     
     private func initCollecitonView() {

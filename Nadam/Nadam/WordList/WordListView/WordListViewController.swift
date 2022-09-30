@@ -18,7 +18,7 @@ protocol CameraPictureDelegate: AnyObject {
 }
 
 class WordListViewController: UIViewController {
-
+    
     // MARK: IBOutlet 변수
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -55,6 +55,8 @@ class WordListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.delegate = self.addCameraViewController
+        
         titleLabel.font = UIFont.NFont.wordListTitleLabel
         titleLabel.sizeToFit()
         self.view.backgroundColor = UIColor.NColor.background
@@ -67,8 +69,6 @@ class WordListViewController: UIViewController {
         self.configureArrangeButtonLayout()
         
         self.configureAddWordButton()
-        
-        self.delegate = self.addCameraViewController
         
         for word in wordList {
             word.isTapped = false
@@ -131,7 +131,7 @@ class WordListViewController: UIViewController {
     private func configureAddWordButton() {
         self.addWordButton.showsMenuAsPrimaryAction = true
         
-        let addHandButton = UIAction(title: "단어 입력", image: UIImage(systemName: "applepencil")?.withTintColor(UIColor.NColor.orange, renderingMode: .alwaysOriginal)) { _ in
+        let addHandButton = UIAction(title: "단어 입력", image: UIImage(systemName: "square.and.pencil")?.withTintColor(UIColor.NColor.orange, renderingMode: .alwaysOriginal)) { _ in
             self.tapAddHandButton()
         }
         
@@ -149,8 +149,38 @@ class WordListViewController: UIViewController {
         
         let menu = UIMenu(title: "단어 추가하기", children: [addHandButton, addCameraButton])
         self.addWordButton.menu = menu
-        self.addWordButton.showsMenuAsPrimaryAction = true
     }
+    
+    private func configureEditDeleteButton(button: UIButton, word: Word) {
+        button.showsMenuAsPrimaryAction = true
+        
+        let editButton = UIAction(title: "단어 수정", image: UIImage(systemName: "applepencil")?.withTintColor(UIColor.NColor.orange, renderingMode: .alwaysOriginal)) { _ in
+            self.editWord(word: word)
+        }
+        
+        let deleteButton = UIAction(title: "단어 삭제", image: UIImage(systemName: "trash")?.withTintColor(UIColor.NColor.orange, renderingMode: .alwaysOriginal)) { _ in
+            self.showAlertDeleteWord()
+        }
+        
+        let menu = UIMenu(title: "", children: [editButton, deleteButton])
+        button.menu = menu
+    }
+    
+    private func editWord(word: Word) {
+        let storyboard = UIStoryboard(name: "AddWordView", bundle: nil)
+        guard let addWordViewController = storyboard.instantiateViewController(withIdentifier: "AddWordViewController") as? AddWordViewController else { return }
+        
+        addWordViewController.editMode = .edit(word)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(editWordNotification), name: Notification.Name("editWord"), object: nil)
+        
+        self.navigationController?.pushViewController(addWordViewController, animated: true)
+    }
+    
+    @objc func editWordNotification(){
+        self.collectionView.reloadData()
+    }
+    
     
     // Arrange 버튼 함수
     private func configureArrangeButton() {
@@ -189,8 +219,7 @@ class WordListViewController: UIViewController {
     private func tapAddHandButton() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "AddWordView", bundle:nil)
         guard let addWordViewController = storyBoard.instantiateViewController(withIdentifier: "AddWordViewController") as? AddWordViewController else { return }
-//        addWordViewController.delegate = self
-        
+        addWordViewController.editMode = .new
         self.navigationController?.pushViewController(addWordViewController, animated: true)
     }
 
@@ -238,7 +267,7 @@ class WordListViewController: UIViewController {
         }
     }
     
-    @objc func showAlertDeleteWord() {
+    private func showAlertDeleteWord() {
         var tapWord = String()
         for word in wordList {
             if word.isTapped == true {
@@ -247,7 +276,7 @@ class WordListViewController: UIViewController {
         }
         
         let alertController = UIAlertController(
-            title: "「\(tapWord)」 를 삭제하시겠습니까?",
+            title: "\(tapWord) 를 삭제하시겠습니까?",
             message: "삭제한 데이터는 복원되지 않습니다.",
             preferredStyle: .alert)
         
@@ -265,9 +294,7 @@ class WordListViewController: UIViewController {
         
         [cancelAlert, confirmAlert].forEach(alertController.addAction(_:))
         
-        DispatchQueue.main.async {
-            self.present(alertController, animated: true)
-        }
+        self.present(alertController, animated: true)
     }
 }
 
@@ -306,24 +333,31 @@ extension WordListViewController: UICollectionViewDataSource {
                 
                 cell.wordSynoym.text = word.synoym
                 if cell.wordSynoym.text == "" {
-                    cell.wordSynoym.text = "No Synoym"
+                    cell.wordSynoym.text = "동의어 추가하기"
                     cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
-                    cell.wordSynoym.textColor = UIColor.NColor.gray
+                    cell.wordSynoym.textColor = UIColor.NColor.middleGray
                 } else {
                     cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
-                    cell.wordSynoym.textColor = UIColor.NColor.black
+                    cell.wordSynoym.textColor = UIColor.NColor.gray
                 }
                 
                 cell.wordExample.text = word.example
                 if cell.wordExample.text == "" {
-                    cell.wordExample.text = "No Example"
+                    cell.wordExample.text = "예문 추가하기"
+                    cell.wordExample.font = UIFont.NFont.wordListWordSynoym
+                    cell.wordExample.textColor = UIColor.NColor.middleGray
+                } else {
+                    let attributedString = NSMutableAttributedString(string: cell.wordExample.text!)
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.lineSpacing = 4
+                    attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+                    cell.wordExample.attributedText = attributedString
+                    cell.wordExample.textAlignment = .right
                     cell.wordExample.font = UIFont.NFont.wordListWordSynoym
                     cell.wordExample.textColor = UIColor.NColor.gray
-                } else {
-                    cell.wordExample.font = UIFont.NFont.wordListWordSynoym
-                    cell.wordExample.textColor = UIColor.NColor.black
                 }
                 
+                self.configureEditDeleteButton(button: cell.editDeleteButton, word: word)
                 
                 return cell
                 
@@ -370,23 +404,31 @@ extension WordListViewController: UICollectionViewDataSource {
                 
                 cell.wordSynoym.text = word.synoym
                 if cell.wordSynoym.text == "" {
-                    cell.wordSynoym.text = "No Synoym"
+                    cell.wordSynoym.text = "동의어 추가하기"
                     cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
-                    cell.wordSynoym.textColor = UIColor.NColor.gray
+                    cell.wordSynoym.textColor = UIColor.NColor.middleGray
                 } else {
                     cell.wordSynoym.font = UIFont.NFont.wordListWordSynoym
-                    cell.wordSynoym.textColor = UIColor.NColor.black
+                    cell.wordSynoym.textColor = UIColor.NColor.gray
                 }
                 
                 cell.wordExample.text = word.example
                 if cell.wordExample.text == "" {
-                    cell.wordExample.text = "No Example"
+                    cell.wordExample.text = "예문 추가하기"
+                    cell.wordExample.font = UIFont.NFont.wordListWordSynoym
+                    cell.wordExample.textColor = UIColor.NColor.middleGray
+                } else {
+                    let attributedString = NSMutableAttributedString(string: cell.wordExample.text!)
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.lineSpacing = 4
+                    attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+                    cell.wordExample.attributedText = attributedString
+                    cell.wordExample.textAlignment = .right
                     cell.wordExample.font = UIFont.NFont.wordListWordSynoym
                     cell.wordExample.textColor = UIColor.NColor.gray
-                } else {
-                    cell.wordExample.font = UIFont.NFont.wordListWordSynoym
-                    cell.wordExample.textColor = UIColor.NColor.black
                 }
+                
+                self.configureEditDeleteButton(button: cell.editDeleteButton, word: word)
                 
                 return cell
                 
@@ -520,7 +562,7 @@ extension WordListViewController: UINavigationControllerDelegate, UIImagePickerC
         #endif
         
         DispatchQueue.main.async {
-            let pickerController = UIImagePickerController() // must be used from main thread only
+            let pickerController = UIImagePickerController()
             pickerController.sourceType = .camera
             
             pickerController.allowsEditing = false

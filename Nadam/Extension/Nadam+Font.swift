@@ -14,7 +14,7 @@ enum GmarketSansWeight: String {
 }
 
 private let customFonts: [UIFont.TextStyle: UIFont] = [
-    .largeTitle: UIFont(name: "GmarketSansTTFBold", size: 24)!,
+    .largeTitle: UIFont(name: "GmarketSansTTFBold", size: 25)!,
     .title1: UIFont(name: "GmarketSansTTFBold", size: 20)!,
     .title2: UIFont(name: "GmarketSansTTFMedium", size: 18)!,
     .title3: UIFont(name: "GmarketSansTTFBold", size: 17)!,
@@ -41,7 +41,7 @@ extension UIFont {
     enum NFont {
         static var addWordNavigationTitle: UIFont{ UIFont.NadamFont(forTextStyle: .headline) }
         static var addWordSection: UIFont{ UIFont.NadamFont(forTextStyle: .headline) }
-        static var wordListTitleLabel: UIFont{ UIFont.NadamFont(forTextStyle: .title1) }
+        static var wordListTitleLabel: UIFont{ UIFont.NadamFont(forTextStyle: .largeTitle) }
         static var wordListWordName: UIFont{ UIFont.NadamFont(forTextStyle: .title3) }
         static var wordListWordMeaning: UIFont{ UIFont.NadamFont(forTextStyle: .headline) }
         static var wordListWordSynoym: UIFont{ UIFont.NadamFont(forTextStyle: .caption2) }
