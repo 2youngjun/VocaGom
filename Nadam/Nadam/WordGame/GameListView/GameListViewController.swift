@@ -104,31 +104,13 @@ class GameListViewController: UIViewController {
     
     //MARK: IBAction Function
     @IBAction func tapRainTestButton(_ sender: UIButton) {
-//        if wordList.isEmpty {
-//            self.showAlertNoWord()
-//        } else {
-//            let storyboard = UIStoryboard(name: "RainTestView", bundle: nil)
-//            guard let rainTestViewController = storyboard.instantiateViewController(withIdentifier: "RainTestViewController") as? RainTestViewController else { return }
-//            self.navigationController?.pushViewController(rainTestViewController, animated: true)
-//        }
-        
         self.whichTestIndex = sender.tag
         print(self.whichTestIndex)
         self.delegate?.sendWhichTestIndex(index: self.whichTestIndex)
         self.present(self.selectTestListViewController, animated: true)
     }
     
-    //SpellingTest
     @IBAction func tapSpellingTestButton(_ sender: UIButton) {
-//        if wordList.isEmpty {
-//            self.showAlertNoWord()
-//        } else {
-//            let storyboard = UIStoryboard(name: "SpellingTestView", bundle: nil)
-//            guard let spellingTestViewController = storyboard.instantiateViewController(withIdentifier: "SpellingTestViewController") as? SpellingTestViewController else { return }
-//
-//            self.navigationController?.pushViewController(spellingTestViewController, animated: true)
-//        }
-        
         self.whichTestIndex = sender.tag
         print(self.whichTestIndex)
         self.delegate?.sendWhichTestIndex(index: self.whichTestIndex)

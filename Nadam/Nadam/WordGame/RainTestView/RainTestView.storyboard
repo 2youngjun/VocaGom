@@ -138,7 +138,7 @@
                         <outlet property="countCorrectLabel" destination="o0R-Va-gQz" id="RRv-fc-qrS"/>
                         <outlet property="countCorrectView" destination="gbo-09-Hsi" id="VTK-pT-Zmq"/>
                         <outlet property="countOne" destination="KLQ-oS-cE5" id="rLn-c3-7Zm"/>
-                        <outlet property="countStartLabel" destination="gcb-fW-SI3" id="4KL-3P-YFY"/>
+                        <outlet property="countStartLabel" destination="gcb-fW-SI3" id="nlX-Wn-d6b"/>
                         <outlet property="countThree" destination="xdY-u9-Kla" id="ETX-9G-or6"/>
                         <outlet property="countTwo" destination="pfv-WE-1Wj" id="huX-eb-lKl"/>
                         <outlet property="nextButton" destination="aR9-e4-UpL" id="7JG-Qv-xYJ"/>

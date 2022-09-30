@@ -62,7 +62,6 @@ class SelectTestListViewController: UIViewController, UISheetPresentationControl
     
     override func viewWillAppear(_ animated: Bool) {
         self.configureSheetVersion()
-        print(self.whichTestIndex)
     }
     
     //MARK: Style Function

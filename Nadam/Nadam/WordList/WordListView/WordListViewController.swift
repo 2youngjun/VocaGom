@@ -151,13 +151,11 @@ class WordListViewController: UIViewController {
         self.addWordButton.menu = menu
     }
     
-//    var indexPath: IndexPath
     private func configureEditDeleteButton(button: UIButton, word: Word) {
         button.showsMenuAsPrimaryAction = true
         
         let editButton = UIAction(title: "단어 수정", image: UIImage(systemName: "applepencil")?.withTintColor(UIColor.NColor.orange, renderingMode: .alwaysOriginal)) { _ in
             self.editWord(word: word)
-//            print(indexPath.row)
         }
         
         let deleteButton = UIAction(title: "단어 삭제", image: UIImage(systemName: "trash")?.withTintColor(UIColor.NColor.orange, renderingMode: .alwaysOriginal)) { _ in

@@ -51,10 +51,10 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var countCorrectLabel: UILabel!
     
-    @IBOutlet weak var countStartLabel: UILabel!
     @IBOutlet weak var countOne: UILabel!
     @IBOutlet weak var countTwo: UILabel!
     @IBOutlet weak var countThree: UILabel!
+    @IBOutlet weak var countStartLabel: UILabel!
     @IBOutlet var startCountCollection: [UILabel]!
     
     //MARK: IBOutlet Function
@@ -70,7 +70,11 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             if foundName == self.textField.text {
-                self.rainBackgroundView.subviews.forEach { $0.removeFromSuperview() }
+                self.rainBackgroundView.subviews.forEach { subview in
+                    if subview != self.countOne && subview != self.countTwo && subview != self.countThree && subview != self.countStartLabel {
+                        subview.removeFromSuperview()
+                    }
+                }
                 self.rightCount += 1
                 self.countCorrectLabel.text = String(rightCount)
                 self.wordTests[self.isAnimationEnded - 1].isCorrect = true
@@ -106,6 +110,8 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         self.rightCount = 0
         self.progressView.progress = 0
         self.progressing = 0
+        self.countCorrectLabel.text = "0"
+        self.countThree.isHidden = false
     }
     
     //MARK: 기능 구현
@@ -113,7 +119,6 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         var count = 0
         var numbers = [Int]()
         
-//        self.wordList = CoreDataManager.shared.fetchWord()
         count = wordList!.count
         if count > 8 {
             while numbers.count < 8 {
@@ -199,17 +204,21 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     
     @objc func startImageOn() {
         self.countOne.isHidden = true
-        self.countStartLabel.isHidden = false
+        if self.countStartLabel.isHidden == true {
+            self.countStartLabel.isHidden = false
+        }
     }
     
     @objc func startImageDown() {
         self.countStartLabel.isHidden = true
+        if self.countStartLabel.isHidden == false {
+            self.countStartLabel.isHidden = true
+        }
     }
     
     private func setRestartTest() {
         self.timer = Timer()
         self.isEnded = false
-        self.countThree.isHidden = false
         self.nextButton.isEnabled = false
         self.textField.text = ""
         self.wordTests = [questionWord]()
@@ -219,8 +228,8 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     //MARK: Style Function
     private func styleFunction(){
         self.configureTestView()
-        self.configureStartCountView()
         self.configureStartCountLabel()
+        self.configureStartCountView()
         self.configureTextField()
         self.configureNextButton()
         self.configureCountView()
@@ -228,9 +237,10 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func configureStartCountLabel() {
-        self.countStartLabel.isHidden = true
+        self.countStartLabel.text = "START"
         self.countStartLabel.font = UIFont.NFont.wordListTitleLabel
         self.countStartLabel.textColor = UIColor.NColor.orange
+        self.countStartLabel.isHidden = true
     }
     
     private func configureStartCountView() {

@@ -70,6 +70,7 @@ class SpellingTestViewController: UIViewController, UITextFieldDelegate {
         self.countCorrect = 0
         self.totalQuestion = 0
         self.currentQuestionIndex = 0
+        self.currentCorrectLabel.text = "0"
         self.progressView.progress = 0
         self.progressing = 0
     }
