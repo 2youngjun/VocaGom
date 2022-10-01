@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fKw-j9-vxB">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--보카곰-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="PetViewController" customModule="Nadam" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiC-WY-k02">
+                                <rect key="frame" x="20" y="72" width="60" height="30"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rainTest" translatesAutoresizingMaskIntoConstraints="NO" id="aLW-ic-Ikn">
+                                        <rect key="frame" x="8" y="7" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="Rsx-k9-Ra3"/>
+                                            <constraint firstAttribute="width" constant="16" id="xXg-oh-LUd"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cin-3d-gm4">
+                                        <rect key="frame" x="34.666666666666664" y="7" width="17.333333333333336" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="bfr-uc-WWd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="NLightBlue"/>
+                                <constraints>
+                                    <constraint firstItem="aLW-ic-Ikn" firstAttribute="centerY" secondItem="YiC-WY-k02" secondAttribute="centerY" id="6VP-KX-QMt"/>
+                                    <constraint firstAttribute="height" constant="30" id="8np-sz-cKX"/>
+                                    <constraint firstItem="Cin-3d-gm4" firstAttribute="centerY" secondItem="YiC-WY-k02" secondAttribute="centerY" id="F0D-mR-VEQ"/>
+                                    <constraint firstAttribute="width" constant="60" id="ZRg-Zo-dlP"/>
+                                    <constraint firstItem="aLW-ic-Ikn" firstAttribute="leading" secondItem="YiC-WY-k02" secondAttribute="leading" constant="8" id="cDY-8c-xKC"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cin-3d-gm4" secondAttribute="trailing" constant="8" id="uyx-Gh-Mo6"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysc-ZK-85J">
+                                <rect key="frame" x="352" y="72" width="18" height="22"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="tapPurchasingButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="PaQ-vN-28v"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YiC-WY-k02" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="25" id="DEP-MD-SzA"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ysc-ZK-85J" secondAttribute="trailing" constant="20" id="WuT-Lh-i9H"/>
+                            <constraint firstItem="ysc-ZK-85J" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="25" id="YhV-FO-GXQ"/>
+                            <constraint firstItem="YiC-WY-k02" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="zex-t7-zvn"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="보카곰" image="settings" selectedImage="settings_filled" id="ODB-q1-5wt"/>
+                    <navigationItem key="navigationItem" id="zGl-gR-q57"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="pointBackgroundView" destination="YiC-WY-k02" id="bve-8t-bvS"/>
+                        <outlet property="pointImage" destination="aLW-ic-Ikn" id="hd5-uK-Ffq"/>
+                        <outlet property="pointLabel" destination="Cin-3d-gm4" id="xTD-55-XRX"/>
+                        <outlet property="purchasingButton" destination="ysc-ZK-85J" id="dAB-fw-d9r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="67.692307692307693" y="-2.1327014218009479"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tlf-XH-hyO">
+            <objects>
+                <navigationController storyboardIdentifier="PetViewController" navigationBarHidden="YES" id="fKw-j9-vxB" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q85-Bh-6Jc">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="qkZ-Qv-YmH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wb9-av-5SH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-766" y="-2"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="rainTest" width="465" height="512"/>
+        <image name="settings" width="25" height="25"/>
+        <image name="settings_filled" width="25" height="25"/>
+        <namedColor name="NLightBlue">
+            <color red="0.95294117647058818" green="0.96078431372549022" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
