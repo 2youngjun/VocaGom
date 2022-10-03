@@ -21,7 +21,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiC-WY-k02">
                                 <rect key="frame" x="20" y="72" width="60" height="30"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rainTest" translatesAutoresizingMaskIntoConstraints="NO" id="aLW-ic-Ikn">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="footprint" translatesAutoresizingMaskIntoConstraints="NO" id="aLW-ic-Ikn">
                                         <rect key="frame" x="8" y="7" width="16" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="Rsx-k9-Ra3"/>
@@ -97,8 +97,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="footprint" width="20" height="19"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="rainTest" width="465" height="512"/>
         <image name="settings" width="25" height="25"/>
         <image name="settings_filled" width="25" height="25"/>
         <namedColor name="NLightBlue">
