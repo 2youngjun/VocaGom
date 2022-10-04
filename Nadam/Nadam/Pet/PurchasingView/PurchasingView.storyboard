@@ -4,8 +4,10 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,16 +18,192 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상점" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfQ-ZE-07O">
+                                <rect key="frame" x="180.33333333333334" y="67" width="29.666666666666657" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="t0y-6L-gCW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeP-RG-sBT">
+                                <rect key="frame" x="17.666666666666668" y="67" width="20.000000000000004" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="aud-Aj-bOE"/>
+                                    <constraint firstAttribute="width" constant="20" id="hLa-Kv-OFb"/>
+                                </constraints>
+                                <color key="tintColor" name="NBlack"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="chevron.left" catalog="system"/>
+                                <connections>
+                                    <action selector="tapBackButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="34Z-IA-mmt"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="l4D-gJ-xgR">
+                                <rect key="frame" x="290.66666666666669" y="67" width="79.333333333333314" height="30"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="footprint" translatesAutoresizingMaskIntoConstraints="NO" id="sLd-6g-9t3">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="gSQ-be-bMf"/>
+                                            <constraint firstAttribute="width" constant="30" id="ph2-MK-wxs"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5q-g5-KOl">
+                                        <rect key="frame" x="38" y="0.0" width="41.333333333333343" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HbU-4N-OAp">
+                                <rect key="frame" x="0.0" y="397" width="390" height="54"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PX1-PP-IHj">
+                                        <rect key="frame" x="10" y="0.0" width="360" height="54"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAm-cm-Atr">
+                                                <rect key="frame" x="0.0" y="0.0" width="72" height="54"/>
+                                                <color key="backgroundColor" name="NBackgroundBrown"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="72" id="Wtr-7i-SFA"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="" image="closet_fill"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bM-F0-isz">
+                                                <rect key="frame" x="72" y="0.0" width="72" height="54"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="72" id="TAw-RJ-W3H"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="sunglass"/>
+                                                <connections>
+                                                    <action selector="tapClothesButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="x8L-RU-aO3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ou-nA-Hex">
+                                                <rect key="frame" x="144" y="0.0" width="72" height="54"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="72" id="Zbz-0e-KQx"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="" image="shirt"/>
+                                                <connections>
+                                                    <action selector="tapClothesButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="BVz-jB-aax"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24N-8k-59a">
+                                                <rect key="frame" x="216" y="0.0" width="72" height="54"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="72" id="ciF-e4-Jzf"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="pant"/>
+                                                <connections>
+                                                    <action selector="tapClothesButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="BNW-cG-w6k"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxq-kJ-DjY">
+                                                <rect key="frame" x="288" y="0.0" width="72" height="54"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="72" id="rtl-Xe-5cl"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="shoes"/>
+                                                <connections>
+                                                    <action selector="tapClothesButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xS1-3y-c7Q"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="PX1-PP-IHj" firstAttribute="top" secondItem="HbU-4N-OAp" secondAttribute="top" id="7pD-KL-hwQ"/>
+                                    <constraint firstAttribute="height" constant="54" id="MWc-7d-yaI"/>
+                                    <constraint firstAttribute="bottom" secondItem="PX1-PP-IHj" secondAttribute="bottom" id="Yal-Zj-MfG"/>
+                                    <constraint firstItem="PX1-PP-IHj" firstAttribute="leading" secondItem="HbU-4N-OAp" secondAttribute="leading" constant="10" id="gAj-1d-Dqp"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9AK-So-8Hj">
+                                <rect key="frame" x="0.0" y="451" width="390" height="359"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gYI-yV-CNb">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="X7D-8w-KIx">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aeN-yZ-boN">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="l4D-gJ-xgR" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="2yu-Hg-MWv"/>
+                            <constraint firstItem="YeP-RG-sBT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="17.5" id="G3Y-6R-rEh"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="HbU-4N-OAp" secondAttribute="trailing" id="OfA-tQ-8nP"/>
+                            <constraint firstItem="YeP-RG-sBT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="a22-cn-i6n"/>
+                            <constraint firstItem="HbU-4N-OAp" firstAttribute="top" secondItem="bfQ-ZE-07O" secondAttribute="bottom" constant="300" id="atF-aV-C2e"/>
+                            <constraint firstItem="bfQ-ZE-07O" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="bqm-kp-Z13"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="l4D-gJ-xgR" secondAttribute="trailing" constant="20" id="cRh-JY-Loo"/>
+                            <constraint firstItem="9AK-So-8Hj" firstAttribute="top" secondItem="HbU-4N-OAp" secondAttribute="bottom" id="ejx-8V-hrm"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9AK-So-8Hj" secondAttribute="bottom" id="fsk-P1-9to"/>
+                            <constraint firstItem="bfQ-ZE-07O" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="jE3-Gl-WUV"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9AK-So-8Hj" secondAttribute="trailing" id="lFO-80-ywJ"/>
+                            <constraint firstItem="HbU-4N-OAp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="uVs-mk-sA0"/>
+                            <constraint firstItem="9AK-So-8Hj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ykR-sC-fF2"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="YeP-RG-sBT" id="vBA-t1-WPd"/>
+                        <outlet property="buttonBackgroundView" destination="HbU-4N-OAp" id="B5t-wf-nLu"/>
+                        <outlet property="buttonBackgroundViewTopConstant" destination="atF-aV-C2e" id="AqO-hF-zkz"/>
+                        <outlet property="collectionView" destination="9AK-So-8Hj" id="dWn-8w-gf6"/>
+                        <outlet property="navigationTitle" destination="bfQ-ZE-07O" id="g0F-UC-fpN"/>
+                        <outlet property="pantButton" destination="24N-8k-59a" id="SqW-V5-Pn7"/>
+                        <outlet property="pointLabel" destination="T5q-g5-KOl" id="fVH-VX-y9e"/>
+                        <outlet property="shirtButton" destination="0ou-nA-Hex" id="Qib-Sr-dr7"/>
+                        <outlet property="shoesButton" destination="uxq-kJ-DjY" id="izN-Yn-qKk"/>
+                        <outlet property="sunglassButton" destination="7bM-F0-isz" id="7RW-nx-KEe"/>
+                        <outletCollection property="clothesButtonCollection" destination="7bM-F0-isz" collectionClass="NSMutableArray" id="uTT-wk-BMn"/>
+                        <outletCollection property="clothesButtonCollection" destination="0ou-nA-Hex" collectionClass="NSMutableArray" id="f0I-Ro-lhp"/>
+                        <outletCollection property="clothesButtonCollection" destination="24N-8k-59a" collectionClass="NSMutableArray" id="82F-xD-q0d"/>
+                        <outletCollection property="clothesButtonCollection" destination="uxq-kJ-DjY" collectionClass="NSMutableArray" id="LuR-2g-GSy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="41" y="-2"/>
+            <point key="canvasLocation" x="40" y="-2.1327014218009479"/>
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <image name="closet_fill" width="24" height="25"/>
+        <image name="footprint" width="28" height="26"/>
+        <image name="pant" width="26.333333969116211" height="24.333333969116211"/>
+        <image name="shirt" width="26" height="24"/>
+        <image name="shoes" width="25" height="23"/>
+        <image name="sunglass" width="30" height="11"/>
+        <namedColor name="NBackgroundBrown">
+            <color red="0.95294117647058818" green="0.93333333333333335" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NBlack">
+            <color red="0.12156862745098039" green="0.13333333333333333" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

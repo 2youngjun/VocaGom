@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,61 +17,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiC-WY-k02">
-                                <rect key="frame" x="20" y="72" width="60" height="30"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="footprint" translatesAutoresizingMaskIntoConstraints="NO" id="aLW-ic-Ikn">
-                                        <rect key="frame" x="8" y="7" width="16" height="16"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="16" id="Rsx-k9-Ra3"/>
-                                            <constraint firstAttribute="width" constant="16" id="xXg-oh-LUd"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cin-3d-gm4">
-                                        <rect key="frame" x="34.666666666666664" y="7" width="17.333333333333336" height="16"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="16" id="bfr-uc-WWd"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" name="NLightBlue"/>
-                                <constraints>
-                                    <constraint firstItem="aLW-ic-Ikn" firstAttribute="centerY" secondItem="YiC-WY-k02" secondAttribute="centerY" id="6VP-KX-QMt"/>
-                                    <constraint firstAttribute="height" constant="30" id="8np-sz-cKX"/>
-                                    <constraint firstItem="Cin-3d-gm4" firstAttribute="centerY" secondItem="YiC-WY-k02" secondAttribute="centerY" id="F0D-mR-VEQ"/>
-                                    <constraint firstAttribute="width" constant="60" id="ZRg-Zo-dlP"/>
-                                    <constraint firstItem="aLW-ic-Ikn" firstAttribute="leading" secondItem="YiC-WY-k02" secondAttribute="leading" constant="8" id="cDY-8c-xKC"/>
-                                    <constraint firstAttribute="trailing" secondItem="Cin-3d-gm4" secondAttribute="trailing" constant="8" id="uyx-Gh-Mo6"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysc-ZK-85J">
-                                <rect key="frame" x="352" y="72" width="18" height="22"/>
+                                <rect key="frame" x="340" y="67" width="30" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="M3H-kh-Gpx"/>
+                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="plus" catalog="system"/>
+                                <state key="normal" image="market"/>
                                 <connections>
                                     <action selector="tapPurchasingButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="PaQ-vN-28v"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bear" translatesAutoresizingMaskIntoConstraints="NO" id="Cf3-DA-Na0">
+                                <rect key="frame" x="91" y="214" width="208" height="248"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="1gc-IV-9rj"/>
+                                    <constraint firstAttribute="height" constant="248" id="crD-4t-IKj"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="EVo-rw-F8K">
+                                <rect key="frame" x="20" y="67" width="84.333333333333329" height="30"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="footprint" translatesAutoresizingMaskIntoConstraints="NO" id="Sng-us-G8V">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="0Tu-51-mIG"/>
+                                            <constraint firstAttribute="height" constant="30" id="ZCl-42-xy8"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jl4-OA-plg">
+                                        <rect key="frame" x="43" y="0.0" width="41.333333333333343" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="YiC-WY-k02" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="25" id="DEP-MD-SzA"/>
+                            <constraint firstItem="EVo-rw-F8K" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="UAr-4m-8lE"/>
+                            <constraint firstItem="Cf3-DA-Na0" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="167" id="Ukj-XN-eCh"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ysc-ZK-85J" secondAttribute="trailing" constant="20" id="WuT-Lh-i9H"/>
-                            <constraint firstItem="ysc-ZK-85J" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="25" id="YhV-FO-GXQ"/>
-                            <constraint firstItem="YiC-WY-k02" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="zex-t7-zvn"/>
+                            <constraint firstItem="ysc-ZK-85J" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="YhV-FO-GXQ"/>
+                            <constraint firstItem="Cf3-DA-Na0" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="aay-zs-clt"/>
+                            <constraint firstItem="EVo-rw-F8K" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="tg0-tm-JFV"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="보카곰" image="settings" selectedImage="settings_filled" id="ODB-q1-5wt"/>
                     <navigationItem key="navigationItem" id="zGl-gR-q57"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="pointBackgroundView" destination="YiC-WY-k02" id="bve-8t-bvS"/>
-                        <outlet property="pointImage" destination="aLW-ic-Ikn" id="hd5-uK-Ffq"/>
-                        <outlet property="pointLabel" destination="Cin-3d-gm4" id="xTD-55-XRX"/>
+                        <outlet property="pointLabel" destination="Jl4-OA-plg" id="qgA-Ue-Ngp"/>
                         <outlet property="purchasingButton" destination="ysc-ZK-85J" id="dAB-fw-d9r"/>
                     </connections>
                 </viewController>
@@ -97,13 +94,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="footprint" width="20" height="19"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="bear" width="208" height="248"/>
+        <image name="footprint" width="28" height="26"/>
+        <image name="market" width="23.333333969116211" height="25"/>
         <image name="settings" width="25" height="25"/>
         <image name="settings_filled" width="25" height="25"/>
-        <namedColor name="NLightBlue">
-            <color red="0.95294117647058818" green="0.96078431372549022" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

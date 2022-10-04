@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "pants_fill_x1.png",
+      "filename" : "Group 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "pants_fill_x2.png",
+      "filename" : "Group 1@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "pants_fill_x3.png",
+      "filename" : "Group 1@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

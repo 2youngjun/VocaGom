@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "footprint_x1.png",
+      "filename" : "footprint_brown 1@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "footprint_x2.png",
+      "filename" : "footprint_brown 1@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "footprint_x3.png",
+      "filename" : "footprint_brown 1@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -19,5 +19,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }

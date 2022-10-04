@@ -29,8 +29,16 @@ class PetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.configurePointLabel()
+        self.view.backgroundColor = UIColor.NColor.background
     }
     
+    //MARK: Style Function
+    private func configurePointLabel() {
+        self.pointLabel.font = UIFont.NFont.noSearchedTextFont
+    }
     
-    
+    private func configurePointImage() {
+        
+    }
 }
