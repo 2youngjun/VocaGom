@@ -35,6 +35,17 @@ class CoreDataManager {
         }
     }
     
+    func fetchUserInfo() -> User {
+        var user = User()
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        do {
+            user = try context.fetch(request).first ?? User()
+        } catch {
+            print("-----fetchUserInfo error-----")
+        }
+        return user
+    }
+    
     // 단어 추가/생성/삭제 함수
     func addWord(name: String, meaning: String, synoym: String, example: String, createTime: Date, star: Bool, isTapped: Bool) {
         let word = Word(context: persistentContainer.viewContext)

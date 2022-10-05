@@ -19,6 +19,7 @@ class PurchasingViewController: UIViewController {
     
     //MARK: Variable
     var clothes: Clothes = .sunglass
+    var user: User?
     
     //MARK: IBOutlet Variable
     @IBOutlet weak var navigationTitle: UILabel!
@@ -29,6 +30,9 @@ class PurchasingViewController: UIViewController {
     
     @IBOutlet weak var buttonBackgroundViewTopConstant: NSLayoutConstraint!
     @IBOutlet var clothesButtonCollection: [UIButton]!
+    
+    @IBOutlet weak var closetButton: UIButton!
+    
     @IBOutlet weak var sunglassButton: UIButton!
     @IBOutlet weak var shirtButton: UIButton!
     @IBOutlet weak var pantButton: UIButton!
@@ -42,19 +46,31 @@ class PurchasingViewController: UIViewController {
     }
     
     @IBAction func tapClothesButton(_ sender: UIButton) {
-        self.clothesButtonCollection.forEach { button in
-            button.isSelected = false
-        }
-    }
-    
-    private func tapOneOfTheButtons(_ button: UIButton) {
-        self.clothesButtonCollection.forEach { button in
-            button.isSelected = false
+        if sender.isSelected {
+            return
+        } else {
+            self.clothesButtonCollection.forEach { button in
+                button.isSelected = button == sender ? true : false
+            }
         }
         
-        if button == self.shirtButton {
-            
+        if sender.tag == 0 {
+            self.clothes = .closet
+            self.collectionView.reloadData()
+        } else if sender.tag == 1 {
+            self.clothes = .sunglass
+            self.collectionView.reloadData()
+        } else if sender.tag == 2 {
+            self.clothes = .shirt
+            self.collectionView.reloadData()
+        } else if sender.tag == 3 {
+            self.clothes = .pants
+            self.collectionView.reloadData()
+        } else {
+            self.clothes = .shoes
+            self.collectionView.reloadData()
         }
+        
     }
     
     //MARK: View Lifecycle Function
@@ -62,6 +78,10 @@ class PurchasingViewController: UIViewController {
         super.viewDidLoad()
         
         self.styleFunction()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.user = CoreDataManager.shared.fetchUserInfo()
     }
     
     //MARK: Style Function
@@ -81,6 +101,60 @@ class PurchasingViewController: UIViewController {
         self.buttonBackgroundViewTopConstant.constant = UIScreen.main.bounds.height * 0.4
     }
     
+    private func configureButtons() {
+        self.closetButton.tag = 0
+        self.sunglassButton.tag = 1
+        self.shirtButton.tag = 2
+        self.pantButton.tag = 3
+        self.shoesButton.tag = 4
+    }
+    
+    
     
 }
 
+extension PurchasingViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch self.clothes {
+        case .closet:
+            return 0
+        case .sunglass:
+            return 0
+
+        case .shirt:
+            return 0
+
+        case .pants:
+            return 0
+
+        case .shoes:
+            return 0
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PurchasingCell", for: indexPath) as? PurchasingCell else { return UICollectionViewCell() }
+        
+        switch self.clothes {
+        case .closet:
+            return cell
+        case .sunglass:
+            return cell
+
+        case .shirt:
+            return cell
+
+        case .pants:
+            return cell
+
+        case .shoes:
+            return cell
+        }
+    }
+}
+
+extension PurchasingViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (UIScreen.main.bounds.width - 50) / 4, height: (UIScreen.main.bounds.width - 50) / 4 + 25)
+    }
+}

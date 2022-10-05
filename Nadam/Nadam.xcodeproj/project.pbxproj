@@ -35,6 +35,7 @@
 		8B93D54828E8950C00AD8170 /* PetView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B93D54728E8950C00AD8170 /* PetView.storyboard */; };
 		8B93D54A28E89C1500AD8170 /* PurchasingView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B93D54928E89C1500AD8170 /* PurchasingView.storyboard */; };
 		8B93D54C28E89C2100AD8170 /* PurchasingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B93D54B28E89C2100AD8170 /* PurchasingViewController.swift */; };
+		8B93D54E28ED282100AD8170 /* PurchasingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B93D54D28ED282100AD8170 /* PurchasingCell.swift */; };
 		8BAF4F1A28DAB223008ADFCC /* CalendarView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BAF4F1928DAB223008ADFCC /* CalendarView.storyboard */; };
 		8BAF4F1C28DAB22C008ADFCC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF4F1B28DAB22C008ADFCC /* CalendarViewController.swift */; };
 		8BAF4F2028DB6B1D008ADFCC /* CalendarWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF4F1F28DB6B1D008ADFCC /* CalendarWordCell.swift */; };
@@ -98,6 +99,7 @@
 		8B93D54728E8950C00AD8170 /* PetView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PetView.storyboard; sourceTree = "<group>"; };
 		8B93D54928E89C1500AD8170 /* PurchasingView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PurchasingView.storyboard; sourceTree = "<group>"; };
 		8B93D54B28E89C2100AD8170 /* PurchasingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasingViewController.swift; sourceTree = "<group>"; };
+		8B93D54D28ED282100AD8170 /* PurchasingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasingCell.swift; sourceTree = "<group>"; };
 		8BAF4F1928DAB223008ADFCC /* CalendarView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarView.storyboard; sourceTree = "<group>"; };
 		8BAF4F1B28DAB22C008ADFCC /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		8BAF4F1F28DB6B1D008ADFCC /* CalendarWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWordCell.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			children = (
 				8B93D54928E89C1500AD8170 /* PurchasingView.storyboard */,
 				8B93D54B28E89C2100AD8170 /* PurchasingViewController.swift */,
+				8B93D54D28ED282100AD8170 /* PurchasingCell.swift */,
 			);
 			path = PurchasingView;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				8B63ABEB28D04BB900D38973 /* ResultWordViewController.swift in Sources */,
 				8BDFBFB528DF390C001622D6 /* NextButtonState.swift in Sources */,
 				8BFC7E3B28B88AB700D92E00 /* WordButtonCell.swift in Sources */,
+				8B93D54E28ED282100AD8170 /* PurchasingCell.swift in Sources */,
 				8BF3AF27289ACAA700F049CD /* WordListViewController.swift in Sources */,
 				8B4D72A428D0B523000E9BBB /* questionWord.swift in Sources */,
 				8B0DDEF1289A953D00F0ACC3 /* SceneDelegate.swift in Sources */,

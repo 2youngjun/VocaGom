@@ -22,5 +22,7 @@ extension UIColor {
         static var gray: UIColor { UIColor(named: "NGray")! }
         static var lightGray: UIColor { UIColor(named: "NLightestGray")! }
         static var middleGray: UIColor { UIColor(named: "NMiddleGray")! }
+        static var lightBrown: UIColor { UIColor(named: "NLightBrown")! }
+        static var backgroundBrown: UIColor { UIColor(named: "NBackgroundBrown")! }
     }
 }
