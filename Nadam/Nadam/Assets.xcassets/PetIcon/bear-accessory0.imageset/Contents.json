@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "birthdayHat.png",
+      "filename" : "glasses01.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "glasses01 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "glasses01 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

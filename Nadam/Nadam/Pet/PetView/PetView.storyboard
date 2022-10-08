@@ -29,7 +29,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bear" translatesAutoresizingMaskIntoConstraints="NO" id="Cf3-DA-Na0">
-                                <rect key="frame" x="91" y="214" width="208" height="248"/>
+                                <rect key="frame" x="91" y="217" width="208" height="248"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="208" id="1gc-IV-9rj"/>
                                     <constraint firstAttribute="height" constant="248" id="crD-4t-IKj"/>
@@ -53,15 +53,51 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wfO-Dw-JHE">
+                                <rect key="frame" x="91" y="217" width="208" height="248"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="pxz-sX-ter"/>
+                                    <constraint firstAttribute="height" constant="248" id="v8I-zg-Fee"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="loq-ow-KYR">
+                                <rect key="frame" x="91" y="217" width="208" height="248"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="248" id="Dqq-k3-VeW"/>
+                                    <constraint firstAttribute="width" constant="208" id="eob-IW-ieW"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yhW-ry-nZ9">
+                                <rect key="frame" x="91" y="217" width="208" height="248"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="248" id="B00-hc-dkk"/>
+                                    <constraint firstAttribute="width" constant="208" id="VKN-9v-Ov5"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zRG-ma-h22">
+                                <rect key="frame" x="91" y="217" width="208" height="248"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="248" id="57Q-uW-Tsg"/>
+                                    <constraint firstAttribute="width" constant="208" id="Mgc-zY-DBW"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="wfO-Dw-JHE" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="DFN-dX-4ys"/>
+                            <constraint firstItem="zRG-ma-h22" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Glj-mP-d38"/>
+                            <constraint firstItem="loq-ow-KYR" firstAttribute="top" secondItem="EVo-rw-F8K" secondAttribute="bottom" constant="120" id="QcF-Wy-eHC"/>
                             <constraint firstItem="EVo-rw-F8K" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="UAr-4m-8lE"/>
-                            <constraint firstItem="Cf3-DA-Na0" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="167" id="Ukj-XN-eCh"/>
+                            <constraint firstItem="Cf3-DA-Na0" firstAttribute="top" secondItem="EVo-rw-F8K" secondAttribute="bottom" constant="120" id="Ukj-XN-eCh"/>
+                            <constraint firstItem="zRG-ma-h22" firstAttribute="top" secondItem="EVo-rw-F8K" secondAttribute="bottom" constant="120" id="VRB-rx-pUc"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ysc-ZK-85J" secondAttribute="trailing" constant="20" id="WuT-Lh-i9H"/>
                             <constraint firstItem="ysc-ZK-85J" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="YhV-FO-GXQ"/>
                             <constraint firstItem="Cf3-DA-Na0" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="aay-zs-clt"/>
+                            <constraint firstItem="yhW-ry-nZ9" firstAttribute="top" secondItem="EVo-rw-F8K" secondAttribute="bottom" constant="120" id="bKc-3z-4bT"/>
+                            <constraint firstItem="wfO-Dw-JHE" firstAttribute="top" secondItem="EVo-rw-F8K" secondAttribute="bottom" constant="120" id="gLg-r8-Tj7"/>
+                            <constraint firstItem="yhW-ry-nZ9" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="kop-9O-pPL"/>
+                            <constraint firstItem="loq-ow-KYR" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="oJD-cu-As3"/>
                             <constraint firstItem="EVo-rw-F8K" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="tg0-tm-JFV"/>
                         </constraints>
                     </view>
@@ -69,8 +105,22 @@
                     <navigationItem key="navigationItem" id="zGl-gR-q57"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="accessoryImage" destination="zRG-ma-h22" id="Mg0-Ga-cH7"/>
+                        <outlet property="bearImageHeight" destination="crD-4t-IKj" id="NZ6-1a-GIr"/>
+                        <outlet property="bearImageWidth" destination="1gc-IV-9rj" id="vf2-Hz-JWq"/>
+                        <outlet property="pantsImage" destination="wfO-Dw-JHE" id="TAo-uL-DEV"/>
                         <outlet property="pointLabel" destination="Jl4-OA-plg" id="qgA-Ue-Ngp"/>
                         <outlet property="purchasingButton" destination="ysc-ZK-85J" id="dAB-fw-d9r"/>
+                        <outlet property="shirtImage" destination="yhW-ry-nZ9" id="cfn-oX-2PP"/>
+                        <outlet property="shoesImage" destination="loq-ow-KYR" id="Pdj-P0-0wl"/>
+                        <outletCollection property="clothesWidthCollection" destination="pxz-sX-ter" collectionClass="NSMutableArray" id="lL4-5u-EYg"/>
+                        <outletCollection property="clothesWidthCollection" destination="eob-IW-ieW" collectionClass="NSMutableArray" id="GE5-u2-nwu"/>
+                        <outletCollection property="clothesWidthCollection" destination="VKN-9v-Ov5" collectionClass="NSMutableArray" id="5Dp-Qx-tDa"/>
+                        <outletCollection property="clothesWidthCollection" destination="Mgc-zY-DBW" collectionClass="NSMutableArray" id="rMQ-IZ-0Xk"/>
+                        <outletCollection property="clothesHeightCollection" destination="v8I-zg-Fee" collectionClass="NSMutableArray" id="gwZ-Ex-tUv"/>
+                        <outletCollection property="clothesHeightCollection" destination="Dqq-k3-VeW" collectionClass="NSMutableArray" id="Zb6-qg-X1z"/>
+                        <outletCollection property="clothesHeightCollection" destination="B00-hc-dkk" collectionClass="NSMutableArray" id="oM0-rJ-rdO"/>
+                        <outletCollection property="clothesHeightCollection" destination="57Q-uW-Tsg" collectionClass="NSMutableArray" id="WwL-Gf-3pW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -94,7 +144,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bear" width="208" height="248"/>
+        <image name="bear" width="433.33334350585938" height="500"/>
         <image name="footprint" width="28" height="26"/>
         <image name="market" width="23.333333969116211" height="25"/>
         <image name="settings" width="25" height="25"/>

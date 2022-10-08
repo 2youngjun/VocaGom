@@ -9,17 +9,22 @@ import UIKit
 
 enum Clothes {
     case closet
-    case sunglass
+    case accessory
     case shirt
     case pants
     case shoes
+}
+
+struct closetItem {
+    var imageString: String
 }
 
 class PurchasingViewController: UIViewController {
     
     //MARK: Variable
     var clothes: Clothes = .closet
-    var user: User?
+    var accessoryList = [Accessory]()
+    var closetList = [closetItem]()
     
     //MARK: IBOutlet Variable
     @IBOutlet weak var navigationTitle: UILabel!
@@ -40,7 +45,6 @@ class PurchasingViewController: UIViewController {
     
     @IBOutlet weak var bearWidth: NSLayoutConstraint!
     @IBOutlet weak var bearHeight: NSLayoutConstraint!
-    
     
     @IBOutlet weak var pantsImage: UIImageView!
     @IBOutlet weak var shoesImage: UIImageView!
@@ -69,9 +73,10 @@ class PurchasingViewController: UIViewController {
         
         if sender.tag == 0 {
             self.clothes = .closet
+            self.initializeCloset()
             self.collectionView.reloadData()
         } else if sender.tag == 1 {
-            self.clothes = .sunglass
+            self.clothes = .accessory
             self.collectionView.reloadData()
         } else if sender.tag == 2 {
             self.clothes = .shirt
@@ -86,19 +91,58 @@ class PurchasingViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var testPointButton: UIButton!
+    @IBAction func tapPlusPoint(_ sender: UIButton) {
+        var point = UserDefaults.standard.object(forKey: "point") as? Int
+        if point == nil {
+            point = 0
+        }
+        point! += 100
+        UserDefaults.standard.set(point, forKey: "point")
+        testPointButton.setTitle("\(String(describing: point))", for: .normal)
+
+        print(point!)
+    }
+    func testPoint() {
+        let point = UserDefaults.standard.object(forKey: "point") as? Int
+        testPointButton.setTitle("\(String(describing: point))", for: .normal)
+    }
     
     //MARK: View Lifecycle Function
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.testPoint()
         self.styleFunction()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        self.user = CoreDataManager.shared.fetchUserInfo()
+        self.refreshBearImagePoint()
+        self.accessoryList = CoreDataManager.shared.initializeAccessoryList()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print(UserDefaults.standard.object(forKey: "accessory") as? String ?? "")
+        print(self.accessoryImage.image ?? UIImage())
     }
     
     //MARK: Style Function
+    private func refreshBearImagePoint() {
+        let pants = UserDefaults.standard.object(forKey: "pants") as? String
+        self.pantsImage.image = pants == nil ? UIImage() : UIImage(named: "\(String(describing: pants))")
+
+        let shoes = UserDefaults.standard.object(forKey: "shoes") as? String
+        self.shoesImage.image = shoes == nil ? UIImage() : UIImage(named: "\(String(describing: shoes))")
+        
+        let shirt = UserDefaults.standard.object(forKey: "shirt") as? String
+        self.shirtImage.image = shirt == nil ? UIImage() : UIImage(named: "\(String(describing: shirt))")
+        
+        let accessory = UserDefaults.standard.object(forKey: "accessory") as? String
+        self.accessoryImage.image = accessory == nil ? UIImage() : UIImage(named: "\(accessory ?? "")")
+        
+        let point = UserDefaults.standard.object(forKey: "point") as? Int
+        self.pointLabel.text = point == nil ? String("0") : String(point ?? 0)
+    }
+    
     private func styleFunction() {
         self.view.backgroundColor = UIColor.NColor.background
         self.configureNavigationLabel()
@@ -109,8 +153,8 @@ class PurchasingViewController: UIViewController {
     }
     
     private func configureNavigationLabel() {
-        self.navigationTitle.font = UIFont.NFont.addWordNavigationTitle
         self.pointLabel.font = UIFont.NFont.noSearchedTextFont
+        self.navigationTitle.font = UIFont.NFont.addWordNavigationTitle
     }
     
     private func configureButtonsBackgroundView() {
@@ -150,7 +194,6 @@ class PurchasingViewController: UIViewController {
         }
     }
     
-    
     // Changing button image/backgroundColor by state
     private func configureButtonState(buttonCollection: [UIButton]) {
         var selectedTag = 0
@@ -170,6 +213,58 @@ class PurchasingViewController: UIViewController {
             }
         }
     }
+    
+    //MARK: Alert
+    private func alertBuyingClothes(accessory: Accessory) {
+        let alert = UIAlertController(title: "구매하시겠습니까?", message: "\(accessory.price) 젤리가 필요합니다.", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .destructive) { _ in
+            alert.dismiss(animated: true)
+        }
+        let confirm = UIAlertAction(title: "확인", style: .default) { _ in
+            var point = UserDefaults.standard.object(forKey: "point") as? Int
+            if point! > Int(accessory.price) {
+                point! -= Int(accessory.price)
+                accessory.isBought = true
+                UserDefaults.standard.set(point, forKey: "point")
+                CoreDataManager.shared.saveContext()
+                self.collectionView.reloadData()
+            } else {
+                self.alertNotEnoughPoint()
+            }
+        }
+        
+        [cancel, confirm].forEach(alert.addAction(_:))
+        self.present(alert, animated: true)
+    }
+    
+    private func alertAlreadyBought(accessory: Accessory) {
+        let alert = UIAlertController(title: "착용하시겠습니까?", message: "", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .default) { _ in
+            alert.dismiss(animated: true)
+        }
+        let confirm = UIAlertAction(title: "확인", style: .default) { _ in
+            let accessoryImage = String(describing: accessory.imageName!)
+            print(accessoryImage)
+            self.accessoryImage.image = UIImage(named: "bear-\(accessoryImage)")
+            UserDefaults.standard.set("bear-\(accessoryImage)", forKey: "accessory")
+            
+//            let accessoryImage = UserDefaults.standard.object(forKey: "accessory") as? String ?? ""
+//            print(accessoryImage)
+//            self.accessoryImage.image = UIImage(named: "bear-\(accessoryImage)")
+        }
+        [cancel, confirm].forEach(alert.addAction(_:))
+        self.present(alert, animated: true)
+    }
+    
+    private func alertNotEnoughPoint() {
+        let alert = UIAlertController(title: "젤리가 부족합니다.", message: "", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "확인", style: .default) { _ in
+            alert.dismiss(animated: true)
+        }
+        alert.addAction(cancel)
+        self.present(alert, animated: true)
+    }
+    
 }
 
 extension PurchasingViewController: UICollectionViewDataSource {
@@ -177,8 +272,8 @@ extension PurchasingViewController: UICollectionViewDataSource {
         switch self.clothes {
         case .closet:
             return 0
-        case .sunglass:
-            return 0
+        case .accessory:
+            return CoreDataManager.shared.countAccessory()
 
         case .shirt:
             return 0
@@ -197,7 +292,11 @@ extension PurchasingViewController: UICollectionViewDataSource {
         switch self.clothes {
         case .closet:
             return cell
-        case .sunglass:
+        case .accessory:
+            let accessory = self.accessoryList[indexPath.row]
+            cell.purchasingImage.image = UIImage(named: "\(accessory.imageName ?? "")")
+            cell.purchasingLabel.text = String("\(accessory.price)")
+            cell.alreadyBoughtImage.isHidden = accessory.isBought ? false : true
             return cell
 
         case .shirt:
@@ -210,6 +309,44 @@ extension PurchasingViewController: UICollectionViewDataSource {
             return cell
         }
     }
+    
+    private func initializeCloset() {
+        self.accessoryList.forEach { accessory in
+            var item = closetItem(imageString: "")
+            if accessory.isBought {
+                item.imageString = accessory.imageName!
+                self.closetList.append(item)
+            }
+        }
+    }
+}
+
+extension PurchasingViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch self.clothes {
+        case .closet:
+            print("not yet")
+
+        case .accessory:
+            let accessory = self.accessoryList[indexPath.row]
+            if accessory.isBought == true {
+                self.alertAlreadyBought(accessory: accessory)
+            } else {
+                self.alertBuyingClothes(accessory: accessory)
+            }
+        case .shirt:
+            print("not yet")
+            
+        case .pants:
+            print("not yet")
+
+        case .shoes:
+            print("not yet")
+
+        }
+    }
+    
+    
 }
 
 extension PurchasingViewController: UICollectionViewDelegateFlowLayout {

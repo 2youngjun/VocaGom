@@ -10,7 +10,6 @@ import CoreData
 import UIKit
 
 class CoreDataManager {
-    // CoreDataManager.함수
     static let shared: CoreDataManager = CoreDataManager()
     
     lazy var persistentContainer: NSPersistentContainer = {
@@ -35,18 +34,70 @@ class CoreDataManager {
         }
     }
     
-    func fetchUserInfo() -> User {
-        var user = User()
-        let request: NSFetchRequest<User> = User.fetchRequest()
+    // Accessory CoreData Manager
+    func initializeAccessoryList() -> [Accessory] {
+        let request: NSFetchRequest<Accessory> = Accessory.fetchRequest()
+        var count = 0
+        var additionalImageIndex = 0
+        
         do {
-            user = try context.fetch(request).first ?? User()
+            let accessoryArray = try context.fetch(request)
+            count = accessoryArray.count
+            print(count)
+            if count == 0 {
+                self.firstInstallAccessory()
+            } else {
+                while UIImage(named: "accessory\(count + additionalImageIndex)") != nil {
+                    addAccessory(imageName: "accessory\(count + additionalImageIndex)", isBought: false, price: 400)
+                    additionalImageIndex += 1
+                }
+            }
+            
+            let updatedAccessoryArray = try context.fetch(request)
+            // testCode
+            updatedAccessoryArray.forEach({ accessory in
+                print("\(accessory.imageName!) bool: \(accessory.isBought). price: \(accessory.price)")
+            })
+            return updatedAccessoryArray
         } catch {
-            print("-----fetchUserInfo error-----")
+            print("----- initialize Accessory Eror ------")
+            return []
         }
-        return user
     }
     
-    // 단어 추가/생성/삭제 함수
+    func addAccessory(imageName: String, isBought: Bool, price: Int) {
+        let accessory = Accessory(context: persistentContainer.viewContext)
+        accessory.imageName = imageName
+        accessory.isBought = isBought
+        accessory.price = Int16(price)
+        saveContext()
+    }
+    
+    func firstInstallAccessory() {
+        addAccessory(imageName: "accessory0", isBought: false, price: 150)
+        addAccessory(imageName: "accessory1", isBought: true, price: 200)
+    }
+    
+    func countAccessory() -> Int {
+        let request: NSFetchRequest<Accessory> = Accessory.fetchRequest()
+        var count = 0
+        do {
+            let accessoryArray = try context.fetch(request)
+            count = accessoryArray.count
+        } catch {
+            print("----- Count Accessory Error -----")
+        }
+        return count
+    }
+    
+    // Shirt CoreData Manager
+    
+    // Pants CoreData Manager
+    
+    // Shoes CoreData Manager
+    
+    
+    // Word CoreData Manager
     func addWord(name: String, meaning: String, synoym: String, example: String, createTime: Date, star: Bool, isTapped: Bool) {
         let word = Word(context: persistentContainer.viewContext)
         word.id = UUID()
