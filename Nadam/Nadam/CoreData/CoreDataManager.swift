@@ -75,7 +75,9 @@ class CoreDataManager {
     
     func firstInstallAccessory() {
         addAccessory(imageName: "accessory0", isBought: false, price: 150)
-        addAccessory(imageName: "accessory1", isBought: true, price: 200)
+        addAccessory(imageName: "accessory1", isBought: false, price: 200)
+        addAccessory(imageName: "accessory2", isBought: false, price: 250)
+        addAccessory(imageName: "accessory3", isBought: false, price: 300)
     }
     
     func countAccessory() -> Int {
@@ -91,11 +93,169 @@ class CoreDataManager {
     }
     
     // Shirt CoreData Manager
+    func initializeShirtList() -> [Shirt] {
+        let request: NSFetchRequest<Shirt> = Shirt.fetchRequest()
+        var count = 0
+        var additionalImageIndex = 0
+        do {
+            let shirtArray = try context.fetch(request)
+            count = shirtArray.count
+            print(count)
+            print("💙\(shirtArray)")
+            if count == 0 {
+                self.firstInstallShirt()
+            } else {
+                while UIImage(named: "shirt\(count + additionalImageIndex)") != nil {
+                    addShirt(imageName: "shirt\(count + additionalImageIndex)", isBought: false, price: 400)
+                    additionalImageIndex += 1
+                }
+            }
+            
+            let updatedShirtArray = try context.fetch(request)
+            // testCode
+            updatedShirtArray.forEach({ shirt in
+                print("\(shirt.imageName!) bool: \(shirt.isBought). price: \(shirt.price)")
+            })
+            return updatedShirtArray
+        } catch {
+            print("----- initialize Accessory Eror ------")
+            return []
+        }
+    }
+    
+    func addShirt(imageName: String, isBought: Bool, price: Int) {
+        let shirt = Shirt(context: persistentContainer.viewContext)
+        shirt.imageName = imageName
+        shirt.isBought = isBought
+        shirt.price = Int16(price)
+        saveContext()
+    }
+    
+    func firstInstallShirt() {
+        addShirt(imageName: "shirt0", isBought: false, price: 150)
+        addShirt(imageName: "shirt1", isBought: false, price: 200)
+    }
+    
+    func countShirt() -> Int {
+        let request: NSFetchRequest<Shirt> = Shirt.fetchRequest()
+        var count = 0
+        do {
+            let shirtArray = try context.fetch(request)
+            count = shirtArray.count
+        } catch {
+            print("----- Count Shirt Error -----")
+        }
+        return count
+    }
     
     // Pants CoreData Manager
+    func initializePantsList() -> [Pants] {
+        let request: NSFetchRequest<Pants> = Pants.fetchRequest()
+        var count = 0
+        var additionalImageIndex = 0
+        
+        do {
+            let pantsArray = try context.fetch(request)
+            count = pantsArray.count
+            if count == 0 {
+                self.firstInstallPants()
+            } else {
+                while UIImage(named: "pants\(count + additionalImageIndex)") != nil {
+                    addPants(imageName: "pants\(count + additionalImageIndex)", isBought: false, price: 400)
+                    additionalImageIndex += 1
+                }
+            }
+            
+            let updatedPantsArray = try context.fetch(request)
+            // testCode
+            updatedPantsArray.forEach({ pants in
+                print("\(pants.imageName!) bool: \(pants.isBought). price: \(pants.price)")
+            })
+            return updatedPantsArray
+        } catch {
+            print("----- initialize Pants Eror ------")
+            return []
+        }
+    }
+    
+    func addPants(imageName: String, isBought: Bool, price: Int) {
+        let pants = Pants(context: persistentContainer.viewContext)
+        pants.imageName = imageName
+        pants.isBought = isBought
+        pants.price = Int16(price)
+        saveContext()
+    }
+    
+    func firstInstallPants() {
+        addPants(imageName: "pants0", isBought: false, price: 150)
+        addPants(imageName: "pants1", isBought: false, price: 200)
+    }
+    
+    func countPants() -> Int {
+        let request: NSFetchRequest<Pants> = Pants.fetchRequest()
+        var count = 0
+        do {
+            let pantsArray = try context.fetch(request)
+            count = pantsArray.count
+        } catch {
+            print("----- Count Pants Error -----")
+        }
+        return count
+    }
     
     // Shoes CoreData Manager
+    func initializeShoesList() -> [Shoes] {
+        let request: NSFetchRequest<Shoes> = Shoes.fetchRequest()
+        var count = 0
+        var additionalImageIndex = 0
+        
+        do {
+            let shoesArray = try context.fetch(request)
+            count = shoesArray.count
+            if count == 0 {
+                self.firstInstallShoes()
+            } else {
+                while UIImage(named: "shoes\(count + additionalImageIndex)") != nil {
+                    addShoes(imageName: "shoes\(count + additionalImageIndex)", isBought: false, price: 400)
+                    additionalImageIndex += 1
+                }
+            }
+            
+            let updatedShoesArray = try context.fetch(request)
+            // testCode
+            updatedShoesArray.forEach({ shoes in
+                print("\(shoes.imageName!) bool: \(shoes.isBought). price: \(shoes.price)")
+            })
+            return updatedShoesArray
+        } catch {
+            print("----- initialize Shoes Eror ------")
+            return []
+        }
+    }
     
+    func addShoes(imageName: String, isBought: Bool, price: Int) {
+        let shoes = Shoes(context: persistentContainer.viewContext)
+        shoes.imageName = imageName
+        shoes.isBought = isBought
+        shoes.price = Int16(price)
+        saveContext()
+    }
+    
+    func firstInstallShoes() {
+//        addShoes(imageName: "shoes0", isBought: false, price: 150)
+    }
+    
+    func countShoes() -> Int {
+        let request: NSFetchRequest<Shoes> = Shoes.fetchRequest()
+        var count = 0
+        do {
+            let accessoryShoes = try context.fetch(request)
+            count = accessoryShoes.count
+        } catch {
+            print("----- Count Shoes Error -----")
+        }
+        return count
+    }
     
     // Word CoreData Manager
     func addWord(name: String, meaning: String, synoym: String, example: String, createTime: Date, star: Bool, isTapped: Bool) {

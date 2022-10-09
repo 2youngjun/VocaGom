@@ -44,28 +44,24 @@ class PetViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.bearImageRefreshPoint()
+        self.refreshBearImagePoint()
     }
     
-    private func bearImageRefreshPoint() {
+    private func refreshBearImagePoint() {
         let pants = UserDefaults.standard.object(forKey: "pants") as? String
-        self.pantsImage.image = pants == nil ? UIImage() : UIImage(named: "\(String(describing: pants))")
-
+        self.pantsImage.image = pants == nil ? UIImage() : UIImage(named: "\(pants ?? "")")
+        
         let shoes = UserDefaults.standard.object(forKey: "shoes") as? String
-        self.shoesImage.image = shoes == nil ? UIImage() : UIImage(named: "\(String(describing: shoes))")
+        self.shoesImage.image = shoes == nil ? UIImage() : UIImage(named: "\(shoes ?? "")")
         
         let shirt = UserDefaults.standard.object(forKey: "shirt") as? String
-        self.shirtImage.image = shirt == nil ? UIImage() : UIImage(named: "\(String(describing: shirt))")
+        self.shirtImage.image = shirt == nil ? UIImage() : UIImage(named: "\(shirt ?? "")")
         
         let accessory = UserDefaults.standard.object(forKey: "accessory") as? String
         self.accessoryImage.image = accessory == nil ? UIImage() : UIImage(named: "\(accessory ?? "")")
         
         let point = UserDefaults.standard.object(forKey: "point") as? Int
         self.pointLabel.text = point == nil ? String("0") : String(point ?? 0)
-//        self.pantsImage.image = UIImage(named: "\(String(describing: UserDefaults.standard.object(forKey: "pants") as? String))")
-//        self.shoesImage.image = UIImage(named: "\(String(describing: UserDefaults.standard.object(forKey: "shoes") as? String))")
-//        self.shirtImage.image = UIImage(named: "\(String(describing: UserDefaults.standard.object(forKey: "shirt") as? String))")
-//        self.accessoryImage.image = UIImage(named: "\(String(describing: UserDefaults.standard.object(forKey: "accessory") as? String))")
     }
     
     
@@ -76,7 +72,6 @@ class PetViewController: UIViewController {
     }
     
     private func configurePointLabel() {
-        
         self.pointLabel.font = UIFont.NFont.noSearchedTextFont
         self.view.backgroundColor = UIColor.NColor.background
     }
