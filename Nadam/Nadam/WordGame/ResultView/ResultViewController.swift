@@ -16,7 +16,6 @@ class ResultViewController: UIViewController {
     // MARK: 변수
     var resultWords = [questionWord]()
     var cntCorrect: Int = 0
-    
     weak var delegate: SendResultWordDelegate?
     let resultWordViewController: ResultWordViewController = {
         let storyBoard = UIStoryboard(name: "ResultWordView", bundle: nil)
@@ -55,6 +54,10 @@ class ResultViewController: UIViewController {
         self.countResult()
         self.countCorrect.text = String(self.cntCorrect)
         self.countWrong.text = String(self.resultWords.count - self.cntCorrect)
+        
+        if resultWordViewController.prohibitToast {
+            self.showToast(message: "\(self.cntCorrect * 10) 젤리가 적립되었습니다.", cntCorrect: self.cntCorrect)
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -85,6 +88,7 @@ class ResultViewController: UIViewController {
     }
     
     @IBAction func tapCompleteButton(_ sender: UIButton) {
+        self.resultWordViewController.prohibitToast = true
         self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -151,25 +155,30 @@ extension ResultViewController: SendTestWordResultDelegate {
     }
 }
 
-extension CALayer {
-    func applySketchShadow(
-        color: UIColor,
-        alpha: Float,
-        x: CGFloat,
-        y: CGFloat,
-        blur: CGFloat,
-        spread: CGFloat
-    ) {
-        masksToBounds = false
-        shadowColor = color.cgColor
-        shadowOpacity = alpha
-        shadowOffset = CGSize(width: x, height: y)
-        shadowRadius = blur / UIScreen.main.scale
-        if spread == 0 {
-            shadowPath = nil
-        } else {
-            let rect = bounds.insetBy(dx: -spread, dy: -spread)
-            shadowPath = UIBezierPath(rect: rect).cgPath
-        }
+extension ResultViewController {
+    private func showToast(message : String, font: UIFont = UIFont.NFont.automaticMeaningButton, cntCorrect: Int) {
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/4, y: self.view.frame.size.height - 150, width: 200, height: 40))
+        toastLabel.backgroundColor = UIColor.NColor.subBlue
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = font
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds = true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 1.0, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+            
+            var point = UserDefaults.standard.object(forKey: "point") as? Int
+            guard point != nil else { return }
+            
+            point! += cntCorrect * 10
+            UserDefaults.standard.set(point, forKey: "point")
+            
+            print(UserDefaults.standard.object(forKey: "point") as? Int)
+        })
     }
 }

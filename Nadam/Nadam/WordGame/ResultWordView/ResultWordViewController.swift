@@ -13,6 +13,7 @@ class ResultWordViewController: UIViewController {
     var wordList = [Word]()
     var wordNameColor = UIColor()
     var navigationTitle = String()
+    public var prohibitToast = true
     
     //MARK: IBOutlet
     @IBOutlet weak var titleText: UILabel!
@@ -29,10 +30,12 @@ class ResultWordViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.configureTitleText()
         self.collectionView.reloadData()
+        self.prohibitToast = true
     }
 
     //MARK: IBAction
     @IBAction func tapBackButton(_ sender: UIButton) {
+        self.prohibitToast = false
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -118,3 +121,4 @@ extension ResultWordViewController: SendResultWordDelegate {
         self.wordNameColor = color
     }
 }
+
