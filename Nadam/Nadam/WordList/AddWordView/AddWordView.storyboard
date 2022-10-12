@@ -46,7 +46,7 @@
                                             <constraint firstAttribute="height" constant="40" id="Pwz-Fy-KaP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                         <connections>
                                             <action selector="endEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="krA-Ex-EWd"/>
                                             <action selector="startEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidBegin" id="jdh-DI-60f"/>
@@ -90,7 +90,7 @@
                                                 </constraints>
                                                 <color key="tintColor" name="NWhite"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" image="globe" catalog="system">
+                                                <state key="normal" image="global">
                                                     <color key="titleColor" name="NWhite"/>
                                                 </state>
                                                 <connections>
@@ -125,7 +125,7 @@
                                             <constraint firstAttribute="height" constant="40" id="7Cd-Hc-QzE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                         <connections>
                                             <action selector="endEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="pYe-Fp-Flm"/>
                                             <action selector="startEditingTextField:" destination="Y6W-OH-hqX" eventType="editingDidBegin" id="WTP-Sc-ekp"/>
@@ -261,7 +261,7 @@
     </scenes>
     <resources>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
-        <image name="globe" catalog="system" width="128" height="123"/>
+        <image name="global" width="25" height="25"/>
         <namedColor name="NBlack">
             <color red="0.12156862745098039" green="0.13333333333333333" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

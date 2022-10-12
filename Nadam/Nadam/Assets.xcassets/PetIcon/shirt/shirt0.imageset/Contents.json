@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "hoodie01.png",
+      "filename" : "노란티2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "hoodie01 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "hoodie01 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

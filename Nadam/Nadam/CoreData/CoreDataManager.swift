@@ -74,10 +74,15 @@ class CoreDataManager {
     }
     
     func firstInstallAccessory() {
-        addAccessory(imageName: "accessory0", isBought: false, price: 150)
-        addAccessory(imageName: "accessory1", isBought: false, price: 200)
-        addAccessory(imageName: "accessory2", isBought: false, price: 250)
-        addAccessory(imageName: "accessory3", isBought: false, price: 300)
+        addAccessory(imageName: "accessory0", isBought: false, price: 200)
+        addAccessory(imageName: "accessory1", isBought: false, price: 240)
+        addAccessory(imageName: "accessory2", isBought: false, price: 280)
+        addAccessory(imageName: "accessory3", isBought: false, price: 320)
+        addAccessory(imageName: "accessory4", isBought: false, price: 350)
+        addAccessory(imageName: "accessory5", isBought: false, price: 400)
+        addAccessory(imageName: "accessory6", isBought: false, price: 450)
+        addAccessory(imageName: "accessory7", isBought: false, price: 500)
+        addAccessory(imageName: "accessory8", isBought: false, price: 550)
     }
     
     func countAccessory() -> Int {
@@ -132,8 +137,18 @@ class CoreDataManager {
     }
     
     func firstInstallShirt() {
-        addShirt(imageName: "shirt0", isBought: false, price: 150)
+        addShirt(imageName: "shirt0", isBought: false, price: 200)
         addShirt(imageName: "shirt1", isBought: false, price: 200)
+        addShirt(imageName: "shirt2", isBought: false, price: 220)
+        addShirt(imageName: "shirt3", isBought: false, price: 220)
+        addShirt(imageName: "shirt4", isBought: false, price: 240)
+        addShirt(imageName: "shirt5", isBought: false, price: 240)
+        addShirt(imageName: "shirt6", isBought: false, price: 240)
+        addShirt(imageName: "shirt7", isBought: false, price: 300)
+        addShirt(imageName: "shirt8", isBought: false, price: 300)
+        addShirt(imageName: "shirt9", isBought: false, price: 400)
+        addShirt(imageName: "shirt10", isBought: false, price: 450)
+        addShirt(imageName: "shirt11", isBought: false, price: 500)
     }
     
     func countShirt() -> Int {
@@ -187,8 +202,15 @@ class CoreDataManager {
     }
     
     func firstInstallPants() {
-        addPants(imageName: "pants0", isBought: false, price: 150)
-        addPants(imageName: "pants1", isBought: false, price: 200)
+        addPants(imageName: "pants0", isBought: false, price: 200)
+        addPants(imageName: "pants1", isBought: false, price: 220)
+        addPants(imageName: "pants2", isBought: false, price: 220)
+        addPants(imageName: "pants3", isBought: false, price: 240)
+        addPants(imageName: "pants4", isBought: false, price: 240)
+        addPants(imageName: "pants5", isBought: false, price: 280)
+        addPants(imageName: "pants6", isBought: false, price: 280)
+        addPants(imageName: "pants7", isBought: false, price: 320)
+        addPants(imageName: "pants8", isBought: false, price: 320)
     }
     
     func countPants() -> Int {

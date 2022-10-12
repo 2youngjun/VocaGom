@@ -63,7 +63,7 @@
         <scene sceneID="7c9-kq-R0g">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="PetViewController" storyboardName="PetView" referencedIdentifier="PetViewController" id="oGq-au-eh9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="settings" selectedImage="settings_filled" id="cT7-mi-Hb8"/>
+                    <tabBarItem key="tabBarItem" title="" image="bearTab" selectedImage="bearTab_filled" id="cT7-mi-Hb8"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDz-Kj-94p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -72,13 +72,13 @@
     </scenes>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
+        <image name="bearTab" width="25" height="25"/>
+        <image name="bearTab_filled" width="25" height="25"/>
         <image name="list" width="25" height="25"/>
         <image name="list_filled" width="25" height="25"/>
         <image name="pencil" width="25" height="25"/>
         <image name="pencil_filled" width="25" height="25"/>
         <image name="schedule" width="25" height="25"/>
         <image name="schedule_filled" width="25" height="25"/>
-        <image name="settings" width="25" height="25"/>
-        <image name="settings_filled" width="25" height="25"/>
     </resources>
 </document>

@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "trainingPants01.png",
+      "filename" : "초록바지.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "trainingPants01 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "trainingPants01 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

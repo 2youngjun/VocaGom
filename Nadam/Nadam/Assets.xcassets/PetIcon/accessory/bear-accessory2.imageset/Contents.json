@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "sunflower.png",
+      "filename" : "목욕모자.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "sunflower 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "sunflower 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -8,26 +8,20 @@
 import UIKit
 
 enum Clothes {
-    case closet
     case accessory
     case shirt
     case pants
     case shoes
 }
 
-struct closetItem {
-    var imageString: String
-}
-
 class PurchasingViewController: UIViewController {
     
     //MARK: Variable
-    var clothes: Clothes = .closet
+    var clothes: Clothes = .accessory
     var accessoryList = [Accessory]()
     var shirtList = [Shirt]()
     var pantsList = [Pants]()
     var shoesList = [Shoes]()
-    var closetList = [closetItem]()
     
     
     //MARK: IBOutlet Variable
@@ -40,12 +34,10 @@ class PurchasingViewController: UIViewController {
     @IBOutlet weak var buttonBackgroundViewTopConstant: NSLayoutConstraint!
     
     @IBOutlet var clothesButtonCollection: [UIButton]!
-    @IBOutlet weak var closetButton: UIButton!
     @IBOutlet weak var accessoryButton: UIButton!
     @IBOutlet weak var shirtButton: UIButton!
     @IBOutlet weak var pantButton: UIButton!
     @IBOutlet weak var shoesButton: UIButton!
-    
     
     @IBOutlet weak var bearWidth: NSLayoutConstraint!
     @IBOutlet weak var bearHeight: NSLayoutConstraint!
@@ -75,11 +67,7 @@ class PurchasingViewController: UIViewController {
         
         self.configureButtonState(buttonCollection: self.clothesButtonCollection)
         
-        if sender.tag == 0 {
-            self.clothes = .closet
-            self.initializeCloset()
-            self.collectionView.reloadData()
-        } else if sender.tag == 1 {
+        if sender.tag == 1 {
             self.clothes = .accessory
             self.collectionView.reloadData()
         } else if sender.tag == 2 {
@@ -181,13 +169,12 @@ class PurchasingViewController: UIViewController {
     }
     
     private func configureButtons() {
-        self.closetButton.tag = 0
         self.accessoryButton.tag = 1
         self.shirtButton.tag = 2
         self.pantButton.tag = 3
         self.shoesButton.tag = 4
         
-        self.closetButton.isSelected = true
+        self.accessoryButton.isSelected = true
         // isNeed?
         self.configureButtonState(buttonCollection: self.clothesButtonCollection)
     }
@@ -239,6 +226,7 @@ class PurchasingViewController: UIViewController {
                 point! -= Int(accessory.price)
                 accessory.isBought = true
                 UserDefaults.standard.set(point, forKey: "point")
+                self.pointLabel.text = String((UserDefaults.standard.object(forKey: "point") as? Int)!)
                 CoreDataManager.shared.saveContext()
                 self.collectionView.reloadData()
             } else {
@@ -260,6 +248,7 @@ class PurchasingViewController: UIViewController {
             print(accessoryImage)
             self.accessoryImage.image = UIImage(named: "bear-\(accessoryImage)")
             UserDefaults.standard.set("bear-\(accessoryImage)", forKey: "accessory")
+            self.collectionView.reloadData()
         }
         [cancel, confirm].forEach(alert.addAction(_:))
         self.present(alert, animated: true)
@@ -279,6 +268,7 @@ class PurchasingViewController: UIViewController {
                 point! -= Int(shirt.price)
                 shirt.isBought = true
                 UserDefaults.standard.set(point, forKey: "point")
+                self.pointLabel.text = String((UserDefaults.standard.object(forKey: "point") as? Int)!)
                 CoreDataManager.shared.saveContext()
                 self.collectionView.reloadData()
             } else {
@@ -299,6 +289,7 @@ class PurchasingViewController: UIViewController {
             let shirtImage = String(describing: shirt.imageName!)
             self.shirtImage.image = UIImage(named: "bear-\(shirtImage)")
             UserDefaults.standard.set("bear-\(shirtImage)", forKey: "shirt")
+            self.collectionView.reloadData()
         }
         [cancel, confirm].forEach(alert.addAction(_:))
         self.present(alert, animated: true)
@@ -318,6 +309,7 @@ class PurchasingViewController: UIViewController {
                 point! -= Int(pants.price)
                 pants.isBought = true
                 UserDefaults.standard.set(point, forKey: "point")
+                self.pointLabel.text = String((UserDefaults.standard.object(forKey: "point") as? Int)!)
                 CoreDataManager.shared.saveContext()
                 self.collectionView.reloadData()
             } else {
@@ -338,6 +330,7 @@ class PurchasingViewController: UIViewController {
             let pantsImage = String(describing: pants.imageName!)
             self.pantsImage.image = UIImage(named: "bear-\(pantsImage)")
             UserDefaults.standard.set("bear-\(pantsImage)", forKey: "pants")
+            self.collectionView.reloadData()
         }
         [cancel, confirm].forEach(alert.addAction(_:))
         self.present(alert, animated: true)
@@ -357,6 +350,7 @@ class PurchasingViewController: UIViewController {
                 point! -= Int(shoes.price)
                 shoes.isBought = true
                 UserDefaults.standard.set(point, forKey: "point")
+                self.pointLabel.text = String((UserDefaults.standard.object(forKey: "point") as? Int)!)
                 CoreDataManager.shared.saveContext()
                 self.collectionView.reloadData()
             } else {
@@ -377,6 +371,7 @@ class PurchasingViewController: UIViewController {
             let shoesImage = String(describing: shoes.imageName!)
             self.shoesImage.image = UIImage(named: "bear-\(shoesImage)")
             UserDefaults.standard.set("bear-\(shoesImage)", forKey: "shoes")
+            self.collectionView.reloadData()
         }
         [cancel, confirm].forEach(alert.addAction(_:))
         self.present(alert, animated: true)
@@ -397,8 +392,6 @@ class PurchasingViewController: UIViewController {
 extension PurchasingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch self.clothes {
-        case .closet:
-            return 0
         case .accessory:
             return CoreDataManager.shared.countAccessory()
 
@@ -417,45 +410,41 @@ extension PurchasingViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PurchasingCell", for: indexPath) as? PurchasingCell else { return UICollectionViewCell() }
         
         switch self.clothes {
-        case .closet:
-            return cell
         case .accessory:
             let accessory = self.accessoryList[indexPath.row]
+            let currentAccessory = UserDefaults.standard.object(forKey: "accessory") as? String
             cell.purchasingImage.image = UIImage(named: "\(accessory.imageName ?? "")")
             cell.purchasingLabel.text = String("\(accessory.price)")
             cell.alreadyBoughtImage.isHidden = accessory.isBought ? false : true
+            cell.wearingNowLabel.isHidden = currentAccessory ?? "" == String("bear-" + "\(accessory.imageName!)") ? false : true
             return cell
 
         case .shirt:
             let shirt = self.shirtList[indexPath.row]
+            let currentShirt = UserDefaults.standard.object(forKey: "shirt") as? String
             cell.purchasingImage.image = UIImage(named: "\(shirt.imageName ?? "")")
             cell.purchasingLabel.text = String("\(shirt.price)")
             cell.alreadyBoughtImage.isHidden = shirt.isBought ? false : true
+            cell.wearingNowLabel.isHidden = currentShirt ?? "" == String("bear-" + "\(shirt.imageName!)") ? false : true
             return cell
 
         case .pants:
             let pants = self.pantsList[indexPath.row]
+            let currentPants = UserDefaults.standard.object(forKey: "pants") as? String
             cell.purchasingImage.image = UIImage(named: "\(pants.imageName ?? "")")
             cell.purchasingLabel.text = String("\(pants.price)")
             cell.alreadyBoughtImage.isHidden = pants.isBought ? false : true
+            cell.wearingNowLabel.isHidden = currentPants ?? "" == String("bear-" + "\(pants.imageName!)") ? false : true
             return cell
-
+            
         case .shoes:
             let shoes = self.shoesList[indexPath.row]
+            let currentShoes = UserDefaults.standard.object(forKey: "shoes") as? String
             cell.purchasingImage.image = UIImage(named: "\(shoes.imageName ?? "")")
             cell.purchasingLabel.text = String("\(shoes.price)")
             cell.alreadyBoughtImage.isHidden = shoes.isBought ? false : true
+            cell.wearingNowLabel.isHidden = currentShoes ?? "" == String("bear-" + "\(shoes.imageName!)") ? false : true
             return cell
-        }
-    }
-    
-    private func initializeCloset() {
-        self.accessoryList.forEach { accessory in
-            var item = closetItem(imageString: "")
-            if accessory.isBought {
-                item.imageString = accessory.imageName!
-                self.closetList.append(item)
-            }
         }
     }
 }
@@ -463,9 +452,6 @@ extension PurchasingViewController: UICollectionViewDataSource {
 extension PurchasingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch self.clothes {
-        case .closet:
-            print("not yet")
-
         case .accessory:
             let accessory = self.accessoryList[indexPath.row]
             if accessory.isBought == true {
@@ -480,7 +466,6 @@ extension PurchasingViewController: UICollectionViewDelegate {
             } else {
                 self.alertBuyingShirt(shirt: shirt)
             }
-            
         case .pants:
             let pants = self.pantsList[indexPath.row]
             if pants.isBought == true {
@@ -496,8 +481,8 @@ extension PurchasingViewController: UICollectionViewDelegate {
             } else {
                 self.alertBuyingShoes(shoes: shoes)
             }
-
         }
+        
     }
     
     

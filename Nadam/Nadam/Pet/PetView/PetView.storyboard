@@ -101,7 +101,7 @@
                             <constraint firstItem="EVo-rw-F8K" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="tg0-tm-JFV"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="보카곰" image="settings" selectedImage="settings_filled" id="ODB-q1-5wt"/>
+                    <tabBarItem key="tabBarItem" title="보카곰" image="bearTab" selectedImage="bearTab_filled" id="ODB-q1-5wt"/>
                     <navigationItem key="navigationItem" id="zGl-gR-q57"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -145,10 +145,10 @@
     </scenes>
     <resources>
         <image name="bear" width="433.33334350585938" height="500"/>
+        <image name="bearTab" width="25" height="25"/>
+        <image name="bearTab_filled" width="25" height="25"/>
         <image name="footprint" width="28" height="26"/>
         <image name="market" width="23.333333969116211" height="25"/>
-        <image name="settings" width="25" height="25"/>
-        <image name="settings_filled" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

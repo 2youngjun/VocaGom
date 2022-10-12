@@ -129,7 +129,6 @@ class SpellingTestViewController: UIViewController, UITextFieldDelegate {
     private func countWordList() {
         var count = 0
         var numbers = [Int]()
-//        wordList = CoreDataManager.shared.fetchWord()
         count = wordList.count
         if count > 10 {
             while numbers.count < 10 {

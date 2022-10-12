@@ -157,7 +157,7 @@ extension ResultViewController: SendTestWordResultDelegate {
 
 extension ResultViewController {
     private func showToast(message : String, font: UIFont = UIFont.NFont.automaticMeaningButton, cntCorrect: Int) {
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/4, y: self.view.frame.size.height - 150, width: 200, height: 40))
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/4, y: self.view.frame.size.height - 170, width: 200, height: 40))
         toastLabel.backgroundColor = UIColor.NColor.subBlue
         toastLabel.textColor = UIColor.white
         toastLabel.font = font
@@ -177,8 +177,6 @@ extension ResultViewController {
             
             point! += cntCorrect * 10
             UserDefaults.standard.set(point, forKey: "point")
-            
-            print(UserDefaults.standard.object(forKey: "point") as? Int)
         })
     }
 }
