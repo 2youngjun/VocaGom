@@ -11,7 +11,6 @@ enum Clothes {
     case accessory
     case shirt
     case pants
-    case shoes
 }
 
 class PurchasingViewController: UIViewController {
@@ -21,8 +20,6 @@ class PurchasingViewController: UIViewController {
     var accessoryList = [Accessory]()
     var shirtList = [Shirt]()
     var pantsList = [Pants]()
-    var shoesList = [Shoes]()
-    
     
     //MARK: IBOutlet Variable
     @IBOutlet weak var navigationTitle: UILabel!
@@ -37,13 +34,11 @@ class PurchasingViewController: UIViewController {
     @IBOutlet weak var accessoryButton: UIButton!
     @IBOutlet weak var shirtButton: UIButton!
     @IBOutlet weak var pantButton: UIButton!
-    @IBOutlet weak var shoesButton: UIButton!
     
     @IBOutlet weak var bearWidth: NSLayoutConstraint!
     @IBOutlet weak var bearHeight: NSLayoutConstraint!
     
     @IBOutlet weak var pantsImage: UIImageView!
-    @IBOutlet weak var shoesImage: UIImageView!
     @IBOutlet weak var shirtImage: UIImageView!
     @IBOutlet weak var accessoryImage: UIImageView!
     @IBOutlet var clothesHeightCollection: [NSLayoutConstraint]!
@@ -76,11 +71,7 @@ class PurchasingViewController: UIViewController {
         } else if sender.tag == 3 {
             self.clothes = .pants
             self.collectionView.reloadData()
-        } else {
-            self.clothes = .shoes
-            self.collectionView.reloadData()
         }
-        
     }
     
     @IBOutlet weak var testPointButton: UIButton!
@@ -112,14 +103,12 @@ class PurchasingViewController: UIViewController {
         self.accessoryList = CoreDataManager.shared.initializeAccessoryList()
         self.shirtList = CoreDataManager.shared.initializeShirtList()
         self.pantsList = CoreDataManager.shared.initializePantsList()
-        self.shoesList = CoreDataManager.shared.initializeShoesList()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         print(UserDefaults.standard.object(forKey: "accessory") as? String ?? "")
         print(UserDefaults.standard.object(forKey: "shirt") as? String ?? "")
         print(UserDefaults.standard.object(forKey: "pants") as? String ?? "")
-        print(UserDefaults.standard.object(forKey: "shoes") as? String ?? "")
         print(self.accessoryImage.image ?? UIImage())
     }
     
@@ -127,10 +116,7 @@ class PurchasingViewController: UIViewController {
     private func refreshBearImagePoint() {
         let pants = UserDefaults.standard.object(forKey: "pants") as? String
         self.pantsImage.image = pants == nil ? UIImage() : UIImage(named: "\(pants ?? "")")
-        
-        let shoes = UserDefaults.standard.object(forKey: "shoes") as? String
-        self.shoesImage.image = shoes == nil ? UIImage() : UIImage(named: "\(shoes ?? "")")
-        
+    
         let shirt = UserDefaults.standard.object(forKey: "shirt") as? String
         self.shirtImage.image = shirt == nil ? UIImage() : UIImage(named: "\(shirt ?? "")")
         
@@ -172,7 +158,6 @@ class PurchasingViewController: UIViewController {
         self.accessoryButton.tag = 1
         self.shirtButton.tag = 2
         self.pantButton.tag = 3
-        self.shoesButton.tag = 4
         
         self.accessoryButton.isSelected = true
         // isNeed?
@@ -222,7 +207,7 @@ class PurchasingViewController: UIViewController {
             var point = UserDefaults.standard.object(forKey: "point") as? Int
             guard point != nil else { return self.alertNotEnoughPoint() }
             
-            if point! > Int(accessory.price) {
+            if point! >= Int(accessory.price) {
                 point! -= Int(accessory.price)
                 accessory.isBought = true
                 UserDefaults.standard.set(point, forKey: "point")
@@ -239,7 +224,7 @@ class PurchasingViewController: UIViewController {
     }
     
     private func alertAlreadyBoughtAccessory(accessory: Accessory) {
-        let alert = UIAlertController(title: "착용하시겠습니까?", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "착용하시겠습니까?", message: nil, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .default) { _ in
             alert.dismiss(animated: true)
         }
@@ -264,7 +249,7 @@ class PurchasingViewController: UIViewController {
             var point = UserDefaults.standard.object(forKey: "point") as? Int
             guard point != nil else { return self.alertNotEnoughPoint() }
             
-            if point! > Int(shirt.price) {
+            if point! >= Int(shirt.price) {
                 point! -= Int(shirt.price)
                 shirt.isBought = true
                 UserDefaults.standard.set(point, forKey: "point")
@@ -281,7 +266,7 @@ class PurchasingViewController: UIViewController {
     }
     
     private func alertAlreadyBoughtShirt(shirt: Shirt) {
-        let alert = UIAlertController(title: "착용하시겠습니까?", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "착용하시겠습니까?", message: nil, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .default) { _ in
             alert.dismiss(animated: true)
         }
@@ -305,7 +290,7 @@ class PurchasingViewController: UIViewController {
             var point = UserDefaults.standard.object(forKey: "point") as? Int
             guard point != nil else { return self.alertNotEnoughPoint() }
 
-            if point! > Int(pants.price) {
+            if point! >= Int(pants.price) {
                 point! -= Int(pants.price)
                 pants.isBought = true
                 UserDefaults.standard.set(point, forKey: "point")
@@ -322,7 +307,7 @@ class PurchasingViewController: UIViewController {
     }
     
     private func alertAlreadyBoughtPants(pants: Pants) {
-        let alert = UIAlertController(title: "착용하시겠습니까?", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "착용하시겠습니까?", message: nil, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .default) { _ in
             alert.dismiss(animated: true)
         }
@@ -330,47 +315,6 @@ class PurchasingViewController: UIViewController {
             let pantsImage = String(describing: pants.imageName!)
             self.pantsImage.image = UIImage(named: "bear-\(pantsImage)")
             UserDefaults.standard.set("bear-\(pantsImage)", forKey: "pants")
-            self.collectionView.reloadData()
-        }
-        [cancel, confirm].forEach(alert.addAction(_:))
-        self.present(alert, animated: true)
-    }
-    
-    // shoes Alert
-    private func alertBuyingShoes(shoes: Shoes) {
-        let alert = UIAlertController(title: "구매하시겠습니까?", message: "\(shoes.price) 젤리가 필요합니다.", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "취소", style: .destructive) { _ in
-            alert.dismiss(animated: true)
-        }
-        let confirm = UIAlertAction(title: "확인", style: .default) { _ in
-            var point = UserDefaults.standard.object(forKey: "point") as? Int
-            guard point != nil else { return self.alertNotEnoughPoint() }
-
-            if point! > Int(shoes.price) {
-                point! -= Int(shoes.price)
-                shoes.isBought = true
-                UserDefaults.standard.set(point, forKey: "point")
-                self.pointLabel.text = String((UserDefaults.standard.object(forKey: "point") as? Int)!)
-                CoreDataManager.shared.saveContext()
-                self.collectionView.reloadData()
-            } else {
-                self.alertNotEnoughPoint()
-            }
-        }
-        
-        [cancel, confirm].forEach(alert.addAction(_:))
-        self.present(alert, animated: true)
-    }
-    
-    private func alertAlreadyBoughtShoes(shoes: Shoes) {
-        let alert = UIAlertController(title: "착용하시겠습니까?", message: "", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "취소", style: .default) { _ in
-            alert.dismiss(animated: true)
-        }
-        let confirm = UIAlertAction(title: "확인", style: .default) { _ in
-            let shoesImage = String(describing: shoes.imageName!)
-            self.shoesImage.image = UIImage(named: "bear-\(shoesImage)")
-            UserDefaults.standard.set("bear-\(shoesImage)", forKey: "shoes")
             self.collectionView.reloadData()
         }
         [cancel, confirm].forEach(alert.addAction(_:))
@@ -400,15 +344,11 @@ extension PurchasingViewController: UICollectionViewDataSource {
 
         case .pants:
             return CoreDataManager.shared.countPants()
-
-        case .shoes:
-            return CoreDataManager.shared.countShoes()
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PurchasingCell", for: indexPath) as? PurchasingCell else { return UICollectionViewCell() }
-        
         switch self.clothes {
         case .accessory:
             let accessory = self.accessoryList[indexPath.row]
@@ -435,15 +375,6 @@ extension PurchasingViewController: UICollectionViewDataSource {
             cell.purchasingLabel.text = String("\(pants.price)")
             cell.alreadyBoughtImage.isHidden = pants.isBought ? false : true
             cell.wearingNowLabel.isHidden = currentPants ?? "" == String("bear-" + "\(pants.imageName!)") ? false : true
-            return cell
-            
-        case .shoes:
-            let shoes = self.shoesList[indexPath.row]
-            let currentShoes = UserDefaults.standard.object(forKey: "shoes") as? String
-            cell.purchasingImage.image = UIImage(named: "\(shoes.imageName ?? "")")
-            cell.purchasingLabel.text = String("\(shoes.price)")
-            cell.alreadyBoughtImage.isHidden = shoes.isBought ? false : true
-            cell.wearingNowLabel.isHidden = currentShoes ?? "" == String("bear-" + "\(shoes.imageName!)") ? false : true
             return cell
         }
     }
@@ -473,19 +404,8 @@ extension PurchasingViewController: UICollectionViewDelegate {
             } else {
                 self.alertBuyingPants(pants: pants)
             }
-
-        case .shoes:
-            let shoes = self.shoesList[indexPath.row]
-            if shoes.isBought == true {
-                self.alertAlreadyBoughtShoes(shoes: shoes)
-            } else {
-                self.alertBuyingShoes(shoes: shoes)
-            }
         }
-        
     }
-    
-    
 }
 
 extension PurchasingViewController: UICollectionViewDelegateFlowLayout {

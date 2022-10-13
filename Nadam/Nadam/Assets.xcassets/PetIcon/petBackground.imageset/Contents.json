@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "하얀바지.png",
+      "filename" : "backgroundColor_수정.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -17,5 +17,9 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true,
+    "template-rendering-intent" : "original"
   }
 }

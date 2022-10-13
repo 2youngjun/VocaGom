@@ -4,8 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,6 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="petBackground" translatesAutoresizingMaskIntoConstraints="NO" id="aHi-fK-onm">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysc-ZK-85J">
                                 <rect key="frame" x="340" y="67" width="30" height="25"/>
                                 <constraints>
@@ -60,13 +63,6 @@
                                     <constraint firstAttribute="height" constant="248" id="v8I-zg-Fee"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="loq-ow-KYR">
-                                <rect key="frame" x="91" y="217" width="208" height="248"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="248" id="Dqq-k3-VeW"/>
-                                    <constraint firstAttribute="width" constant="208" id="eob-IW-ieW"/>
-                                </constraints>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yhW-ry-nZ9">
                                 <rect key="frame" x="91" y="217" width="208" height="248"/>
                                 <constraints>
@@ -83,11 +79,12 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="1" green="0.96862745098039216" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="aHi-fK-onm" secondAttribute="bottom" id="1ui-o0-sek"/>
                             <constraint firstItem="wfO-Dw-JHE" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="DFN-dX-4ys"/>
                             <constraint firstItem="zRG-ma-h22" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Glj-mP-d38"/>
-                            <constraint firstItem="loq-ow-KYR" firstAttribute="top" secondItem="EVo-rw-F8K" secondAttribute="bottom" constant="120" id="QcF-Wy-eHC"/>
+                            <constraint firstItem="aHi-fK-onm" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="HZY-tA-csh"/>
                             <constraint firstItem="EVo-rw-F8K" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="UAr-4m-8lE"/>
                             <constraint firstItem="Cf3-DA-Na0" firstAttribute="top" secondItem="EVo-rw-F8K" secondAttribute="bottom" constant="120" id="Ukj-XN-eCh"/>
                             <constraint firstItem="zRG-ma-h22" firstAttribute="top" secondItem="EVo-rw-F8K" secondAttribute="bottom" constant="120" id="VRB-rx-pUc"/>
@@ -95,13 +92,16 @@
                             <constraint firstItem="ysc-ZK-85J" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="YhV-FO-GXQ"/>
                             <constraint firstItem="Cf3-DA-Na0" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="aay-zs-clt"/>
                             <constraint firstItem="yhW-ry-nZ9" firstAttribute="top" secondItem="EVo-rw-F8K" secondAttribute="bottom" constant="120" id="bKc-3z-4bT"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aHi-fK-onm" secondAttribute="trailing" id="eMa-L4-s4T"/>
                             <constraint firstItem="wfO-Dw-JHE" firstAttribute="top" secondItem="EVo-rw-F8K" secondAttribute="bottom" constant="120" id="gLg-r8-Tj7"/>
                             <constraint firstItem="yhW-ry-nZ9" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="kop-9O-pPL"/>
-                            <constraint firstItem="loq-ow-KYR" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="oJD-cu-As3"/>
+                            <constraint firstItem="aHi-fK-onm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ngc-g2-5lz"/>
                             <constraint firstItem="EVo-rw-F8K" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="tg0-tm-JFV"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="보카곰" image="bearTab" selectedImage="bearTab_filled" id="ODB-q1-5wt"/>
+                    <tabBarItem key="tabBarItem" title="보카곰" image="bearTab" selectedImage="bearTab_filled" id="ODB-q1-5wt">
+                        <color key="badgeColor" name="NBackground"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="zGl-gR-q57"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -112,13 +112,10 @@
                         <outlet property="pointLabel" destination="Jl4-OA-plg" id="qgA-Ue-Ngp"/>
                         <outlet property="purchasingButton" destination="ysc-ZK-85J" id="dAB-fw-d9r"/>
                         <outlet property="shirtImage" destination="yhW-ry-nZ9" id="cfn-oX-2PP"/>
-                        <outlet property="shoesImage" destination="loq-ow-KYR" id="Pdj-P0-0wl"/>
                         <outletCollection property="clothesWidthCollection" destination="pxz-sX-ter" collectionClass="NSMutableArray" id="lL4-5u-EYg"/>
-                        <outletCollection property="clothesWidthCollection" destination="eob-IW-ieW" collectionClass="NSMutableArray" id="GE5-u2-nwu"/>
                         <outletCollection property="clothesWidthCollection" destination="VKN-9v-Ov5" collectionClass="NSMutableArray" id="5Dp-Qx-tDa"/>
                         <outletCollection property="clothesWidthCollection" destination="Mgc-zY-DBW" collectionClass="NSMutableArray" id="rMQ-IZ-0Xk"/>
                         <outletCollection property="clothesHeightCollection" destination="v8I-zg-Fee" collectionClass="NSMutableArray" id="gwZ-Ex-tUv"/>
-                        <outletCollection property="clothesHeightCollection" destination="Dqq-k3-VeW" collectionClass="NSMutableArray" id="Zb6-qg-X1z"/>
                         <outletCollection property="clothesHeightCollection" destination="B00-hc-dkk" collectionClass="NSMutableArray" id="oM0-rJ-rdO"/>
                         <outletCollection property="clothesHeightCollection" destination="57Q-uW-Tsg" collectionClass="NSMutableArray" id="WwL-Gf-3pW"/>
                     </connections>
@@ -149,8 +146,9 @@
         <image name="bearTab_filled" width="25" height="25"/>
         <image name="footprint" width="28" height="26"/>
         <image name="market" width="23.333333969116211" height="25"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="petBackground" width="390" height="844"/>
+        <namedColor name="NBackground">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

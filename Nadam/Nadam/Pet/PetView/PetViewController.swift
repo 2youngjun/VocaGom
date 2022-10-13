@@ -18,17 +18,14 @@ class PetViewController: UIViewController {
     @IBOutlet weak var pointLabel: UILabel!
     @IBOutlet weak var purchasingButton: UIButton!
     
-    
     @IBOutlet weak var bearImageWidth: NSLayoutConstraint!
     @IBOutlet weak var bearImageHeight: NSLayoutConstraint!
     @IBOutlet var clothesWidthCollection: [NSLayoutConstraint]!
     @IBOutlet var clothesHeightCollection: [NSLayoutConstraint]!
     
     @IBOutlet weak var pantsImage: UIImageView!
-    @IBOutlet weak var shoesImage: UIImageView!
     @IBOutlet weak var shirtImage: UIImageView!
     @IBOutlet weak var accessoryImage: UIImageView!
-    
     
     //MARK: IBOutlet Function
     @IBAction func tapPurchasingButton(_ sender: UIButton) {
@@ -51,9 +48,6 @@ class PetViewController: UIViewController {
         let pants = UserDefaults.standard.object(forKey: "pants") as? String
         self.pantsImage.image = pants == nil ? UIImage() : UIImage(named: "\(pants ?? "")")
         
-        let shoes = UserDefaults.standard.object(forKey: "shoes") as? String
-        self.shoesImage.image = shoes == nil ? UIImage() : UIImage(named: "\(shoes ?? "")")
-        
         let shirt = UserDefaults.standard.object(forKey: "shirt") as? String
         self.shirtImage.image = shirt == nil ? UIImage() : UIImage(named: "\(shirt ?? "")")
         
@@ -70,7 +64,7 @@ class PetViewController: UIViewController {
         self.configurePointLabel()
         self.configureMainImage()
     }
-    
+
     private func configurePointLabel() {
         self.pointLabel.font = UIFont.NFont.noSearchedTextFont
         self.view.backgroundColor = UIColor.NColor.background

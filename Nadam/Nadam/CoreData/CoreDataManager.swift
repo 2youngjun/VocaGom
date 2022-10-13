@@ -74,15 +74,14 @@ class CoreDataManager {
     }
     
     func firstInstallAccessory() {
-        addAccessory(imageName: "accessory0", isBought: false, price: 200)
-        addAccessory(imageName: "accessory1", isBought: false, price: 240)
-        addAccessory(imageName: "accessory2", isBought: false, price: 280)
-        addAccessory(imageName: "accessory3", isBought: false, price: 320)
-        addAccessory(imageName: "accessory4", isBought: false, price: 350)
-        addAccessory(imageName: "accessory5", isBought: false, price: 400)
-        addAccessory(imageName: "accessory6", isBought: false, price: 450)
-        addAccessory(imageName: "accessory7", isBought: false, price: 500)
-        addAccessory(imageName: "accessory8", isBought: false, price: 550)
+        addAccessory(imageName: "accessory0", isBought: false, price: 250)
+        addAccessory(imageName: "accessory1", isBought: false, price: 300)
+        addAccessory(imageName: "accessory2", isBought: false, price: 300)
+        addAccessory(imageName: "accessory3", isBought: false, price: 350)
+        addAccessory(imageName: "accessory4", isBought: false, price: 400)
+        addAccessory(imageName: "accessory5", isBought: false, price: 450)
+        addAccessory(imageName: "accessory6", isBought: false, price: 500)
+        addAccessory(imageName: "accessory7", isBought: false, price: 550)
     }
     
     func countAccessory() -> Int {
@@ -137,18 +136,15 @@ class CoreDataManager {
     }
     
     func firstInstallShirt() {
-        addShirt(imageName: "shirt0", isBought: false, price: 200)
-        addShirt(imageName: "shirt1", isBought: false, price: 200)
-        addShirt(imageName: "shirt2", isBought: false, price: 220)
-        addShirt(imageName: "shirt3", isBought: false, price: 220)
-        addShirt(imageName: "shirt4", isBought: false, price: 240)
-        addShirt(imageName: "shirt5", isBought: false, price: 240)
-        addShirt(imageName: "shirt6", isBought: false, price: 240)
-        addShirt(imageName: "shirt7", isBought: false, price: 300)
-        addShirt(imageName: "shirt8", isBought: false, price: 300)
-        addShirt(imageName: "shirt9", isBought: false, price: 400)
-        addShirt(imageName: "shirt10", isBought: false, price: 450)
-        addShirt(imageName: "shirt11", isBought: false, price: 500)
+        addShirt(imageName: "shirt0", isBought: false, price: 250)
+        addShirt(imageName: "shirt1", isBought: false, price: 250)
+        addShirt(imageName: "shirt2", isBought: false, price: 250)
+        addShirt(imageName: "shirt3", isBought: false, price: 250)
+        addShirt(imageName: "shirt4", isBought: false, price: 350)
+        addShirt(imageName: "shirt5", isBought: false, price: 350)
+        addShirt(imageName: "shirt6", isBought: false, price: 450)
+        addShirt(imageName: "shirt7", isBought: false, price: 500)
+        addShirt(imageName: "shirt8", isBought: false, price: 500)
     }
     
     func countShirt() -> Int {
@@ -202,15 +198,11 @@ class CoreDataManager {
     }
     
     func firstInstallPants() {
-        addPants(imageName: "pants0", isBought: false, price: 200)
-        addPants(imageName: "pants1", isBought: false, price: 220)
-        addPants(imageName: "pants2", isBought: false, price: 220)
-        addPants(imageName: "pants3", isBought: false, price: 240)
-        addPants(imageName: "pants4", isBought: false, price: 240)
-        addPants(imageName: "pants5", isBought: false, price: 280)
-        addPants(imageName: "pants6", isBought: false, price: 280)
-        addPants(imageName: "pants7", isBought: false, price: 320)
-        addPants(imageName: "pants8", isBought: false, price: 320)
+        addPants(imageName: "pants0", isBought: false, price: 240)
+        addPants(imageName: "pants1", isBought: false, price: 240)
+        addPants(imageName: "pants2", isBought: false, price: 280)
+        addPants(imageName: "pants3", isBought: false, price: 280)
+        addPants(imageName: "pants4", isBought: false, price: 320)
     }
     
     func countPants() -> Int {
@@ -221,60 +213,6 @@ class CoreDataManager {
             count = pantsArray.count
         } catch {
             print("----- Count Pants Error -----")
-        }
-        return count
-    }
-    
-    // Shoes CoreData Manager
-    func initializeShoesList() -> [Shoes] {
-        let request: NSFetchRequest<Shoes> = Shoes.fetchRequest()
-        var count = 0
-        var additionalImageIndex = 0
-        
-        do {
-            let shoesArray = try context.fetch(request)
-            count = shoesArray.count
-            if count == 0 {
-                self.firstInstallShoes()
-            } else {
-                while UIImage(named: "shoes\(count + additionalImageIndex)") != nil {
-                    addShoes(imageName: "shoes\(count + additionalImageIndex)", isBought: false, price: 400)
-                    additionalImageIndex += 1
-                }
-            }
-            
-            let updatedShoesArray = try context.fetch(request)
-            // testCode
-            updatedShoesArray.forEach({ shoes in
-                print("\(shoes.imageName!) bool: \(shoes.isBought). price: \(shoes.price)")
-            })
-            return updatedShoesArray
-        } catch {
-            print("----- initialize Shoes Eror ------")
-            return []
-        }
-    }
-    
-    func addShoes(imageName: String, isBought: Bool, price: Int) {
-        let shoes = Shoes(context: persistentContainer.viewContext)
-        shoes.imageName = imageName
-        shoes.isBought = isBought
-        shoes.price = Int16(price)
-        saveContext()
-    }
-    
-    func firstInstallShoes() {
-//        addShoes(imageName: "shoes0", isBought: false, price: 150)
-    }
-    
-    func countShoes() -> Int {
-        let request: NSFetchRequest<Shoes> = Shoes.fetchRequest()
-        var count = 0
-        do {
-            let accessoryShoes = try context.fetch(request)
-            count = accessoryShoes.count
-        } catch {
-            print("----- Count Shoes Error -----")
         }
         return count
     }

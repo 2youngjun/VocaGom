@@ -66,7 +66,7 @@
                                 <rect key="frame" x="0.0" y="397" width="390" height="54"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PX1-PP-IHj">
-                                        <rect key="frame" x="10" y="0.0" width="288" height="54"/>
+                                        <rect key="frame" x="10" y="0.0" width="216" height="54"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bM-F0-isz">
                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="54"/>
@@ -99,17 +99,6 @@
                                                 <state key="normal" image="tab3"/>
                                                 <connections>
                                                     <action selector="tapClothesButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="BNW-cG-w6k"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxq-kJ-DjY">
-                                                <rect key="frame" x="216" y="0.0" width="72" height="54"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="72" id="rtl-Xe-5cl"/>
-                                                </constraints>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" image="tab4"/>
-                                                <connections>
-                                                    <action selector="tapClothesButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xS1-3y-c7Q"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -170,10 +159,6 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ssT-vE-DAQ">
                                                     <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                                     <color key="backgroundColor" red="0.71372549019607845" green="0.6588235294117647" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="85" id="BT5-xv-4s6"/>
-                                                        <constraint firstAttribute="height" constant="85" id="mQT-DW-hg5"/>
-                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkS-0o-kli">
                                                     <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
@@ -183,6 +168,8 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="ssT-vE-DAQ" firstAttribute="trailing" secondItem="6vz-zL-BSp" secondAttribute="trailing" id="0om-qT-dqF"/>
+                                                <constraint firstItem="ssT-vE-DAQ" firstAttribute="top" secondItem="6vz-zL-BSp" secondAttribute="top" id="3MO-Tu-Nj7"/>
                                                 <constraint firstItem="mkS-0o-kli" firstAttribute="trailing" secondItem="ssT-vE-DAQ" secondAttribute="trailing" id="8q0-M2-Aeo"/>
                                                 <constraint firstItem="6vz-zL-BSp" firstAttribute="leading" secondItem="aeN-yZ-boN" secondAttribute="leading" id="A3B-5e-Aao"/>
                                                 <constraint firstItem="Di5-TS-vhs" firstAttribute="top" secondItem="ssT-vE-DAQ" secondAttribute="bottom" constant="5" id="CZP-bH-212"/>
@@ -193,9 +180,11 @@
                                                 <constraint firstItem="mkS-0o-kli" firstAttribute="bottom" secondItem="ssT-vE-DAQ" secondAttribute="bottom" id="cAP-V1-YiW"/>
                                                 <constraint firstItem="mkS-0o-kli" firstAttribute="leading" secondItem="ssT-vE-DAQ" secondAttribute="leading" id="ghI-yU-u3J"/>
                                                 <constraint firstAttribute="trailing" secondItem="6vz-zL-BSp" secondAttribute="trailing" id="hi5-Mt-9dP"/>
+                                                <constraint firstItem="ssT-vE-DAQ" firstAttribute="leading" secondItem="6vz-zL-BSp" secondAttribute="leading" id="lEB-p7-QSa"/>
                                                 <constraint firstAttribute="trailing" secondItem="ssT-vE-DAQ" secondAttribute="trailing" id="n4h-w7-KIr"/>
                                                 <constraint firstAttribute="bottom" secondItem="Di5-TS-vhs" secondAttribute="bottom" id="tC8-7d-eMC"/>
                                                 <constraint firstItem="ssT-vE-DAQ" firstAttribute="leading" secondItem="aeN-yZ-boN" secondAttribute="leading" id="wKt-2I-lPd"/>
+                                                <constraint firstItem="ssT-vE-DAQ" firstAttribute="bottom" secondItem="6vz-zL-BSp" secondAttribute="bottom" id="wsB-xy-AvA"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="85" height="110"/>
@@ -221,13 +210,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="248" id="BbX-0E-HTk"/>
                                     <constraint firstAttribute="width" constant="208" id="Q4q-ZD-Rwh"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gX7-D5-IEm">
-                                <rect key="frame" x="71" y="157" width="248" height="208"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="208" id="YJg-3a-2tJ"/>
-                                    <constraint firstAttribute="width" constant="248" id="apk-sK-8C4"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shirt0" translatesAutoresizingMaskIntoConstraints="NO" id="Kvu-en-9sF">
@@ -260,7 +242,6 @@
                             <constraint firstItem="Y0Z-pl-WvH" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="EFI-cS-7hp"/>
                             <constraint firstItem="Kvu-en-9sF" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="FQ7-x7-z4r"/>
                             <constraint firstItem="YeP-RG-sBT" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="17.5" id="G3Y-6R-rEh"/>
-                            <constraint firstItem="gX7-D5-IEm" firstAttribute="top" secondItem="bfQ-ZE-07O" secondAttribute="bottom" constant="60" id="ICA-sQ-tyd"/>
                             <constraint firstAttribute="trailing" secondItem="HbU-4N-OAp" secondAttribute="trailing" id="OfA-tQ-8nP"/>
                             <constraint firstItem="HYi-A9-fdT" firstAttribute="top" secondItem="bfQ-ZE-07O" secondAttribute="bottom" constant="60" id="RX1-tM-gai"/>
                             <constraint firstItem="Y0Z-pl-WvH" firstAttribute="top" secondItem="YeP-RG-sBT" secondAttribute="bottom" constant="50" id="TEZ-3q-A3V"/>
@@ -273,7 +254,6 @@
                             <constraint firstAttribute="bottom" secondItem="9AK-So-8Hj" secondAttribute="bottom" id="fsk-P1-9to"/>
                             <constraint firstItem="HYi-A9-fdT" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="fvP-qD-Wvv"/>
                             <constraint firstItem="bfQ-ZE-07O" firstAttribute="top" secondItem="T18-4a-qpC" secondAttribute="bottom" constant="20" id="jE3-Gl-WUV"/>
-                            <constraint firstItem="gX7-D5-IEm" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="kfc-Tz-Rjf"/>
                             <constraint firstAttribute="trailing" secondItem="9AK-So-8Hj" secondAttribute="trailing" id="lFO-80-ywJ"/>
                             <constraint firstItem="Kvu-en-9sF" firstAttribute="top" secondItem="bfQ-ZE-07O" secondAttribute="bottom" constant="60" id="p8V-4w-mTy"/>
                             <constraint firstItem="ohw-jU-wwx" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="pFh-Sx-Na6"/>
@@ -297,17 +277,12 @@
                         <outlet property="pointLabel" destination="T5q-g5-KOl" id="fVH-VX-y9e"/>
                         <outlet property="shirtButton" destination="0ou-nA-Hex" id="Qib-Sr-dr7"/>
                         <outlet property="shirtImage" destination="Kvu-en-9sF" id="FLl-cF-LVv"/>
-                        <outlet property="shoesButton" destination="uxq-kJ-DjY" id="izN-Yn-qKk"/>
-                        <outlet property="shoesImage" destination="gX7-D5-IEm" id="7qC-Iq-dVm"/>
                         <outlet property="testPointButton" destination="Y0Z-pl-WvH" id="BSw-46-WX2"/>
                         <outletCollection property="clothesButtonCollection" destination="7bM-F0-isz" collectionClass="NSMutableArray" id="uTT-wk-BMn"/>
                         <outletCollection property="clothesButtonCollection" destination="0ou-nA-Hex" collectionClass="NSMutableArray" id="f0I-Ro-lhp"/>
                         <outletCollection property="clothesButtonCollection" destination="24N-8k-59a" collectionClass="NSMutableArray" id="82F-xD-q0d"/>
-                        <outletCollection property="clothesButtonCollection" destination="uxq-kJ-DjY" collectionClass="NSMutableArray" id="LuR-2g-GSy"/>
                         <outletCollection property="clothesHeightCollection" destination="BbX-0E-HTk" collectionClass="NSMutableArray" id="Q7U-Ar-hN3"/>
                         <outletCollection property="clothesWidthCollection" destination="Q4q-ZD-Rwh" collectionClass="NSMutableArray" id="Ql2-vF-NSG"/>
-                        <outletCollection property="clothesHeightCollection" destination="YJg-3a-2tJ" collectionClass="NSMutableArray" id="OcY-NC-K6D"/>
-                        <outletCollection property="clothesWidthCollection" destination="apk-sK-8C4" collectionClass="NSMutableArray" id="hax-7c-GzN"/>
                         <outletCollection property="clothesHeightCollection" destination="twj-lo-ZzI" collectionClass="NSMutableArray" id="96h-mw-aoi"/>
                         <outletCollection property="clothesWidthCollection" destination="UnD-FC-vnr" collectionClass="NSMutableArray" id="MuP-u1-Thh"/>
                         <outletCollection property="clothesHeightCollection" destination="Bbo-08-rZz" collectionClass="NSMutableArray" id="JCt-f0-2WA"/>
@@ -329,7 +304,6 @@
         <image name="tab1" width="30" height="11"/>
         <image name="tab2" width="26" height="24"/>
         <image name="tab3" width="26.333333969116211" height="24.333333969116211"/>
-        <image name="tab4" width="25" height="23"/>
         <namedColor name="NBlack">
             <color red="0.12156862745098039" green="0.13333333333333333" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

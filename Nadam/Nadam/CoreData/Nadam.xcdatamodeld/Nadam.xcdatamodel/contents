@@ -15,11 +15,6 @@
         <attribute name="isBought" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="Shoes" representedClassName="Shoes" syncable="YES" codeGenerationType="class">
-        <attribute name="imageName" optional="YES" attributeType="String"/>
-        <attribute name="isBought" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-    </entity>
     <entity name="Word" representedClassName="Word" syncable="YES" codeGenerationType="class">
         <attribute name="createTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="example" optional="YES" attributeType="String"/>

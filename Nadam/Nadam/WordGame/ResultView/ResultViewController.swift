@@ -158,7 +158,7 @@ extension ResultViewController: SendTestWordResultDelegate {
 extension ResultViewController {
     private func showToast(message : String, font: UIFont = UIFont.NFont.automaticMeaningButton, cntCorrect: Int) {
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/4, y: self.view.frame.size.height - 170, width: 200, height: 40))
-        toastLabel.backgroundColor = UIColor.NColor.subBlue
+        toastLabel.backgroundColor = UIColor.NColor.orange
         toastLabel.textColor = UIColor.white
         toastLabel.font = font
         toastLabel.textAlignment = .center;
@@ -167,7 +167,7 @@ extension ResultViewController {
         toastLabel.layer.cornerRadius = 10;
         toastLabel.clipsToBounds = true
         self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 4.0, delay: 1.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 2.0, delay: 1.0, options: .curveEaseOut, animations: {
             toastLabel.alpha = 0.0
         }, completion: {(isCompleted) in
             toastLabel.removeFromSuperview()
