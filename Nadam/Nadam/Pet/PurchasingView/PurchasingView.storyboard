@@ -226,25 +226,15 @@
                                     <constraint firstAttribute="height" constant="208" id="Bbo-08-rZz"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0Z-pl-WvH">
-                                <rect key="frame" x="20" y="147" width="75" height="34.333333333333343"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="tapPlusPoint:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wSY-yw-HKt"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="l4D-gJ-xgR" firstAttribute="top" secondItem="T18-4a-qpC" secondAttribute="bottom" constant="20" id="2yu-Hg-MWv"/>
                             <constraint firstItem="ohw-jU-wwx" firstAttribute="top" secondItem="bfQ-ZE-07O" secondAttribute="bottom" constant="60" id="4lS-ou-yqq"/>
-                            <constraint firstItem="Y0Z-pl-WvH" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="EFI-cS-7hp"/>
                             <constraint firstItem="Kvu-en-9sF" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="FQ7-x7-z4r"/>
                             <constraint firstItem="YeP-RG-sBT" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="17.5" id="G3Y-6R-rEh"/>
                             <constraint firstAttribute="trailing" secondItem="HbU-4N-OAp" secondAttribute="trailing" id="OfA-tQ-8nP"/>
                             <constraint firstItem="HYi-A9-fdT" firstAttribute="top" secondItem="bfQ-ZE-07O" secondAttribute="bottom" constant="60" id="RX1-tM-gai"/>
-                            <constraint firstItem="Y0Z-pl-WvH" firstAttribute="top" secondItem="YeP-RG-sBT" secondAttribute="bottom" constant="50" id="TEZ-3q-A3V"/>
                             <constraint firstItem="8rP-9o-jbz" firstAttribute="top" secondItem="bfQ-ZE-07O" secondAttribute="bottom" constant="60" id="TNT-be-sST"/>
                             <constraint firstItem="YeP-RG-sBT" firstAttribute="top" secondItem="T18-4a-qpC" secondAttribute="bottom" constant="20" id="a22-cn-i6n"/>
                             <constraint firstItem="HbU-4N-OAp" firstAttribute="top" secondItem="bfQ-ZE-07O" secondAttribute="bottom" constant="300" id="atF-aV-C2e"/>
@@ -277,7 +267,6 @@
                         <outlet property="pointLabel" destination="T5q-g5-KOl" id="fVH-VX-y9e"/>
                         <outlet property="shirtButton" destination="0ou-nA-Hex" id="Qib-Sr-dr7"/>
                         <outlet property="shirtImage" destination="Kvu-en-9sF" id="FLl-cF-LVv"/>
-                        <outlet property="testPointButton" destination="Y0Z-pl-WvH" id="BSw-46-WX2"/>
                         <outletCollection property="clothesButtonCollection" destination="7bM-F0-isz" collectionClass="NSMutableArray" id="uTT-wk-BMn"/>
                         <outletCollection property="clothesButtonCollection" destination="0ou-nA-Hex" collectionClass="NSMutableArray" id="f0I-Ro-lhp"/>
                         <outletCollection property="clothesButtonCollection" destination="24N-8k-59a" collectionClass="NSMutableArray" id="82F-xD-q0d"/>

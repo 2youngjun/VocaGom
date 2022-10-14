@@ -43,7 +43,6 @@ class CoreDataManager {
         do {
             let accessoryArray = try context.fetch(request)
             count = accessoryArray.count
-            print(count)
             if count == 0 {
                 self.firstInstallAccessory()
             } else {
@@ -54,10 +53,6 @@ class CoreDataManager {
             }
             
             let updatedAccessoryArray = try context.fetch(request)
-            // testCode
-            updatedAccessoryArray.forEach({ accessory in
-                print("\(accessory.imageName!) bool: \(accessory.isBought). price: \(accessory.price)")
-            })
             return updatedAccessoryArray
         } catch {
             print("----- initialize Accessory Eror ------")
@@ -104,8 +99,6 @@ class CoreDataManager {
         do {
             let shirtArray = try context.fetch(request)
             count = shirtArray.count
-            print(count)
-            print("💙\(shirtArray)")
             if count == 0 {
                 self.firstInstallShirt()
             } else {
@@ -114,12 +107,7 @@ class CoreDataManager {
                     additionalImageIndex += 1
                 }
             }
-            
             let updatedShirtArray = try context.fetch(request)
-            // testCode
-            updatedShirtArray.forEach({ shirt in
-                print("\(shirt.imageName!) bool: \(shirt.isBought). price: \(shirt.price)")
-            })
             return updatedShirtArray
         } catch {
             print("----- initialize Accessory Eror ------")
@@ -178,10 +166,6 @@ class CoreDataManager {
             }
             
             let updatedPantsArray = try context.fetch(request)
-            // testCode
-            updatedPantsArray.forEach({ pants in
-                print("\(pants.imageName!) bool: \(pants.isBought). price: \(pants.price)")
-            })
             return updatedPantsArray
         } catch {
             print("----- initialize Pants Eror ------")
@@ -240,7 +224,6 @@ class CoreDataManager {
             for index in wordArray.indices {
                 if wordArray[index].id == word.id
                 {
-//                    showDeleteWord(word: word)
                     self.context.delete(word)
                     break
                 }
@@ -351,21 +334,4 @@ class CoreDataManager {
         
         return word
     }
-    
-//    func getWord(word: Word) -> Word {
-//        var wordArray = [Word]()
-//        var resultWord: Word
-//        let request: NSFetchRequest<Word> = Word.fetchRequest()
-//        do {
-//            wordArray = try context.fetch(request)
-//            wordArray.forEach { indexWord in
-//                if indexWord
-//            }
-//            
-//        } catch {
-//            print("-----fetchWord error-----")
-//        }
-//        return wordArray[indexPath.row]
-//    }
-    
 }

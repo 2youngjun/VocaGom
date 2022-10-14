@@ -74,27 +74,9 @@ class PurchasingViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var testPointButton: UIButton!
-    @IBAction func tapPlusPoint(_ sender: UIButton) {
-        var point = UserDefaults.standard.object(forKey: "point") as? Int
-        if point == nil {
-            point = 0
-        }
-        point! += 100
-        UserDefaults.standard.set(point, forKey: "point")
-        testPointButton.setTitle("\(String(describing: point))", for: .normal)
-
-        print(point!)
-    }
-    func testPoint() {
-        let point = UserDefaults.standard.object(forKey: "point") as? Int
-        testPointButton.setTitle("\(String(describing: point))", for: .normal)
-    }
-    
     //MARK: View Lifecycle Function
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.testPoint()
         self.styleFunction()
     }
     
@@ -103,13 +85,6 @@ class PurchasingViewController: UIViewController {
         self.accessoryList = CoreDataManager.shared.initializeAccessoryList()
         self.shirtList = CoreDataManager.shared.initializeShirtList()
         self.pantsList = CoreDataManager.shared.initializePantsList()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        print(UserDefaults.standard.object(forKey: "accessory") as? String ?? "")
-        print(UserDefaults.standard.object(forKey: "shirt") as? String ?? "")
-        print(UserDefaults.standard.object(forKey: "pants") as? String ?? "")
-        print(self.accessoryImage.image ?? UIImage())
     }
     
     //MARK: Style Function
@@ -230,7 +205,6 @@ class PurchasingViewController: UIViewController {
         }
         let confirm = UIAlertAction(title: "확인", style: .default) { _ in
             let accessoryImage = String(describing: accessory.imageName!)
-            print(accessoryImage)
             self.accessoryImage.image = UIImage(named: "bear-\(accessoryImage)")
             UserDefaults.standard.set("bear-\(accessoryImage)", forKey: "accessory")
             self.collectionView.reloadData()

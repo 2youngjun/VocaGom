@@ -105,14 +105,12 @@ class GameListViewController: UIViewController {
     //MARK: IBAction Function
     @IBAction func tapRainTestButton(_ sender: UIButton) {
         self.whichTestIndex = sender.tag
-        print(self.whichTestIndex)
         self.delegate?.sendWhichTestIndex(index: self.whichTestIndex)
         self.present(self.selectTestListViewController, animated: true)
     }
     
     @IBAction func tapSpellingTestButton(_ sender: UIButton) {
         self.whichTestIndex = sender.tag
-        print(self.whichTestIndex)
         self.delegate?.sendWhichTestIndex(index: self.whichTestIndex)
         self.present(self.selectTestListViewController, animated: true)
     }
