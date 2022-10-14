@@ -36,7 +36,7 @@ class SearchViewController: UIViewController {
     private func configureSearchedLabel() {
         self.noSearchedLabel.isHidden = false
         self.noSearchedImage.isHidden = false
-        self.noSearchedLabel.textColor = UIColor.NColor.gray
+        self.noSearchedLabel.textColor = UIColor.NColor.middleGray
         self.noSearchedLabel.font = UIFont.NFont.noSearchedTextFont
     }
     

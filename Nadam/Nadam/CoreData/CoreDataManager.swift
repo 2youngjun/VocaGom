@@ -10,7 +10,6 @@ import CoreData
 import UIKit
 
 class CoreDataManager {
-    // CoreDataManager.함수
     static let shared: CoreDataManager = CoreDataManager()
     
     lazy var persistentContainer: NSPersistentContainer = {
@@ -35,7 +34,174 @@ class CoreDataManager {
         }
     }
     
-    // 단어 추가/생성/삭제 함수
+    // Accessory CoreData Manager
+    func initializeAccessoryList() -> [Accessory] {
+        let request: NSFetchRequest<Accessory> = Accessory.fetchRequest()
+        var count = 0
+        var additionalImageIndex = 0
+        
+        do {
+            let accessoryArray = try context.fetch(request)
+            count = accessoryArray.count
+            if count == 0 {
+                self.firstInstallAccessory()
+            } else {
+                while UIImage(named: "accessory\(count + additionalImageIndex)") != nil {
+                    addAccessory(imageName: "accessory\(count + additionalImageIndex)", isBought: false, price: 400)
+                    additionalImageIndex += 1
+                }
+            }
+            
+            let updatedAccessoryArray = try context.fetch(request)
+            return updatedAccessoryArray
+        } catch {
+            print("----- initialize Accessory Eror ------")
+            return []
+        }
+    }
+    
+    func addAccessory(imageName: String, isBought: Bool, price: Int) {
+        let accessory = Accessory(context: persistentContainer.viewContext)
+        accessory.imageName = imageName
+        accessory.isBought = isBought
+        accessory.price = Int16(price)
+        saveContext()
+    }
+    
+    func firstInstallAccessory() {
+        addAccessory(imageName: "accessory0", isBought: false, price: 250)
+        addAccessory(imageName: "accessory1", isBought: false, price: 300)
+        addAccessory(imageName: "accessory2", isBought: false, price: 300)
+        addAccessory(imageName: "accessory3", isBought: false, price: 350)
+        addAccessory(imageName: "accessory4", isBought: false, price: 400)
+        addAccessory(imageName: "accessory5", isBought: false, price: 450)
+        addAccessory(imageName: "accessory6", isBought: false, price: 500)
+        addAccessory(imageName: "accessory7", isBought: false, price: 550)
+    }
+    
+    func countAccessory() -> Int {
+        let request: NSFetchRequest<Accessory> = Accessory.fetchRequest()
+        var count = 0
+        do {
+            let accessoryArray = try context.fetch(request)
+            count = accessoryArray.count
+        } catch {
+            print("----- Count Accessory Error -----")
+        }
+        return count
+    }
+    
+    // Shirt CoreData Manager
+    func initializeShirtList() -> [Shirt] {
+        let request: NSFetchRequest<Shirt> = Shirt.fetchRequest()
+        var count = 0
+        var additionalImageIndex = 0
+        do {
+            let shirtArray = try context.fetch(request)
+            count = shirtArray.count
+            if count == 0 {
+                self.firstInstallShirt()
+            } else {
+                while UIImage(named: "shirt\(count + additionalImageIndex)") != nil {
+                    addShirt(imageName: "shirt\(count + additionalImageIndex)", isBought: false, price: 400)
+                    additionalImageIndex += 1
+                }
+            }
+            let updatedShirtArray = try context.fetch(request)
+            return updatedShirtArray
+        } catch {
+            print("----- initialize Accessory Eror ------")
+            return []
+        }
+    }
+    
+    func addShirt(imageName: String, isBought: Bool, price: Int) {
+        let shirt = Shirt(context: persistentContainer.viewContext)
+        shirt.imageName = imageName
+        shirt.isBought = isBought
+        shirt.price = Int16(price)
+        saveContext()
+    }
+    
+    func firstInstallShirt() {
+        addShirt(imageName: "shirt0", isBought: false, price: 250)
+        addShirt(imageName: "shirt1", isBought: false, price: 250)
+        addShirt(imageName: "shirt2", isBought: false, price: 250)
+        addShirt(imageName: "shirt3", isBought: false, price: 250)
+        addShirt(imageName: "shirt4", isBought: false, price: 350)
+        addShirt(imageName: "shirt5", isBought: false, price: 350)
+        addShirt(imageName: "shirt6", isBought: false, price: 450)
+        addShirt(imageName: "shirt7", isBought: false, price: 500)
+        addShirt(imageName: "shirt8", isBought: false, price: 500)
+    }
+    
+    func countShirt() -> Int {
+        let request: NSFetchRequest<Shirt> = Shirt.fetchRequest()
+        var count = 0
+        do {
+            let shirtArray = try context.fetch(request)
+            count = shirtArray.count
+        } catch {
+            print("----- Count Shirt Error -----")
+        }
+        return count
+    }
+    
+    // Pants CoreData Manager
+    func initializePantsList() -> [Pants] {
+        let request: NSFetchRequest<Pants> = Pants.fetchRequest()
+        var count = 0
+        var additionalImageIndex = 0
+        
+        do {
+            let pantsArray = try context.fetch(request)
+            count = pantsArray.count
+            if count == 0 {
+                self.firstInstallPants()
+            } else {
+                while UIImage(named: "pants\(count + additionalImageIndex)") != nil {
+                    addPants(imageName: "pants\(count + additionalImageIndex)", isBought: false, price: 400)
+                    additionalImageIndex += 1
+                }
+            }
+            
+            let updatedPantsArray = try context.fetch(request)
+            return updatedPantsArray
+        } catch {
+            print("----- initialize Pants Eror ------")
+            return []
+        }
+    }
+    
+    func addPants(imageName: String, isBought: Bool, price: Int) {
+        let pants = Pants(context: persistentContainer.viewContext)
+        pants.imageName = imageName
+        pants.isBought = isBought
+        pants.price = Int16(price)
+        saveContext()
+    }
+    
+    func firstInstallPants() {
+        addPants(imageName: "pants0", isBought: false, price: 240)
+        addPants(imageName: "pants1", isBought: false, price: 240)
+        addPants(imageName: "pants2", isBought: false, price: 280)
+        addPants(imageName: "pants3", isBought: false, price: 280)
+        addPants(imageName: "pants4", isBought: false, price: 320)
+    }
+    
+    func countPants() -> Int {
+        let request: NSFetchRequest<Pants> = Pants.fetchRequest()
+        var count = 0
+        do {
+            let pantsArray = try context.fetch(request)
+            count = pantsArray.count
+        } catch {
+            print("----- Count Pants Error -----")
+        }
+        return count
+    }
+    
+    // Word CoreData Manager
     func addWord(name: String, meaning: String, synoym: String, example: String, createTime: Date, star: Bool, isTapped: Bool) {
         let word = Word(context: persistentContainer.viewContext)
         word.id = UUID()
@@ -58,7 +224,6 @@ class CoreDataManager {
             for index in wordArray.indices {
                 if wordArray[index].id == word.id
                 {
-//                    showDeleteWord(word: word)
                     self.context.delete(word)
                     break
                 }
@@ -169,21 +334,4 @@ class CoreDataManager {
         
         return word
     }
-    
-//    func getWord(word: Word) -> Word {
-//        var wordArray = [Word]()
-//        var resultWord: Word
-//        let request: NSFetchRequest<Word> = Word.fetchRequest()
-//        do {
-//            wordArray = try context.fetch(request)
-//            wordArray.forEach { indexWord in
-//                if indexWord
-//            }
-//            
-//        } catch {
-//            print("-----fetchWord error-----")
-//        }
-//        return wordArray[indexPath.row]
-//    }
-    
 }

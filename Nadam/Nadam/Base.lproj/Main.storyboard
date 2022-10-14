@@ -20,8 +20,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="MOq-By-Xhd" kind="relationship" relationship="viewControllers" id="Gtv-DQ-nCw"/>
-                        <segue destination="TIh-tX-brK" kind="relationship" relationship="viewControllers" id="CQ0-Wt-fiv"/>
-                        <segue destination="VVr-Df-lvW" kind="relationship" relationship="viewControllers" id="6cn-O1-LKn"/>
+                        <segue destination="TIh-tX-brK" kind="relationship" relationship="viewControllers" id="Ieg-ag-5T2"/>
+                        <segue destination="oGq-au-eh9" kind="relationship" relationship="viewControllers" id="D8j-1G-ZVQ"/>
+                        <segue destination="VVr-Df-lvW" kind="relationship" relationship="viewControllers" id="NuB-Be-lRY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cD2-1U-zwo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -52,15 +53,27 @@
         <scene sceneID="PPv-X4-gaK">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="CalendarViewController" storyboardName="CalendarView" referencedIdentifier="CalendarViewController" id="VVr-Df-lvW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="schedule" selectedImage="schedule_filled" id="aO4-hk-tJo"/>
+                    <tabBarItem key="tabBarItem" title="" image="schedule" selectedImage="schedule_filled" id="aO4-hk-tJo"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Lb-Ck-zUc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="773" y="86"/>
         </scene>
+        <!--PetViewController-->
+        <scene sceneID="7c9-kq-R0g">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="PetViewController" storyboardName="PetView" referencedIdentifier="PetViewController" id="oGq-au-eh9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="bearTab" selectedImage="bearTab_filled" id="cT7-mi-Hb8"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pDz-Kj-94p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="768" y="216"/>
+        </scene>
     </scenes>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
+        <image name="bearTab" width="25" height="25"/>
+        <image name="bearTab_filled" width="25" height="25"/>
         <image name="list" width="25" height="25"/>
         <image name="list_filled" width="25" height="25"/>
         <image name="pencil" width="25" height="25"/>

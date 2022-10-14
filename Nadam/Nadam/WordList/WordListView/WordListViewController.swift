@@ -20,12 +20,12 @@ protocol CameraPictureDelegate: AnyObject {
 class WordListViewController: UIViewController {
     
     // MARK: IBOutlet 변수
+    @IBOutlet weak var noWordImage: UIImageView!
+    @IBOutlet weak var noWordLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addWordButton: UIButton!
-    
     @IBOutlet var arrangeCollection: [UIButton]!
-    
     @IBOutlet weak var timeArrangeButton: ArrangeButton!
     @IBOutlet weak var starArrangeButton: ArrangeButton!
     
@@ -62,13 +62,7 @@ class WordListViewController: UIViewController {
         self.view.backgroundColor = UIColor.NColor.background
         
         self.fetchWordDateDecesending()
-        
-        self.configureCollectionView()
-        
-        self.configureArrangeButton()
-        self.configureArrangeButtonLayout()
-        
-        self.configureAddWordButton()
+        self.styleFunction()
         
         for word in wordList {
             word.isTapped = false
@@ -128,14 +122,22 @@ class WordListViewController: UIViewController {
     
     // MARK: Function
     // 단어 추가 버튼
+    private func styleFunction() {
+        self.configureCollectionView()
+        self.configureArrangeButton()
+        self.configureArrangeButtonLayout()
+        self.configureAddWordButton()
+        self.configureNoWordLabel()
+    }
+    
     private func configureAddWordButton() {
         self.addWordButton.showsMenuAsPrimaryAction = true
         
-        let addHandButton = UIAction(title: "단어 입력", image: UIImage(systemName: "square.and.pencil")?.withTintColor(UIColor.NColor.orange, renderingMode: .alwaysOriginal)) { _ in
+        let addHandButton = UIAction(title: "단어 입력", image: UIImage(named: "add_word")) { _ in
             self.tapAddHandButton()
         }
         
-        let addCameraButton = UIAction(title: "사진 촬영", image: UIImage(systemName: "camera.viewfinder")?.withTintColor(UIColor.NColor.orange, renderingMode: .alwaysOriginal)) { _ in
+        let addCameraButton = UIAction(title: "사진 촬영", image: UIImage(named: "add_camera")) { _ in
             AVCaptureDevice.requestAccess(for: .video) { [weak self] (isAuthorized: Bool) in
                 if isAuthorized {
                     self?.presentCamera()
@@ -164,6 +166,11 @@ class WordListViewController: UIViewController {
         
         let menu = UIMenu(title: "", children: [editButton, deleteButton])
         button.menu = menu
+    }
+    
+    private func configureNoWordLabel() {
+        self.noWordLabel.font = UIFont.NFont.noSearchedTextFont
+        self.noWordLabel.textColor = UIColor.NColor.middleGray
     }
     
     private func editWord(word: Word) {
@@ -302,8 +309,14 @@ extension WordListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch arrangeType {
         case .time:
+            self.noWordLabel.text = "단어를 추가해주세요."
+            self.noWordImage.isHidden = self.wordList.count == 0 ? false : true
+            self.noWordLabel.isHidden = self.wordList.count == 0 ? false : true
             return self.wordList.count
         case .star:
+            self.noWordLabel.text = "즐겨찾는 단어가 없어요."
+            self.noWordImage.isHidden = self.wordStars.count == 0 ? false : true
+            self.noWordLabel.isHidden = self.wordStars.count == 0 ? false : true
             return self.wordStars.count
         }
     }
