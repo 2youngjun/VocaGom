@@ -329,20 +329,10 @@ extension WordListViewController: UICollectionViewDataSource {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TapWordCell", for: indexPath) as? TapWordCell else { return UICollectionViewCell() }
                 let word = wordList[indexPath.row]
                 cell.wordName.text = word.name
-                cell.wordName.font = UIFont.NFont.wordListWordName
-                cell.wordName.textColor = UIColor.NColor.blue
-                
                 cell.wordMeaning.text = word.meaning
-                cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
-                cell.wordMeaning.textColor = UIColor.NColor.black
-                
                 cell.starButton.tag = indexPath.row
                 cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
                 cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
-                
-                cell.layer.cornerRadius = 10.0
-                cell.backgroundColor = UIColor.NColor.white
-                cell.layer.applySketchShadow(color: UIColor.NColor.black, alpha: 0.05, x: 0, y: 0, blur: 10, spread: 0)
                 
                 cell.wordSynoym.text = word.synoym
                 if cell.wordSynoym.text == "" {
@@ -378,21 +368,10 @@ extension WordListViewController: UICollectionViewDataSource {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WordCell", for: indexPath) as? WordCell else { return UICollectionViewCell() }
                 let word = wordList[indexPath.row]
                 cell.wordName.text = word.name
-                cell.wordName.font = UIFont.NFont.wordListWordName
-                cell.wordName.textColor = UIColor.NColor.blue
-                
                 cell.wordMeaning.text = word.meaning
-                cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
-                cell.wordMeaning.textColor = UIColor.NColor.black
-                
                 cell.starButton.tag = indexPath.row
                 cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
                 cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
-                
-                cell.layer.cornerRadius = 10.0
-                cell.backgroundColor = UIColor.NColor.white
-                cell.layer.applySketchShadow(color: UIColor.NColor.black, alpha: 0.05, x: 0, y: 0, blur: 10, spread: 0)
-                
                 return cell
             }
         case .star:
@@ -400,20 +379,10 @@ extension WordListViewController: UICollectionViewDataSource {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TapWordCell", for: indexPath) as? TapWordCell else { return UICollectionViewCell() }
                 let word = wordStars[indexPath.row]
                 cell.wordName.text = word.name
-                cell.wordName.font = UIFont.NFont.wordListWordName
-                cell.wordName.textColor = UIColor.NColor.blue
-                
                 cell.wordMeaning.text = word.meaning
-                cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
-                cell.wordMeaning.textColor = UIColor.NColor.black
-                
                 cell.starButton.tag = indexPath.row
                 cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
                 cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
-                
-                cell.layer.cornerRadius = 10.0
-                cell.backgroundColor = UIColor.NColor.white
-                cell.layer.applySketchShadow(color: UIColor.NColor.black, alpha: 0.05, x: 0, y: 0, blur: 10, spread: 0)
                 
                 cell.wordSynoym.text = word.synoym
                 if cell.wordSynoym.text == "" {
@@ -440,7 +409,6 @@ extension WordListViewController: UICollectionViewDataSource {
                     cell.wordExample.font = UIFont.NFont.wordListWordSynoym
                     cell.wordExample.textColor = UIColor.NColor.gray
                 }
-                
                 self.configureEditDeleteButton(button: cell.editDeleteButton, word: word)
                 
                 return cell
@@ -449,21 +417,10 @@ extension WordListViewController: UICollectionViewDataSource {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WordCell", for: indexPath) as? WordCell else { return UICollectionViewCell() }
                 let word = wordStars[indexPath.row]
                 cell.wordName.text = word.name
-                cell.wordName.font = UIFont.NFont.wordListWordName
-                cell.wordName.textColor = UIColor.NColor.blue
-                
                 cell.wordMeaning.text = word.meaning
-                cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
-                cell.wordMeaning.textColor = UIColor.NColor.black
-                
                 cell.starButton.tag = indexPath.row
                 cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
                 cell.starButton.imageView?.image = word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
-                
-                cell.layer.cornerRadius = 10.0
-                cell.backgroundColor = UIColor.NColor.white
-                cell.layer.applySketchShadow(color: UIColor.NColor.black, alpha: 0.05, x: 0, y: 0, blur: 10, spread: 0)
-                
                 return cell
             }
         }
