@@ -68,22 +68,12 @@ extension ResultWordViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultWordCell", for: indexPath) as? ResultWordCell else { return UICollectionViewCell() }
         let tossedWord = self.tossedWords[indexPath.row]
-        cell.layer.cornerRadius = 10.0
-        cell.backgroundColor = UIColor.NColor.white
-        cell.layer.applySketchShadow(color: UIColor.NColor.black, alpha: 0.05, x: 0, y: 0, blur: 10, spread: 0)
-
         cell.wordName.text = tossedWord.word.name
-        cell.wordName.font = UIFont.NFont.wordListWordName
         cell.wordName.textColor = self.wordNameColor
-        
         cell.wordMeaning.text = tossedWord.word.meaning
-        cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
-        cell.wordMeaning.textColor = UIColor.NColor.black
-        
         cell.starButton.tag = indexPath.row
         cell.starButton.addTarget(self, action: #selector(tapStarButton(sender:)), for: .touchUpInside)
         cell.starButton.imageView?.image = tossedWord.word.isStar ? UIImage(named: "star_filled") : UIImage(named: "star")
-        
         return cell
     }
     

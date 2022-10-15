@@ -11,7 +11,6 @@ import FSCalendar
 class CalendarViewController: UIViewController {
     
     //MARK: Variables
-    
     private lazy var headerDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
@@ -68,7 +67,6 @@ class CalendarViewController: UIViewController {
         self.configureCollecionView()
     }
     
-    // CalendarView Method
     private func configureBackGroundView() {
         self.dateLabel.font = UIFont.NFont.noSearchedTextFont
         self.view.backgroundColor = UIColor.NColor.background
@@ -119,7 +117,6 @@ class CalendarViewController: UIViewController {
         self.calendarView.reloadData()
     }
     
-    // CollectionView Method
     private func configureCollecionView() {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -175,23 +172,9 @@ extension CalendarViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarWordCell", for: indexPath) as? CalendarWordCell else { return UICollectionViewCell() }
         let word = wordArray[indexPath.row]
         cell.wordName.text = word.name
-        cell.wordName.font = UIFont.NFont.wordListWordName
-        cell.wordName.textColor = UIColor.NColor.blue
-        
         cell.wordMeaning.text = word.meaning
-        cell.wordMeaning.font = UIFont.NFont.wordListWordMeaning
-        cell.wordMeaning.textColor = UIColor.NColor.black
-        
-        cell.backgroundColor = UIColor.NColor.white
-        cell.layer.cornerRadius = 10.0
-        cell.layer.applySketchShadow(color: UIColor.NColor.black, alpha: 0.05, x: 0, y: 0, blur: 10, spread: 0)
-
         return cell
     }
-    
-}
-
-extension CalendarViewController: UICollectionViewDelegate {
     
 }
 

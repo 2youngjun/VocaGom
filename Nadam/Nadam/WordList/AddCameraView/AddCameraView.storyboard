@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,19 +20,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ffC-hf-42M">
-                                <rect key="frame" x="20" y="150" width="374" height="238"/>
+                                <rect key="frame" x="20" y="154" width="374" height="238"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="7XX-fS-fm3"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진으로 추가하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tic-IY-GfI">
-                                <rect key="frame" x="146" y="64" width="122" height="20.5"/>
+                                <rect key="frame" x="146" y="68" width="122" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Dv-Oo-yu7">
-                                <rect key="frame" x="20" y="64" width="30" height="16"/>
+                                <rect key="frame" x="20" y="68" width="30" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="6k6-iM-xHK"/>
                                 </constraints>
@@ -42,7 +43,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="247" translatesAutoresizingMaskIntoConstraints="NO" id="HrC-yG-Pyz">
-                                <rect key="frame" x="20" y="109.5" width="374" height="30"/>
+                                <rect key="frame" x="20" y="113.5" width="374" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="사진" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbE-gx-Hz4">
                                         <rect key="frame" x="0.0" y="0.0" width="97" height="30"/>
@@ -67,13 +68,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색된 단어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAu-Tg-oq7">
-                                <rect key="frame" x="20" y="419.5" width="78" height="20.5"/>
+                                <rect key="frame" x="20" y="423.5" width="78" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="085-Tp-MGm">
-                                <rect key="frame" x="0.0" y="450" width="414" height="312"/>
+                                <rect key="frame" x="0.0" y="454" width="414" height="340"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dvi-Vy-hhp">
                                     <size key="itemSize" width="255" height="131"/>
@@ -109,15 +110,15 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="단어가 검색되지 않았습니다!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7RA-oo-69S">
-                                <rect key="frame" x="112" y="490" width="190.5" height="20.5"/>
+                                <rect key="frame" x="112" y="494" width="190.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEg-v4-Aaw" userLabel="NextButton">
-                                <rect key="frame" x="20" y="772" width="374" height="50"/>
+                                <rect key="frame" x="20" y="804" width="374" height="58"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="KtM-er-0tU"/>
+                                    <constraint firstAttribute="height" constant="58" id="KtM-er-0tU"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="다음">
@@ -140,7 +141,7 @@
                             <constraint firstItem="ffC-hf-42M" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="LUo-e9-DEa"/>
                             <constraint firstItem="dAu-Tg-oq7" firstAttribute="top" secondItem="ffC-hf-42M" secondAttribute="bottom" constant="30" id="Mex-bw-5lL"/>
                             <constraint firstItem="7RA-oo-69S" firstAttribute="top" secondItem="dAu-Tg-oq7" secondAttribute="bottom" constant="50" id="SIt-kW-NSC"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="rEg-v4-Aaw" secondAttribute="bottom" constant="40" id="Vkj-As-mK6"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="rEg-v4-Aaw" secondAttribute="bottom" id="Vkj-As-mK6"/>
                             <constraint firstItem="085-Tp-MGm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="auw-FR-9Rb"/>
                             <constraint firstItem="HrC-yG-Pyz" firstAttribute="top" secondItem="Tic-IY-GfI" secondAttribute="bottom" constant="25" id="dGz-ej-ceA"/>
                             <constraint firstItem="0Dv-Oo-yu7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="gR2-El-c1F"/>
@@ -174,13 +175,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="camera" catalog="system" width="128" height="94"/>
+        <image name="camera" catalog="system" width="128" height="93"/>
         <image name="camera.viewfinder" catalog="system" width="128" height="115"/>
         <namedColor name="NBlue">
-            <color red="0.38039215686274508" green="0.47450980392156861" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.29411764705882354" green="0.38039215686274508" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="NOrange">
-            <color red="1" green="0.53725490196078429" blue="0.35294117647058826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.46666666666666667" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

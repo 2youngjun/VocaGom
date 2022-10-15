@@ -10,7 +10,6 @@ import UIKit
 class RainTestViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: 변수
-//    var wordList = [Word]()
     var wordList: [Word]?
     var wordTests = [questionWord]()
     var countQuestion = 0
