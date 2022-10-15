@@ -383,7 +383,7 @@ extension AddWordViewController {
     }
     
     private func showPapagoAPIAlert(errorMessage: String) {
-        let alert = UIAlertController(title: "에러", message: errorMessage, preferredStyle: .alert)
+        let alert = UIAlertController(title: "번역할 단어가 없습니다.", message: "단어를 입력한 후 다시 시도해 주세요.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
         self.present(alert, animated: true)
     }

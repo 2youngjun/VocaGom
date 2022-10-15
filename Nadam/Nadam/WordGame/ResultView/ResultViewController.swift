@@ -173,7 +173,7 @@ extension ResultViewController {
             toastLabel.removeFromSuperview()
             
             var point = UserDefaults.standard.object(forKey: "point") as? Int
-            guard point != nil else { return }
+            if point == nil { point = 0 }
             
             point! += cntCorrect * 10
             UserDefaults.standard.set(point, forKey: "point")

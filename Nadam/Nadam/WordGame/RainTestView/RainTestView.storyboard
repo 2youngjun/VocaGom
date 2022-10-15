@@ -68,9 +68,9 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aR9-e4-UpL" customClass="NextButtonState" customModule="Nadam" customModuleProvider="target">
-                                <rect key="frame" x="20" y="442" width="335" height="60"/>
+                                <rect key="frame" x="20" y="442" width="335" height="58"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="TNc-XQ-Oqc"/>
+                                    <constraint firstAttribute="height" constant="58" id="TNc-XQ-Oqc"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="다음"/>

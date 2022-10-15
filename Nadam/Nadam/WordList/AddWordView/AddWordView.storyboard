@@ -166,9 +166,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUZ-v9-t5d">
-                                <rect key="frame" x="20" y="812" width="374" height="50"/>
+                                <rect key="frame" x="20" y="804" width="374" height="58"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Y97-cE-lPO"/>
+                                    <constraint firstAttribute="height" constant="58" id="Y97-cE-lPO"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="저장">

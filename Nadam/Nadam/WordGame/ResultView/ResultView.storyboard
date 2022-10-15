@@ -223,9 +223,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfV-BC-cfD">
-                                <rect key="frame" x="20" y="802" width="374" height="60"/>
+                                <rect key="frame" x="20" y="804" width="374" height="58"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="h8f-X1-xo1"/>
+                                    <constraint firstAttribute="height" constant="58" id="h8f-X1-xo1"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="완료"/>
