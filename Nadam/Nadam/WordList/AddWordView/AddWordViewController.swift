@@ -340,8 +340,8 @@ extension AddWordViewController {
         let paramData = param.data(using: .utf8)
         let Naver_URL = URL(string: "https://openapi.naver.com/v1/papago/n2mt")
         
-        let clientID = "FWrqCje_fP44uWfeKMLc"
-        let clientSecret = "WsPCkYkMRF"
+        let clientID = Bundle.main.cliendID
+        let clientSecret = Bundle.main.cliendSecret
         
         var request = URLRequest(url: Naver_URL!)
         request.httpMethod = "POST"
