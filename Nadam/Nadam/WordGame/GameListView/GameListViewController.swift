@@ -156,19 +156,4 @@ class GameListViewController: UIViewController {
         self.spellingTestMainImage.image = UIImage(named: "rainTest")
         self.rainTestMainImage.image = UIImage(named: "spellingTest")
     }
-    
-    private func showAlertNoWord() {
-        let alert = UIAlertController(title: "테스트할 단어가 없습니다.",
-                                      message: "단어를 추가한 후 다시 진행해 주세요.",
-                                      preferredStyle: .alert)
-        
-        let cancelAlert = UIAlertAction(title: "확인",
-                                        style: .default) { _ in
-            alert.dismiss(animated: true, completion: nil)
-        }
-        
-        [cancelAlert].forEach(alert.addAction(_:))
-        
-        self.present(alert, animated: false)
-    }
 }

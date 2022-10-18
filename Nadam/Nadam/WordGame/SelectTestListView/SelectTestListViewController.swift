@@ -25,8 +25,9 @@ class SelectTestListViewController: UIViewController, UISheetPresentationControl
     
     //MARK: IBOutlet Function
     @IBAction func tapAllWordListButton(_ sender: UIButton) {
+        let messageComment = "단어장에 단어를 추가한 후 다시 진행해 주세요."
         if wordList.isEmpty {
-            self.showAlertNoWord()
+            self.showAlertNoWord(messageComment: messageComment)
         } else {
             NotificationCenter.default.post(name: Notification.Name("main"), object: self.whichTestIndex)
             self.dismiss(animated: true)
@@ -39,6 +40,7 @@ class SelectTestListViewController: UIViewController, UISheetPresentationControl
     
     @IBAction func tapFavoriteWordListButton(_ sender: UIButton) {
         var favoriteWordList = [Word]()
+        let messageComment = "즐겨찾기 단어장에 단어를 추가한 후 다시 진행해 주세요."
         self.wordList.forEach { word in
             if word.isStar {
                 favoriteWordList.append(word)
@@ -46,7 +48,7 @@ class SelectTestListViewController: UIViewController, UISheetPresentationControl
         }
         
         if favoriteWordList.isEmpty {
-            self.showAlertNoWord()
+            self.showAlertNoWord(messageComment: messageComment)
         } else {
             self.dismiss(animated: true)
             NotificationCenter.default.post(name: Notification.Name("favorite"), object: self.whichTestIndex)
@@ -61,6 +63,7 @@ class SelectTestListViewController: UIViewController, UISheetPresentationControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.wordList = CoreDataManager.shared.fetchWord()
         self.configureSheetVersion()
     }
     
@@ -111,9 +114,9 @@ class SelectTestListViewController: UIViewController, UISheetPresentationControl
         self.dismissButton.tintColor = UIColor.NColor.black
     }
     
-    private func showAlertNoWord() {
+    private func showAlertNoWord(messageComment: String) {
         let alert = UIAlertController(title: "테스트할 단어가 없습니다.",
-                                      message: "단어를 추가한 후 다시 진행해 주세요.",
+                                      message: messageComment,
                                       preferredStyle: .alert)
         
         let cancelAlert = UIAlertAction(title: "확인",
