@@ -222,7 +222,6 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
             self.meaningTextField.text = word.meaning
             self.synoymTextField.text = word.synoym
             self.exampleTextView.text = word.example
-            
             self.mainLabel.text = "단어 수정하기"
             self.saveButton.isEnabled = true
             self.configureSaveButton(self.saveButton)
@@ -232,23 +231,14 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
                 self.nameTextField.text = cameraWord
             }
             self.meaningTextField.text = ""
-            
             self.saveButton.isEnabled = false
             self.configureSaveButton(saveButton)
         }
     }
     
     private func configureInputField() {
-        switch self.editMode {
-        case .new:
-            self.nameTextField.addTarget(self, action: #selector(saveButtonState), for: .editingChanged)
-            self.nameTextField.addTarget(self, action: #selector(isSameWord), for: .editingChanged)
-            self.nameTextField.addTarget(self, action: #selector(isSameWord), for: .editingDidEnd)
-            self.meaningTextField.addTarget(self, action: #selector(saveButtonState), for: .editingChanged)
-        default:
-            self.nameTextField.addTarget(self, action: #selector(noStringTextField), for: .editingChanged)
-            self.meaningTextField.addTarget(self, action: #selector(noStringTextField), for: .editingChanged)
-        }
+        self.nameTextField.addTarget(self, action: #selector(checkNameField), for: .editingChanged)
+        self.meaningTextField.addTarget(self, action: #selector(checkMeaningField), for: .editingChanged)
     }
     
     private func configureSaveButton(_ button: UIButton) {
@@ -256,35 +246,62 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         button.backgroundColor = button.isEnabled ? UIColor.NColor.blue : UIColor.NColor.lightBlue
     }
     
-    @objc private func saveButtonState() {
-        if nameTextField.text != "" && meaningTextField.text != "" {
-            checkSameWord()
-        } else {
-            configureSaveButtonState = false
-        }
-    }
-    
-    @objc private func isSameWord() {
-        if nameTextField.text != "" && meaningTextField.text != "" {
-            checkSameWord()
-        }
-    }
-    
-    private func checkSameWord() {
+    @objc private func checkNameField() {
         let wordString = nameTextField.text ?? ""
-        for word in wordList {
-            if word.name == wordString {
-                self.duplicateSentense.isHidden = false
+        
+        switch self.editMode {
+        case let .edit(word):
+            if wordString == "" {
+                self.duplicateSentense.isHidden = true
                 configureSaveButtonState = false
                 return
             }
+            if wordString == word.name {
+                self.duplicateSentense.isHidden = true
+                if meaningTextField.text == "" {
+                    configureSaveButtonState = false
+                    return
+                }
+                configureSaveButtonState = true
+            }
+            for temp in wordList {
+                if wordString == temp.name && wordString != word.name {
+                    self.duplicateSentense.isHidden = false
+                    configureSaveButtonState = false
+                    return
+                }
+            }
+            self.duplicateSentense.isHidden = true
+            if meaningTextField.text == "" {
+                configureSaveButtonState = false
+                return
+            }
+            configureSaveButtonState = true
+            
+        case .new:
+            if wordString == "" {
+                self.duplicateSentense.isHidden = true
+                configureSaveButtonState = false
+                return
+            }
+            for word in wordList {
+                if word.name == wordString {
+                    self.duplicateSentense.isHidden = false
+                    configureSaveButtonState = false
+                    return
+                }
+            }
+            self.duplicateSentense.isHidden = true
+            if meaningTextField.text == "" {
+                configureSaveButtonState = false
+                return
+            }
+            configureSaveButtonState = true
         }
-        self.duplicateSentense.isHidden = true
-        configureSaveButtonState = true
     }
     
-    @objc func noStringTextField() {
-        if nameTextField.text == "" || meaningTextField.text == "" {
+    @objc func checkMeaningField() {
+        if nameTextField.text == "" || meaningTextField.text == "" || duplicateSentense.isHidden == false {
             configureSaveButtonState = false
         } else {
             configureSaveButtonState = true
@@ -389,7 +406,7 @@ extension AddWordViewController {
     
     private func afterAPINextButtonState() {
         if nameTextField.text != "" && meaningTextField.text != "" {
-            checkSameWord()
+            checkNameField()
         } else {
             configureSaveButtonState = false
         }
