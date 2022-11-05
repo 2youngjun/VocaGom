@@ -249,7 +249,6 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
             self.nameTextField.addTarget(self, action: #selector(noStringTextField), for: .editingChanged)
             self.meaningTextField.addTarget(self, action: #selector(noStringTextField), for: .editingChanged)
         }
-        
     }
     
     private func configureSaveButton(_ button: UIButton) {
@@ -266,7 +265,7 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
     }
     
     @objc private func isSameWord() {
-        if nameTextField.text != "" {
+        if nameTextField.text != "" && meaningTextField.text != "" {
             checkSameWord()
         }
     }
