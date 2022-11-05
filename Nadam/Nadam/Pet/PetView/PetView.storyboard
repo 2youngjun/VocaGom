@@ -92,10 +92,10 @@
                             <constraint firstItem="ysc-ZK-85J" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="YhV-FO-GXQ"/>
                             <constraint firstItem="Cf3-DA-Na0" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="aay-zs-clt"/>
                             <constraint firstItem="yhW-ry-nZ9" firstAttribute="top" secondItem="EVo-rw-F8K" secondAttribute="bottom" constant="120" id="bKc-3z-4bT"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aHi-fK-onm" secondAttribute="trailing" id="eMa-L4-s4T"/>
+                            <constraint firstAttribute="trailing" secondItem="aHi-fK-onm" secondAttribute="trailing" id="eMa-L4-s4T"/>
                             <constraint firstItem="wfO-Dw-JHE" firstAttribute="top" secondItem="EVo-rw-F8K" secondAttribute="bottom" constant="120" id="gLg-r8-Tj7"/>
                             <constraint firstItem="yhW-ry-nZ9" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="kop-9O-pPL"/>
-                            <constraint firstItem="aHi-fK-onm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ngc-g2-5lz"/>
+                            <constraint firstItem="aHi-fK-onm" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="ngc-g2-5lz"/>
                             <constraint firstItem="EVo-rw-F8K" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="tg0-tm-JFV"/>
                         </constraints>
                     </view>
@@ -106,6 +106,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="accessoryImage" destination="zRG-ma-h22" id="Mg0-Ga-cH7"/>
+                        <outlet property="backgroundImage" destination="aHi-fK-onm" id="JUg-kQ-g1t"/>
                         <outlet property="bearImageHeight" destination="crD-4t-IKj" id="NZ6-1a-GIr"/>
                         <outlet property="bearImageWidth" destination="1gc-IV-9rj" id="vf2-Hz-JWq"/>
                         <outlet property="pantsImage" destination="wfO-Dw-JHE" id="TAo-uL-DEV"/>

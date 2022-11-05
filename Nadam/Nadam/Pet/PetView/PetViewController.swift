@@ -13,6 +13,7 @@ class PetViewController: UIViewController {
     
     
     //MARK: IBOutlet Variable
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var pointImage: UIImageView!
     @IBOutlet weak var pointBackgroundView: UIView!
     @IBOutlet weak var pointLabel: UILabel!
@@ -63,6 +64,7 @@ class PetViewController: UIViewController {
     private func styleFunction() {
         self.configurePointLabel()
         self.configureMainImage()
+        self.configureBackgroundImage()
     }
 
     private func configurePointLabel() {
@@ -80,5 +82,10 @@ class PetViewController: UIViewController {
         self.clothesHeightCollection.forEach { height in
             height.constant = self.bearImageHeight.constant
         }
+    }
+    
+    private func configureBackgroundImage() {
+        self.backgroundImage.image = UIImage(named: "petBackground")
+        self.backgroundImage.contentMode = .scaleToFill
     }
 }
