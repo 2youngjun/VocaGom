@@ -48,6 +48,7 @@
 		8BE57A0E28C4FDAD00484284 /* SearchedWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE57A0D28C4FDAD00484284 /* SearchedWordCell.swift */; };
 		8BE59CC628D2E93600C878AC /* RainTestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE59CC528D2E93600C878AC /* RainTestView.storyboard */; };
 		8BE59CC828D2E94800C878AC /* RainTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE59CC728D2E94800C878AC /* RainTestViewController.swift */; };
+		8BEC2049298C246700368F48 /* PapagoInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BEC2048298C246700368F48 /* PapagoInfo.plist */; };
 		8BF3045628CF19C200A5374A /* SpellingTestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3045528CF19C200A5374A /* SpellingTestView.storyboard */; };
 		8BF3045828CF19D400A5374A /* SpellingTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3045728CF19D400A5374A /* SpellingTestViewController.swift */; };
 		8BF3045B28CF78C900A5374A /* ResultView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3045A28CF78C900A5374A /* ResultView.storyboard */; };
@@ -66,7 +67,6 @@
 		8BFC7E3B28B88AB700D92E00 /* WordButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFC7E3A28B88AB700D92E00 /* WordButtonCell.swift */; };
 		8BFFE1AD28F3D99200D183CE /* VocaGom+CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFE1AC28F3D99200D183CE /* VocaGom+CALayer.swift */; };
 		8BFFE27128FBAEBA00D183CE /* VocaGom+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFE27028FBAEBA00D183CE /* VocaGom+Bundle.swift */; };
-		8BFFE2FB28FE1F6E00D183CE /* PapagoInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFE2FA28FE1F6E00D183CE /* PapagoInfo.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +115,7 @@
 		8BE57A0D28C4FDAD00484284 /* SearchedWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedWordCell.swift; sourceTree = "<group>"; };
 		8BE59CC528D2E93600C878AC /* RainTestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RainTestView.storyboard; sourceTree = "<group>"; };
 		8BE59CC728D2E94800C878AC /* RainTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainTestViewController.swift; sourceTree = "<group>"; };
+		8BEC2048298C246700368F48 /* PapagoInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PapagoInfo.plist; sourceTree = "<group>"; };
 		8BF3045528CF19C200A5374A /* SpellingTestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SpellingTestView.storyboard; sourceTree = "<group>"; };
 		8BF3045728CF19D400A5374A /* SpellingTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellingTestViewController.swift; sourceTree = "<group>"; };
 		8BF3045A28CF78C900A5374A /* ResultView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResultView.storyboard; sourceTree = "<group>"; };
@@ -133,7 +134,6 @@
 		8BFC7E3A28B88AB700D92E00 /* WordButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordButtonCell.swift; sourceTree = "<group>"; };
 		8BFFE1AC28F3D99200D183CE /* VocaGom+CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VocaGom+CALayer.swift"; sourceTree = "<group>"; };
 		8BFFE27028FBAEBA00D183CE /* VocaGom+Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VocaGom+Bundle.swift"; sourceTree = "<group>"; };
-		8BFFE2FA28FE1F6E00D183CE /* PapagoInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PapagoInfo.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,9 +160,6 @@
 		8B0DDEE2289A953D00F0ACC3 = {
 			isa = PBXGroup;
 			children = (
-				8BF3AF34289C25CB00F049CD /* Utility */,
-				8BFFE26D28FBAD1000D183CE /* Network + APIKey */,
-				8BF3AF32289C253900F049CD /* Extension */,
 				8B0DDEED289A953D00F0ACC3 /* Nadam */,
 				8B0DDEEC289A953D00F0ACC3 /* Products */,
 				14F77F06F3F86D34728BCEFC /* Pods */,
@@ -181,19 +178,13 @@
 		8B0DDEED289A953D00F0ACC3 /* Nadam */ = {
 			isa = PBXGroup;
 			children = (
-				8B0DDEEE289A953D00F0ACC3 /* AppDelegate.swift */,
-				8B0DDEF0289A953D00F0ACC3 /* SceneDelegate.swift */,
-				8B0DDEF2289A953D00F0ACC3 /* ViewController.swift */,
-				8B0DDEFC289A953F00F0ACC3 /* LaunchScreen.storyboard */,
-				8B0DDEF4289A953D00F0ACC3 /* Main.storyboard */,
-				8B6DE76628B0C52500E32928 /* CustomTabBarVC.swift */,
-				8B93D54228E894B600AD8170 /* Pet */,
-				8BAF4F1728DAB201008ADFCC /* Calendar */,
-				8BF3AF28289ACAB000F049CD /* WordList */,
-				8B6DE75F28B0B4BE00E32928 /* WordGame */,
-				8B0DDEFA289A953F00F0ACC3 /* Assets.xcassets */,
-				8B0DDEFF289A953F00F0ACC3 /* Info.plist */,
+				8BFFE26D28FBAD1000D183CE /* Network */,
+				8BF3AF32289C253900F049CD /* Extension */,
+				8BEC204A298C24B400368F48 /* View */,
+				8BEC204B298C296400368F48 /* Application */,
 				8BF3AF2D289BBF9A00F049CD /* CoreData */,
+				8BF3AF34289C25CB00F049CD /* Resource */,
+				8B0DDEFF289A953F00F0ACC3 /* Info.plist */,
 			);
 			path = Nadam;
 			sourceTree = "<group>";
@@ -321,6 +312,30 @@
 			path = RainTestView;
 			sourceTree = "<group>";
 		};
+		8BEC204A298C24B400368F48 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8BF3AF28289ACAB000F049CD /* WordList */,
+				8B6DE75F28B0B4BE00E32928 /* WordGame */,
+				8BAF4F1728DAB201008ADFCC /* Calendar */,
+				8B93D54228E894B600AD8170 /* Pet */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8BEC204B298C296400368F48 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				8B0DDEEE289A953D00F0ACC3 /* AppDelegate.swift */,
+				8B0DDEF0289A953D00F0ACC3 /* SceneDelegate.swift */,
+				8B0DDEF2289A953D00F0ACC3 /* ViewController.swift */,
+				8B0DDEFC289A953F00F0ACC3 /* LaunchScreen.storyboard */,
+				8B0DDEF4289A953D00F0ACC3 /* Main.storyboard */,
+				8B6DE76628B0C52500E32928 /* CustomTabBarVC.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		8BF3045328CF13E100A5374A /* GameListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,12 +404,13 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		8BF3AF34289C25CB00F049CD /* Utility */ = {
+		8BF3AF34289C25CB00F049CD /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				8B0DDEFA289A953F00F0ACC3 /* Assets.xcassets */,
 				8BF3AF3A289C327F00F049CD /* Font */,
 			);
-			path = Utility;
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		8BF3AF3A289C327F00F049CD /* Font */ = {
@@ -407,15 +423,15 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		8BFFE26D28FBAD1000D183CE /* Network + APIKey */ = {
+		8BFFE26D28FBAD1000D183CE /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				8BDFBFB628E2EDF9001622D6 /* NetworkReachability.swift */,
 				8B5026CE28BF8CE5009271AA /* WordInformation.swift */,
 				8B5026D028BF90C2009271AA /* ErrorMessage.swift */,
-				8BFFE2FA28FE1F6E00D183CE /* PapagoInfo.plist */,
+				8BEC2048298C246700368F48 /* PapagoInfo.plist */,
 			);
-			path = "Network + APIKey";
+			path = Network;
 			sourceTree = "<group>";
 		};
 		CD169AAD76B2196D0CB2FCBA /* Frameworks */ = {
@@ -486,7 +502,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BFFE2FB28FE1F6E00D183CE /* PapagoInfo.plist in Resources */,
+				8BEC2049298C246700368F48 /* PapagoInfo.plist in Resources */,
 				8BFC7E3728B5140500D92E00 /* AddCameraView.storyboard in Resources */,
 				8BF3045628CF19C200A5374A /* SpellingTestView.storyboard in Resources */,
 				8B93D54828E8950C00AD8170 /* PetView.storyboard in Resources */,
