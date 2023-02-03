@@ -63,7 +63,6 @@ class AddCameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.viewDidLoad()
         self.configureLayout()
         self.configureCollectionView()
 
