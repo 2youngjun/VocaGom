@@ -13,10 +13,6 @@ enum Arrangement {
     case star
 }
 
-protocol CameraPictureDelegate: AnyObject {
-    func sendCameraPicture(picture: UIImage)
-}
-
 class WordListViewController: UIViewController {
     
     // MARK: IBOutlet 변수
@@ -508,23 +504,6 @@ extension WordListViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension WordListViewController: AddWordViewDelegate {
-    func didSelectSaveWord() {
-        self.wordList = CoreDataManager.shared.fetchWord()
-        let indexPath = IndexPath(row: wordList.count - 1, section: 0)
-
-        collectionView.reloadData()
-        if indexPath.row == 0 {
-            collectionView.deleteItems(at: [indexPath])
-        }
-        collectionView.insertItems(at: [indexPath])
-        // createTime 기준 내림차순 정렬
-        self.wordList = self.wordList.sorted(by: {
-            $0.createTime?.compare($1.createTime!) == .orderedDescending
-        })
-    }
-}
-
 extension WordListViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     private func presentCamera() {
         #if targetEnvironment(simulator)
@@ -534,13 +513,9 @@ extension WordListViewController: UINavigationControllerDelegate, UIImagePickerC
         DispatchQueue.main.async {
             let pickerController = UIImagePickerController()
             pickerController.sourceType = .camera
-            
             pickerController.allowsEditing = false
-            
             pickerController.mediaTypes = ["public.image"]
-            
             pickerController.delegate = self
-            
             self.present(pickerController, animated: true)
         }
     }
@@ -553,13 +528,9 @@ extension WordListViewController: UINavigationControllerDelegate, UIImagePickerC
             picker.dismiss(animated: true)
             return
         }
-        
         picker.dismiss(animated: true, completion: nil)
-        
         self.delegate?.sendCameraPicture(picture: image)
-        
         NotificationCenter.default.post(name: Notification.Name("newPhoto"), object: nil)
-        
         self.navigationController?.pushViewController(self.addCameraViewController, animated: true)
     }
 }

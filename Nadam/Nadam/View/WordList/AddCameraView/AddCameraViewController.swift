@@ -10,17 +10,12 @@ import Vision
 import Foundation
 import NaturalLanguage
 
-protocol SendWordNameDelegate: AnyObject {
-    func sendWord(wordName: String)
-}
-
 struct wordStatus {
     var wordName: String
     var isSelected: Bool
 }
 
 class AddCameraViewController: UIViewController {
-
     
     // MARK: IBOutlet
     @IBOutlet weak var cancelButton: UIButton!
@@ -123,7 +118,8 @@ class AddCameraViewController: UIViewController {
             }
         }
         
-        self.fetchWordList()
+        // 이미 추가된 단어인지 검사
+        self.wordList = CoreDataManager.shared.fetchWord()
         for word in wordList {
             if wordArray[index].wordName == word.name {
                 self.showAlertNextButton()
@@ -135,14 +131,6 @@ class AddCameraViewController: UIViewController {
         self.navigationController?.pushViewController(addWordViewController, animated: true)
     }
     
-    private func fetchWordList() {
-        self.wordList = CoreDataManager.shared.fetchWord()
-    }
-    
-    @IBAction func tapCameraButton(_ sender: Any) {
-        
-    }
-    
     @IBAction func tapPresentCameraButton(_ sender: UIButton) {
         self.presentCamera()
     }
@@ -151,7 +139,6 @@ class AddCameraViewController: UIViewController {
     private func configureLayout() {
         self.view.backgroundColor = UIColor.NColor.white
         
-//        self.nextButton.titleLabel?.sizeToFit()
         self.nextButton.titleLabel?.font = UIFont.NFont.wordListWordMeaning
         self.nextButton.backgroundColor = UIColor.NColor.lightBlue
         self.nextButton.isEnabled = false
@@ -168,6 +155,7 @@ class AddCameraViewController: UIViewController {
         
         self.cameraView.image = UIImage(systemName: "camera")
         self.cameraViewHeight.constant = UIScreen.main.bounds.height / 4
+        self.cameraViewHeight.constant = UIScreen.main.bounds.height / 4
         self.cameraView.layer.borderWidth = 0
         
         self.cameraButton.titleLabel?.textColor = UIColor.NColor.blue
@@ -182,8 +170,6 @@ class AddCameraViewController: UIViewController {
     }
     
     private func configureCollectionView() {
-//        self.collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         flowLayout.estimatedItemSize =  UICollectionViewFlowLayout.automaticSize
         self.collectionView.collectionViewLayout = flowLayout
@@ -207,6 +193,35 @@ class AddCameraViewController: UIViewController {
             button.backgroundColor = UIColor.NColor.lightBlue
             button.layer.cornerRadius = 5
         }
+    }
+}
+
+// MARK: Camera
+extension AddCameraViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    private func presentCamera() {
+        #if targetEnvironment(simulator)
+        fatalError()
+        #endif
+        
+        DispatchQueue.main.async {
+            let pickerController = UIImagePickerController()
+            pickerController.sourceType = .camera
+            pickerController.allowsEditing = false
+            pickerController.mediaTypes = ["public.image"]
+            pickerController.delegate = self
+            self.present(pickerController, animated: true)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            picker.dismiss(animated: true)
+            return
+        }
+        
+        self.cameraView.image = image
+        self.cameraView.contentMode = .scaleAspectFit
+        picker.dismiss(animated: true, completion: nil)
     }
     
     private func retrieveLemmas(from text: String) -> [String] {
@@ -236,33 +251,11 @@ class AddCameraViewController: UIViewController {
     
     private func recognizeText(image: UIImage) {
         guard let cgImage = image.cgImage else { return }
-        
         let handler = VNImageRequestHandler(cgImage: cgImage, options: [:])
-        
         let request = VNRecognizeTextRequest { [weak self] request, error in
             guard let observations = request.results as? [VNRecognizedTextObservation], error == nil else {
                 return
             }
-            
-//            let text = observations.compactMap({
-//                $0.topCandidates(1).first?.string.lowercased().replacingOccurrences(of: "[^a-zA-Z ]", with: "", options: .regularExpression)
-//            }).joined(separator: ", ")
-//
-//            var modifyingText = text.components(separatedBy: [",", " "])
-//
-//            while modifyingText.contains("") {
-//                if let index = modifyingText.firstIndex(of: "") {
-//                    modifyingText.remove(at: index)
-//                }
-//            }
-//
-//            for text in modifyingText {
-//                if text.count == 1 || text.count == 2 {
-//                    if let index = modifyingText.firstIndex(of: text) {
-//                        modifyingText.remove(at: index)
-//                    }
-//                }
-//            }
             
             let text = observations.compactMap({
                 $0.topCandidates(1).first?.string.lowercased()
@@ -277,24 +270,7 @@ class AddCameraViewController: UIViewController {
                     }
                 }
             }
-            
             self?.checkText = self?.removedSameWord(wordArray: lemmatizedWordArray) ?? [String]()
-            
-            
-//            for text in modifyingText {
-//                self?.textSet.updateValue(false, forKey: text)
-//            }
-            
-            // 이전
-//            self?.checkText = modifyingText
-            
-//            DispatchQueue.main.async {
-//                self?.textSet = modifyingText
-//            }
-            
-//            self?.textSet = modifyingText
-            
-
         }
         
         do {
@@ -304,40 +280,6 @@ class AddCameraViewController: UIViewController {
         } catch {
             print(error)
         }
-    }
-}
-
-// MARK: Camera
-extension AddCameraViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
-    private func presentCamera() {
-        #if targetEnvironment(simulator)
-        fatalError()
-        #endif
-        
-        DispatchQueue.main.async {
-            let pickerController = UIImagePickerController() // must be used from main thread only
-            pickerController.sourceType = .camera
-            
-            pickerController.allowsEditing = false
-            
-            pickerController.mediaTypes = ["public.image"]
-            
-            pickerController.delegate = self
-            
-            self.present(pickerController, animated: true)
-        }
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-            picker.dismiss(animated: true)
-            return
-        }
-        
-        self.cameraView.image = image
-        self.cameraView.contentMode = .scaleAspectFit
-        picker.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -394,41 +336,27 @@ extension AddCameraViewController: UICollectionViewDataSource{
             cell.wordLabel.font = UIFont.NFont.wordButton
             cell.wordLabel.numberOfLines = 1
             cell.wordLabel.sizeToFit()
-            
             return cell
         }
-        
     }
     
     func showAlertNextButton() {
-        let alertController = UIAlertController(
-            title: "이미 추가된 단어에요.",
-            message: "확인을 눌러 다른 단어를 추가해주세요.",
-            preferredStyle: .alert)
-        
-        let cancelAlert = UIAlertAction(
-            title: "확인",
-            style: .cancel) { _ in
-                alertController.dismiss(animated: true, completion: nil)
-            }
-        
+        let alertController = UIAlertController(title: "이미 추가된 단어에요.", message: "확인을 눌러 다른 단어를 추가해주세요.", preferredStyle: .alert)
+        let cancelAlert = UIAlertAction(title: "확인", style: .cancel) { _ in
+            alertController.dismiss(animated: true, completion: nil)
+        }
         [cancelAlert].forEach(alertController.addAction(_:))
-        
-//        DispatchQueue.main.async {
-//            self.present(alertController, animated: true)
-//        }
         self.present(alertController, animated: true)
     }
 }
 
 extension AddCameraViewController: UICollectionViewDelegateFlowLayout {
-        func collectionView(_ collectionView: UICollectionView,
-                            layout collectionViewLayout: UICollectionViewLayout,
-                            sizeForItemAt indexPath: IndexPath) -> CGSize {
-            
-            let label = UILabel(frame: CGRect.zero)
-            label.text = checkText[indexPath.row]
-            label.sizeToFit()
-            return CGSize(width: label.frame.width + 30, height: label.frame.height + 20)
-        }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let label = UILabel(frame: CGRect.zero)
+        label.text = checkText[indexPath.row]
+        label.sizeToFit()
+        return CGSize(width: label.frame.width + 30, height: label.frame.height + 20)
+    }
 }

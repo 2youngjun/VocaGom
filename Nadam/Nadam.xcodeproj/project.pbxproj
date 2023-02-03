@@ -49,6 +49,7 @@
 		8BE59CC628D2E93600C878AC /* RainTestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE59CC528D2E93600C878AC /* RainTestView.storyboard */; };
 		8BE59CC828D2E94800C878AC /* RainTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE59CC728D2E94800C878AC /* RainTestViewController.swift */; };
 		8BEC2049298C246700368F48 /* PapagoInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BEC2048298C246700368F48 /* PapagoInfo.plist */; };
+		8BEC2077298CCA7D00368F48 /* Protocol+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC2076298CCA7D00368F48 /* Protocol+.swift */; };
 		8BF3045628CF19C200A5374A /* SpellingTestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3045528CF19C200A5374A /* SpellingTestView.storyboard */; };
 		8BF3045828CF19D400A5374A /* SpellingTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3045728CF19D400A5374A /* SpellingTestViewController.swift */; };
 		8BF3045B28CF78C900A5374A /* ResultView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3045A28CF78C900A5374A /* ResultView.storyboard */; };
@@ -116,6 +117,7 @@
 		8BE59CC528D2E93600C878AC /* RainTestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RainTestView.storyboard; sourceTree = "<group>"; };
 		8BE59CC728D2E94800C878AC /* RainTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainTestViewController.swift; sourceTree = "<group>"; };
 		8BEC2048298C246700368F48 /* PapagoInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PapagoInfo.plist; sourceTree = "<group>"; };
+		8BEC2076298CCA7D00368F48 /* Protocol+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protocol+.swift"; sourceTree = "<group>"; };
 		8BF3045528CF19C200A5374A /* SpellingTestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SpellingTestView.storyboard; sourceTree = "<group>"; };
 		8BF3045728CF19D400A5374A /* SpellingTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellingTestViewController.swift; sourceTree = "<group>"; };
 		8BF3045A28CF78C900A5374A /* ResultView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResultView.storyboard; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			children = (
 				8BFFE26D28FBAD1000D183CE /* Network */,
 				8BF3AF32289C253900F049CD /* Extension */,
+				8BEC2078298CCA9200368F48 /* Protocol */,
 				8BEC204A298C24B400368F48 /* View */,
 				8BEC204B298C296400368F48 /* Application */,
 				8BF3AF2D289BBF9A00F049CD /* CoreData */,
@@ -334,6 +337,14 @@
 				8B6DE76628B0C52500E32928 /* CustomTabBarVC.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		8BEC2078298CCA9200368F48 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				8BEC2076298CCA7D00368F48 /* Protocol+.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		8BF3045328CF13E100A5374A /* GameListView */ = {
@@ -606,6 +617,7 @@
 				8B5026D128BF90C2009271AA /* ErrorMessage.swift in Sources */,
 				8BDFBFC228E33E9E001622D6 /* SelectTestListViewController.swift in Sources */,
 				8B1DBDB628A67988007580D7 /* WordCell.swift in Sources */,
+				8BEC2077298CCA7D00368F48 /* Protocol+.swift in Sources */,
 				8BDDCE9828C7AF64000DE395 /* PaddingLabel.swift in Sources */,
 				8BF3AF39289C261500F049CD /* Font+.swift in Sources */,
 				8BDDCE9A28C9CA42000DE395 /* ArrangeButton.swift in Sources */,

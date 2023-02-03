@@ -8,17 +8,13 @@
 import UIKit
 
 class WordButtonCell: UICollectionViewCell {
-    
     @IBOutlet weak var wordLabel: UILabel!
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
         self.contentView.layer.cornerRadius = 20
         self.contentView.backgroundColor = UIColor.NColor.lightBlue
         self.contentView.layer.borderWidth = 0
-//        self.contentView.layer.borderColor = UIColor.NColor.blue.cgColor
-        
     }
     
     override var isSelected: Bool {

@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol AddWordViewDelegate: AnyObject {
-    func didSelectSaveWord()
-}
-
 enum EditMode {
     case new
     case edit(Word)
@@ -19,7 +15,6 @@ enum EditMode {
 class AddWordViewController: UIViewController, SendWordNameDelegate {
     
     var wordList: [Word] = []
-    weak var delegate: AddWordViewDelegate?
     var cameraWord = String()
     var configureSaveButtonState: Bool = false {
         didSet {
@@ -101,7 +96,6 @@ class AddWordViewController: UIViewController, SendWordNameDelegate {
         switch self.editMode {
         case .new:
             CoreDataManager.shared.addWord(name: name, meaning: meaning, synoym: synoym, example: example, createTime: Date(), star: false, isTapped: false)
-            self.delegate?.didSelectSaveWord()
         
         case let .edit(word):
             word.name = name
