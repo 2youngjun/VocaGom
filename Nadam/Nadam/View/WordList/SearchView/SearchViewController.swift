@@ -8,8 +8,6 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-    
-
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var noSearchedLabel: UILabel!
@@ -72,7 +70,6 @@ class SearchViewController: UIViewController {
     @IBAction func tapOtherSpace(_ sender: Any) {
         view.endEditing(true)
     }
-    
 }
 
 extension SearchViewController: UICollectionViewDataSource, UISearchBarDelegate {

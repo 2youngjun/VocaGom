@@ -13,7 +13,6 @@ struct WordInformation: Codable {
 
 struct Message: Codable {
     let result: Result
-    
 }
 
 struct Result: Codable {
