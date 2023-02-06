@@ -8,14 +8,14 @@
 import UIKit
 
 protocol SendTestWordResultDelegate: AnyObject {
-    func sendTestWordResult(wordTests: [questionWord])
+    func sendTestWordResult(wordTests: [TestWords])
 }
 
 class SpellingTestViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: 변수
     var wordList = [Word]()
-    var wordTests = [questionWord]()
+    var wordTests = [TestWords]()
     var countCorrect = 0
     var totalQuestion = 0
     var currentQuestionIndex = 0 {
@@ -138,11 +138,11 @@ class SpellingTestViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             numbers.forEach { index in
-                wordTests.append(questionWord(word: wordList[index], isCorrect: false))
+                wordTests.append(TestWords(word: wordList[index], isCorrect: false))
             }
         } else {
             self.wordList.forEach { word in
-                wordTests.append(questionWord(word: word, isCorrect: false))
+                wordTests.append(TestWords(word: word, isCorrect: false))
             }
         }
         self.totalQuestion = self.wordTests.count
@@ -155,7 +155,7 @@ class SpellingTestViewController: UIViewController, UITextFieldDelegate {
         self.nextButton.configuration?.attributedTitle = buttonTitle
         self.nextButton.configuration?.background.backgroundColor = UIColor.NColor.blue
         self.textField.text = ""
-        self.wordTests = [questionWord]()
+        self.wordTests = [TestWords]()
     }
     
     // MARK: Style Function

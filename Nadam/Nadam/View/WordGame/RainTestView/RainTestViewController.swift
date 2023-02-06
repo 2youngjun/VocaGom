@@ -11,7 +11,7 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: 변수
     var wordList: [Word]?
-    var wordTests = [questionWord]()
+    var wordTests = [TestWords]()
     var countQuestion = 0
     var randomPositionXArray = [Float]()
     var isEnded = false {
@@ -127,11 +127,11 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             numbers.forEach { index in
-                wordTests.append(questionWord(word: wordList![index], isCorrect: false))
+                wordTests.append(TestWords(word: wordList![index], isCorrect: false))
             }
         } else {
             self.wordList!.forEach { word in
-                wordTests.append(questionWord(word: word, isCorrect: false))
+                wordTests.append(TestWords(word: word, isCorrect: false))
             }
         }
         self.countQuestion = wordTests.count
@@ -220,7 +220,7 @@ class RainTestViewController: UIViewController, UITextFieldDelegate {
         self.isEnded = false
         self.nextButton.isEnabled = false
         self.textField.text = ""
-        self.wordTests = [questionWord]()
+        self.wordTests = [TestWords]()
         self.randomPositionXArray = [Float]()
     }
     

@@ -9,7 +9,7 @@ import UIKit
 
 class ResultWordViewController: UIViewController {
 
-    var tossedWords = [questionWord]()
+    var tossedWords = [TestWords]()
     var wordList = [Word]()
     var wordNameColor = UIColor()
     var navigationTitle = String()
@@ -105,7 +105,7 @@ extension ResultWordViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension ResultWordViewController: SendResultWordDelegate {
-    func sendTestWordDelegate(resultWord: [questionWord], color: UIColor, titleText: String) {
+    func sendTestWordDelegate(resultWord: [TestWords], color: UIColor, titleText: String) {
         self.tossedWords = resultWord
         self.navigationTitle = titleText
         self.wordNameColor = color

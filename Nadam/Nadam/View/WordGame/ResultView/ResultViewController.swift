@@ -8,13 +8,13 @@
 import UIKit
 
 protocol SendResultWordDelegate: AnyObject {
-    func sendTestWordDelegate(resultWord: [questionWord], color: UIColor, titleText: String)
+    func sendTestWordDelegate(resultWord: [TestWords], color: UIColor, titleText: String)
 }
 
 class ResultViewController: UIViewController {
     
     // MARK: 변수
-    var resultWords = [questionWord]()
+    var resultWords = [TestWords]()
     var cntCorrect: Int = 0
     weak var delegate: SendResultWordDelegate?
     let resultWordViewController: ResultWordViewController = {
@@ -66,7 +66,7 @@ class ResultViewController: UIViewController {
     
     // MARK: IBAction
     @IBAction func tapCorrectButton(_ sender: UIButton) {
-        var tossWords = [questionWord]()
+        var tossWords = [TestWords]()
         for word in resultWords {
             if word.isCorrect {
                 tossWords.append(word)
@@ -77,7 +77,7 @@ class ResultViewController: UIViewController {
     }
     
     @IBAction func tapWrongButton(_ sender: UIButton) {
-        var tossWords = [questionWord]()
+        var tossWords = [TestWords]()
         for word in resultWords {
             if word.isCorrect == false {
                 tossWords.append(word)
@@ -150,7 +150,7 @@ class ResultViewController: UIViewController {
 }
 
 extension ResultViewController: SendTestWordResultDelegate {
-    func sendTestWordResult(wordTests: [questionWord]) {
+    func sendTestWordResult(wordTests: [TestWords]) {
         self.resultWords = wordTests
     }
 }
