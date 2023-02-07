@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol SendResultWordDelegate: AnyObject {
-    func sendTestWordDelegate(resultWord: [TestWords], color: UIColor, titleText: String)
-}
-
 class ResultViewController: UIViewController {
     
     // MARK: 변수
@@ -27,7 +23,7 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var progressView: UIProgressView!
     
     @IBOutlet weak var resultLabel: UILabel!
-    @IBOutlet weak var totalCorrectionView: UIView!
+    @IBOutlet weak var totalCorrectionView: UIView!         
     @IBOutlet weak var totalCorrectionLabel: UILabel!
     @IBOutlet weak var totalWrongView: UIView!
     @IBOutlet weak var totalWrongLabel: UILabel!

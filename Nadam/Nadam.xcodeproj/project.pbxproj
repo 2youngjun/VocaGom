@@ -241,7 +241,6 @@
 		8B6DE75F28B0B4BE00E32928 /* WordGame */ = {
 			isa = PBXGroup;
 			children = (
-				8B4D72A328D0B523000E9BBB /* TestWords.swift */,
 				8BF3045328CF13E100A5374A /* GameListView */,
 				8BDFBFBE28E33DF7001622D6 /* SelectTestListView */,
 				8BE59CC428D2E91A00C878AC /* RainTestView */,
@@ -353,6 +352,7 @@
 		8BEC207D298EC96400368F48 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8B4D72A328D0B523000E9BBB /* TestWords.swift */,
 				8B5026CE28BF8CE5009271AA /* WordInformation.swift */,
 			);
 			path = Model;

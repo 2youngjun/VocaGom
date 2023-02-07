@@ -16,3 +16,13 @@ protocol CameraPictureDelegate: AnyObject {
 protocol SendWordNameDelegate: AnyObject {
     func sendWord(wordName: String)
 }
+
+// 테스트 결과 전달
+protocol SendTestWordResultDelegate: AnyObject {
+    func sendTestWordResult(wordTests: [TestWords])
+}
+
+// 정답/오답 단어 결과창 전달
+protocol SendResultWordDelegate: AnyObject {
+    func sendTestWordDelegate(resultWord: [TestWords], color: UIColor, titleText: String)
+}

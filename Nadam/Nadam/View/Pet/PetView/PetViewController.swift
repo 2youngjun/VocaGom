@@ -8,9 +8,6 @@
 import UIKit
 
 class PetViewController: UIViewController {
-
-    //MARK: Variable
-    
     
     //MARK: IBOutlet Variable
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -58,7 +55,6 @@ class PetViewController: UIViewController {
         let point = UserDefaults.standard.object(forKey: "point") as? Int
         self.pointLabel.text = point == nil ? String("0") : String(point ?? 0)
     }
-    
     
     //MARK: Style Function
     private func styleFunction() {

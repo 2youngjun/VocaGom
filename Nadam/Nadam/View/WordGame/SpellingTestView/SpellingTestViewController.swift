@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol SendTestWordResultDelegate: AnyObject {
-    func sendTestWordResult(wordTests: [TestWords])
-}
-
 class SpellingTestViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: 변수
