@@ -94,14 +94,14 @@ class SpellingTestViewController: UIViewController, UITextFieldDelegate {
             self.delegate?.sendTestWordResult(wordTests: wordTests)
             self.navigationController?.pushViewController(self.resultViewController, animated: true)
         } else {
-            if self.checkWordCorrect(textFieldString: self.textField.text ?? "", meaning: self.wordCardLabel.text ?? "") {
+            if self.checkWordCorrect(textFieldString: self.textField.text ?? "", name: self.wordCardLabel.text ?? "") {
                 self.countCorrect += 1
                 self.currentCorrectLabel.text = String(countCorrect)
                 
                 self.wordTests[currentQuestionIndex - 1].isCorrect = true
             }
             if self.currentQuestionIndex != self.totalQuestion {
-                self.wordCardLabel.text = wordTests[currentQuestionIndex].word.meaning
+                self.wordCardLabel.text = wordTests[currentQuestionIndex].word.name
             }
             
         }
@@ -110,15 +110,15 @@ class SpellingTestViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: 기능 구현
-    private func checkWordCorrect(textFieldString: String, meaning: String) -> Bool {
+    private func checkWordCorrect(textFieldString: String, name: String) -> Bool {
         var isCorrect = false
-        var correctName = ""
-        for word in wordList {
-            if word.meaning == meaning {
-                correctName = word.name ?? ""
+        var correctMeaning = ""
+        for word in wordTests {
+            if word.word.name == name {
+                correctMeaning = word.word.meaning ?? ""
             }
         }
-        isCorrect = correctName == textFieldString ? true : false
+        isCorrect = correctMeaning == textFieldString ? true : false
         return isCorrect
     }
     
@@ -181,7 +181,7 @@ class SpellingTestViewController: UIViewController, UITextFieldDelegate {
         self.wordCardLabel.font = UIFont.NFont.spellingTestLabel
         self.wordCardLabel.textColor = UIColor.NColor.blue
         self.wordCardLabel.sizeToFit()
-        self.wordCardLabel.text = self.wordTests[0].word.meaning
+        self.wordCardLabel.text = self.wordTests[0].word.name
     }
     
     private func configureTextField() {

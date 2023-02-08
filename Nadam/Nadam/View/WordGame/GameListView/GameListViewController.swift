@@ -74,7 +74,6 @@ class GameListViewController: UIViewController {
         if self.whichTestIndex == 0 {
             self.delegateRainTest?.sendTestList(testList: self.wordList)
             self.navigationController?.pushViewController(self.rainTestViewController, animated: true)
-
         } else {
             self.delegateSpellingTest?.sendTestList(testList: self.wordList)
             self.navigationController?.pushViewController(self.spellingTestViewController, animated: true)
@@ -95,7 +94,6 @@ class GameListViewController: UIViewController {
         if self.whichTestIndex == 0 {
             self.delegateRainTest?.sendTestList(testList: favoriteWordList)
             self.navigationController?.pushViewController(self.rainTestViewController, animated: true)
-
         } else {
             self.delegateSpellingTest?.sendTestList(testList: favoriteWordList)
             self.navigationController?.pushViewController(self.spellingTestViewController, animated: true)

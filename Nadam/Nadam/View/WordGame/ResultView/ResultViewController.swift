@@ -23,7 +23,7 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var progressView: UIProgressView!
     
     @IBOutlet weak var resultLabel: UILabel!
-    @IBOutlet weak var totalCorrectionView: UIView!         
+    @IBOutlet weak var totalCorrectionView: UIView!
     @IBOutlet weak var totalCorrectionLabel: UILabel!
     @IBOutlet weak var totalWrongView: UIView!
     @IBOutlet weak var totalWrongLabel: UILabel!
