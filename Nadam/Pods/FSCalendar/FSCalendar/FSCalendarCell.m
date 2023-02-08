@@ -308,9 +308,6 @@
 
 - (NSArray<UIColor *> *)colorsForEvents
 {
-    if (self.selected) {
-        return _preferredEventSelectionColors ?: @[_appearance.eventSelectionColor];
-    }
     return _preferredEventDefaultColors ?: @[_appearance.eventDefaultColor];
 }
 
