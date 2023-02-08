@@ -15,14 +15,13 @@
 		8B0DDEF9289A953D00F0ACC3 /* Nadam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DDEF7289A953D00F0ACC3 /* Nadam.xcdatamodeld */; };
 		8B0DDEFB289A953F00F0ACC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B0DDEFA289A953F00F0ACC3 /* Assets.xcassets */; };
 		8B0DDEFE289A953F00F0ACC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B0DDEFC289A953F00F0ACC3 /* LaunchScreen.storyboard */; };
-		8B1DBD78289F5D6F007580D7 /* VocaGom+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DBD77289F5D6F007580D7 /* VocaGom+Color.swift */; };
+		8B1DBD78289F5D6F007580D7 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DBD77289F5D6F007580D7 /* Color+.swift */; };
 		8B1DBDB628A67988007580D7 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DBDB528A67988007580D7 /* WordCell.swift */; };
 		8B21436328C2D1ED00C073CE /* SearchView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B21436228C2D1ED00C073CE /* SearchView.storyboard */; };
 		8B21436528C2D20300C073CE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21436428C2D20300C073CE /* SearchViewController.swift */; };
-		8B4D72A428D0B523000E9BBB /* questionWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D72A328D0B523000E9BBB /* questionWord.swift */; };
+		8B4D72A428D0B523000E9BBB /* TestWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D72A328D0B523000E9BBB /* TestWords.swift */; };
 		8B4D72A628D0B7DF000E9BBB /* ResultWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D72A528D0B7DF000E9BBB /* ResultWordCell.swift */; };
 		8B5026CF28BF8CE5009271AA /* WordInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5026CE28BF8CE5009271AA /* WordInformation.swift */; };
-		8B5026D128BF90C2009271AA /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5026D028BF90C2009271AA /* ErrorMessage.swift */; };
 		8B63ABE928D04BB200D38973 /* ResultWordView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B63ABE828D04BB200D38973 /* ResultWordView.storyboard */; };
 		8B63ABEB28D04BB900D38973 /* ResultWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B63ABEA28D04BB900D38973 /* ResultWordViewController.swift */; };
 		8B6A522B28C626A9005CA74B /* TapWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A522928C626A9005CA74B /* TapWordCell.swift */; };
@@ -48,6 +47,10 @@
 		8BE57A0E28C4FDAD00484284 /* SearchedWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE57A0D28C4FDAD00484284 /* SearchedWordCell.swift */; };
 		8BE59CC628D2E93600C878AC /* RainTestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE59CC528D2E93600C878AC /* RainTestView.storyboard */; };
 		8BE59CC828D2E94800C878AC /* RainTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE59CC728D2E94800C878AC /* RainTestViewController.swift */; };
+		8BEC2049298C246700368F48 /* PapagoInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BEC2048298C246700368F48 /* PapagoInfo.plist */; };
+		8BEC2077298CCA7D00368F48 /* Protocol+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC2076298CCA7D00368F48 /* Protocol+.swift */; };
+		8BEC207A298E9FCA00368F48 /* PapagoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC2079298E9FCA00368F48 /* PapagoAPI.swift */; };
+		8BEC207C298EA2CB00368F48 /* PapagoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC207B298EA2CB00368F48 /* PapagoNetwork.swift */; };
 		8BF3045628CF19C200A5374A /* SpellingTestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3045528CF19C200A5374A /* SpellingTestView.storyboard */; };
 		8BF3045828CF19D400A5374A /* SpellingTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3045728CF19D400A5374A /* SpellingTestViewController.swift */; };
 		8BF3045B28CF78C900A5374A /* ResultView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3045A28CF78C900A5374A /* ResultView.storyboard */; };
@@ -57,16 +60,15 @@
 		8BF3AF2A289B5AEB00F049CD /* AddWordView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF29289B5AEB00F049CD /* AddWordView.storyboard */; };
 		8BF3AF2C289B5AF500F049CD /* AddWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3AF2B289B5AF500F049CD /* AddWordViewController.swift */; };
 		8BF3AF2F289BBFAC00F049CD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3AF2E289BBFAC00F049CD /* CoreDataManager.swift */; };
-		8BF3AF39289C261500F049CD /* VocaGom+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3AF38289C261500F049CD /* VocaGom+Font.swift */; };
+		8BF3AF39289C261500F049CD /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3AF38289C261500F049CD /* Font+.swift */; };
 		8BF3AF42289C32B800F049CD /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF41289C32B800F049CD /* GmarketSansTTFBold.ttf */; };
 		8BF3AF43289C32BE00F049CD /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF3D289C328A00F049CD /* GmarketSansTTFLight.ttf */; };
 		8BF3AF44289C32C000F049CD /* GmarketSansTTFMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BF3AF3F289C329000F049CD /* GmarketSansTTFMedium.ttf */; };
 		8BFC7E3728B5140500D92E00 /* AddCameraView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BFC7E3628B5140500D92E00 /* AddCameraView.storyboard */; };
 		8BFC7E3928B5141F00D92E00 /* AddCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFC7E3828B5141F00D92E00 /* AddCameraViewController.swift */; };
 		8BFC7E3B28B88AB700D92E00 /* WordButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFC7E3A28B88AB700D92E00 /* WordButtonCell.swift */; };
-		8BFFE1AD28F3D99200D183CE /* VocaGom+CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFE1AC28F3D99200D183CE /* VocaGom+CALayer.swift */; };
-		8BFFE27128FBAEBA00D183CE /* VocaGom+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFE27028FBAEBA00D183CE /* VocaGom+Bundle.swift */; };
-		8BFFE2FB28FE1F6E00D183CE /* PapagoInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BFFE2FA28FE1F6E00D183CE /* PapagoInfo.plist */; };
+		8BFFE1AD28F3D99200D183CE /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFE1AC28F3D99200D183CE /* CALayer+.swift */; };
+		8BFFE27128FBAEBA00D183CE /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFFE27028FBAEBA00D183CE /* Bundle+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,14 +84,13 @@
 		8B0DDEFA289A953F00F0ACC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B0DDEFD289A953F00F0ACC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B0DDEFF289A953F00F0ACC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B1DBD77289F5D6F007580D7 /* VocaGom+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VocaGom+Color.swift"; sourceTree = "<group>"; };
+		8B1DBD77289F5D6F007580D7 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		8B1DBDB528A67988007580D7 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		8B21436228C2D1ED00C073CE /* SearchView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchView.storyboard; sourceTree = "<group>"; };
 		8B21436428C2D20300C073CE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		8B4D72A328D0B523000E9BBB /* questionWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = questionWord.swift; sourceTree = "<group>"; };
+		8B4D72A328D0B523000E9BBB /* TestWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWords.swift; sourceTree = "<group>"; };
 		8B4D72A528D0B7DF000E9BBB /* ResultWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWordCell.swift; sourceTree = "<group>"; };
 		8B5026CE28BF8CE5009271AA /* WordInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordInformation.swift; sourceTree = "<group>"; };
-		8B5026D028BF90C2009271AA /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		8B63ABE828D04BB200D38973 /* ResultWordView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResultWordView.storyboard; sourceTree = "<group>"; };
 		8B63ABEA28D04BB900D38973 /* ResultWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWordViewController.swift; sourceTree = "<group>"; };
 		8B6A522928C626A9005CA74B /* TapWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapWordCell.swift; sourceTree = "<group>"; };
@@ -115,6 +116,10 @@
 		8BE57A0D28C4FDAD00484284 /* SearchedWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedWordCell.swift; sourceTree = "<group>"; };
 		8BE59CC528D2E93600C878AC /* RainTestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RainTestView.storyboard; sourceTree = "<group>"; };
 		8BE59CC728D2E94800C878AC /* RainTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainTestViewController.swift; sourceTree = "<group>"; };
+		8BEC2048298C246700368F48 /* PapagoInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PapagoInfo.plist; sourceTree = "<group>"; };
+		8BEC2076298CCA7D00368F48 /* Protocol+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protocol+.swift"; sourceTree = "<group>"; };
+		8BEC2079298E9FCA00368F48 /* PapagoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoAPI.swift; sourceTree = "<group>"; };
+		8BEC207B298EA2CB00368F48 /* PapagoNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoNetwork.swift; sourceTree = "<group>"; };
 		8BF3045528CF19C200A5374A /* SpellingTestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SpellingTestView.storyboard; sourceTree = "<group>"; };
 		8BF3045728CF19D400A5374A /* SpellingTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellingTestViewController.swift; sourceTree = "<group>"; };
 		8BF3045A28CF78C900A5374A /* ResultView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResultView.storyboard; sourceTree = "<group>"; };
@@ -124,16 +129,15 @@
 		8BF3AF29289B5AEB00F049CD /* AddWordView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddWordView.storyboard; sourceTree = "<group>"; };
 		8BF3AF2B289B5AF500F049CD /* AddWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordViewController.swift; sourceTree = "<group>"; };
 		8BF3AF2E289BBFAC00F049CD /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		8BF3AF38289C261500F049CD /* VocaGom+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VocaGom+Font.swift"; sourceTree = "<group>"; };
+		8BF3AF38289C261500F049CD /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		8BF3AF3D289C328A00F049CD /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFLight.ttf; sourceTree = "<group>"; };
 		8BF3AF3F289C329000F049CD /* GmarketSansTTFMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFMedium.ttf; sourceTree = "<group>"; };
 		8BF3AF41289C32B800F049CD /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFBold.ttf; sourceTree = "<group>"; };
 		8BFC7E3628B5140500D92E00 /* AddCameraView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCameraView.storyboard; sourceTree = "<group>"; };
 		8BFC7E3828B5141F00D92E00 /* AddCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCameraViewController.swift; sourceTree = "<group>"; };
 		8BFC7E3A28B88AB700D92E00 /* WordButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordButtonCell.swift; sourceTree = "<group>"; };
-		8BFFE1AC28F3D99200D183CE /* VocaGom+CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VocaGom+CALayer.swift"; sourceTree = "<group>"; };
-		8BFFE27028FBAEBA00D183CE /* VocaGom+Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VocaGom+Bundle.swift"; sourceTree = "<group>"; };
-		8BFFE2FA28FE1F6E00D183CE /* PapagoInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PapagoInfo.plist; sourceTree = "<group>"; };
+		8BFFE1AC28F3D99200D183CE /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
+		8BFFE27028FBAEBA00D183CE /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,9 +164,6 @@
 		8B0DDEE2289A953D00F0ACC3 = {
 			isa = PBXGroup;
 			children = (
-				8BF3AF34289C25CB00F049CD /* Utility */,
-				8BFFE26D28FBAD1000D183CE /* Network + APIKey */,
-				8BF3AF32289C253900F049CD /* Extension */,
 				8B0DDEED289A953D00F0ACC3 /* Nadam */,
 				8B0DDEEC289A953D00F0ACC3 /* Products */,
 				14F77F06F3F86D34728BCEFC /* Pods */,
@@ -181,19 +182,15 @@
 		8B0DDEED289A953D00F0ACC3 /* Nadam */ = {
 			isa = PBXGroup;
 			children = (
-				8B0DDEEE289A953D00F0ACC3 /* AppDelegate.swift */,
-				8B0DDEF0289A953D00F0ACC3 /* SceneDelegate.swift */,
-				8B0DDEF2289A953D00F0ACC3 /* ViewController.swift */,
-				8B0DDEFC289A953F00F0ACC3 /* LaunchScreen.storyboard */,
-				8B0DDEF4289A953D00F0ACC3 /* Main.storyboard */,
-				8B6DE76628B0C52500E32928 /* CustomTabBarVC.swift */,
-				8B93D54228E894B600AD8170 /* Pet */,
-				8BAF4F1728DAB201008ADFCC /* Calendar */,
-				8BF3AF28289ACAB000F049CD /* WordList */,
-				8B6DE75F28B0B4BE00E32928 /* WordGame */,
-				8B0DDEFA289A953F00F0ACC3 /* Assets.xcassets */,
-				8B0DDEFF289A953F00F0ACC3 /* Info.plist */,
+				8BFFE26D28FBAD1000D183CE /* Network */,
+				8BF3AF32289C253900F049CD /* Extension */,
+				8BEC2078298CCA9200368F48 /* Protocol */,
+				8BEC204A298C24B400368F48 /* View */,
+				8BEC204B298C296400368F48 /* Application */,
 				8BF3AF2D289BBF9A00F049CD /* CoreData */,
+				8BEC207D298EC96400368F48 /* Model */,
+				8BF3AF34289C25CB00F049CD /* Resource */,
+				8B0DDEFF289A953F00F0ACC3 /* Info.plist */,
 			);
 			path = Nadam;
 			sourceTree = "<group>";
@@ -244,7 +241,6 @@
 		8B6DE75F28B0B4BE00E32928 /* WordGame */ = {
 			isa = PBXGroup;
 			children = (
-				8B4D72A328D0B523000E9BBB /* questionWord.swift */,
 				8BF3045328CF13E100A5374A /* GameListView */,
 				8BDFBFBE28E33DF7001622D6 /* SelectTestListView */,
 				8BE59CC428D2E91A00C878AC /* RainTestView */,
@@ -321,6 +317,47 @@
 			path = RainTestView;
 			sourceTree = "<group>";
 		};
+		8BEC204A298C24B400368F48 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8BF3AF28289ACAB000F049CD /* WordList */,
+				8B6DE75F28B0B4BE00E32928 /* WordGame */,
+				8BAF4F1728DAB201008ADFCC /* Calendar */,
+				8B93D54228E894B600AD8170 /* Pet */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8BEC204B298C296400368F48 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				8B0DDEEE289A953D00F0ACC3 /* AppDelegate.swift */,
+				8B0DDEF0289A953D00F0ACC3 /* SceneDelegate.swift */,
+				8B0DDEF2289A953D00F0ACC3 /* ViewController.swift */,
+				8B0DDEFC289A953F00F0ACC3 /* LaunchScreen.storyboard */,
+				8B0DDEF4289A953D00F0ACC3 /* Main.storyboard */,
+				8B6DE76628B0C52500E32928 /* CustomTabBarVC.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		8BEC2078298CCA9200368F48 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				8BEC2076298CCA7D00368F48 /* Protocol+.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		8BEC207D298EC96400368F48 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B4D72A328D0B523000E9BBB /* TestWords.swift */,
+				8B5026CE28BF8CE5009271AA /* WordInformation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8BF3045328CF13E100A5374A /* GameListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,20 +418,21 @@
 		8BF3AF32289C253900F049CD /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				8BFFE27028FBAEBA00D183CE /* VocaGom+Bundle.swift */,
-				8BF3AF38289C261500F049CD /* VocaGom+Font.swift */,
-				8B1DBD77289F5D6F007580D7 /* VocaGom+Color.swift */,
-				8BFFE1AC28F3D99200D183CE /* VocaGom+CALayer.swift */,
+				8BFFE27028FBAEBA00D183CE /* Bundle+.swift */,
+				8BF3AF38289C261500F049CD /* Font+.swift */,
+				8B1DBD77289F5D6F007580D7 /* Color+.swift */,
+				8BFFE1AC28F3D99200D183CE /* CALayer+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		8BF3AF34289C25CB00F049CD /* Utility */ = {
+		8BF3AF34289C25CB00F049CD /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				8B0DDEFA289A953F00F0ACC3 /* Assets.xcassets */,
 				8BF3AF3A289C327F00F049CD /* Font */,
 			);
-			path = Utility;
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		8BF3AF3A289C327F00F049CD /* Font */ = {
@@ -407,15 +445,15 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		8BFFE26D28FBAD1000D183CE /* Network + APIKey */ = {
+		8BFFE26D28FBAD1000D183CE /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				8BEC2079298E9FCA00368F48 /* PapagoAPI.swift */,
+				8BEC207B298EA2CB00368F48 /* PapagoNetwork.swift */,
 				8BDFBFB628E2EDF9001622D6 /* NetworkReachability.swift */,
-				8B5026CE28BF8CE5009271AA /* WordInformation.swift */,
-				8B5026D028BF90C2009271AA /* ErrorMessage.swift */,
-				8BFFE2FA28FE1F6E00D183CE /* PapagoInfo.plist */,
+				8BEC2048298C246700368F48 /* PapagoInfo.plist */,
 			);
-			path = "Network + APIKey";
+			path = Network;
 			sourceTree = "<group>";
 		};
 		CD169AAD76B2196D0CB2FCBA /* Frameworks */ = {
@@ -486,7 +524,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BFFE2FB28FE1F6E00D183CE /* PapagoInfo.plist in Resources */,
+				8BEC2049298C246700368F48 /* PapagoInfo.plist in Resources */,
 				8BFC7E3728B5140500D92E00 /* AddCameraView.storyboard in Resources */,
 				8BF3045628CF19C200A5374A /* SpellingTestView.storyboard in Resources */,
 				8B93D54828E8950C00AD8170 /* PetView.storyboard in Resources */,
@@ -559,11 +597,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BFFE27128FBAEBA00D183CE /* VocaGom+Bundle.swift in Sources */,
+				8BFFE27128FBAEBA00D183CE /* Bundle+.swift in Sources */,
 				8BE59CC828D2E94800C878AC /* RainTestViewController.swift in Sources */,
 				8B5026CF28BF8CE5009271AA /* WordInformation.swift in Sources */,
 				8B0DDEF3289A953D00F0ACC3 /* ViewController.swift in Sources */,
-				8BFFE1AD28F3D99200D183CE /* VocaGom+CALayer.swift in Sources */,
+				8BEC207A298E9FCA00368F48 /* PapagoAPI.swift in Sources */,
+				8BFFE1AD28F3D99200D183CE /* CALayer+.swift in Sources */,
 				8BAF4F2028DB6B1D008ADFCC /* CalendarWordCell.swift in Sources */,
 				8BFC7E3928B5141F00D92E00 /* AddCameraViewController.swift in Sources */,
 				8B21436528C2D20300C073CE /* SearchViewController.swift in Sources */,
@@ -572,7 +611,7 @@
 				8B6DE76728B0C52500E32928 /* CustomTabBarVC.swift in Sources */,
 				8B6A522B28C626A9005CA74B /* TapWordCell.swift in Sources */,
 				8B4D72A628D0B7DF000E9BBB /* ResultWordCell.swift in Sources */,
-				8B1DBD78289F5D6F007580D7 /* VocaGom+Color.swift in Sources */,
+				8B1DBD78289F5D6F007580D7 /* Color+.swift in Sources */,
 				8BF3045D28CF78D300A5374A /* ResultViewController.swift in Sources */,
 				8B93D50A28E47C2A00AD8170 /* SelectTestListButton.swift in Sources */,
 				8BAF4F1C28DAB22C008ADFCC /* CalendarViewController.swift in Sources */,
@@ -582,16 +621,17 @@
 				8BFC7E3B28B88AB700D92E00 /* WordButtonCell.swift in Sources */,
 				8B93D54E28ED282100AD8170 /* PurchasingCell.swift in Sources */,
 				8BF3AF27289ACAA700F049CD /* WordListViewController.swift in Sources */,
-				8B4D72A428D0B523000E9BBB /* questionWord.swift in Sources */,
+				8B4D72A428D0B523000E9BBB /* TestWords.swift in Sources */,
 				8B0DDEF1289A953D00F0ACC3 /* SceneDelegate.swift in Sources */,
 				8B93D54C28E89C2100AD8170 /* PurchasingViewController.swift in Sources */,
 				8BF3AF2F289BBFAC00F049CD /* CoreDataManager.swift in Sources */,
 				8BF3045828CF19D400A5374A /* SpellingTestViewController.swift in Sources */,
-				8B5026D128BF90C2009271AA /* ErrorMessage.swift in Sources */,
 				8BDFBFC228E33E9E001622D6 /* SelectTestListViewController.swift in Sources */,
 				8B1DBDB628A67988007580D7 /* WordCell.swift in Sources */,
+				8BEC2077298CCA7D00368F48 /* Protocol+.swift in Sources */,
 				8BDDCE9828C7AF64000DE395 /* PaddingLabel.swift in Sources */,
-				8BF3AF39289C261500F049CD /* VocaGom+Font.swift in Sources */,
+				8BF3AF39289C261500F049CD /* Font+.swift in Sources */,
+				8BEC207C298EA2CB00368F48 /* PapagoNetwork.swift in Sources */,
 				8BDDCE9A28C9CA42000DE395 /* ArrangeButton.swift in Sources */,
 				8B93D54628E8950500AD8170 /* PetViewController.swift in Sources */,
 				8BE57A0E28C4FDAD00484284 /* SearchedWordCell.swift in Sources */,

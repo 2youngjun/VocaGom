@@ -7,28 +7,4 @@
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Nadam/CoreData/Shirt+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Nadam/CoreData/Shirt+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Nadam/CoreData/Accessory+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Nadam/CoreData/Accessory+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Nadam/CoreData/Pants+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Nadam/CoreData/Pants+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Nadam/CoreData/Shoes+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Nadam/CoreData/Shoes+CoreDataProperties.swift">
-   </FileRef>
 </Workspace>
